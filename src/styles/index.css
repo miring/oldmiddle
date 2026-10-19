@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/*
+ * Tailwind는 레이아웃(배치·간격·반응형)에만 씁니다.
+ * 기본 색상·글자·라운드·그림자 값은 지워서, tokens.css 밖의 값이 끼어들지 않게 합니다.
+ * 간격 유틸리티(p-6, gap-4 등)는 --space-unit(4px)의 배수로 계산됩니다.
+ * 임의 값(p-[13px] 같은 표기)은 쓰지 않습니다.
+ */
+@theme {
+  --color-*: initial;
+  --font-*: initial;
+  --text-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --breakpoint-*: initial;
+  /* tokens.css의 미디어 쿼리 기준과 같아야 합니다 */
+  --breakpoint-md: 48rem;
+  --breakpoint-xl: 85rem;
+}
+
+@theme inline {
+  --spacing: var(--space-unit);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-default);
+    color: var(--color-text-primary);
+    font-family: var(--font-family-base);
+    font-size: var(--type-body-size);
+    line-height: var(--type-body-line);
+    word-break: keep-all; /* 한국어는 낱말 단위로 줄바꿈 */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus-ring);
+    outline-offset: var(--focus-ring-offset);
+  }
+}

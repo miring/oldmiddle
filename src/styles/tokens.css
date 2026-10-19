@@ -1,0 +1,161 @@
+/*
+ * 디자인 토큰 — 색상·간격·글자·라운드는 이 파일의 변수만 사용합니다.
+ *
+ * - 값은 Figma 원본(2026-10-19 결정)을 그대로 따릅니다.
+ *   접근성 기준 미달 값에는 [대비 미달] / [크기 미달] 표시를 남겨 두었습니다.
+ * - 화면 폭에 따라 달라지는 값은 아래 미디어 쿼리에서 다시 정의합니다.
+ *   태블릿: 48rem(768px) 이상 / 데스크톱: 85rem(1360px) 이상
+ *   이 기준은 src/styles/index.css의 Tailwind breakpoint(md, xl)와 같아야 합니다.
+ */
+
+:root {
+  /* ── 색상: 배경·면 ── */
+  --color-bg-default: #fafaf7;
+  --color-surface-raised: #ffffff;
+  --color-surface-accent-subtle: #fff9d6;
+  --color-surface-inverse: #3d6b61;
+
+  /* ── 색상: 텍스트 ── */
+  --color-text-primary: #2c2416;
+  --color-text-secondary: #5c5a50;
+  --color-text-tertiary: #7a7a6e; /* [대비 미달] 4.15:1 */
+  --color-text-accent: #d4a800; /* [대비 미달] 2.14:1 */
+  --color-text-on-accent: #2c2416;
+
+  /* ── 색상: 선·포커스 ── */
+  --color-border-subtle: #e2dfd4;
+  --color-border-interactive: #f0c419; /* [대비 미달] 흰 배경 대비 1.66:1 */
+  --color-focus-ring: #2c2416;
+
+  /* ── 색상: 버튼·진행·브랜드 ── */
+  --color-action-primary-bg: #f0c419;
+  --color-progress-track: #ede9d8;
+  --color-progress-fill: #f0c419;
+  --color-brand-mark-1: #f0c419; /* 장식 전용, 글자에 쓰지 않음 */
+  --color-brand-mark-2: #d4a800; /* 장식 전용, 글자에 쓰지 않음 */
+
+  /* ── 글자: 글꼴·굵기 ── */
+  --font-family-base: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ── 글자: 크기·행간 (모바일 기준, 아래에서 화면 폭별 재정의) ── */
+  --type-display-size: 31px;
+  --type-display-line: 1.3;
+  --type-question-size: 25px;
+  --type-question-line: 1.5;
+  --type-progress-size: 18px;
+  --type-wordmark-size: 23px;
+  --type-body-size: 16px; /* [크기 미달] 기준 18px */
+  --type-body-line: 1.6;
+  --type-label-size: 16px;
+  --type-meta-size: 15px; /* "준비 중" 같은 상태 문구 */
+  --type-caption-size: 14px; /* "가칭" 같은 보조 문구 */
+  --type-pill-size: 14px;
+  --line-height-tight: 1.3;
+  --line-height-normal: normal;
+
+  /* ── 간격: 4px 단위 스케일 ── */
+  --space-unit: 4px; /* Tailwind 간격 유틸리티의 기준값 */
+  --space-0: 0px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  /* Figma 원본 중 4px 단위에 맞지 않는 값 */
+  --space-0-5: 2px;
+  --space-1-5: 6px;
+  --space-2-5: 10px;
+
+  /* ── 간격: 컴포넌트 안쪽 (모바일 기준) ──
+   * 섹션 여백·배치 간격은 Tailwind 클래스(p-6, gap-4 등 = --space-unit 배수)로 씁니다. */
+  --space-brand-gap: var(--space-2);
+  --space-status-gap: var(--space-1-5);
+  --space-choice-gap: var(--space-1-5); /* 선택지 안 일러스트와 글자 사이 */
+  --space-choice-padding-x: var(--space-2);
+  --space-choice-padding-y: var(--space-3);
+
+  /* ── 라운드 ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  --radius-choice: var(--radius-lg);
+  --radius-progress: 0px;
+
+  /* ── 선 ── */
+  --border-width-default: 1px;
+  --focus-ring-width: 3px;
+  --focus-ring-offset: 2px;
+
+  /* ── 크기 ── */
+  --size-touch-min: 48px;
+  --size-header-height: 76px;
+  --size-brand-mark-width: 24px;
+  --size-brand-mark-height: 28px;
+  --size-brand-bar-width: 9px;
+  --size-brand-bar-tall: 25px;
+  --size-brand-bar-short: 19px;
+  --size-brand-bar-gap: 3px;
+  --size-status-dot: 5px;
+  --size-progress-height: 3px;
+  --size-illust-choice: 88px;
+  --size-choice-min-height: 180px;
+  --size-quiz-card-width: 600px; /* 데스크톱 첫 질문 카드 폭 */
+
+  /* ── 움직임 ── */
+  --motion-sway-duration: 4s;
+}
+
+/* 태블릿 */
+@media (min-width: 48rem) {
+  :root {
+    --type-display-size: 42px;
+    --type-display-line: 1.5;
+    --type-question-size: 30px;
+    --type-progress-size: 20px;
+    --type-wordmark-size: 26px;
+    --type-meta-size: 16px;
+    --type-caption-size: 16px;
+
+    --space-brand-gap: var(--space-2-5);
+    --space-status-gap: var(--space-2);
+    --space-choice-gap: var(--space-5);
+    --space-choice-padding-x: var(--space-3);
+    --space-choice-padding-y: var(--space-6);
+
+    --radius-choice: var(--radius-md);
+    --radius-progress: 2px;
+
+    --size-header-height: 96px;
+    --size-brand-mark-width: 26px;
+    --size-brand-mark-height: 30px;
+    --size-brand-bar-width: 10px;
+    --size-brand-bar-tall: 28px;
+    --size-brand-bar-short: 21px;
+    --size-status-dot: 6px;
+    --size-progress-height: 4px;
+    --size-illust-choice: 104px;
+    --size-choice-min-height: 224px;
+  }
+}
+
+/* 데스크톱 */
+@media (min-width: 85rem) {
+  :root {
+    --type-display-size: 50px;
+  }
+}
