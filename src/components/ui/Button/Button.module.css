@@ -2,28 +2,45 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3);
   width: 100%;
   height: max(var(--size-button-height), var(--size-touch-min));
   border-radius: var(--radius-md);
-  background-color: var(--color-action-primary-bg);
-  color: var(--color-text-on-accent);
   font-size: var(--type-button-size);
-  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-normal);
   cursor: pointer;
 }
 
+.primary {
+  gap: var(--space-3);
+  background-color: var(--color-action-primary-bg);
+  color: var(--color-text-on-accent);
+  font-weight: var(--font-weight-bold);
+}
+
+.secondary {
+  gap: var(--space-2);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  background-color: var(--color-action-secondary-bg);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
 .button:disabled {
+  border-color: transparent;
   background-color: var(--color-action-disabled-bg);
   color: var(--color-text-disabled);
   cursor: not-allowed;
 }
 
-/* 화살표 SVG를 마스크로 써서 글자색을 그대로 따라가게 합니다 */
-.arrow {
+/* 앞으로 화살표는 마스크로 써서 글자색(활성·비활성)을 그대로 따라가게 합니다 */
+.forwardArrow {
   width: var(--size-icon-arrow-width);
   height: var(--size-icon-arrow-height);
   background-color: currentColor;
   mask: url('../../../assets/icons/arrow-forward.svg') center / contain no-repeat;
+}
+
+.backArrow {
+  width: var(--size-icon-back-width);
+  height: var(--size-icon-back-height);
 }

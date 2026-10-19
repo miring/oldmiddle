@@ -1,9 +1,12 @@
+import radioChecked from '../../../assets/icons/radio-checked.svg'
+import radioUnchecked from '../../../assets/icons/radio-unchecked.svg'
 import styles from './RadioOption.module.css'
 
 type RadioOptionProps = {
   /** 같은 질문의 선택지끼리 같은 name을 씁니다 */
   name: string
   value: string
+  /** 줄바꿈(\n)은 화면에서도 그대로 줄을 바꿉니다 */
   label: string
   checked: boolean
   onChange: (value: string) => void
@@ -15,7 +18,7 @@ type RadioOptionProps = {
  */
 export function RadioOption({ name, value, label, checked, onChange }: RadioOptionProps) {
   return (
-    <label className={styles.option}>
+    <label className={`${styles.option} ${checked ? styles.selected : ''}`}>
       <input
         className={`${styles.input} sr-only`}
         type="radio"
@@ -24,7 +27,7 @@ export function RadioOption({ name, value, label, checked, onChange }: RadioOpti
         checked={checked}
         onChange={() => onChange(value)}
       />
-      <span className={styles.control} aria-hidden="true" />
+      <img className={styles.control} src={checked ? radioChecked : radioUnchecked} alt="" />
       <span className={styles.label}>{label}</span>
     </label>
   )

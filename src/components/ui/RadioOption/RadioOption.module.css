@@ -11,18 +11,12 @@
   cursor: pointer;
 }
 
-/* 실제 입력은 sr-only로 숨기고(포커스·선택은 유지) 아래 .control로 그립니다 */
+/* 실제 입력은 sr-only로 숨기고(포커스·선택은 유지) 그림(.control)으로 표시합니다 */
 
-/* Figma 라디오 원: 흰 바탕, 얇은 회색 테두리 */
 .control {
-  display: grid;
   flex-shrink: 0;
-  place-items: center;
   width: var(--size-radio);
   height: var(--size-radio);
-  border: var(--border-width-control) solid var(--color-border-subtle);
-  border-radius: var(--radius-full);
-  background-color: var(--color-surface-raised);
 }
 
 .label {
@@ -32,23 +26,16 @@
   font-size: var(--type-body-lg-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--type-body-line);
+  white-space: pre-line;
 }
 
-/* 선택 상태 — Figma에 아직 없어 임시 스타일 */
-.option:has(.input:checked) {
-  border-color: var(--color-border-selected);
+.selected {
+  border: var(--border-width-selected) solid var(--color-border-selected);
+  background-color: var(--color-surface-selected);
 }
 
-.input:checked + .control {
-  border-color: var(--color-border-selected);
-}
-
-.input:checked + .control::after {
-  content: '';
-  width: var(--size-radio-dot);
-  height: var(--size-radio-dot);
-  border-radius: var(--radius-full);
-  background-color: var(--color-border-selected);
+.selected .label {
+  font-weight: var(--font-weight-bold);
 }
 
 .option:has(.input:focus-visible) {

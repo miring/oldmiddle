@@ -1,36 +1,3 @@
 .card {
   border-radius: var(--radius-xl);
 }
-
-.progress {
-  color: var(--color-text-secondary);
-  font-size: var(--type-body-lg-size);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--type-body-line);
-}
-
-.progressCurrent {
-  color: var(--color-text-primary);
-  font-weight: var(--font-weight-bold);
-}
-
-.instruction {
-  color: var(--color-text-secondary);
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-line);
-}
-
-.question {
-  color: var(--color-text-primary);
-  font-size: var(--type-question-size);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--type-question-line);
-  white-space: pre-line;
-}
-
-.reassurance {
-  color: var(--color-text-secondary);
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-line);
-  text-align: center;
-}
