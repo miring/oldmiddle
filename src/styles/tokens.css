@@ -12,8 +12,6 @@
   /* ── 색상: 배경·면 ── */
   --color-bg-default: #fafaf7;
   --color-surface-raised: #ffffff;
-  --color-surface-accent-subtle: #fff9d6;
-  --color-surface-inverse: #3d6b61;
 
   /* ── 색상: 텍스트 ── */
   --color-text-primary: #2c2416;
@@ -21,14 +19,16 @@
   --color-text-tertiary: #7a7a6e; /* [대비 미달] 4.15:1 */
   --color-text-accent: #d4a800; /* [대비 미달] 2.14:1 */
   --color-text-on-accent: #2c2416;
+  --color-text-disabled: #6c675c; /* 비활성 버튼 배경 위 4.62:1 */
 
   /* ── 색상: 선·포커스 ── */
-  --color-border-subtle: #e2dfd4;
-  --color-border-interactive: #f0c419; /* [대비 미달] 흰 배경 대비 1.66:1 */
+  --color-border-subtle: #e2dfd4; /* [대비 미달] 선택지·라디오 테두리로 쓸 때 흰 배경 대비 1.33:1 */
+  --color-border-selected: #f0c419; /* 선택 상태 — Figma 미정, 임시 */
   --color-focus-ring: #2c2416;
 
   /* ── 색상: 버튼·진행·브랜드 ── */
   --color-action-primary-bg: #f0c419;
+  --color-action-disabled-bg: #ede9d8;
   --color-progress-track: #ede9d8;
   --color-progress-fill: #f0c419;
   --color-brand-mark-1: #f0c419; /* 장식 전용, 글자에 쓰지 않음 */
@@ -46,15 +46,14 @@
   --type-display-line: 1.3;
   --type-question-size: 25px;
   --type-question-line: 1.5;
-  --type-progress-size: 18px;
   --type-wordmark-size: 23px;
+  --type-body-lg-size: 18px; /* 선택지, 진행 숫자 */
+  --type-button-size: 18px;
   --type-body-size: 16px; /* [크기 미달] 기준 18px */
   --type-body-line: 1.6;
   --type-label-size: 16px;
   --type-meta-size: 15px; /* "준비 중" 같은 상태 문구 */
   --type-caption-size: 14px; /* "가칭" 같은 보조 문구 */
-  --type-pill-size: 14px;
-  --line-height-tight: 1.3;
   --line-height-normal: normal;
 
   /* ── 간격: 4px 단위 스케일 ── */
@@ -75,7 +74,6 @@
   --space-20: 80px;
   --space-24: 96px;
   /* Figma 원본 중 4px 단위에 맞지 않는 값 */
-  --space-0-5: 2px;
   --space-1-5: 6px;
   --space-2-5: 10px;
 
@@ -83,9 +81,6 @@
    * 섹션 여백·배치 간격은 Tailwind 클래스(p-6, gap-4 등 = --space-unit 배수)로 씁니다. */
   --space-brand-gap: var(--space-2);
   --space-status-gap: var(--space-1-5);
-  --space-choice-gap: var(--space-1-5); /* 선택지 안 일러스트와 글자 사이 */
-  --space-choice-padding-x: var(--space-2);
-  --space-choice-padding-y: var(--space-3);
 
   /* ── 라운드 ── */
   --radius-sm: 8px;
@@ -93,11 +88,10 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-full: 9999px;
-  --radius-choice: var(--radius-lg);
-  --radius-progress: 0px;
 
   /* ── 선 ── */
   --border-width-default: 1px;
+  --border-width-control: 1.5px; /* 라디오 원 테두리 */
   --focus-ring-width: 3px;
   --focus-ring-offset: 2px;
 
@@ -111,13 +105,14 @@
   --size-brand-bar-short: 19px;
   --size-brand-bar-gap: 3px;
   --size-status-dot: 5px;
-  --size-progress-height: 3px;
-  --size-illust-choice: 88px;
-  --size-choice-min-height: 180px;
+  --size-progress-height: 4px;
+  --size-option-min-height: 76px;
+  --size-radio: 24px;
+  --size-radio-dot: 12px; /* 선택 상태 안쪽 점 — Figma 미정, 임시 */
+  --size-button-height: 60px;
+  --size-icon-arrow-width: 20.15px; /* arrow-forward.svg 원본 크기 */
+  --size-icon-arrow-height: 15.8px;
   --size-quiz-card-width: 600px; /* 데스크톱 첫 질문 카드 폭 */
-
-  /* ── 움직임 ── */
-  --motion-sway-duration: 4s;
 }
 
 /* 태블릿 */
@@ -125,20 +120,12 @@
   :root {
     --type-display-size: 42px;
     --type-display-line: 1.5;
-    --type-question-size: 30px;
-    --type-progress-size: 20px;
     --type-wordmark-size: 26px;
     --type-meta-size: 16px;
     --type-caption-size: 16px;
 
     --space-brand-gap: var(--space-2-5);
     --space-status-gap: var(--space-2);
-    --space-choice-gap: var(--space-5);
-    --space-choice-padding-x: var(--space-3);
-    --space-choice-padding-y: var(--space-6);
-
-    --radius-choice: var(--radius-md);
-    --radius-progress: 2px;
 
     --size-header-height: 96px;
     --size-brand-mark-width: 26px;
@@ -147,9 +134,6 @@
     --size-brand-bar-tall: 28px;
     --size-brand-bar-short: 21px;
     --size-status-dot: 6px;
-    --size-progress-height: 4px;
-    --size-illust-choice: 104px;
-    --size-choice-min-height: 224px;
   }
 }
 
