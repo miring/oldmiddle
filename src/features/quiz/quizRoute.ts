@@ -6,15 +6,18 @@ import { QUIZ_TOTAL } from './questions'
  * 문항마다 방문 기록이 남아 휴대폰 '뒤로 가기'로도 이전 문항으로 돌아갈 수 있습니다.
  */
 
-export type QuizRoute = { view: 'landing' } | { view: 'quiz'; step: number }
+export type QuizRoute = { view: 'landing' } | { view: 'quiz'; step: number } | { view: 'result' }
 
 const NAVIGATE_EVENT = 'quiz:navigate'
+
+export const RESULT_HASH = '#/result'
 
 export function quizHash(step: number) {
   return `#/quiz/${step}`
 }
 
 function parse(hash: string): QuizRoute {
+  if (hash === RESULT_HASH) return { view: 'result' }
   const match = /^#\/quiz\/(\d+)$/.exec(hash)
   if (!match) return { view: 'landing' }
   const step = Math.min(Math.max(Number(match[1]), 1), QUIZ_TOTAL)

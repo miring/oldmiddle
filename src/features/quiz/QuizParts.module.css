@@ -1,3 +1,10 @@
+.headerLabel {
+  color: var(--color-text-calm);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
 .progress {
   color: var(--color-text-secondary);
   font-size: var(--type-body-lg-size);

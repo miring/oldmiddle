@@ -2,11 +2,17 @@ import type { Ref } from 'react'
 import { Button } from '../../components/ui/Button/Button'
 import { ProgressBar } from '../../components/ui/ProgressBar/ProgressBar'
 import { RadioOption } from '../../components/ui/RadioOption/RadioOption'
+import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { QUIZ_TOTAL, type QuizQuestion } from './questions'
 import { setAnswer, useQuizAnswers } from './quizAnswers'
 import styles from './QuizParts.module.css'
 
-// 랜딩 히어로의 첫 질문과 문항 화면이 함께 쓰는 조각들입니다. 바깥 여백은 쓰는 쪽에서 정합니다.
+// 랜딩 히어로의 첫 질문, 문항 화면, 결과 화면이 함께 쓰는 조각들입니다. 바깥 여백은 쓰는 쪽에서 정합니다.
+
+/** 문항·결과 화면 상단 바 */
+export function QuizHeader() {
+  return <SiteHeader aside={<p className={styles.headerLabel}>마음 알아보기</p>} />
+}
 
 export function QuizProgress({ step }: { step: number }) {
   return (

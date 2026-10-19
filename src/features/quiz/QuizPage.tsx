@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react'
-import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { QUESTIONS, QUIZ_TOTAL } from './questions'
 import { useQuizAnswers } from './quizAnswers'
-import { QuizActions, QuizChoices, QuizProgress } from './QuizParts'
-import { goBackToStep, goToStep } from './quizRoute'
-import styles from './QuizPage.module.css'
+import { QuizActions, QuizChoices, QuizHeader, QuizProgress } from './QuizParts'
+import { RESULT_HASH, goBackToStep, goToStep, navigate } from './quizRoute'
 
 /** 문항 한 개를 한 화면에 보여 주는 테스트 화면 (Figma "마지막사랑 · 질문01~10") */
 export function QuizPage({ step }: { step: number }) {
@@ -20,12 +18,12 @@ export function QuizPage({ step }: { step: number }) {
 
   const handleNext = () => {
     if (step < QUIZ_TOTAL) goToStep(step + 1)
-    // 마지막 문항: 결과 화면 디자인이 나오면 여기서 결과로 이동합니다.
+    else navigate(RESULT_HASH)
   }
 
   return (
     <div className="flex min-h-dvh flex-col">
-      <SiteHeader aside={<p className={styles.headerLabel}>마음 알아보기</p>} />
+      <QuizHeader />
       <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-1 flex-col">
         <div className="flex flex-1 flex-col gap-7 px-6 pt-7 pb-6">
           <QuizProgress step={step} />

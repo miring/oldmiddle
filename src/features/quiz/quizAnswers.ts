@@ -29,6 +29,17 @@ export function setAnswer(questionId: string, choiceId: string) {
   listeners.forEach((listener) => listener())
 }
 
+/** 다시 테스트하기: 고른 답을 모두 지웁니다 */
+export function clearAnswers() {
+  answers = {}
+  try {
+    sessionStorage.removeItem(STORAGE_KEY)
+  } catch {
+    // 저장이 막힌 환경에서는 화면 상태만 비웁니다.
+  }
+  listeners.forEach((listener) => listener())
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener)
   return () => listeners.delete(listener)

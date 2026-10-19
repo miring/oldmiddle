@@ -1,0 +1,159 @@
+/* ── 나의 동행 유형 ── */
+.hero {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.kicker {
+  color: var(--color-text-calm);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+}
+
+.kickerMeta {
+  color: var(--color-text-secondary);
+  font-size: var(--type-label-size);
+  line-height: var(--line-height-normal);
+}
+
+.title {
+  color: var(--color-text-calm);
+  font-size: var(--type-result-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-result-title-line);
+  text-align: center;
+}
+
+/* 화면 진입 시 프로그램으로 옮긴 포커스에는 테두리를 그리지 않습니다 */
+.title:focus {
+  outline: none;
+}
+
+.value {
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-badge);
+  color: var(--color-text-calm);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+.character {
+  width: var(--size-result-character);
+  height: var(--size-result-character);
+  border-radius: var(--radius-2xl);
+  object-fit: cover;
+}
+
+.tagline {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* ── 결과 이야기 ── */
+.sectionTitle {
+  color: var(--color-text-calm);
+  font-size: var(--type-heading-3-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+}
+
+.reading {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--line-height-reading);
+  white-space: pre-line;
+}
+
+.matchCard {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.matchCharacter {
+  flex-shrink: 0;
+  width: var(--size-match-character);
+  height: var(--size-match-character);
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.matchLabel {
+  color: var(--color-text-secondary);
+  font-size: var(--type-label-size);
+  line-height: var(--line-height-normal);
+}
+
+.matchName {
+  color: var(--color-text-primary);
+  font-size: var(--type-heading-4-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+}
+
+.tipCard {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-accent-subtle);
+}
+
+/* ── 사전 등록 ── */
+.preregister {
+  border-block: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.status {
+  color: var(--color-text-calm);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+.statusDot {
+  width: var(--size-status-dot);
+  height: var(--size-status-dot);
+}
+
+.preregisterTitle {
+  color: var(--color-text-primary);
+  font-size: var(--type-heading-3-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line-relaxed);
+  white-space: pre-line;
+}
+
+.small {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-reading);
+}
+
+.reassurance {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-relaxed);
+  text-align: center;
+  white-space: pre-line;
+}
+
+/* ── 공유와 다시 시작 ── */
+.shareMessage {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  text-align: center;
+}
+
+.shareMessage:empty {
+  display: none;
+}
+
+.disclaimer {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
