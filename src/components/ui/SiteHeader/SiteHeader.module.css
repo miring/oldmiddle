@@ -1,0 +1,4 @@
+.header {
+  height: var(--size-header-height);
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
