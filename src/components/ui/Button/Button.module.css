@@ -1,0 +1,29 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  height: max(var(--size-button-height), var(--size-touch-min));
+  border-radius: var(--radius-md);
+  background-color: var(--color-action-primary-bg);
+  color: var(--color-text-on-accent);
+  font-size: var(--type-button-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: var(--color-action-disabled-bg);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* 화살표 SVG를 마스크로 써서 글자색을 그대로 따라가게 합니다 */
+.arrow {
+  width: var(--size-icon-arrow-width);
+  height: var(--size-icon-arrow-height);
+  background-color: currentColor;
+  mask: url('../../../assets/icons/arrow-forward.svg') center / contain no-repeat;
+}
