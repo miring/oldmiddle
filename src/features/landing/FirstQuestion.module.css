@@ -1,0 +1,46 @@
+.card {
+  border-radius: var(--radius-xl);
+}
+
+.progressNumber {
+  color: var(--color-text-accent);
+  font-size: var(--type-progress-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+}
+
+.instruction {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+.question {
+  color: var(--color-text-primary);
+  font-size: var(--type-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-question-line);
+}
+
+.reassurance {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+.emphasis {
+  color: var(--color-text-accent);
+  font-weight: var(--font-weight-bold);
+}
+
+.pill {
+  border-radius: var(--radius-full);
+  background-color: var(--color-action-primary-bg);
+  color: var(--color-text-on-accent);
+  font-size: var(--type-pill-size);
+  font-weight: var(--font-weight-bold);
+}
+
+.pillAccent {
+  color: var(--color-text-accent); /* [대비 미달] Figma 원본: 노랑 위 진한 노랑 1.34:1 */
+}

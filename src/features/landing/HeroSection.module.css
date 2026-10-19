@@ -1,0 +1,19 @@
+.audience {
+  color: var(--color-text-accent);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-display-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--type-display-line);
+}
+
+.lead {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
