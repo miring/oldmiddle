@@ -1,0 +1,42 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-brand-gap);
+}
+
+.mark {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: var(--size-brand-bar-gap);
+  width: var(--size-brand-mark-width);
+  height: var(--size-brand-mark-height);
+}
+
+.bar {
+  width: var(--size-brand-bar-width);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.barTall {
+  height: var(--size-brand-bar-tall);
+  background-color: var(--color-brand-mark-1);
+}
+
+.barShort {
+  height: var(--size-brand-bar-short);
+  background-color: var(--color-brand-mark-2);
+}
+
+.wordmark {
+  color: var(--color-text-primary);
+  font-size: var(--type-wordmark-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.tentative {
+  color: var(--color-text-tertiary);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+}
