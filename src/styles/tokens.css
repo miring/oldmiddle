@@ -13,13 +13,15 @@
   --color-bg-default: #fafaf7;
   --color-surface-raised: #ffffff;
   --color-surface-selected: #fff9d6; /* 고른 선택지 배경 */
+  --color-surface-accent-subtle: #fff9d6; /* 결과 상단 띠, 첫 만남 팁 상자, 공유 버튼 */
+  --color-surface-badge: #fff3a0; /* 결과 핵심 가치 알약 */
 
   /* ── 색상: 텍스트 ── */
   --color-text-primary: #2c2416;
   --color-text-secondary: #5c5a50;
   --color-text-tertiary: #7a7a6e; /* [대비 미달] 4.15:1 */
   --color-text-accent: #d4a800; /* [대비 미달] 2.14:1 */
-  --color-text-calm: #3d6b61; /* 문항 화면 헤더 "마음 알아보기" */
+  --color-text-calm: #3d6b61; /* "마음 알아보기", 결과 화면 제목들 */
   --color-text-on-accent: #2c2416;
   --color-text-disabled: #6c675c; /* 비활성 버튼 배경 위 4.62:1 */
 
@@ -57,7 +59,15 @@
   --type-label-size: 16px;
   --type-meta-size: 15px; /* "준비 중" 같은 상태 문구 */
   --type-caption-size: 14px; /* "가칭" 같은 보조 문구 */
+  --type-result-title-size: 32px; /* 결과 유형 이름 */
+  --type-result-title-line: 1.4;
+  --type-heading-3-size: 22px; /* 결과 화면 소제목 */
+  --type-heading-4-size: 21px; /* 잘 맞는 인연 유형 이름 */
+  --type-heading-line: 1.5;
+  --type-heading-line-relaxed: 1.55;
   --line-height-normal: normal;
+  --line-height-relaxed: 1.7;
+  --line-height-reading: 1.75; /* 결과 설명처럼 긴 글 */
 
   /* ── 간격: 4px 단위 스케일 ── */
   --space-unit: 4px; /* Tailwind 간격 유틸리티의 기준값 */
@@ -90,6 +100,7 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 20px;
+  --radius-2xl: 24px;
   --radius-full: 9999px;
 
   /* ── 선 ── */
@@ -117,7 +128,10 @@
   --size-icon-back-width: 10.27px; /* arrow-back.svg 원본 크기 */
   --size-icon-back-height: 15.8px;
   --size-quiz-card-width: 600px; /* 데스크톱 첫 질문 카드 폭 */
-  --size-quiz-column-width: 600px; /* 문항 화면 내용 최대 폭 (Figma는 모바일만 있음) */
+  --size-quiz-column-width: 600px; /* 문항·결과 화면 내용 최대 폭 (Figma는 모바일만 있음) */
+  --size-icon-md: 21px; /* 공유·다시 하기 버튼 아이콘 */
+  --size-result-character: 240px;
+  --size-match-character: 72px;
 }
 
 /* 태블릿 */
