@@ -1,0 +1,78 @@
+/* "참여 방법"·"부담 없는 사전 신청" 섹션이 함께 쓰는 스타일 */
+
+.accentSurface {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.label {
+  color: var(--color-text-accent-strong); /* Figma #d4a800(2.1:1) → 5.4:1 이상 */
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-section-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-section-title-line);
+}
+
+/* 본문·설명: Figma 16px → 기준 18px */
+.body {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* ── 참여 방법 ── */
+.stepBadge {
+  width: var(--size-step-badge);
+  height: var(--size-step-badge);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-badge);
+  color: var(--color-text-accent-strong);
+  font-size: var(--type-step-number-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+}
+
+.itemTitle {
+  color: var(--color-text-primary);
+  font-size: var(--type-item-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+}
+
+.optional {
+  color: var(--color-text-accent-strong);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+}
+
+/* ── 사전 신청 ── */
+.emphasis {
+  color: var(--color-text-accent-strong);
+  font-size: var(--type-item-title-size); /* Figma 22/23px, 항목 제목과 같은 크기 */
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-heading-line);
+}
+
+.fieldChip {
+  height: var(--size-field-chip-height);
+  padding-inline: var(--space-field-chip-x);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-accent-subtle);
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size); /* Figma 16px → 18px */
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+}
+
+.rule {
+  border: 0;
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+}
