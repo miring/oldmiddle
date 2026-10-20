@@ -1,12 +1,13 @@
+import { ClosingSection } from './ClosingSection'
 import { CompanionTypesSection } from './CompanionTypesSection'
 import { FaqSection } from './FaqSection'
 import { HeroSection } from './HeroSection'
+import { LandingFooter } from './LandingFooter'
 import { LandingHeader } from './LandingHeader'
 import { ParticipationSection } from './ParticipationSection'
 import { PreregistrationSection } from './PreregistrationSection'
 import { ServicePrinciplesSection } from './ServicePrinciplesSection'
 
-// 나머지 섹션은 확인 후 Figma 순서대로 추가합니다.
 export function LandingPage() {
   return (
     <>
@@ -19,7 +20,9 @@ export function LandingPage() {
         <ParticipationSection />
         <PreregistrationSection />
         <FaqSection />
+        <ClosingSection />
       </main>
+      <LandingFooter />
     </>
   )
 }
