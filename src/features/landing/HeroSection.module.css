@@ -7,6 +7,8 @@
 .media {
   height: var(--size-hero-photo-height);
   background-color: var(--color-hero-photo-bg);
+  /* 데스크톱 격자(xl:grid일 때만 적용): 위 사진과 아래 사진을 같은 높이로, 사이에 띠 */
+  grid-template-rows: minmax(0, 1fr) var(--size-photo-divider) minmax(0, 1fr);
 }
 
 /* 높이는 Tailwind로: 모바일·태블릿은 상자 높이, 데스크톱은 격자 줄 높이를 채움 */
@@ -16,14 +18,16 @@
   object-fit: cover;
 }
 
-/* 위 사진과 아래 사진 사이 띠 — 데스크톱에서 위 사진 아래쪽에 겹쳐 놓습니다 */
+/* 위 사진과 아래 사진 사이 띠 (데스크톱) */
 .divider {
   height: var(--size-photo-divider);
   background-color: var(--color-bg-default);
 }
 
+/* 얼굴이 사진 위쪽에 있어, 칸이 낮아져도 아래(옷)만 잘리도록 위쪽 기준으로 맞춤 */
 .lowerPhoto {
   object-fit: cover;
+  object-position: top;
 }
 
 .fade {

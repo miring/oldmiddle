@@ -22,32 +22,30 @@ const TABLET_UP = '(min-width: 48rem)'
 export function HeroSection() {
   return (
     // 히어로 폭은 '내용 최대 폭 + 데스크톱 양옆 여백'까지 — 아주 넓은 화면에서도 글이 다른 섹션 내용과 같은 선에서 시작
-    // 데스크톱: 2칸×2줄 격자. 1줄 = 제목·설명 | 위 사진, 2줄 = 질문 카드 | 아래 사진 → 아래 사진이 카드와 위아래 끝이 맞음
+    // 데스크톱: 왼쪽 칸 2줄(제목·설명 / 질문 카드) + 오른쪽 사진 칸(두 줄에 걸침, 위·아래 사진을 같은 높이로 나눔)
     <section
       aria-labelledby="hero-title"
       className={`${styles.layout} mx-auto flex w-full max-w-(--size-hero-max-width) flex-col xl:grid`}
     >
-      {/* 큰 사진 (데스크톱에서는 감싼 상자를 풀고 각 사진을 오른쪽 칸에 배치) */}
-      <div className={`${styles.media} relative overflow-hidden xl:contents`}>
+      {/* 큰 사진 (데스크톱에서는 오른쪽 칸: 위 사진 | 띠 | 아래 사진) */}
+      <div className={`${styles.media} relative overflow-hidden xl:col-start-2 xl:row-span-2 xl:row-start-1 xl:grid`}>
         <picture className="xl:contents">
           <source media={TABLET_UP} srcSet={heroCafe} />
-          {/* 데스크톱에서 h-0·min-h-full: 사진 크기가 줄 높이를 키우지 않고, 정해진 줄 높이를 채움 */}
+          {/* 데스크톱에서 h-0·min-h-full: 사진 크기가 히어로 높이를 키우지 않고, 나눠진 칸을 채움 */}
+          {/* 줄 위치를 직접 지정 (<source>가 격자 칸을 차지해 순서가 밀리는 것을 막음) */}
           <img
-            className={`${styles.mainPhoto} h-full xl:col-start-2 xl:row-start-1 xl:h-0 xl:min-h-full`}
+            className={`${styles.mainPhoto} h-full xl:row-start-1 xl:h-0 xl:min-h-full`}
             src={heroPortrait}
             alt=""
           />
         </picture>
-        <div className={`${styles.divider} hidden xl:col-start-2 xl:row-start-1 xl:block xl:self-end`} />
+        <div className={`${styles.divider} hidden xl:row-start-2 xl:block`} />
         <img
-          className={`${styles.lowerPhoto} hidden w-full xl:col-start-2 xl:row-start-2 xl:block xl:h-0 xl:min-h-full`}
+          className={`${styles.lowerPhoto} hidden w-full xl:row-start-3 xl:block xl:h-0 xl:min-h-full`}
           src={heroPortraitUpper}
           alt=""
         />
-        <div
-          className={`${styles.fade} absolute inset-x-0 bottom-0 xl:static xl:col-start-2 xl:row-start-2 xl:self-end`}
-          aria-hidden="true"
-        />
+        <div className={`${styles.fade} absolute inset-x-0 bottom-0`} aria-hidden="true" />
         <p className={`${styles.badge} absolute top-6 left-6 hidden px-3 py-1.5 md:block xl:hidden`}>{AUDIENCE}</p>
       </div>
 
