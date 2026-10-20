@@ -5,6 +5,7 @@ import styles from './LandingHeader.module.css'
 export function LandingHeader() {
   return (
     <SiteHeader
+      fixed
       aside={
         <p className={`${styles.status} flex items-center`}>
           <img className={styles.statusDot} src={statusDot} alt="" />

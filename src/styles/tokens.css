@@ -170,8 +170,7 @@
   --aspect-hero-portrait-upper: 1264 / 843;
 
   /* ── 랜딩 섹션 공통 / "네 가지 마음" — 모바일 기준 ── */
-  --color-text-calm-light: #5e8a7a; /* [대비 미달] 3.72:1 — 섹션 라벨 */
-  --color-action-pill-bg: #f2c94c; /* "3분 테스트 해보기" 버튼 (Figma 값, 주요 버튼 #f0c419와 다름) */
+  --z-header: 10; /* 고정 헤더가 내용 위에 오도록 */
   --type-section-title-size: 28px;
   --type-section-title-line: 1.5;
   --type-card-title-size: 21px; /* 유형 카드 이름 */

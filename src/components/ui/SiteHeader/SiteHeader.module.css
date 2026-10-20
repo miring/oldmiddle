@@ -2,3 +2,8 @@
   height: var(--size-header-height);
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }
+
+/* 고정했을 때 아래 내용이 비치지 않도록 배경을 채웁니다 */
+.fixed {
+  background-color: var(--color-bg-default);
+}

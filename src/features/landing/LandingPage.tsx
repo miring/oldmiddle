@@ -7,7 +7,8 @@ export function LandingPage() {
   return (
     <>
       <LandingHeader />
-      <main>
+      {/* 헤더가 화면 위에 고정되어 있어 그 높이만큼 내려서 시작합니다 */}
+      <main className="pt-(--size-header-height)">
         <HeroSection />
         <CompanionTypesSection />
       </main>
