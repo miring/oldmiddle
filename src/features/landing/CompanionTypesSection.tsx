@@ -1,10 +1,18 @@
 import { CompanionTypeCard } from '../../components/ui/CompanionTypeCard/CompanionTypeCard'
 import { COMPANION_TYPES } from '../../data/companionTypes'
-import { quizHash } from '../quiz/quizRoute'
+import type { MouseEvent } from 'react'
+import { quizHash, startQuiz } from '../quiz/quizRoute'
 import styles from './CompanionTypesSection.module.css'
 
 /** 랜딩 "서로 다른 네 가지 마음" (Figma "Four ways of being together" / "Character previews") */
 export function CompanionTypesSection() {
+  // 이전 답을 지우고 1번부터 시작. Ctrl/⌘ 클릭 등 새 탭 열기는 브라우저에 맡깁니다.
+  const handleStart = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
+    event.preventDefault()
+    startQuiz()
+  }
+
   return (
     <section
       aria-labelledby="companion-types-title"
@@ -36,7 +44,7 @@ export function CompanionTypesSection() {
 
       <div className="flex justify-center pt-6">
         {/* 히어로의 '나의 인연 유형 알아보기'와 같은 곳(1번 문항 화면)으로 갑니다 */}
-        <a href={quizHash(1)} className={`${styles.cta} w-full max-w-(--size-cta-max-width)`}>
+        <a href={quizHash(1)} onClick={handleStart} className={`${styles.cta} w-full max-w-(--size-cta-max-width)`}>
           3분 테스트 해보기
         </a>
       </div>

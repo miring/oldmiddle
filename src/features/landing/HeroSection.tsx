@@ -4,7 +4,7 @@ import heroPortrait from '../../assets/landing/hero-portrait.jpg'
 import { Button } from '../../components/ui/Button/Button'
 import { site } from '../../config/site'
 import { topicParticle } from '../../utils/korean'
-import { goToStep } from '../quiz/quizRoute'
+import { startQuiz } from '../quiz/quizRoute'
 import styles from './HeroSection.module.css'
 
 const AUDIENCE = '45세 이상 싱글을 위한 동반자 서비스 · 준비 중'
@@ -72,7 +72,7 @@ export function HeroSection() {
                 10가지 질문으로 내가 소중하게 여기는 관계의 모습을 알아보세요. 가입 없이 바로 시작할 수 있어요.
               </p>
             </div>
-            <Button size="lg" arrow="forward" onClick={() => goToStep(1)}>
+            <Button size="lg" arrow="forward" onClick={startQuiz}>
               나의 인연 유형 알아보기
             </Button>
             <p className={styles.cardNote}>10문항 · 가입 없이 결과 확인</p>

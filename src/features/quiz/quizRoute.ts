@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react'
 import { QUIZ_TOTAL } from './questions'
+import { clearAnswers } from './quizAnswers'
 
 /*
  * 화면 이동은 주소의 # 뒤(#/quiz/3)로 구분합니다. 라우터 라이브러리 없이 동작하고,
@@ -52,6 +53,15 @@ export function navigate(hash: string, { replace = false } = {}) {
 export function goHome() {
   if (window.location.hash) navigate(`${window.location.pathname}${window.location.search}`)
   window.scrollTo(0, 0)
+}
+
+/**
+ * 랜딩에서 테스트 시작: 같은 탭에서 이전에 고른 답(세션 저장소)을 지우고 1번부터 시작합니다.
+ * 테스트 도중 새로고침·뒤로 가기에서는 답이 그대로 남습니다.
+ */
+export function startQuiz() {
+  clearAnswers()
+  goToStep(1)
 }
 
 export function goToStep(step: number) {
