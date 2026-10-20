@@ -1,4 +1,5 @@
 import { CompanionTypesSection } from './CompanionTypesSection'
+import { FaqSection } from './FaqSection'
 import { HeroSection } from './HeroSection'
 import { LandingHeader } from './LandingHeader'
 import { ParticipationSection } from './ParticipationSection'
@@ -17,6 +18,7 @@ export function LandingPage() {
         <ServicePrinciplesSection />
         <ParticipationSection />
         <PreregistrationSection />
+        <FaqSection />
       </main>
     </>
   )

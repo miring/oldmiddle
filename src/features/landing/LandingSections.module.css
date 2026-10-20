@@ -1,4 +1,4 @@
-/* "참여 방법"·"부담 없는 사전 신청" 섹션이 함께 쓰는 스타일 */
+/* "참여 방법"·"부담 없는 사전 신청"·"궁금한 점" 섹션이 함께 쓰는 스타일 */
 
 .accentSurface {
   background-color: var(--color-surface-accent-subtle);
@@ -75,4 +75,16 @@
 .rule {
   border: 0;
   border-top: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+/* ── 궁금한 점 ── */
+.faqItem {
+  border-color: var(--color-border-subtle);
+}
+
+.faqQuestion {
+  color: var(--color-text-primary);
+  font-size: var(--type-item-title-size); /* Figma 21/23px → 항목 제목 토큰 22/23px */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-body-line);
 }

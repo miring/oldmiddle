@@ -21,3 +21,24 @@ export const PARTICIPATION_STEPS: ParticipationStep[] = [
 
 /** 사전 신청에서 받을 정보 (사업계획서: 성별·연령대·구 단위 지역·휴대폰 번호 4가지만) */
 export const PREREGISTRATION_FIELDS = ['성별', '연령대', '사는 지역(구 단위)', '휴대폰 번호']
+
+export type FaqItem = { id: string; question: string; answer: string }
+
+/** "궁금한 점을 모았어요" 질문과 답 */
+export const FAQ_ITEMS: FaqItem[] = [
+  {
+    id: 'test-only',
+    question: '테스트만 해도 괜찮나요?',
+    answer: '물론이에요. 내 타입은 가입 없이 바로 확인하고, 사전 신청은 원하실 때만 하시면 돼요.',
+  },
+  {
+    id: 'is-diagnosis',
+    question: '타입은 전문적인 진단인가요?',
+    answer: '아니요. 나의 취향을 가볍게 돌아보는 테스트예요. 실제 만남을 위한 확인 절차와는 별개예요.',
+  },
+  {
+    id: 'when-where',
+    question: '언제, 어느 지역에서 시작하나요?',
+    answer: '출시 시기와 시작 지역은 아직 정해지지 않았어요. 정해지는 소식은 사전 신청을 통해 안내할 예정이에요.',
+  },
+]
