@@ -1,0 +1,46 @@
+.label {
+  color: var(--color-text-calm-light);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-section-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-section-title-line);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 목록 위 구분선 — 두께 토큰이 모바일 0, 태블릿 이상 1px */
+.list {
+  border-top: var(--border-width-list-top) solid var(--color-border-subtle);
+}
+
+/* 각 카드 아래 구분선. 2열일 때 왼쪽 카드는 열 간격만큼 늘려 선이 끊기지 않게 합니다(Tailwind odd: 클래스) */
+.item {
+  border-bottom: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: max(var(--size-cta-pill-height), var(--size-touch-min));
+  border-radius: var(--radius-full);
+  background-color: var(--color-action-pill-bg);
+  color: var(--color-text-on-accent);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  text-align: center;
+  text-decoration: none;
+}

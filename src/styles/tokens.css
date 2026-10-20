@@ -168,6 +168,20 @@
   --size-hero-min-height: 720px; /* 데스크톱 히어로 높이 */
   --size-photo-divider: 4px;
   --aspect-hero-portrait-upper: 1264 / 843;
+
+  /* ── 랜딩 섹션 공통 / "네 가지 마음" — 모바일 기준 ── */
+  --color-text-calm-light: #5e8a7a; /* [대비 미달] 3.72:1 — 섹션 라벨 */
+  --color-action-pill-bg: #f2c94c; /* "3분 테스트 해보기" 버튼 (Figma 값, 주요 버튼 #f0c419와 다름) */
+  --type-section-title-size: 28px;
+  --type-section-title-line: 1.5;
+  --type-card-title-size: 21px; /* 유형 카드 이름 */
+  --size-type-thumb: 88px; /* 유형 카드 가로형 그림 */
+  --size-type-image-height: 244px; /* 유형 카드 세로형 그림 높이 */
+  --fit-type-image: cover;
+  --space-type-grid-gap-x: var(--space-8);
+  --border-width-list-top: 0px; /* 유형 목록 위 구분선 — 태블릿 이상에서만 */
+  --size-cta-pill-height: 56px;
+  --size-cta-max-width: 382px;
 }
 
 /* 태블릿 */
@@ -195,6 +209,11 @@
     --size-hero-photo-height: 420px;
     --size-hero-fade-height: 160px;
     --size-hero-secondary-height: 260px;
+
+    --type-section-title-size: 32px;
+    --type-section-title-line: 1.55;
+    --type-card-title-size: 22px;
+    --border-width-list-top: var(--border-width-default);
     --type-meta-size: 16px;
     --type-caption-size: 16px;
 
@@ -229,5 +248,10 @@
     --size-hero-photo-height: auto;
     --size-hero-main-photo-height: 396px;
     --size-hero-fade-height: 80px;
+
+    --type-section-title-size: 38px;
+    --size-type-image-height: 403px;
+    --fit-type-image: contain; /* 데스크톱은 그림 전체가 보이게 */
+    --space-type-grid-gap-x: var(--space-12);
   }
 }
