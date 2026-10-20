@@ -16,7 +16,7 @@ export function CompanionTypesSection() {
   return (
     <section
       aria-labelledby="companion-types-title"
-      className="flex flex-col gap-4 content-gutter py-8 md:gap-10 md:py-16 xl:pt-0 xl:pb-20"
+      className="flex flex-col gap-4 content-gutter py-8 md:gap-10 md:py-16 xl:py-20"
     >
       <div className="flex flex-col gap-4">
         <p className={styles.label}>서로 다른 네 가지 마음</p>

@@ -168,13 +168,10 @@
   --radius-hero-card: var(--radius-lg);
   --radius-hero-photo: var(--radius-lg);
   --size-hero-photo-height: 320px;
-  --size-hero-main-photo-height: 100%; /* 데스크톱에서는 오른쪽 위 사진 높이 */
   --size-hero-fade-height: 120px;
   --size-hero-secondary-height: 180px;
   --size-hero-left-width: 680px; /* 데스크톱 왼쪽 글 칸 */
-  --size-hero-min-height: 720px; /* 데스크톱 히어로 높이 */
   --size-photo-divider: 4px;
-  --aspect-hero-portrait-upper: 1264 / 843;
 
   /* ── 랜딩 섹션 공통 / "네 가지 마음" — 모바일 기준 ── */
   --z-header: 10; /* 고정 헤더가 내용 위에 오도록 */
@@ -286,7 +283,6 @@
     --type-hero-card-note-size: 15px;
     --space-hero-card-padding: var(--space-7);
     --size-hero-photo-height: auto;
-    --size-hero-main-photo-height: 396px;
     --size-hero-fade-height: 80px;
 
     --type-section-title-size: 38px;

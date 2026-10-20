@@ -22,25 +22,38 @@ const TABLET_UP = '(min-width: 48rem)'
 export function HeroSection() {
   return (
     // 히어로 폭은 '내용 최대 폭 + 데스크톱 양옆 여백'까지 — 아주 넓은 화면에서도 글이 다른 섹션 내용과 같은 선에서 시작
+    // 데스크톱: 2칸×2줄 격자. 1줄 = 제목·설명 | 위 사진, 2줄 = 질문 카드 | 아래 사진 → 아래 사진이 카드와 위아래 끝이 맞음
     <section
       aria-labelledby="hero-title"
-      className="mx-auto flex w-full max-w-(--size-hero-max-width) flex-col xl:min-h-(--size-hero-min-height) xl:flex-row"
+      className={`${styles.layout} mx-auto flex w-full max-w-(--size-hero-max-width) flex-col xl:grid`}
     >
-      {/* 큰 사진 (데스크톱에서는 오른쪽 칸) */}
-      <div className={`${styles.media} relative overflow-hidden xl:order-last xl:flex xl:flex-1 xl:flex-col`}>
-        <picture>
+      {/* 큰 사진 (데스크톱에서는 감싼 상자를 풀고 각 사진을 오른쪽 칸에 배치) */}
+      <div className={`${styles.media} relative overflow-hidden xl:contents`}>
+        <picture className="xl:contents">
           <source media={TABLET_UP} srcSet={heroCafe} />
-          <img className={styles.mainPhoto} src={heroPortrait} alt="" />
+          {/* 데스크톱에서 h-0·min-h-full: 사진 크기가 줄 높이를 키우지 않고, 정해진 줄 높이를 채움 */}
+          <img
+            className={`${styles.mainPhoto} h-full xl:col-start-2 xl:row-start-1 xl:h-0 xl:min-h-full`}
+            src={heroPortrait}
+            alt=""
+          />
         </picture>
-        <div className={`${styles.divider} hidden xl:block`} />
-        <img className={`${styles.lowerPhoto} hidden xl:block`} src={heroPortraitUpper} alt="" />
-        <div className={`${styles.fade} absolute inset-x-0 bottom-0`} aria-hidden="true" />
+        <div className={`${styles.divider} hidden xl:col-start-2 xl:row-start-1 xl:block xl:self-end`} />
+        <img
+          className={`${styles.lowerPhoto} hidden w-full xl:col-start-2 xl:row-start-2 xl:block xl:h-0 xl:min-h-full`}
+          src={heroPortraitUpper}
+          alt=""
+        />
+        <div
+          className={`${styles.fade} absolute inset-x-0 bottom-0 xl:static xl:col-start-2 xl:row-start-2 xl:self-end`}
+          aria-hidden="true"
+        />
         <p className={`${styles.badge} absolute top-6 left-6 hidden px-3 py-1.5 md:block xl:hidden`}>{AUDIENCE}</p>
       </div>
 
-      {/* 글과 테스트 초대 */}
-      <div className="flex flex-col md:gap-10 md:px-12 md:pb-14 xl:w-(--size-hero-left-width) xl:shrink-0 xl:justify-center xl:py-20 xl:pr-16 xl:pl-24">
-        <div className="flex flex-col gap-3 px-6 pt-5 md:gap-5 md:p-0">
+      {/* 글과 테스트 초대 (데스크톱에서는 감싼 상자를 풀고 왼쪽 칸 1줄·2줄에 배치) */}
+      <div className="flex flex-col md:gap-10 md:px-12 md:pb-14 xl:contents">
+        <div className="flex flex-col gap-3 px-6 pt-5 md:gap-5 md:p-0 xl:col-start-1 xl:row-start-1 xl:pt-20 xl:pr-16 xl:pb-10 xl:pl-24">
           <p className={`${styles.audience} md:hidden xl:block`}>{AUDIENCE}</p>
           <h1 id="hero-title" className={styles.headline}>
             나와 잘 맞는 사람과
@@ -68,7 +81,7 @@ export function HeroSection() {
           </figure>
         </div>
 
-        <div className="p-5 md:p-0">
+        <div className="p-5 md:p-0 xl:col-start-1 xl:row-start-2 xl:pr-16 xl:pl-24">
           <div className={`${styles.card} flex flex-col gap-3 md:gap-6 xl:gap-5`}>
             <div className="flex flex-col gap-3 xl:gap-2.5">
               <h2 className={styles.cardTitle}>어떤 동행이 나와 잘 맞을까요?</h2>

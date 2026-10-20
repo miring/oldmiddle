@@ -1,27 +1,28 @@
+/* 데스크톱 격자(Tailwind xl:grid일 때만 적용): 왼쪽 글 칸 고정 폭 + 오른쪽 사진 칸 */
+.layout {
+  grid-template-columns: var(--size-hero-left-width) minmax(0, 1fr);
+}
+
 /* ── 큰 사진 ── */
 .media {
   height: var(--size-hero-photo-height);
   background-color: var(--color-hero-photo-bg);
 }
 
-/* 데스크톱에서는 위 사진을 고정 높이로 두고, 아래 사진이 남는 칸을 채우다 넘치면 잘립니다 */
+/* 높이는 Tailwind로: 모바일·태블릿은 상자 높이, 데스크톱은 격자 줄 높이를 채움 */
 .mainPhoto {
   display: block;
-  flex-shrink: 0;
   width: 100%;
-  height: var(--size-hero-main-photo-height);
   object-fit: cover;
 }
 
+/* 위 사진과 아래 사진 사이 띠 — 데스크톱에서 위 사진 아래쪽에 겹쳐 놓습니다 */
 .divider {
-  flex-shrink: 0;
   height: var(--size-photo-divider);
   background-color: var(--color-bg-default);
 }
 
 .lowerPhoto {
-  width: 100%;
-  aspect-ratio: var(--aspect-hero-portrait-upper);
   object-fit: cover;
 }
 
