@@ -1,6 +1,7 @@
 import { CompanionTypesSection } from './CompanionTypesSection'
 import { HeroSection } from './HeroSection'
 import { LandingHeader } from './LandingHeader'
+import { ServicePrinciplesSection } from './ServicePrinciplesSection'
 
 // 나머지 섹션은 확인 후 Figma 순서대로 추가합니다.
 export function LandingPage() {
@@ -11,6 +12,7 @@ export function LandingPage() {
       <main className="pt-(--size-header-height)">
         <HeroSection />
         <CompanionTypesSection />
+        <ServicePrinciplesSection />
       </main>
     </>
   )

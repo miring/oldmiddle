@@ -1,0 +1,51 @@
+.section {
+  background-color: var(--color-surface-inverse);
+}
+
+.label {
+  color: var(--color-text-inverse-label);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+}
+
+.title {
+  color: var(--color-text-inverse-primary);
+  font-size: var(--type-section-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-section-title-line);
+}
+
+.description {
+  color: var(--color-text-inverse-secondary);
+  font-size: var(--type-body-lg-size); /* Figma 16px → 기준 18px */
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 2칸 격자: 아이콘 칸 + 글 칸 */
+.item {
+  grid-template-columns: var(--size-icon-principle) minmax(0, 1fr);
+  border-top: var(--border-width-default) solid var(--color-border-inverse);
+}
+
+.icon {
+  width: var(--size-icon-principle);
+  height: var(--size-icon-principle);
+}
+
+.itemTitle {
+  color: var(--color-text-inverse-primary);
+  font-size: var(--type-item-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+}
+
+.itemDescription {
+  color: var(--color-text-inverse-secondary);
+  font-size: var(--type-body-lg-size); /* Figma 16px → 기준 18px */
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
