@@ -3,6 +3,7 @@ import heroPortraitUpper from '../../assets/landing/hero-portrait-upper.png'
 import heroPortrait from '../../assets/landing/hero-portrait.jpg'
 import { Button } from '../../components/ui/Button/Button'
 import { site } from '../../config/site'
+import { topicParticle } from '../../utils/korean'
 import { goToStep } from '../quiz/quizRoute'
 import styles from './HeroSection.module.css'
 
@@ -42,12 +43,11 @@ export function HeroSection() {
             <br />
             편안하게 커피 한 잔.
           </h1>
-          {/* Figma 문구가 폭마다 조금씩 달라 그대로 맞췄습니다 (모바일 "1:1로", 데스크톱 "동반자를") */}
           <p className={styles.description}>
-            {site.serviceName}은 신원과 혼인 상태를 확인한 45세 이상 싱글이 <br className="hidden md:inline" />
-            가까운 곳에서 <span className="md:hidden">1:1로 </span>
-            편안하게 <span className="hidden xl:inline">동반자를 </span>
-            만날 수 있도록 준비하고 있어요.
+            {site.serviceName}
+            {topicParticle(site.serviceName)} 신원과 혼인 상태를 확인한 45세 이상 싱글이{' '}
+            <br className="hidden md:inline" />
+            가까운 곳에서 1:1로 편안하게 만날 수 있도록 준비하고 있어요.
           </p>
         </div>
 
@@ -69,8 +69,7 @@ export function HeroSection() {
             <div className="flex flex-col gap-3 xl:gap-2.5">
               <h2 className={styles.cardTitle}>어떤 동행이 나에게 어울릴까요?</h2>
               <p className={styles.cardDescription}>
-                10가지 질문으로 내가 소중하게 여기는 관계의 모습을 알아보세요.
-                <span className="hidden xl:inline"> 가입 없이 바로 시작할 수 있어요.</span>
+                10가지 질문으로 내가 소중하게 여기는 관계의 모습을 알아보세요. 가입 없이 바로 시작할 수 있어요.
               </p>
             </div>
             <Button size="lg" arrow="forward" onClick={() => goToStep(1)}>
