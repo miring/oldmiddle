@@ -1,5 +1,5 @@
 .label {
-  color: var(--color-text-calm-light);
+  color: var(--color-text-calm); /* Figma #5e8a7a(3.72:1) → 5.78:1 */
   font-size: var(--type-label-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--type-body-line);
@@ -14,7 +14,7 @@
 
 .description {
   color: var(--color-text-secondary);
-  font-size: var(--type-body-size);
+  font-size: var(--type-body-lg-size); /* Figma 16px → 기준 18px */
   line-height: var(--type-body-line);
   word-break: keep-all;
   overflow-wrap: anywhere;
@@ -36,7 +36,7 @@
   justify-content: center;
   height: max(var(--size-cta-pill-height), var(--size-touch-min));
   border-radius: var(--radius-full);
-  background-color: var(--color-action-pill-bg);
+  background-color: var(--color-action-primary-bg);
   color: var(--color-text-on-accent);
   font-size: var(--type-body-size);
   font-weight: var(--font-weight-bold);

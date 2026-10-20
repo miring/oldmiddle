@@ -12,7 +12,7 @@
 
 .summary {
   color: var(--color-text-secondary);
-  font-size: var(--type-body-size);
+  font-size: var(--type-body-lg-size); /* Figma 16px → 기준 18px */
   line-height: var(--type-body-line);
   word-break: keep-all;
   overflow-wrap: anywhere;

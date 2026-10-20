@@ -1,5 +1,6 @@
 import { CompanionTypeCard } from '../../components/ui/CompanionTypeCard/CompanionTypeCard'
 import { COMPANION_TYPES } from '../../data/companionTypes'
+import { quizHash } from '../quiz/quizRoute'
 import styles from './CompanionTypesSection.module.css'
 
 /** 랜딩 "서로 다른 네 가지 마음" (Figma "Four ways of being together" / "Character previews") */
@@ -34,8 +35,8 @@ export function CompanionTypesSection() {
       </ul>
 
       <div className="flex justify-center pt-6">
-        {/* 테스트 페이지 연결 전 임시 링크 */}
-        <a href="#" className={`${styles.cta} w-full max-w-(--size-cta-max-width)`}>
+        {/* 히어로의 '나의 인연 유형 알아보기'와 같은 곳(1번 문항 화면)으로 갑니다 */}
+        <a href={quizHash(1)} className={`${styles.cta} w-full max-w-(--size-cta-max-width)`}>
           3분 테스트 해보기
         </a>
       </div>
