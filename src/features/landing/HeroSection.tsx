@@ -67,7 +67,7 @@ export function HeroSection() {
         <div className="p-5 md:p-0">
           <div className={`${styles.card} flex flex-col gap-3 md:gap-6 xl:gap-5`}>
             <div className="flex flex-col gap-3 xl:gap-2.5">
-              <h2 className={styles.cardTitle}>어떤 동행이 나에게 어울릴까요?</h2>
+              <h2 className={styles.cardTitle}>어떤 동행이 나와 잘 맞을까요?</h2>
               <p className={styles.cardDescription}>
                 10가지 질문으로 내가 소중하게 여기는 관계의 모습을 알아보세요. 가입 없이 바로 시작할 수 있어요.
               </p>
