@@ -1,0 +1,34 @@
+.callout {
+  gap: var(--space-callout-gap);
+  padding: var(--space-callout-padding);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-callout-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-callout-title-line);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 어두운 배경 위 */
+.inverse {
+  border-color: var(--color-border-inverse);
+}
+
+.inverse .title {
+  color: var(--color-text-inverse-primary);
+}
+
+.inverse .description {
+  color: var(--color-text-inverse-secondary);
+}

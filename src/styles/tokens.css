@@ -181,6 +181,23 @@
   --border-width-list-top: 0px; /* 유형 목록 위 구분선 — 태블릿 이상에서만 */
   --size-cta-pill-height: 56px;
   --size-cta-max-width: 382px;
+
+  /* ── 어두운 배경(inverse) — "준비하는 만남" 등 ── */
+  --color-surface-inverse: #3d6b61;
+  --color-text-inverse-primary: #fafaf7; /* 제목 5.78:1 */
+  --color-text-inverse-secondary: #c8e5e0; /* 설명 4.53:1 */
+  --color-text-inverse-label: #d6ede9; /* 섹션 라벨 4.94:1 (Figma #b8ddd8 4.14:1에서 보정) */
+  --color-border-inverse: #4e8078; /* 구분선·박스 테두리 (장식) */
+
+  /* ── "준비하는 만남" 항목·Callout — 모바일 기준 ── */
+  --type-item-title-size: 22px;
+  --type-callout-title-size: 21px;
+  --type-callout-title-line: normal;
+  --space-callout-padding: var(--space-5);
+  --space-callout-gap: var(--space-1-5);
+  --size-icon-principle: 26px;
+  --size-callout-title-width: 390px; /* 데스크톱 가로형 Callout 제목 칸 */
+  --size-section-intro-width: 420px; /* 데스크톱 왼쪽 소개 칸 */
 }
 
 /* 태블릿 */
@@ -213,6 +230,11 @@
     --type-section-title-line: 1.55;
     --type-card-title-size: 22px;
     --border-width-list-top: var(--border-width-default);
+    --type-item-title-size: 23px;
+    --type-callout-title-size: 23px;
+    --type-callout-title-line: 1.5;
+    --space-callout-padding: var(--space-7);
+    --space-callout-gap: var(--space-3);
     --type-meta-size: 16px;
     --type-caption-size: 16px;
 
