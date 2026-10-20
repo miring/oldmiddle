@@ -135,15 +135,16 @@
   --size-result-character: 240px;
   --size-match-character: 72px;
 
-  /* ── 랜딩 히어로(서비스 소개) — 모바일 기준 ── */
-  --color-hero-audience: #5e8a7a; /* [대비 미달] 3.72:1 */
-  --color-hero-badge-bg: rgba(250, 250, 247, 0.85); /* 태블릿 사진 위 배지 */
+  /* ── 랜딩 히어로(서비스 소개) — 모바일 기준 ──
+   * 글자 대비는 4.5:1 이상이 되도록 Figma 값에서 고쳤습니다(2026-10-20 결정). */
+  --color-hero-audience: var(--color-text-calm); /* Figma #5e8a7a(3.72:1) → 5.78:1 */
+  --color-hero-badge-bg: rgba(250, 250, 247, 0.92); /* Figma 0.85 → 어두운 사진 위에서도 4.83:1 */
   --color-hero-fade-end: #fafaf7; /* 큰 사진 아래쪽을 배경색으로 흐리게 */
   --color-hero-photo-bg: #d9d0c0; /* 데스크톱 오른쪽 사진 칸 바탕 */
   --color-hero-card-bg: var(--color-surface-accent-subtle);
   --color-hero-card-border: transparent;
   --color-hero-card-note: var(--color-text-secondary);
-  --color-caption-text: rgba(255, 255, 255, 0.8);
+  --color-caption-text: #ffffff; /* Figma 흰색 80~90% → 사진 위에서 더 잘 보이도록 100% */
   --color-caption-shade: rgba(0, 0, 0, 0.38);
   --type-hero-audience-size: 14px;
   --type-hero-badge-size: 13px;
@@ -180,7 +181,6 @@
 
     --color-hero-card-bg: var(--color-surface-raised);
     --color-hero-card-border: var(--color-border-subtle);
-    --color-caption-text: rgba(255, 255, 255, 0.9);
     --color-caption-shade: rgba(44, 36, 22, 0.55);
     --type-hero-desc-line: 1.7;
     --type-hero-card-title-size: 25px;
@@ -218,9 +218,9 @@
     --type-display-line: 1.45;
     --space-button-lg-x: var(--space-7);
 
-    --color-hero-audience: var(--color-text-accent);
+    --color-hero-audience: #7d6300; /* Figma #d4a800(2.14:1) → 5.49:1 */
     --color-hero-fade-end: rgba(250, 250, 247, 0.55);
-    --color-hero-card-note: #8c8a7e; /* [대비 미달] 흰 배경 대비 3.47:1 */
+    --color-hero-card-note: #6b6a5f; /* Figma #8c8a7e(3.47:1) → 흰 배경 5.45:1 */
     --type-hero-audience-size: 16px;
     --type-hero-desc-size: 17px;
     --type-hero-card-title-size: 24px;
