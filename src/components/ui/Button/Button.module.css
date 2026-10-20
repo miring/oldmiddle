@@ -25,6 +25,14 @@
   font-weight: var(--font-weight-medium);
 }
 
+.lg {
+  justify-content: space-between;
+  height: max(var(--size-button-lg-height), var(--size-touch-min));
+  padding-inline: var(--space-button-lg-x);
+  font-size: var(--type-button-lg-size);
+  line-height: var(--type-body-line);
+}
+
 .soft {
   border: var(--border-width-default) solid var(--color-border-subtle);
   background-color: var(--color-surface-accent-subtle);

@@ -1,19 +1,112 @@
+/* ── 큰 사진 ── */
+.media {
+  height: var(--size-hero-photo-height);
+  background-color: var(--color-hero-photo-bg);
+}
+
+/* 데스크톱에서는 위 사진을 고정 높이로 두고, 아래 사진이 남는 칸을 채우다 넘치면 잘립니다 */
+.mainPhoto {
+  display: block;
+  flex-shrink: 0;
+  width: 100%;
+  height: var(--size-hero-main-photo-height);
+  object-fit: cover;
+}
+
+.divider {
+  flex-shrink: 0;
+  height: var(--size-photo-divider);
+  background-color: var(--color-bg-default);
+}
+
+.lowerPhoto {
+  width: 100%;
+  aspect-ratio: var(--aspect-hero-portrait-upper);
+  object-fit: cover;
+}
+
+.fade {
+  height: var(--size-hero-fade-height);
+  background-image: linear-gradient(to bottom, transparent, var(--color-hero-fade-end));
+}
+
+.badge {
+  border-radius: var(--radius-xl);
+  background-color: var(--color-hero-badge-bg);
+  color: var(--color-hero-audience);
+  font-size: var(--type-hero-badge-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  -webkit-backdrop-filter: blur(var(--space-1)); /* iOS Safari */
+  backdrop-filter: blur(var(--space-1));
+}
+
+/* ── 글 ── */
 .audience {
-  color: var(--color-text-accent);
-  font-size: var(--type-label-size);
+  color: var(--color-hero-audience);
+  font-size: var(--type-hero-audience-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--type-body-line);
 }
 
-.title {
+.headline {
   color: var(--color-text-primary);
   font-size: var(--type-display-size);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   line-height: var(--type-display-line);
 }
 
-.lead {
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--type-hero-desc-size);
+  line-height: var(--type-hero-desc-line);
+}
+
+/* ── 보조 사진 ── */
+.secondary {
+  height: var(--size-hero-secondary-height);
+  border-radius: var(--radius-hero-photo);
+}
+
+.secondaryPhoto {
+  display: block;
+  width: 100%;
+  height: var(--size-hero-secondary-height);
+  object-fit: cover;
+}
+
+.caption {
+  padding: var(--space-caption-top) var(--space-caption-x) var(--space-caption-bottom);
+  background-image: linear-gradient(to bottom, transparent, var(--color-caption-shade));
+  color: var(--color-caption-text);
+  font-size: var(--type-caption-photo-size);
+  line-height: var(--line-height-snug);
+}
+
+/* ── 테스트 초대 카드 ── */
+.card {
+  padding: var(--space-hero-card-padding);
+  border: var(--border-width-default) solid var(--color-hero-card-border);
+  border-radius: var(--radius-hero-card);
+  background-color: var(--color-hero-card-bg);
+}
+
+.cardTitle {
+  color: var(--color-text-primary);
+  font-size: var(--type-hero-card-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+}
+
+.cardDescription {
   color: var(--color-text-secondary);
   font-size: var(--type-body-size);
   line-height: var(--type-body-line);
+}
+
+.cardNote {
+  color: var(--color-hero-card-note);
+  font-size: var(--type-hero-card-note-size);
+  line-height: var(--type-body-line);
+  text-align: center;
 }
