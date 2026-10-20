@@ -11,7 +11,7 @@ import styles from './QuizParts.module.css'
 
 /** 문항·결과 화면 상단 바 */
 export function QuizHeader() {
-  return <SiteHeader aside={<p className={styles.headerLabel}>마음 알아보기</p>} />
+  return <SiteHeader fixed aside={<p className={styles.headerLabel}>마음 알아보기</p>} />
 }
 
 export function QuizProgress({ step }: { step: number }) {

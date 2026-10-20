@@ -32,7 +32,8 @@ export function ResultPage({ type }: { type: CompanionType }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <QuizHeader />
-      <main className="flex flex-col">
+      {/* 헤더가 화면 위에 고정되어 있어 그 높이만큼 내려서 시작합니다 */}
+      <main className="flex flex-col pt-(--size-header-height)">
         {/* 나의 동행 유형 */}
         <section className={styles.hero}>
           <div className="mx-auto flex max-w-(--size-quiz-column-width) flex-col items-center gap-5 px-6 pt-7 pb-8">

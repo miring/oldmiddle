@@ -24,7 +24,8 @@ export function QuizPage({ step }: { step: number }) {
   return (
     <div className="flex min-h-dvh flex-col">
       <QuizHeader />
-      <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-1 flex-col">
+      {/* 헤더가 화면 위에 고정되어 있어 그 높이만큼 내려서 시작합니다 */}
+      <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-1 flex-col pt-(--size-header-height)">
         <div className="flex flex-1 flex-col gap-7 px-6 pt-7 pb-6">
           <QuizProgress step={step} />
           <QuizChoices question={question} headingRef={headingRef} />
