@@ -21,7 +21,11 @@ const TABLET_UP = '(min-width: 48rem)'
  */
 export function HeroSection() {
   return (
-    <section aria-labelledby="hero-title" className="flex flex-col xl:min-h-(--size-hero-min-height) xl:flex-row">
+    // 히어로 폭은 '내용 최대 폭 + 데스크톱 양옆 여백'까지 — 아주 넓은 화면에서도 글이 다른 섹션 내용과 같은 선에서 시작
+    <section
+      aria-labelledby="hero-title"
+      className="mx-auto flex w-full max-w-(--size-hero-max-width) flex-col xl:min-h-(--size-hero-min-height) xl:flex-row"
+    >
       {/* 큰 사진 (데스크톱에서는 오른쪽 칸) */}
       <div className={`${styles.media} relative overflow-hidden xl:order-last xl:flex xl:flex-1 xl:flex-col`}>
         <picture>

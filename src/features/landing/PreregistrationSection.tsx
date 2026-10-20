@@ -6,7 +6,7 @@ export function PreregistrationSection() {
   return (
     <section
       aria-labelledby="preregistration-title"
-      className="flex flex-col gap-5 px-6 py-8 md:gap-10 md:px-12 md:py-16 xl:gap-24 xl:p-24"
+      className="flex flex-col gap-5 content-gutter py-8 md:gap-10 md:py-16 xl:gap-24 xl:py-24"
     >
       <div className="flex flex-col gap-5 xl:w-(--size-section-intro-width)">
         <p className={styles.label}>부담 없는 사전 신청</p>

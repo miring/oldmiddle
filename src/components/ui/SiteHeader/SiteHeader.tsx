@@ -25,7 +25,7 @@ export function SiteHeader({ aside, fixed = false, onHomeClick }: SiteHeaderProp
   }
 
   return (
-    <header className={`${styles.header} ${position} flex items-center justify-between px-6 md:px-12 xl:px-24`}>
+    <header className={`${styles.header} ${position} flex items-center justify-between content-gutter`}>
       <a
         href={homeHref}
         onClick={handleHomeClick}

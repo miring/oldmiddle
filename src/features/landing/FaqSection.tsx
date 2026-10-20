@@ -6,7 +6,7 @@ export function FaqSection() {
   return (
     <section
       aria-labelledby="faq-title"
-      className="flex flex-col gap-4 px-6 py-8 md:gap-8 md:px-12 md:pt-12 md:pb-16 xl:flex-row xl:gap-24 xl:px-24 xl:pt-20 xl:pb-24"
+      className="flex flex-col gap-4 content-gutter py-8 md:gap-8 md:pt-12 md:pb-16 xl:flex-row xl:gap-24 xl:pt-20 xl:pb-24"
     >
       <div className="flex flex-col gap-4 xl:w-(--size-section-intro-width) xl:shrink-0">
         <p className={styles.label}>궁금한 점을 모았어요</p>

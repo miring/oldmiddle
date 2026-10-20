@@ -6,7 +6,7 @@ export function ParticipationSection() {
   return (
     <section
       aria-labelledby="participation-title"
-      className={`${styles.accentSurface} flex flex-col gap-5 px-6 py-8 md:gap-10 md:px-12 md:py-16 xl:px-24 xl:py-20`}
+      className={`${styles.accentSurface} flex flex-col gap-5 content-gutter py-8 md:gap-10 md:py-16 xl:py-20`}
     >
       <div className="flex flex-col gap-5 md:gap-4">
         <p className={styles.label}>참여 방법</p>

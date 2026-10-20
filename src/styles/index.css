@@ -23,6 +23,15 @@
   --spacing: var(--space-unit);
 }
 
+/*
+ * 화면 폭 전체를 쓰는 섹션의 좌우 여백.
+ * 기본은 --space-gutter(24/48/96)이고, 화면이 넓어지면 내용이 --size-content-max-width(1280)를
+ * 넘지 않도록 여백이 늘어나 가운데 정렬됩니다. 배경색은 화면 끝까지 그대로 채워집니다.
+ */
+@utility content-gutter {
+  padding-inline: max(var(--space-gutter), calc((100% - var(--size-content-max-width)) / 2));
+}
+
 @layer base {
   /* 고정 헤더가 있을 때 페이지 안 이동(앵커·포커스)이 헤더 밑에 가려지지 않게 */
   html {

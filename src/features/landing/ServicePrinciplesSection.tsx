@@ -9,7 +9,7 @@ export function ServicePrinciplesSection() {
   return (
     <section
       aria-labelledby="service-principles-title"
-      className={`${styles.section} flex flex-col gap-4 px-6 py-8 md:gap-8 md:px-12 md:py-16 xl:gap-10 xl:px-24 xl:py-22`}
+      className={`${styles.section} flex flex-col gap-4 content-gutter py-8 md:gap-8 md:py-16 xl:gap-10 xl:py-22`}
     >
       <div className="flex flex-col gap-4 md:gap-8 xl:flex-row xl:gap-24">
         <div className="flex flex-col gap-4 md:gap-5 xl:w-(--size-section-intro-width) xl:shrink-0">

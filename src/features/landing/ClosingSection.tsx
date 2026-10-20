@@ -6,7 +6,7 @@ import styles from './LandingSections.module.css'
 /** 랜딩 마지막 "다음 계절로의 초대" (Figma "An invitation to begin" / "Closing invitation") */
 export function ClosingSection() {
   return (
-    <section aria-labelledby="closing-title" className={`${styles.accentSurface} px-6 md:px-12 xl:px-24`}>
+    <section aria-labelledby="closing-title" className={`${styles.accentSurface} content-gutter`}>
       <div className="flex flex-col gap-5 py-10 md:gap-8 md:py-14 xl:flex-row xl:items-center xl:gap-20 xl:py-20">
         <div className="flex flex-col gap-5 xl:min-w-0 xl:flex-1">
           <img className="size-22" src={sprout} alt="" />
