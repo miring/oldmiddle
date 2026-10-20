@@ -3,6 +3,13 @@
   border-bottom: var(--border-width-default) solid var(--color-border-subtle);
 }
 
+/* 로고 링크: 손가락으로 누르기 쉽게 최소 높이 확보, 밑줄 없음 */
+.home {
+  min-height: var(--size-touch-min);
+  color: inherit;
+  text-decoration: none;
+}
+
 /* 고정했을 때 아래 내용이 비치지 않도록 배경을 채웁니다 */
 .fixed {
   background-color: var(--color-bg-default);

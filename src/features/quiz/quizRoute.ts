@@ -48,6 +48,12 @@ export function navigate(hash: string, { replace = false } = {}) {
   window.dispatchEvent(new Event(NAVIGATE_EVENT))
 }
 
+/** 첫 화면(랜딩) 맨 위로. 이미 랜딩이면 기록을 늘리지 않고 위로만 올립니다. */
+export function goHome() {
+  if (window.location.hash) navigate(`${window.location.pathname}${window.location.search}`)
+  window.scrollTo(0, 0)
+}
+
 export function goToStep(step: number) {
   navigate(quizHash(step))
 }
