@@ -30,7 +30,7 @@
 .wordmark {
   color: var(--color-text-primary);
   font-size: var(--type-wordmark-size);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-normal);
 }
 
