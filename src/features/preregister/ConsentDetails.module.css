@@ -1,0 +1,43 @@
+.text {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 글머리 점 (스크린 리더에는 읽히지 않는 장식) */
+.bullet {
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.bullet::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--type-body-size) * var(--type-body-line) / 2 - var(--space-1) / 2);
+  left: var(--space-1);
+  width: var(--space-1);
+  height: var(--space-1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-secondary);
+}
+
+.card {
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+}
+
+.what {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.term {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-bold);
+}

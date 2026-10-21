@@ -8,3 +8,56 @@
   border: 0;
   border-top: var(--border-width-default) solid var(--color-border-subtle);
 }
+
+/* [보기]/[접기]: 누르는 영역 48×48 이상 */
+.toggle {
+  min-width: var(--size-touch-min);
+  min-height: var(--size-touch-min);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--type-body-line);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.toggle:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* 펼침: 높이를 0fr → 1fr로 늘림. 접혀 있을 때는 visibility로 스크린 리더·탭 이동에서도 빠짐 */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows var(--motion-duration-expand) var(--motion-ease-standard),
+    visibility 0s linear var(--motion-duration-expand);
+}
+
+.panel[data-open='true'] {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition:
+    grid-template-rows var(--motion-duration-expand) var(--motion-ease-standard),
+    visibility 0s;
+}
+
+.panelClip {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panelBody {
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-accent-subtle);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel,
+  .panel[data-open='true'] {
+    transition: none;
+  }
+}

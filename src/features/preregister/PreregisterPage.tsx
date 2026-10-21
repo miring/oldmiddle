@@ -18,8 +18,12 @@ import {
   isValidMobile,
 } from './preregisterOptions'
 import { updateDraft, usePreregisterDraft } from './preregisterDraft'
+import { ConsentDetails } from './ConsentDetails'
 import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterPage.module.css'
+
+// 동의 항목마다 [보기]로 펼칠 내용을 붙임 (문구는 src/config/copy.ts)
+const CONSENT_ITEMS_WITH_DETAILS = CONSENT_ITEMS.map((item) => ({ ...item, details: <ConsentDetails id={item.id} /> }))
 
 /** 사전 신청 폼 (Figma "사전신청 01 신청 폼" — 구조·문구만 참고) */
 export function PreregisterPage() {
@@ -176,7 +180,7 @@ export function PreregisterPage() {
 
           <ConsentGroup
             allLabel="전체 동의 (선택 포함)"
-            items={CONSENT_ITEMS}
+            items={CONSENT_ITEMS_WITH_DETAILS}
             values={draft.consents}
             onChange={(consents) => updateDraft({ consents })}
           />

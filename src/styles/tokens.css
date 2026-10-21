@@ -220,6 +220,10 @@
   --size-input-height: var(--size-button-height); /* 입력칸 옆에 버튼을 붙일 때 높이가 맞도록 버튼과 같게 */
   --size-chip-height: 52px;
   --size-back-header-height: 64px;
+
+  /* ── 움직임 (prefers-reduced-motion이면 쓰는 쪽에서 끔) ── */
+  --motion-duration-expand: 200ms; /* 펼침·접힘 */
+  --motion-ease-standard: ease-out;
 }
 
 /* 태블릿 */
