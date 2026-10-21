@@ -1,0 +1,13 @@
+.banner {
+  background-color: var(--color-surface-badge);
+}
+
+.text {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-body-line);
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}

@@ -18,6 +18,7 @@ import {
   isValidMobile,
 } from './preregisterOptions'
 import { updateDraft, usePreregisterDraft } from './preregisterDraft'
+import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterPage.module.css'
 
 /** 사전 신청 폼 (Figma "사전신청 01 신청 폼" — 구조·문구만 참고) */
@@ -64,8 +65,8 @@ export function PreregisterPage() {
   const codeHint = !MOCK_SMS_VERIFICATION
     ? '문자 인증은 준비 중이에요.'
     : verified
-      ? '확인됐어요. (개발용 목업 — 실제 문자는 보내지 않아요)'
-      : '문자로 받은 6자리를 입력해 주세요. (개발용 목업: 아무 6자리나 통과)'
+      ? '확인됐어요. (테스트 — 실제 문자는 보내지 않아요)'
+      : '문자로 받은 6자리를 입력해 주세요. (테스트 중: 아무 6자리나 통과)'
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
@@ -80,8 +81,12 @@ export function PreregisterPage() {
 
   return (
     <div className="flex min-h-dvh flex-col">
-      <BackHeader fixed title="사전 신청" onBack={() => goBackTo(RESULT_HASH)} />
-      <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-col gap-7 px-6 pt-(--size-back-header-height) pb-10">
+      {/* 테스트 띠 높이가 글자 줄 수에 따라 달라지므로 fixed 대신 sticky로 함께 고정 */}
+      <div className="sticky top-0 z-(--z-header)">
+        <TestModeBanner />
+        <BackHeader title="사전 신청" onBack={() => goBackTo(RESULT_HASH)} />
+      </div>
+      <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-col gap-7 px-6 pb-10">
         <div className="flex flex-col gap-1.5 pt-2">
           <h1 className={styles.title}>4가지만 알려 주세요</h1>
           <p className={styles.body}>{COPY.notCollected}</p>
