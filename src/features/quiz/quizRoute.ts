@@ -12,11 +12,13 @@ export type QuizRoute =
   | { view: 'quiz'; step: number }
   | { view: 'result' }
   | { view: 'preregister' }
+  | { view: 'under45' }
 
 const NAVIGATE_EVENT = 'quiz:navigate'
 
 export const RESULT_HASH = '#/result'
 export const PREREGISTER_HASH = '#/preregister'
+export const UNDER45_HASH = '#/preregister/under45'
 
 export function quizHash(step: number) {
   return `#/quiz/${step}`
@@ -25,6 +27,7 @@ export function quizHash(step: number) {
 function parse(hash: string): QuizRoute {
   if (hash === RESULT_HASH) return { view: 'result' }
   if (hash === PREREGISTER_HASH) return { view: 'preregister' }
+  if (hash === UNDER45_HASH) return { view: 'under45' }
   const match = /^#\/quiz\/(\d+)$/.exec(hash)
   if (!match) return { view: 'landing' }
   const step = Math.min(Math.max(Number(match[1]), 1), QUIZ_TOTAL)

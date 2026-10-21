@@ -30,6 +30,11 @@ const EMPTY: PreregisterDraft = {
 let draft: PreregisterDraft = EMPTY
 const listeners = new Set<() => void>()
 
+/** 화면을 다시 그리지 않고 지금 값만 읽을 때 (예: 화면에 처음 들어올 때 한 번) */
+export function getDraft(): PreregisterDraft {
+  return draft
+}
+
 export function updateDraft(patch: Partial<PreregisterDraft>) {
   draft = { ...draft, ...patch }
   listeners.forEach((listener) => listener())

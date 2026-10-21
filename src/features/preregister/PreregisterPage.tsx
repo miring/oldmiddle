@@ -7,7 +7,7 @@ import { SelectField } from '../../components/ui/SelectField/SelectField'
 import { TextField } from '../../components/ui/TextField/TextField'
 import { CONSENT_COPY, COPY } from '../../config/copy'
 import { MOCK_SMS_VERIFICATION } from '../../config/devFlags'
-import { RESULT_HASH, goBackTo } from '../quiz/quizRoute'
+import { RESULT_HASH, UNDER45_HASH, goBackTo, navigate } from '../quiz/quizRoute'
 import {
   AGE_OPTIONS,
   CONSENT_ITEMS,
@@ -17,7 +17,7 @@ import {
   formatPhone,
   isValidMobile,
 } from './preregisterOptions'
-import { updateDraft, usePreregisterDraft } from './preregisterDraft'
+import { getDraft, updateDraft, usePreregisterDraft } from './preregisterDraft'
 import { ConsentDetails } from './ConsentDetails'
 import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterPage.module.css'
@@ -29,10 +29,24 @@ const CONSENT_ITEMS_WITH_DETAILS = CONSENT_ITEMS.map((item) => ({ ...item, detai
 export function PreregisterPage() {
   const draft = usePreregisterDraft()
   const codeRef = useRef<HTMLInputElement>(null)
+  const ageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // 45세 미만 안내에서 돌아왔으면('연령대 다시 고르기'·뒤로 가기) 연령대만 비우고 그 질문으로 옮김 (나머지 입력값은 그대로)
+    if (getDraft().age === UNDER_45) {
+      updateDraft({ age: null })
+      ageRef.current?.scrollIntoView({ block: 'center' })
+      ageRef.current?.querySelector('input')?.focus({ preventScroll: true })
+    } else {
+      window.scrollTo(0, 0)
+    }
   }, [])
+
+  // '45 미만'을 고르면 바로 안내 화면으로 (저장하는 값 없음)
+  const handleAgeChange = (age: string) => {
+    updateDraft({ age })
+    if (age === UNDER_45) navigate(UNDER45_HASH)
+  }
 
   const province = REGIONS.find((region) => region.code === draft.province)
   const needsDistrict = province ? province.districts.length > 0 : true
@@ -105,14 +119,16 @@ export function PreregisterPage() {
             onChange={(gender) => updateDraft({ gender })}
           />
 
-          <ChoiceChipGroup
-            legend="연령대"
-            name="age"
-            columns={3}
-            options={AGE_OPTIONS}
-            value={draft.age}
-            onChange={(age) => updateDraft({ age })}
-          />
+          <div ref={ageRef}>
+            <ChoiceChipGroup
+              legend="연령대"
+              name="age"
+              columns={3}
+              options={AGE_OPTIONS}
+              value={draft.age}
+              onChange={handleAgeChange}
+            />
+          </div>
 
           <fieldset className="flex flex-col gap-2.5">
             <legend className={`${styles.legend} mb-2.5`}>사는 지역</legend>

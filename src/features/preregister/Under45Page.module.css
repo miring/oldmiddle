@@ -1,0 +1,43 @@
+/* 느낌표 원 (장식) */
+.icon {
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-badge);
+  color: var(--color-text-calm);
+  font-size: var(--type-result-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+}
+
+.title {
+  color: var(--color-text-calm);
+  font-size: var(--type-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-question-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.body {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.shareMessage {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.shareMessage:empty {
+  display: none;
+}
