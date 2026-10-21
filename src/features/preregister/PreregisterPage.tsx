@@ -5,7 +5,7 @@ import { ChoiceChipGroup } from '../../components/ui/ChoiceChipGroup/ChoiceChipG
 import { ConsentGroup } from '../../components/ui/ConsentGroup/ConsentGroup'
 import { SelectField } from '../../components/ui/SelectField/SelectField'
 import { TextField } from '../../components/ui/TextField/TextField'
-import { COPY } from '../../config/copy'
+import { CONSENT_COPY, COPY } from '../../config/copy'
 import { MOCK_SMS_VERIFICATION } from '../../config/devFlags'
 import { RESULT_HASH, goBackTo } from '../quiz/quizRoute'
 import {
@@ -179,7 +179,7 @@ export function PreregisterPage() {
           </div>
 
           <ConsentGroup
-            allLabel="전체 동의 (선택 포함)"
+            allLabel={CONSENT_COPY.labels.all}
             items={CONSENT_ITEMS_WITH_DETAILS}
             values={draft.consents}
             onChange={(consents) => updateDraft({ consents })}

@@ -1,5 +1,6 @@
 import regionData from '../../data/regions.json'
 import type { ConsentItem } from '../../components/ui/ConsentGroup/ConsentGroup'
+import { CONSENT_COPY } from '../../config/copy'
 
 // 사전 신청 폼 선택지와 동의 항목. 문구는 Figma "사전신청 01 신청 폼" 기준입니다.
 
@@ -24,10 +25,11 @@ export type Region = { code: string; name: string; districts: { code: string; na
 /** 시·도 / 시·군·구 (행정안전부 법정동코드 기준, src/data/regions.json) */
 export const REGIONS: Region[] = regionData.regions
 
+// 동의 항목 ID·필수 여부는 여기서, 화면에 보이는 이름은 src/config/copy.ts에서 가져옵니다.
 export const CONSENT_ITEMS: ConsentItem[] = [
-  { id: 'age-and-notice', label: '(필수) 45세 이상이며, 사전 신청 안내를 확인했어요', required: true },
-  { id: 'privacy', label: '(필수) 개인정보 수집·이용에 동의해요', required: true },
-  { id: 'marketing', label: '(선택) 혜택·이벤트 등 광고성 정보를 받을게요', required: false },
+  { id: 'age-and-notice', label: CONSENT_COPY.labels.notice, required: true },
+  { id: 'privacy', label: CONSENT_COPY.labels.privacy, required: true },
+  { id: 'marketing', label: CONSENT_COPY.labels.marketing, required: false },
 ]
 
 /** 휴대폰 번호를 숫자만 남겨 010-1234-5678 모양으로 */
