@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- 로고 마크(동반자 막대 두 개). 색은 tokens.css --color-brand-mark-1 / -2 -->
+  <rect x="4.5" y="3" width="10.5" height="40" rx="5.25" fill="#f0c419" />
+  <rect x="18" y="10.5" width="10.5" height="40" rx="5.25" fill="#d4a800" />
+</svg>
