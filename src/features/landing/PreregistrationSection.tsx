@@ -1,3 +1,4 @@
+import { COPY } from '../../config/copy'
 import { PREREGISTRATION_FIELDS } from './landingSteps'
 import styles from './LandingSections.module.css'
 
@@ -27,7 +28,7 @@ export function PreregistrationSection() {
             </li>
           ))}
         </ul>
-        <p className={styles.body}>이름, 상세 주소, 사진이나 소득은 묻지 않아요.</p>
+        <p className={styles.body}>{COPY.notCollected}</p>
         <hr className={styles.rule} />
         <p className={styles.body}>
           개인정보 처리 동의는 필수로, 출시·광고 소식 수신 동의는 선택으로 나누어 안내할 예정이에요.

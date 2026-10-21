@@ -208,6 +208,18 @@
   --type-step-number-size: 16px;
   --size-field-chip-height: 60px;
   --space-field-chip-x: var(--space-4);
+
+  /* ── 입력 폼 (사전 신청) ── */
+  --color-action-danger-bg: #8a2e3b; /* 되돌릴 수 없는 삭제 버튼 */
+  --color-text-on-danger: #ffffff; /* 위 배경 위 8.29:1 */
+  --color-border-input: #8c897c; /* 입력칸·선택 상자·체크박스·칩 경계 — 흰 바탕 3.51:1 (Figma #ddd8c6 1.43:1 보정) */
+  --color-text-placeholder: #6b6a5f; /* 입력칸 안내 글자 5.45:1 (Figma #8a877c 3.60:1 보정) */
+  --color-control-checked: var(--color-text-calm); /* 체크된 체크박스 6.04:1 */
+  --border-width-control: 1.5px; /* 입력칸·칩·체크박스 테두리 */
+  --size-checkbox: 28px;
+  --size-input-height: var(--size-button-height); /* 입력칸 옆에 버튼을 붙일 때 높이가 맞도록 버튼과 같게 */
+  --size-chip-height: 52px;
+  --size-back-header-height: 64px;
 }
 
 /* 태블릿 */
