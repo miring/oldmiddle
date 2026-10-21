@@ -203,7 +203,7 @@ export function PreregisterPage() {
 
           <div className="flex flex-col items-center gap-2.5">
             <Button type="submit" disabled={Boolean(missing)}>
-              잘 맞는 유형 보기
+              {COPY.preregisterSubmit}
             </Button>
             <p className={styles.hint} aria-live="polite">
               {missing ?? '선택 항목은 체크하지 않아도 신청돼요'}
