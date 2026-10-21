@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { LandingPage } from './features/landing/LandingPage'
+import { PreregisterPage } from './features/preregister/PreregisterPage'
 import { firstUnansweredStep, useQuizAnswers } from './features/quiz/quizAnswers'
 import { QuizPage } from './features/quiz/QuizPage'
 import { navigate, quizHash, useQuizRoute } from './features/quiz/quizRoute'
@@ -23,6 +24,7 @@ export function App() {
     }
   }, [requestedStep, step])
 
+  if (route.view === 'preregister') return <PreregisterPage />
   if (route.view === 'result' && missingStep === null) {
     const result = calculateResult(answers)
     if (result) return <ResultPage type={result} />

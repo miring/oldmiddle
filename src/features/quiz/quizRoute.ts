@@ -7,11 +7,16 @@ import { clearAnswers } from './quizAnswers'
  * 문항마다 방문 기록이 남아 휴대폰 '뒤로 가기'로도 이전 문항으로 돌아갈 수 있습니다.
  */
 
-export type QuizRoute = { view: 'landing' } | { view: 'quiz'; step: number } | { view: 'result' }
+export type QuizRoute =
+  | { view: 'landing' }
+  | { view: 'quiz'; step: number }
+  | { view: 'result' }
+  | { view: 'preregister' }
 
 const NAVIGATE_EVENT = 'quiz:navigate'
 
 export const RESULT_HASH = '#/result'
+export const PREREGISTER_HASH = '#/preregister'
 
 export function quizHash(step: number) {
   return `#/quiz/${step}`
@@ -19,6 +24,7 @@ export function quizHash(step: number) {
 
 function parse(hash: string): QuizRoute {
   if (hash === RESULT_HASH) return { view: 'result' }
+  if (hash === PREREGISTER_HASH) return { view: 'preregister' }
   const match = /^#\/quiz\/(\d+)$/.exec(hash)
   if (!match) return { view: 'landing' }
   const step = Math.min(Math.max(Number(match[1]), 1), QUIZ_TOTAL)
@@ -73,7 +79,12 @@ export function goToStep(step: number) {
  * 주소로 바로 들어온 경우에는 이전 문항으로 바꿔 보여 줍니다.
  */
 export function goBackToStep(step: number) {
+  goBackTo(quizHash(step))
+}
+
+/** 뒤로 가기 버튼 공통: 앱 안에서 넘어왔으면 기록을 한 칸 되돌리고, 아니면 fallback 화면으로 바꿉니다. */
+export function goBackTo(fallbackHash: string) {
   const state: unknown = window.history.state
   if (state && typeof state === 'object' && 'inApp' in state) window.history.back()
-  else navigate(quizHash(step), { replace: true })
+  else navigate(fallbackHash, { replace: true })
 }
