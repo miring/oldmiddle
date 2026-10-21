@@ -1,0 +1,10 @@
+.card {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.divider {
+  border: 0;
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+}

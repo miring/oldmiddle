@@ -1,0 +1,30 @@
+.label {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+}
+
+/* 기본 선택 화살표는 브라우저 것을 그대로 씀 (모바일 기본 선택 창이 가장 익숙함) */
+.select {
+  height: max(var(--size-input-height), var(--size-touch-min));
+  padding-inline: var(--space-4) var(--space-3);
+  border: var(--border-width-control) solid var(--color-border-input);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-heading-line);
+  cursor: pointer;
+}
+
+/* 아직 고르지 않았을 때 안내 문구 색 */
+.empty {
+  color: var(--color-text-placeholder);
+}
+
+.select:disabled {
+  background-color: var(--color-action-disabled-bg);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}

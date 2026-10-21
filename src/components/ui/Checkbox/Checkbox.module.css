@@ -1,0 +1,55 @@
+.row {
+  min-height: var(--size-touch-min);
+  cursor: pointer;
+}
+
+.box {
+  width: var(--size-checkbox);
+  height: var(--size-checkbox);
+  border: var(--border-width-control) solid var(--color-border-input);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-raised);
+}
+
+/* 체크: 칠한 상자 + 흰 체크 표시(테두리 두 변을 돌려 그림) */
+.input:checked + .box {
+  border-color: var(--color-control-checked);
+  background-color: var(--color-control-checked);
+}
+
+.input:checked + .box::after {
+  content: '';
+  width: var(--space-2);
+  height: var(--space-3);
+  margin-top: calc(var(--space-1) * -0.5);
+  border: solid var(--color-text-inverse-primary);
+  border-width: 0 var(--border-width-selected) var(--border-width-selected) 0;
+  transform: rotate(45deg);
+}
+
+/* 일부만 체크: 가로 막대 */
+.input:indeterminate + .box {
+  border-color: var(--color-control-checked);
+  background-color: var(--color-control-checked);
+}
+
+.input:indeterminate + .box::after {
+  content: '';
+  width: var(--space-3);
+  height: var(--border-width-selected);
+  background-color: var(--color-text-inverse-primary);
+}
+
+.input:focus-visible + .box {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.label {
+  min-width: 0;
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-heading-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
