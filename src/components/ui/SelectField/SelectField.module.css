@@ -19,6 +19,12 @@
   cursor: pointer;
 }
 
+/* 펼친 목록의 항목 글자 (데스크톱 브라우저에서 적용. 휴대폰은 기기 기본 선택 창 크기를 따름) */
+.select option {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+}
+
 /* 아직 고르지 않았을 때 안내 문구 색 */
 .empty {
   color: var(--color-text-placeholder);
