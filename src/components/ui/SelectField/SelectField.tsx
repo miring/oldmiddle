@@ -34,23 +34,27 @@ export function SelectField({
       <label htmlFor={id} className={hideLabel ? 'sr-only' : styles.label}>
         {label}
       </label>
-      <select
-        id={id}
-        name={name}
-        className={`${styles.select} ${value ? '' : styles.empty} w-full`}
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        disabled={disabled}
-      >
-        <option value="" disabled>
-          {placeholder}
-        </option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+      <div className="relative">
+        <select
+          id={id}
+          name={name}
+          className={`${styles.select} ${value ? '' : styles.empty} w-full`}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          disabled={disabled}
+        >
+          <option value="" disabled>
+            {placeholder}
           </option>
-        ))}
-      </select>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+        {/* 화살표: 오른쪽 끝에서 띄워 그림 (브라우저마다 기본 화살표 위치가 달라서 직접 그림) */}
+        <span className={`${styles.arrow} pointer-events-none absolute`} aria-hidden="true" />
+      </div>
     </div>
   )
 }

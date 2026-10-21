@@ -5,10 +5,11 @@
   line-height: var(--type-heading-line);
 }
 
-/* 기본 선택 화살표는 브라우저 것을 그대로 씀 (모바일 기본 선택 창이 가장 익숙함) */
+/* 펼쳐지는 선택 창은 브라우저 기본(모바일에서 가장 익숙함), 닫힌 상자의 화살표만 직접 그림 */
 .select {
+  appearance: none;
   height: max(var(--size-input-height), var(--size-touch-min));
-  padding-inline: var(--space-4) var(--space-3);
+  padding-inline: var(--space-4) var(--space-10); /* 오른쪽: 화살표 자리 + 여백 */
   border: var(--border-width-control) solid var(--color-border-input);
   border-radius: var(--radius-md);
   background-color: var(--color-surface-raised);
@@ -27,4 +28,20 @@
   background-color: var(--color-action-disabled-bg);
   color: var(--color-text-disabled);
   cursor: not-allowed;
+}
+
+/* 아래 화살표: 테두리 두 변을 돌려 그림. 오른쪽 끝에서 --space-4 띄움 */
+.arrow {
+  top: 50%;
+  right: var(--space-4);
+  width: var(--space-2-5);
+  height: var(--space-2-5);
+  margin-top: calc(var(--space-2-5) * -0.75);
+  border: solid var(--color-text-secondary);
+  border-width: 0 var(--border-width-selected) var(--border-width-selected) 0;
+  transform: rotate(45deg);
+}
+
+.select:disabled + .arrow {
+  border-color: var(--color-text-disabled);
 }
