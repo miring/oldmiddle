@@ -5,9 +5,13 @@ import { SERVICE_PRINCIPLES } from './servicePrinciples'
 import styles from './ServicePrinciplesSection.module.css'
 
 /** 랜딩 "마지막사랑이 준비하는 만남" (Figma "Trust principles") — 어두운 배경 섹션 */
+/** 서비스 소개 섹션 id (신청 완료 화면의 "…어떤 곳인가요?" 링크가 이 섹션으로 옴) */
+export const SERVICE_INTRO_SECTION_ID = 'service-intro'
+
 export function ServicePrinciplesSection() {
   return (
     <section
+      id={SERVICE_INTRO_SECTION_ID}
       aria-labelledby="service-principles-title"
       className={`${styles.section} flex flex-col gap-4 content-gutter py-8 md:gap-8 md:py-16 xl:gap-10 xl:py-22`}
     >
@@ -17,7 +21,7 @@ export function ServicePrinciplesSection() {
             {site.serviceName}
             {subjectParticle(site.serviceName)} 준비하는 만남
           </p>
-          <h2 id="service-principles-title" className={styles.title}>
+          <h2 id="service-principles-title" tabIndex={-1} className={styles.title}>
             가벼운 테스트 너머,
             <br />
             진중한 인연을 위해.

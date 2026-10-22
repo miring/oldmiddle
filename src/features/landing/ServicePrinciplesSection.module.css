@@ -16,6 +16,11 @@
   line-height: var(--type-section-title-line);
 }
 
+/* 다른 화면에서 이 섹션으로 옮겨 올 때 제목에 포커스만 두고 테두리는 그리지 않음 */
+.title:focus {
+  outline: none;
+}
+
 .description {
   color: var(--color-text-inverse-secondary);
   font-size: var(--type-body-lg-size); /* Figma 16px → 기준 18px */

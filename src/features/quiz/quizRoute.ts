@@ -67,6 +67,22 @@ export function goHome() {
   window.scrollTo(0, 0)
 }
 
+// 랜딩으로 가며 보여 줄 섹션 (주소의 #은 화면 구분에 쓰므로 섹션 이동은 따로 전달)
+let pendingLandingSection: string | null = null
+
+/** 첫 화면(랜딩)으로 가서 해당 id의 섹션부터 보여 줍니다. 테스트 답은 지우지 않습니다. */
+export function goToLandingSection(sectionId: string) {
+  pendingLandingSection = sectionId
+  navigate(`${window.location.pathname}${window.location.search}`)
+}
+
+/** 랜딩이 그려진 뒤 한 번 꺼내 씀 */
+export function takePendingLandingSection(): string | null {
+  const sectionId = pendingLandingSection
+  pendingLandingSection = null
+  return sectionId
+}
+
 /**
  * 랜딩에서 테스트 시작: 같은 탭에서 이전에 고른 답(세션 저장소)을 지우고 1번부터 시작합니다.
  * 테스트 도중 새로고침·뒤로 가기에서는 답이 그대로 남습니다.

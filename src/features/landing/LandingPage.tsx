@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { takePendingLandingSection } from '../quiz/quizRoute'
 import { ClosingSection } from './ClosingSection'
 import { CompanionTypesSection } from './CompanionTypesSection'
 import { FaqSection } from './FaqSection'
@@ -9,6 +11,16 @@ import { PreregistrationSection } from './PreregistrationSection'
 import { ServicePrinciplesSection } from './ServicePrinciplesSection'
 
 export function LandingPage() {
+  // 다른 화면에서 특정 섹션으로 보내 왔으면 그 섹션부터 (고정 헤더 높이는 scroll-padding-top이 비켜 줌)
+  useEffect(() => {
+    const sectionId = takePendingLandingSection()
+    if (!sectionId) return
+    const section = document.getElementById(sectionId)
+    if (!section) return
+    section.scrollIntoView({ block: 'start' })
+    section.querySelector('h2')?.focus({ preventScroll: true })
+  }, [])
+
   return (
     <>
       <LandingHeader />

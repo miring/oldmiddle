@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import bellIcon from '../../assets/icons/bell.svg'
 import doneOpenDoor from '../../assets/preregister/done-open-door.webp'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
-import { ButtonLink } from '../../components/ui/Button/Button'
+import { Button, ButtonLink } from '../../components/ui/Button/Button'
 import { PREREGISTER_DONE_COPY as C } from '../../config/copy'
 import { site } from '../../config/site'
-import { RESULT_HASH } from '../quiz/quizRoute'
+import { SERVICE_INTRO_SECTION_ID } from '../landing/ServicePrinciplesSection'
+import { RESULT_HASH, goToLandingSection } from '../quiz/quizRoute'
 import { RESULTS } from '../quiz/results'
 import { getDoneInfo } from './preregisterDone'
 import { TestModeBanner } from './TestModeBanner'
@@ -32,6 +33,7 @@ export function PreregisterDonePage() {
   const result = info?.myType ? RESULTS[info.myType] : null
   const match = result ? RESULTS[result.match.type] : null
   const count = info?.sameRegionCount ?? null
+  const landingHref = `${window.location.pathname}${window.location.search}`
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -99,6 +101,23 @@ export function PreregisterDonePage() {
               </ButtonLink>
               <p className={styles.note}>{C.channelNote}</p>
             </div>
+          )}
+          {/* 서비스 소개로: 채널 버튼이 없으면 보조 버튼, 있으면 글자 링크 (테스트 답은 그대로) */}
+          {site.kakaoChannelUrl ? (
+            <a
+              href={landingHref}
+              className={`${styles.link} self-center`}
+              onClick={(event) => {
+                event.preventDefault()
+                goToLandingSection(SERVICE_INTRO_SECTION_ID)
+              }}
+            >
+              {C.aboutLink}
+            </a>
+          ) : (
+            <Button variant="secondary" onClick={() => goToLandingSection(SERVICE_INTRO_SECTION_ID)}>
+              {C.aboutLink}
+            </Button>
           )}
           <p className={styles.note}>{C.cancelNote}</p>
         </div>
