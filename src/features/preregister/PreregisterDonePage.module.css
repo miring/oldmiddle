@@ -64,13 +64,20 @@
   overflow-wrap: anywhere;
 }
 
-/* 같은 지역 카드 안내: 16px, 강조 부분만 진한 본문색 굵게 */
+/* 같은 지역 카드 안 노란 알림 상자: 16px 진한 본문색, 강조 부분만 굵게 */
 .notify {
-  color: var(--color-form-helper);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-badge);
+  color: var(--color-text-primary);
   font-size: var(--type-body-size);
   line-height: var(--type-body-line);
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+
+/* 종 아이콘: 첫 줄 가운데에 맞춤 */
+.notifyIcon {
+  margin-top: calc((var(--type-body-size) * var(--type-body-line) - var(--space-unit) * 5.5) / 2);
 }
 
 .notify strong {

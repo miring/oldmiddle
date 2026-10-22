@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import bellIcon from '../../assets/icons/bell.svg'
 import doneOpenDoor from '../../assets/preregister/done-open-door.webp'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
 import { ButtonLink } from '../../components/ui/Button/Button'
@@ -59,11 +60,15 @@ export function PreregisterDonePage() {
                   : C.regionOpen(info.regionName)}
               </h2>
             )}
-            <p className={styles.notify}>
-              {C.notify.before}
-              <strong>{C.notify.strong}</strong>
-              {C.notify.after}
-            </p>
+            {/* 노란 알림 상자: 언제 어떻게 연락이 가는지 */}
+            <div className={`${styles.notify} flex items-start gap-2 px-3.5 py-3`}>
+              <img className={`${styles.notifyIcon} size-5.5 shrink-0`} src={bellIcon} alt="" aria-hidden="true" />
+              <p>
+                {C.notify.before}
+                <strong>{C.notify.strong}</strong>
+                {C.notify.after}
+              </p>
+            </div>
           </section>
 
           {/* 사전 신청 혜택: 문구가 정해지기 전에는 카드 전체를 숨김 */}
