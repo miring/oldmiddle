@@ -26,6 +26,12 @@
   font-weight: var(--font-weight-bold);
 }
 
+/* 오류: 고르지 않은 칩 모두 테두리·배경 변경 (문구·아이콘은 묶음 아래) */
+.chip:has(.input[aria-invalid='true']) {
+  border: var(--border-width-form-error) solid var(--color-form-border-error);
+  background-color: var(--color-form-bg-error);
+}
+
 .chip:has(.input:focus-visible) {
   outline: var(--focus-ring-width) solid var(--color-focus-ring);
   outline-offset: var(--focus-ring-offset);

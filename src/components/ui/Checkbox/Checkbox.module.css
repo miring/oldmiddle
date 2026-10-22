@@ -11,6 +11,12 @@
   background-color: var(--color-surface-raised);
 }
 
+/* 오류: 체크 안 된 필수 항목 상자 */
+.input[aria-invalid='true'] + .box {
+  border: var(--border-width-form-error) solid var(--color-form-border-error);
+  background-color: var(--color-form-bg-error);
+}
+
 /* 체크: 칠한 상자 + 흰 체크 표시(테두리 두 변을 돌려 그림) */
 .input:checked + .box {
   border-color: var(--color-control-checked);

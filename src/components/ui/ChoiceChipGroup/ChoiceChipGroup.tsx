@@ -1,3 +1,5 @@
+import { useId } from 'react'
+import { FieldMessage } from '../FieldMessage/FieldMessage'
 import styles from './ChoiceChipGroup.module.css'
 
 export type ChoiceChipOption = { value: string; label: string }
@@ -12,13 +14,17 @@ type ChoiceChipGroupProps = {
   onChange: (value: string) => void
   /** 한 줄에 놓을 칩 개수 */
   columns?: 2 | 3
+  /** 오류 문구. 있으면 묶음 아래에 보이고 칩이 오류 상태가 됨 */
+  error?: string | null
 }
 
 /**
  * 칩 모양 단일 선택 묶음. 실제 radio 입력이라 키보드(방향키)·화면 읽기 프로그램에서도 동작합니다.
  * 사전 신청 성별·연령대, 이후 프로필 선택 항목 등에서 씁니다.
  */
-export function ChoiceChipGroup({ legend, name, options, value, onChange, columns = 2 }: ChoiceChipGroupProps) {
+export function ChoiceChipGroup({ legend, name, options, value, onChange, columns = 2, error }: ChoiceChipGroupProps) {
+  const messageId = useId()
+
   return (
     <fieldset className="flex flex-col gap-2.5">
       <legend className={`${styles.legend} mb-2.5`}>{legend}</legend>
@@ -34,12 +40,15 @@ export function ChoiceChipGroup({ legend, name, options, value, onChange, column
                 value={option.value}
                 checked={checked}
                 onChange={() => onChange(option.value)}
+                aria-invalid={error ? true : undefined}
+                aria-describedby={error ? messageId : undefined}
               />
               {option.label}
             </label>
           )
         })}
       </div>
+      <FieldMessage id={messageId} error={error} />
     </fieldset>
   )
 }

@@ -1,4 +1,5 @@
 import { useId, type InputHTMLAttributes, type ReactNode, type Ref } from 'react'
+import { FieldMessage } from '../FieldMessage/FieldMessage'
 import styles from './TextField.module.css'
 
 type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'> & {
@@ -10,7 +11,7 @@ type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' | '
   /** 입력칸 아래 도움말 */
   hint?: ReactNode
   /** 오류 문구. 있으면 도움말 대신 보이고 입력칸이 오류 상태가 됨 */
-  error?: string
+  error?: string | null
   /** 입력칸 오른쪽에 붙일 요소 (예: "인증번호" 버튼) */
   trailing?: ReactNode
   inputRef?: Ref<HTMLInputElement>
@@ -51,11 +52,7 @@ export function TextField({
         />
         {trailing}
       </div>
-      {message && (
-        <p id={messageId} className={error ? styles.error : styles.hint}>
-          {message}
-        </p>
-      )}
+      <FieldMessage id={messageId} hint={hint} error={error} />
     </div>
   )
 }

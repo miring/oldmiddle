@@ -1,0 +1,26 @@
+.hint,
+.error {
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.hint {
+  color: var(--color-form-helper);
+}
+
+.error {
+  color: var(--color-form-error);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 오류 아이콘: 모양만 가져오고 색은 토큰으로 칠함. 첫 줄 가운데에 맞춤 */
+.icon {
+  width: var(--size-icon-md);
+  height: var(--size-icon-md);
+  margin-top: calc((var(--type-body-size) * var(--type-body-line) - var(--size-icon-md)) / 2);
+  background-color: var(--color-form-error);
+  -webkit-mask: url('../../../assets/icons/circle-alert.svg') center / contain no-repeat;
+  mask: url('../../../assets/icons/circle-alert.svg') center / contain no-repeat;
+}

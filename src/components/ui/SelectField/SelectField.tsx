@@ -1,4 +1,4 @@
-import { useId } from 'react'
+import { useId, type Ref } from 'react'
 import styles from './SelectField.module.css'
 
 export type SelectOption = { value: string; label: string }
@@ -14,6 +14,10 @@ type SelectFieldProps = {
   placeholder: string
   onChange: (value: string) => void
   disabled?: boolean
+  /** 오류 상태 (테두리·배경). 오류 문구는 묶음 아래에 따로 두고 describedBy로 연결 */
+  invalid?: boolean
+  describedBy?: string
+  selectRef?: Ref<HTMLSelectElement>
 }
 
 /** 라벨 + 선택 상자(휴대폰 기본 선택 창 사용). 사는 지역(시·도, 시·군·구) 등에서 씁니다. */
@@ -26,6 +30,9 @@ export function SelectField({
   placeholder,
   onChange,
   disabled = false,
+  invalid = false,
+  describedBy,
+  selectRef,
 }: SelectFieldProps) {
   const id = useId()
 
@@ -37,11 +44,14 @@ export function SelectField({
       <div className="relative">
         <select
           id={id}
+          ref={selectRef}
           name={name}
           className={`${styles.select} ${value ? '' : styles.empty} w-full`}
           value={value}
           onChange={(event) => onChange(event.target.value)}
           disabled={disabled}
+          aria-invalid={invalid ? true : undefined}
+          aria-describedby={describedBy}
         >
           <option value="" disabled>
             {placeholder}

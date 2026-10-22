@@ -4,6 +4,10 @@
   background-color: var(--color-surface-raised);
 }
 
+.cardError {
+  border: var(--border-width-form-error) solid var(--color-form-border-error);
+}
+
 .divider {
   border: 0;
   border-top: var(--border-width-default) solid var(--color-border-subtle);

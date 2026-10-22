@@ -25,6 +25,11 @@
   font-size: var(--type-body-size);
 }
 
+.select[aria-invalid='true'] {
+  border: var(--border-width-form-error) solid var(--color-form-border-error);
+  background-color: var(--color-form-bg-error);
+}
+
 /* 아직 고르지 않았을 때 안내 문구 색 */
 .empty {
   color: var(--color-text-placeholder);

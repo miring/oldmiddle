@@ -9,10 +9,21 @@ type CheckboxProps = {
   children: ReactNode
   /** 바깥에서 체크박스로 포커스를 옮길 때 (예: 동의 [보기]의 "동의하고 닫기") */
   inputRef?: (element: HTMLInputElement | null) => void
+  /** 오류 상태 (상자 테두리). 오류 문구는 묶음 아래에 두고 describedBy로 연결 */
+  invalid?: boolean
+  describedBy?: string
 }
 
 /** 체크박스 + 라벨. 라벨 글자를 눌러도 체크되고, 누르는 영역은 줄 전체(48px 이상)입니다. */
-export function Checkbox({ checked, indeterminate = false, onChange, children, inputRef }: CheckboxProps) {
+export function Checkbox({
+  checked,
+  indeterminate = false,
+  onChange,
+  children,
+  inputRef,
+  invalid = false,
+  describedBy,
+}: CheckboxProps) {
   const ownRef = useRef<HTMLInputElement>(null)
 
   // indeterminate는 HTML 속성이 아니라 DOM 값으로만 지정할 수 있음
@@ -31,6 +42,8 @@ export function Checkbox({ checked, indeterminate = false, onChange, children, i
         type="checkbox"
         checked={checked}
         onChange={(event) => onChange(event.target.checked)}
+        aria-invalid={invalid ? true : undefined}
+        aria-describedby={describedBy}
       />
       <span className={`${styles.box} flex shrink-0 items-center justify-center`} aria-hidden="true" />
       <span className={styles.label}>{children}</span>

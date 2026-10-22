@@ -21,22 +21,6 @@
 }
 
 .input[aria-invalid='true'] {
-  border-color: var(--color-action-danger-bg);
-}
-
-.hint {
-  color: var(--color-text-secondary);
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-line);
-  word-break: keep-all;
-  overflow-wrap: anywhere;
-}
-
-.error {
-  color: var(--color-action-danger-bg);
-  font-size: var(--type-body-size);
-  font-weight: var(--font-weight-medium);
-  line-height: var(--type-body-line);
-  word-break: keep-all;
-  overflow-wrap: anywhere;
+  border: var(--border-width-form-error) solid var(--color-form-border-error);
+  background-color: var(--color-form-bg-error);
 }
