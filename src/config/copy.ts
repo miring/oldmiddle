@@ -53,6 +53,14 @@ export const PREREGISTER_CONFIRM_COPY = {
 export const PREREGISTER_DONE_COPY = {
   header: '신청 완료',
   title: '사전 신청이 끝났어요',
+  /** 제목 아래 감성 문장. 화면이 열릴 때 하나를 무작위로 골라 보여 줌 */
+  warmLines: [
+    '오늘 낸 한 걸음이 따뜻한 인연으로 이어지길 바라요.',
+    '좋은 인연은 서두르지 않아도 제때 찾아와요.',
+    '함께 걷고 싶은 길이 생기면, 하루가 조금 더 환해져요.',
+    '새로운 계절처럼, 새로운 인연도 천천히 다가와요.',
+    '인생의 다음 장은 생각보다 따뜻할 거예요.',
+  ],
   regionCount: (region: string, count: number) => `${region}에서 ${count}명이 먼저 신청했어요`,
   regionOpen: (region: string) => `${region}에서 사전 신청을 받고 있어요`,
   notify: '문을 열면 카카오톡이나 문자로 가장 먼저 알려 드릴게요.',

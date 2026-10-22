@@ -20,6 +20,8 @@ export const SAME_REGION_COUNT_THRESHOLD = 10
 export function PreregisterDonePage() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const [info] = useState(getDoneInfo)
+  // 화면이 처음 열릴 때 한 번만 고름 (다시 그려져도 바뀌지 않음)
+  const [warmLine] = useState(() => C.warmLines[Math.floor(Math.random() * C.warmLines.length)])
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -45,6 +47,7 @@ export function PreregisterDonePage() {
             <h1 ref={titleRef} tabIndex={-1} className={styles.title}>
               {C.title}
             </h1>
+            <p className={styles.warmLine}>{warmLine}</p>
           </div>
 
           {/* 같은 지역 안내 */}

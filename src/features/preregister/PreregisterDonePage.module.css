@@ -17,6 +17,16 @@
   outline: none;
 }
 
+/* 제목 아래 감성 문장 */
+.warmLine {
+  color: var(--color-form-helper);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 .card {
   border: var(--border-width-default) solid var(--color-border-subtle);
   border-radius: var(--radius-lg);
