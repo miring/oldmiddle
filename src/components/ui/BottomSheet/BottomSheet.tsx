@@ -58,7 +58,7 @@ export function BottomSheet({ open, onRequestClose, title, children }: BottomShe
   return createPortal(
     <div className={`${styles.layer} fixed inset-0 flex items-end justify-center`} onKeyDown={handleKeyDown}>
       {/* 바깥 영역: 누르면 닫힘 (키보드 사용자는 ESC나 [고치기]) */}
-      <div className={`${styles.scrim} absolute inset-0`} onClick={onRequestClose} aria-hidden="true" />
+      <div className={`${styles.scrim} absolute inset-0`} onClick={() => onRequestClose()} aria-hidden="true" />
       <div
         ref={panelRef}
         role="dialog"

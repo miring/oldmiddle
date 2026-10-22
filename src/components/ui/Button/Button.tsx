@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
 import arrowBack from '../../../assets/icons/arrow-back.svg'
 import styles from './Button.module.css'
 
@@ -42,5 +42,18 @@ export function Button({
       {children}
       {arrow === 'forward' && <span className={styles.forwardArrow} aria-hidden="true" />}
     </button>
+  )
+}
+
+type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  variant?: 'primary' | 'secondary' | 'soft'
+}
+
+/** 버튼 모양의 링크 (예: 새 탭으로 여는 외부 주소). 폭은 Button과 같이 부모를 꽉 채움 */
+export function ButtonLink({ variant = 'primary', className, children, ...rest }: ButtonLinkProps) {
+  return (
+    <a className={[styles.button, styles[variant], className ?? ''].join(' ')} {...rest}>
+      {children}
+    </a>
   )
 }

@@ -20,9 +20,17 @@ export function useBottomSheet({ onClose }: { onClose?: () => void } = {}) {
     wasOpen.current = open
   }, [open])
 
+  // 닫은 다음 이어서 할 일 (예: 완료 화면으로 이동). 기록을 되돌린 뒤에 실행해야 기록이 꼬이지 않음
+  const thenRef = useRef<(() => void) | null>(null)
+
   useEffect(() => {
     if (!open) return
-    const handlePopState = () => setOpen(false)
+    const handlePopState = () => {
+      setOpen(false)
+      const then = thenRef.current
+      thenRef.current = null
+      then?.()
+    }
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [open])
@@ -32,11 +40,17 @@ export function useBottomSheet({ onClose }: { onClose?: () => void } = {}) {
     setOpen(true)
   }
 
-  // 닫기: 쌓아 둔 기록을 되돌리면 위 popstate에서 닫힘
-  const close = () => {
+  // 닫기: 쌓아 둔 기록을 되돌리면 위 popstate에서 닫힘. then은 닫힌 뒤 실행
+  const close = (options?: { then?: () => void }) => {
+    const then = typeof options?.then === 'function' ? options.then : null
     const state: unknown = window.history.state
-    if (state && typeof state === 'object' && 'sheet' in state) window.history.back()
-    else setOpen(false)
+    if (state && typeof state === 'object' && 'sheet' in state) {
+      thenRef.current = then
+      window.history.back()
+    } else {
+      setOpen(false)
+      then?.()
+    }
   }
 
   return { open, show, close }
