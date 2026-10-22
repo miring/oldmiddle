@@ -1,0 +1,36 @@
+.summary {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.label {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+.phone {
+  color: var(--color-text-primary);
+  font-size: var(--type-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-question-line);
+  font-variant-numeric: tabular-nums;
+}
+
+.value {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+  text-align: right;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.notice {
+  color: var(--color-form-helper);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}

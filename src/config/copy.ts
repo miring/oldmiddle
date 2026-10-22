@@ -15,8 +15,6 @@ export const COPY = {
 export const PREREGISTER_FORM_COPY = {
   /** 신청 버튼 아래 안내 */
   optionalNote: '선택 항목은 체크하지 않아도 신청돼요',
-  /** 보내는 동안 신청 버튼 문구 */
-  submitting: '보내는 중…',
   errors: {
     gender: '성별을 골라 주세요',
     age: '연령대를 골라 주세요',
@@ -30,6 +28,25 @@ export const PREREGISTER_FORM_COPY = {
     codeNotVerified: '인증번호를 확인해 주세요',
     consent: '필수 항목에 동의해 주세요',
   },
+} as const
+
+/** 신청 전 확인 바텀시트 "이대로 신청할까요?" */
+export const PREREGISTER_CONFIRM_COPY = {
+  title: '이대로 신청할까요?',
+  labels: {
+    phone: '휴대폰 번호',
+    region: '사는 지역',
+    age: '연령대',
+    gender: '성별',
+    marketing: '혜택·이벤트 소식',
+  },
+  marketingYes: '받음',
+  marketingNo: '받지 않음',
+  notice: '이 번호로 오픈 소식을 카카오톡으로 보내 드려요',
+  confirm: '이대로 신청하기',
+  confirming: '신청하는 중…',
+  edit: '고치기',
+  failed: '신청하지 못했어요. 잠시 후 [이대로 신청하기]를 다시 눌러 주세요.',
 } as const
 
 /**

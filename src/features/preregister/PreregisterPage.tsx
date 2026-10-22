@@ -1,14 +1,18 @@
 import { useEffect, useId, useRef, useState, type FocusEvent, type FormEvent, type MouseEvent } from 'react'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
 import { Button } from '../../components/ui/Button/Button'
+import { BottomSheet } from '../../components/ui/BottomSheet/BottomSheet'
+import { useBottomSheet } from '../../components/ui/BottomSheet/useBottomSheet'
 import { ChoiceChipGroup } from '../../components/ui/ChoiceChipGroup/ChoiceChipGroup'
 import { ConsentGroup } from '../../components/ui/ConsentGroup/ConsentGroup'
 import { FieldMessage } from '../../components/ui/FieldMessage/FieldMessage'
 import { SelectField } from '../../components/ui/SelectField/SelectField'
 import { TextField } from '../../components/ui/TextField/TextField'
-import { CONSENT_COPY, COPY, PREREGISTER_FORM_COPY } from '../../config/copy'
+import { CONSENT_COPY, COPY, PREREGISTER_CONFIRM_COPY, PREREGISTER_FORM_COPY } from '../../config/copy'
 import { MOCK_SMS_VERIFICATION } from '../../config/devFlags'
+import { useQuizAnswers } from '../quiz/quizAnswers'
 import { RESULT_HASH, UNDER45_HASH, goBackTo, navigate } from '../quiz/quizRoute'
+import { calculateResult } from '../quiz/results'
 import {
   AGE_OPTIONS,
   CONSENT_ITEMS,
@@ -19,7 +23,9 @@ import {
   isValidMobile,
 } from './preregisterOptions'
 import { getDraft, updateDraft, usePreregisterDraft } from './preregisterDraft'
+import { ConfirmSheetContent } from './ConfirmSheetContent'
 import { ConsentDetails } from './ConsentDetails'
+import { buildPreregisterPayload, submitPreregistration } from './submitPreregistration'
 import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterPage.module.css'
 
@@ -57,8 +63,13 @@ export function PreregisterPage() {
 
   // 오류를 보여 줄 칸: 칸을 벗어날 때(blur)와 신청 버튼을 누를 때만 켬. 입력하는 도중에는 켜지 않음
   const [shown, setShown] = useState<Partial<Record<FieldKey, boolean>>>({})
-  const [submitting, setSubmitting] = useState(false)
-  const submittingRef = useRef(false)
+  const answers = useQuizAnswers()
+
+  // 확인 바텀시트: [고치기]·바깥·ESC·뒤로 가기로 닫으면 입력값은 그대로, 포커스는 휴대폰 번호 칸으로
+  const sheet = useBottomSheet({ onClose: () => phoneRef.current?.focus() })
+  const [confirming, setConfirming] = useState(false)
+  const confirmingRef = useRef(false)
+  const [confirmError, setConfirmError] = useState<string | null>(null)
   const regionMessageId = useId()
 
   useEffect(() => {
@@ -160,22 +171,33 @@ export function PreregisterPage() {
       ? '확인됐어요. (테스트 — 실제 문자는 보내지 않아요)'
       : '문자로 받은 6자리를 입력해 주세요. (테스트 중: 아무 6자리나 통과)'
 
-  const handleSubmit = async (event: FormEvent) => {
+  // 신청하기: 검사 → 통과하면 확인 바텀시트 (아직 저장하지 않음)
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    if (submittingRef.current) return // 두 번 눌러도 한 번만
     if (missing) {
       setShown(Object.fromEntries(FIELD_ORDER.map((key) => [key, Boolean(errors[key])])))
       focusField(missing)
       return
     }
-    submittingRef.current = true
-    setSubmitting(true)
+    setConfirmError(null)
+    sheet.show()
+  }
+
+  // 이대로 신청하기: 여기서 저장. 끝날 때까지 버튼을 막아 두 번 저장되지 않게
+  const handleConfirm = async () => {
+    if (confirmingRef.current) return
+    confirmingRef.current = true
+    setConfirming(true)
+    setConfirmError(null)
     try {
-      // TODO(사전 신청 저장): 4단계에서 저장 요청과 신청 완료 화면을 연결합니다.
-      await Promise.resolve()
+      await submitPreregistration(buildPreregisterPayload(draft, calculateResult(answers)))
+      // TODO(신청 완료 화면): [3]에서 완료 화면으로 이동합니다. 지금은 바텀시트만 닫습니다.
+      sheet.close()
+    } catch {
+      setConfirmError(PREREGISTER_CONFIRM_COPY.failed) // 실패하면 바텀시트를 닫지 않고 안에 오류 표시
     } finally {
-      submittingRef.current = false
-      setSubmitting(false)
+      confirmingRef.current = false
+      setConfirming(false)
     }
   }
 
@@ -319,10 +341,8 @@ export function PreregisterPage() {
           </div>
 
           <div className="flex flex-col items-center gap-2.5">
-            {/* 항상 누를 수 있음: 누르면 검사해서 첫 오류 칸으로 이동. 보내는 동안만 막음 */}
-            <Button type="submit" disabled={submitting}>
-              {submitting ? PREREGISTER_FORM_COPY.submitting : COPY.preregisterSubmit}
-            </Button>
+            {/* 항상 누를 수 있음: 누르면 검사해서 첫 오류 칸으로, 통과하면 확인 바텀시트 */}
+            <Button type="submit">{COPY.preregisterSubmit}</Button>
             <p className={styles.hint}>{PREREGISTER_FORM_COPY.optionalNote}</p>
             <a href="#" className={styles.link} onClick={handlePrivacyClick}>
               개인정보 처리방침
@@ -330,6 +350,16 @@ export function PreregisterPage() {
           </div>
         </form>
       </main>
+
+      <BottomSheet open={sheet.open} onRequestClose={sheet.close} title={PREREGISTER_CONFIRM_COPY.title}>
+        <ConfirmSheetContent
+          draft={draft}
+          confirming={confirming}
+          error={confirmError}
+          onConfirm={handleConfirm}
+          onEdit={sheet.close}
+        />
+      </BottomSheet>
     </div>
   )
 }
