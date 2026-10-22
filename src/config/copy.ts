@@ -66,7 +66,6 @@ export const PREREGISTER_DONE_COPY = {
   resultLink: '결과 다시 보기',
   channel: '카카오톡 채널 추가하기',
   channelNote: '선택 · 채널을 추가하면 문의도 카카오톡으로 할 수 있어요',
-  share: '테스트 링크 공유하기',
   cancelNote: '신청 취소는 안내 메시지의 링크로 언제든 할 수 있어요',
 }
 

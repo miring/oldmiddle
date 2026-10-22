@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import doneOpenDoor from '../../assets/preregister/done-open-door.webp'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
-import { Button, ButtonLink } from '../../components/ui/Button/Button'
+import { ButtonLink } from '../../components/ui/Button/Button'
 import { PREREGISTER_DONE_COPY as C } from '../../config/copy'
 import { site } from '../../config/site'
 import { RESULT_HASH } from '../quiz/quizRoute'
 import { RESULTS } from '../quiz/results'
-import { shareTestLink } from '../quiz/shareResult'
 import { getDoneInfo } from './preregisterDone'
 import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterDonePage.module.css'
@@ -21,7 +20,6 @@ export const SAME_REGION_COUNT_THRESHOLD = 10
 export function PreregisterDonePage() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const [info] = useState(getDoneInfo)
-  const [shareMessage, setShareMessage] = useState<string | null>(null)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -90,12 +88,6 @@ export function PreregisterDonePage() {
               <p className={styles.note}>{C.channelNote}</p>
             </div>
           )}
-          <Button variant="secondary" onClick={async () => setShareMessage(await shareTestLink())}>
-            {C.share}
-          </Button>
-          <p className={styles.note} aria-live="polite">
-            {shareMessage}
-          </p>
           <p className={styles.note}>{C.cancelNote}</p>
         </div>
       </main>
