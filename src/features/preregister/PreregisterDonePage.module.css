@@ -56,7 +56,6 @@
   overflow-wrap: anywhere;
 }
 
-.helper,
 .body,
 .summary {
   font-size: var(--type-body-lg-size);
@@ -65,8 +64,18 @@
   overflow-wrap: anywhere;
 }
 
-.helper {
+/* 같은 지역 카드 안내: 16px, 강조 부분만 진한 본문색 굵게 */
+.notify {
   color: var(--color-form-helper);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.notify strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
 }
 
 .body,

@@ -63,7 +63,12 @@ export const PREREGISTER_DONE_COPY = {
   ],
   regionCount: (region: string, count: number) => `${region}에서 ${count}명이 먼저 신청했어요`,
   regionOpen: (region: string) => `${region}에서 사전 신청을 받고 있어요`,
-  notify: '문을 열면 카카오톡이나 문자로 가장 먼저 알려 드릴게요.',
+  /** 같은 지역 카드 안내. strong 부분만 굵게 강조 (앞 + 강조 + 뒤로 이어 붙여 한 문장) */
+  notify: {
+    before: '서비스를 시작하면 ',
+    strong: '카카오톡이나 문자로 가장 먼저',
+    after: ' 알려 드릴게요.',
+  },
   /** 사전 신청 혜택. title이 비어 있으면 혜택 카드 전체를 숨깁니다 (docs/운영-준비.md "동의서 빈칸"과 함께 채움) */
   benefit: {
     badge: '사전 신청 혜택',

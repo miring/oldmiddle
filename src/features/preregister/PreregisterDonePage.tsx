@@ -59,7 +59,11 @@ export function PreregisterDonePage() {
                   : C.regionOpen(info.regionName)}
               </h2>
             )}
-            <p className={styles.helper}>{C.notify}</p>
+            <p className={styles.notify}>
+              {C.notify.before}
+              <strong>{C.notify.strong}</strong>
+              {C.notify.after}
+            </p>
           </section>
 
           {/* 사전 신청 혜택: 문구가 정해지기 전에는 카드 전체를 숨김 */}
