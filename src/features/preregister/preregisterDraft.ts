@@ -8,7 +8,9 @@ import { useSyncExternalStore } from 'react'
 export type PreregisterDraft = {
   gender: string | null
   age: string | null
+  /** 시·도 코드 2자리 (법정동코드 앞 2자리, 예: '11'). 화면 이름은 저장하지 않고 regions.json에서 찾아 씀 */
   province: string
+  /** 시·군·구 코드 5자리 (예: '11680'). 세종처럼 시·군·구가 없으면 시·도 코드를 그대로 넣음 (open_regions와 코드로 비교) */
   district: string
   phone: string
   codeRequested: boolean

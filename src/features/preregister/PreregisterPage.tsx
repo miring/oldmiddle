@@ -22,6 +22,12 @@ import { ConsentDetails } from './ConsentDetails'
 import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterPage.module.css'
 
+// 시·도를 바꾸면 시·군·구를 다시 고르게 비움. 시·군·구가 없는 곳(세종)은 시·도 코드를 시·군·구 코드로 씀
+function districtCodeFor(provinceCode: string): string {
+  const region = REGIONS.find((r) => r.code === provinceCode)
+  return region && region.districts.length === 0 ? provinceCode : ''
+}
+
 // 동의 항목마다 [보기]로 펼칠 내용을 붙임 (문구는 src/config/copy.ts)
 const CONSENT_ITEMS_WITH_DETAILS = CONSENT_ITEMS.map((item) => ({ ...item, details: <ConsentDetails id={item.id} /> }))
 
@@ -140,7 +146,7 @@ export function PreregisterPage() {
                 value={draft.province}
                 placeholder="시·도"
                 options={REGIONS.map((region) => ({ value: region.code, label: region.name }))}
-                onChange={(code) => updateDraft({ province: code, district: '' })}
+                onChange={(code) => updateDraft({ province: code, district: districtCodeFor(code) })}
               />
               {needsDistrict && (
                 <SelectField
