@@ -9,6 +9,27 @@ export const COPY = {
   preregisterSubmit: '오픈 소식 받기',
 } as const
 
+/** 사전 신청 폼 안내·오류 문구. 오류는 무엇을 고치면 되는지 말합니다. */
+export const PREREGISTER_FORM_COPY = {
+  /** 신청 버튼 아래 안내 */
+  optionalNote: '선택 항목은 체크하지 않아도 신청돼요',
+  /** 보내는 동안 신청 버튼 문구 */
+  submitting: '보내는 중…',
+  errors: {
+    gender: '성별을 골라 주세요',
+    age: '연령대를 골라 주세요',
+    province: '사는 시·도를 골라 주세요',
+    district: '사는 시·군·구를 골라 주세요',
+    phoneEmpty: '휴대폰 번호를 입력해 주세요',
+    phonePrefix: '010처럼 01로 시작하는 휴대폰 번호를 입력해 주세요',
+    phoneShort: '휴대폰 번호 11자리를 입력해 주세요 (예: 010-1234-5678)',
+    codeNotRequested: '[인증번호]를 눌러 문자로 받은 번호를 입력해 주세요',
+    codeShort: '문자로 받은 인증번호 6자리를 입력해 주세요',
+    codeNotVerified: '인증번호를 확인해 주세요',
+    consent: '필수 항목에 동의해 주세요',
+  },
+} as const
+
 /**
  * 사전 신청 동의서 판(version). 아래 동의 문구를 고치면 이 값도 올립니다.
  * 저장할 때 consent_version으로 함께 남겨, 어느 문구에 동의했는지 알 수 있게 합니다.

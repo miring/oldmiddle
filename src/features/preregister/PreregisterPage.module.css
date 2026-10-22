@@ -21,7 +21,7 @@
 }
 
 .hint {
-  color: var(--color-text-secondary);
+  color: var(--color-form-helper);
   font-size: var(--type-body-size);
   line-height: var(--type-body-line);
   text-align: center;
