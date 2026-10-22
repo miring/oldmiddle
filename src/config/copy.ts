@@ -74,7 +74,7 @@ export const PREREGISTER_DONE_COPY = {
  * 사전 신청 동의서 판(version). 아래 동의 문구를 고치면 이 값도 올립니다.
  * 저장할 때 consent_version으로 함께 남겨, 어느 문구에 동의했는지 알 수 있게 합니다.
  */
-export const CONSENT_VERSION = '2026-10-v2'
+export const CONSENT_VERSION = '2026-10-v3'
 
 /**
  * 사전 신청 동의 항목 [보기] 내용.
@@ -116,7 +116,7 @@ export const CONSENT_COPY = {
       },
       {
         what: '성별, 연령대, 사는 지역(시·군·구), 테스트 유형',
-        why: '잘 맞는 유형을 보여 드리고, 어느 지역부터 문을 열지 정하기 위해',
+        why: '어느 지역부터 문을 열지 정하는 통계를 내기 위해',
         until: PREREGISTER_RETENTION,
       },
       {
@@ -128,7 +128,7 @@ export const CONSENT_COPY = {
     notes: [
       '신청을 취소하면 바로 지워요.',
       '신청 정보는 [국가]에 있는 [업체] 서버에 저장돼요.',
-      '동의하지 않을 수 있어요. 다만 그러면 사전 신청과 오픈 소식 받기는 할 수 없어요. 내 유형 결과와 잘 맞는 유형은 동의 없이도 볼 수 있어요.',
+      '동의하지 않을 수 있지만, 그러면 사전 신청과 오픈 안내를 받을 수 없어요. 결과는 그대로 볼 수 있어요.',
     ],
   },
   /** ③ (선택) 광고성 정보 수신 */
