@@ -305,7 +305,8 @@ export function PreregisterPage() {
             )}
           </div>
 
-          <div ref={consentRef} onBlur={(event) => leftGroup(event) && reveal('consent')}>
+          {/* 동의 오류는 신청하기를 눌렀을 때만 (전체 동의 label을 누르면 포커스가 잠깐 빠져 blur로 검사하면 깜빡임) */}
+          <div ref={consentRef}>
             <ConsentGroup
               allLabel={CONSENT_COPY.labels.all}
               items={CONSENT_ITEMS_WITH_DETAILS}
