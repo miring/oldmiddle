@@ -210,7 +210,10 @@
   --space-field-chip-x: var(--space-4);
 
   /* ── 입력 폼 (사전 신청) ── */
-  --color-action-danger-bg: #8a2e3b; /* 되돌릴 수 없는 삭제 버튼 */
+  /* 원시 색: 와인 (값은 여기서만 정하고 아래 토큰들이 참조) */
+  --color-wine-700: #8a2e3b;
+  --color-wine-50: #fbf1f2;
+  --color-action-danger-bg: var(--color-wine-700); /* 되돌릴 수 없는 삭제 버튼 */
   --color-text-on-danger: #ffffff; /* 위 배경 위 8.29:1 */
   --color-border-input: #8c897c; /* 입력칸·선택 상자·체크박스·칩 경계 — 흰 바탕 3.51:1 (Figma #ddd8c6 1.43:1 보정) */
   --color-text-placeholder: #6b6a5f; /* 입력칸 안내 글자 5.45:1 (Figma #8a877c 3.60:1 보정) */
@@ -220,6 +223,13 @@
   --size-input-height: var(--size-button-height); /* 입력칸 옆에 버튼을 붙일 때 높이가 맞도록 버튼과 같게 */
   --size-chip-height: 52px;
   --size-back-header-height: 64px;
+
+  /* ── 신청 폼 전용 (다른 화면에서는 쓰지 않음) ── */
+  --color-form-helper: #2f5850; /* 칸 아래 설명·버튼 아래 안내 — 페이지 7.63 / 흰 칸 7.98 / 노란 펼침 7.51 */
+  --color-form-error: var(--color-wine-700); /* 오류 문구·아이콘 — 페이지 7.92:1 */
+  --color-form-border-error: var(--color-wine-700); /* 오류 테두리 — 흰 칸 8.29:1 */
+  --color-form-bg-error: var(--color-wine-50); /* 오류 칸 배경 — 입력 글자 13.83 / 안내 글자 5.13 */
+  --border-width-form-error: 2px;
 
   /* ── 움직임 (prefers-reduced-motion이면 쓰는 쪽에서 끔) ── */
   --motion-duration-expand: 200ms; /* 펼침·접힘 */
