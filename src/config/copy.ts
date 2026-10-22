@@ -49,6 +49,27 @@ export const PREREGISTER_CONFIRM_COPY = {
   failed: '신청하지 못했어요. 잠시 후 [이대로 신청하기]를 다시 눌러 주세요.',
 } as const
 
+/** 사전 신청 완료 화면 */
+export const PREREGISTER_DONE_COPY = {
+  header: '신청 완료',
+  title: '사전 신청이 끝났어요',
+  regionCount: (region: string, count: number) => `${region}에서 ${count}명이 먼저 신청했어요`,
+  regionOpen: (region: string) => `${region}에서 사전 신청을 받고 있어요`,
+  notify: '문을 열면 카카오톡이나 문자로 가장 먼저 알려 드릴게요.',
+  /** 사전 신청 혜택. title이 비어 있으면 혜택 카드 전체를 숨깁니다 (docs/운영-준비.md "동의서 빈칸"과 함께 채움) */
+  benefit: {
+    badge: '사전 신청 혜택',
+    title: '',
+    note: '오픈 때 같은 조건으로 드려요.',
+  },
+  resultSummary: (myType: string, matchType: string) => `내 유형 ${myType} · 잘 맞는 유형 ${matchType}`,
+  resultLink: '결과 다시 보기',
+  channel: '카카오톡 채널 추가하기',
+  channelNote: '선택 · 채널을 추가하면 문의도 카카오톡으로 할 수 있어요',
+  share: '테스트 링크 공유하기',
+  cancelNote: '신청 취소는 안내 메시지의 링크로 언제든 할 수 있어요',
+}
+
 /**
  * 사전 신청 동의서 판(version). 아래 동의 문구를 고치면 이 값도 올립니다.
  * 저장할 때 consent_version으로 함께 남겨, 어느 문구에 동의했는지 알 수 있게 합니다.

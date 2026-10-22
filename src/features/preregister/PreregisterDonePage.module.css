@@ -1,0 +1,97 @@
+/* 완료 표시: 초록 원 + 흰 체크 (테두리 두 변을 돌려 그림) */
+.check {
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-calm);
+}
+
+.check::after {
+  content: '';
+  width: var(--space-2-5);
+  height: var(--space-4);
+  margin-top: calc(var(--space-1) * -1);
+  border: solid var(--color-text-inverse-primary);
+  border-width: 0 var(--border-width-form-error) var(--border-width-form-error) 0;
+  transform: rotate(45deg);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-question-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.card {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.benefit {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.badge {
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-badge);
+  color: var(--color-text-accent-strong);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-body-line);
+}
+
+.cardTitle {
+  color: var(--color-text-primary);
+  font-size: var(--type-heading-4-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.helper,
+.body,
+.summary {
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.helper {
+  color: var(--color-form-helper);
+}
+
+.body,
+.summary {
+  color: var(--color-text-secondary);
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-touch-min); /* 누르는 영역 48px */
+  color: var(--color-text-calm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: underline;
+}
+
+.note {
+  color: var(--color-form-helper);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.note:empty {
+  display: none;
+}

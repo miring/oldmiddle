@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { LandingPage } from './features/landing/LandingPage'
+import { PreregisterDonePage } from './features/preregister/PreregisterDonePage'
 import { PreregisterPage } from './features/preregister/PreregisterPage'
 import { Under45Page } from './features/preregister/Under45Page'
 import { firstUnansweredStep, useQuizAnswers } from './features/quiz/quizAnswers'
@@ -27,6 +28,7 @@ export function App() {
 
   if (route.view === 'preregister') return <PreregisterPage />
   if (route.view === 'under45') return <Under45Page />
+  if (route.view === 'done') return <PreregisterDonePage />
   if (route.view === 'result' && missingStep === null) {
     const result = calculateResult(answers)
     if (result) return <ResultPage type={result} />

@@ -11,7 +11,7 @@ import { TextField } from '../../components/ui/TextField/TextField'
 import { CONSENT_COPY, COPY, PREREGISTER_CONFIRM_COPY, PREREGISTER_FORM_COPY } from '../../config/copy'
 import { MOCK_SMS_VERIFICATION } from '../../config/devFlags'
 import { useQuizAnswers } from '../quiz/quizAnswers'
-import { RESULT_HASH, UNDER45_HASH, goBackTo, navigate } from '../quiz/quizRoute'
+import { DONE_HASH, RESULT_HASH, UNDER45_HASH, goBackTo, navigate } from '../quiz/quizRoute'
 import { calculateResult } from '../quiz/results'
 import {
   AGE_OPTIONS,
@@ -22,7 +22,8 @@ import {
   formatPhone,
   isValidMobile,
 } from './preregisterOptions'
-import { getDraft, updateDraft, usePreregisterDraft } from './preregisterDraft'
+import { setDoneInfo } from './preregisterDone'
+import { getDraft, resetDraft, updateDraft, usePreregisterDraft } from './preregisterDraft'
 import { ConfirmSheetContent } from './ConfirmSheetContent'
 import { ConsentDetails } from './ConsentDetails'
 import { buildPreregisterPayload, submitPreregistration } from './submitPreregistration'
@@ -190,9 +191,21 @@ export function PreregisterPage() {
     setConfirming(true)
     setConfirmError(null)
     try {
-      await submitPreregistration(buildPreregisterPayload(draft, calculateResult(answers)))
-      // TODO(신청 완료 화면): [3]에서 완료 화면으로 이동합니다. 지금은 바텀시트만 닫습니다.
-      sheet.close()
+      const myType = calculateResult(answers)
+      await submitPreregistration(buildPreregisterPayload(draft, myType))
+      // 완료 화면에 필요한 값만 메모리로 넘김 (시·군·구 이름, 세종처럼 없으면 시·도 이름)
+      setDoneInfo({
+        regionName: province?.districts.find((d) => d.code === draft.district)?.name ?? province?.name ?? '',
+        myType,
+        sameRegionCount: null, // TODO(사전 신청 저장): 저장 응답의 같은 지역 신청자 수
+      })
+      // 바텀시트 기록을 되돌린 뒤 신청 폼 기록을 완료 화면으로 바꿈 → 뒤로 가기 하면 결과 화면 (다시 제출 방지)
+      sheet.close({
+        then: () => {
+          resetDraft()
+          navigate(DONE_HASH, { replace: true })
+        },
+      })
     } catch {
       setConfirmError(PREREGISTER_CONFIRM_COPY.failed) // 실패하면 바텀시트를 닫지 않고 안에 오류 표시
     } finally {
@@ -351,13 +364,13 @@ export function PreregisterPage() {
         </form>
       </main>
 
-      <BottomSheet open={sheet.open} onRequestClose={sheet.close} title={PREREGISTER_CONFIRM_COPY.title}>
+      <BottomSheet open={sheet.open} onRequestClose={() => sheet.close()} title={PREREGISTER_CONFIRM_COPY.title}>
         <ConfirmSheetContent
           draft={draft}
           confirming={confirming}
           error={confirmError}
           onConfirm={handleConfirm}
-          onEdit={sheet.close}
+          onEdit={() => sheet.close()}
         />
       </BottomSheet>
     </div>
