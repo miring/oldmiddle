@@ -1,17 +1,7 @@
-/* 완료 표시: 초록 원 + 흰 체크 (테두리 두 변을 돌려 그림) */
-.check {
-  border-radius: var(--radius-full);
-  background-color: var(--color-text-calm);
-}
-
-.check::after {
-  content: '';
-  width: var(--space-2-5);
-  height: var(--space-4);
-  margin-top: calc(var(--space-1) * -1);
-  border: solid var(--color-text-inverse-primary);
-  border-width: 0 var(--border-width-form-error) var(--border-width-form-error) 0;
-  transform: rotate(45deg);
+/* 완료 이미지 (열린 문) */
+.doneImage {
+  border-radius: var(--radius-2xl);
+  object-fit: cover;
 }
 
 .title {

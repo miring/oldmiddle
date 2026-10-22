@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import doneOpenDoor from '../../assets/preregister/done-open-door.webp'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
 import { Button, ButtonLink } from '../../components/ui/Button/Button'
 import { PREREGISTER_DONE_COPY as C } from '../../config/copy'
@@ -40,8 +41,9 @@ export function PreregisterDonePage() {
       </div>
       <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-1 flex-col gap-10 px-6 pt-2 pb-8">
         <div className="flex flex-col gap-5">
-          <div className="flex items-center gap-3">
-            <span className={`${styles.check} flex size-8 shrink-0 items-center justify-center`} aria-hidden="true" />
+          <div className="flex flex-col items-center gap-4 pt-4 text-center">
+            {/* 꾸밈 이미지: 400px로 저장해 200px로 보여 줌(레티나). width·height로 자리를 미리 잡아 아래 내용이 밀리지 않음 */}
+            <img className={`${styles.doneImage} size-50`} src={doneOpenDoor} width={200} height={200} alt="" />
             <h1 ref={titleRef} tabIndex={-1} className={styles.title}>
               {C.title}
             </h1>
