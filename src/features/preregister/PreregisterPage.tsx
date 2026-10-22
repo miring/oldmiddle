@@ -199,6 +199,8 @@ export function PreregisterPage() {
             items={CONSENT_ITEMS_WITH_DETAILS}
             values={draft.consents}
             onChange={(consents) => updateDraft({ consents })}
+            agreeLabel={CONSENT_COPY.actions.agree}
+            closeLabel={CONSENT_COPY.actions.close}
           />
 
           <div className="flex flex-col items-center gap-2.5">
