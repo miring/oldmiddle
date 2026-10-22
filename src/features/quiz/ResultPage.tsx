@@ -3,6 +3,7 @@ import messageCircle from '../../assets/icons/message-circle.svg'
 import rotateCcw from '../../assets/icons/rotate-ccw.svg'
 import statusDot from '../../assets/landing/status-dot.svg'
 import { Button } from '../../components/ui/Button/Button'
+import { COPY } from '../../config/copy'
 import { clearAnswers } from './quizAnswers'
 import { QuizHeader } from './QuizParts'
 import { PREREGISTER_HASH, navigate, quizHash } from './quizRoute'
@@ -89,7 +90,7 @@ export function ResultPage({ type }: { type: CompanionType }) {
               결과는 가입 없이 모두 확인할 수 있어요. 원하시면 서비스 시작 소식을 받아보세요. 지금 바로 인연이 연결되는
               것은 아니에요.
             </p>
-            <Button onClick={() => navigate(PREREGISTER_HASH)}>사전 등록하기</Button>
+            <Button onClick={() => navigate(PREREGISTER_HASH)}>{COPY.preregisterStart}</Button>
             <p className={styles.reassurance}>{'가입이 아니라 사전 신청입니다.\n전화로 권유하지 않습니다.'}</p>
           </div>
         </section>
