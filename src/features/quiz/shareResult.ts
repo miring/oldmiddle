@@ -8,12 +8,12 @@ import type { CompanionResult } from './results'
  * 반환값: 화면에 보여 줄 안내 문구 (없으면 null)
  */
 export async function shareResult(result: CompanionResult): Promise<string | null> {
-  return shareLandingLink(`나의 동행 유형은 '${result.name}'이래요. 당신은 어떤 타입과 잘 맞을까요?`)
+  return shareLandingLink(`나의 동행 유형은 '${result.name}'이래요. 45세 이상 싱글을 위한 1분 테스트, 당신은 어떤 타입일까요?`)
 }
 
-/** 테스트 링크만 공유 (결과 없이). 나이·받는 사람을 언급하지 않는 문구로 보냅니다. */
+/** 테스트 링크만 공유 (결과 없이). 대상(45세 이상 싱글)을 문구에 밝힙니다. */
 export async function shareTestLink(): Promise<string | null> {
-  return shareLandingLink('1분이면 알 수 있는 나의 동행 유형')
+  return shareLandingLink('45세 이상 싱글을 위한 1분 동행 유형 테스트')
 }
 
 async function shareLandingLink(text: string): Promise<string | null> {
