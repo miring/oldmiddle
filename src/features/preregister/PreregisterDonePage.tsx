@@ -26,8 +26,9 @@ export function PreregisterDonePage() {
   const [warmLine] = useState(() => C.warmLines[Math.floor(Math.random() * C.warmLines.length)])
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-    titleRef.current?.focus()
+    titleRef.current?.focus({ preventScroll: true })
+    // 바텀시트를 닫으며 한 뒤로 가기의 스크롤 복원이 늦게 오는 브라우저가 있어 다음 프레임에 맨 위로
+    requestAnimationFrame(() => window.scrollTo(0, 0))
   }, [])
 
   const result = info?.myType ? RESULTS[info.myType] : null
@@ -118,7 +119,6 @@ export function PreregisterDonePage() {
             </ButtonLink>
           )}
           <p className={styles.note}>{C.reassurance}</p>
-          <p className={styles.note}>{C.cancelNote}</p>
         </div>
       </main>
     </div>
