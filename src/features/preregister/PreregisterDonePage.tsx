@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import bellIcon from '../../assets/icons/bell.svg'
 import doneOpenDoor from '../../assets/preregister/done-open-door.webp'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
-import { Button, ButtonLink } from '../../components/ui/Button/Button'
+import { ButtonLink } from '../../components/ui/Button/Button'
 import { PREREGISTER_DONE_COPY as C } from '../../config/copy'
 import { site } from '../../config/site'
 import { SERVICE_INTRO_SECTION_ID } from '../landing/ServicePrinciplesSection'
@@ -34,6 +34,11 @@ export function PreregisterDonePage() {
   const match = result ? RESULTS[result.match.type] : null
   const count = info?.sameRegionCount ?? null
   const landingHref = `${window.location.pathname}${window.location.search}`
+  // 첫 화면의 서비스 소개 섹션으로 (테스트 답은 그대로)
+  const handleAboutClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    goToLandingSection(SERVICE_INTRO_SECTION_ID)
+  }
 
   return (
     <div className="flex min-h-dvh flex-col">
@@ -102,23 +107,17 @@ export function PreregisterDonePage() {
               <p className={styles.note}>{C.channelNote}</p>
             </div>
           )}
-          {/* 서비스 소개로: 채널 버튼이 없으면 보조 버튼, 있으면 글자 링크 (테스트 답은 그대로) */}
+          {/* 서비스 소개로 가는 링크: 채널 버튼이 있으면 밑줄 글자, 없으면 보조 버튼 모양 (둘 다 실제로는 <a>) */}
           {site.kakaoChannelUrl ? (
-            <a
-              href={landingHref}
-              className={`${styles.link} self-center`}
-              onClick={(event) => {
-                event.preventDefault()
-                goToLandingSection(SERVICE_INTRO_SECTION_ID)
-              }}
-            >
+            <a href={landingHref} className={`${styles.link} self-center`} onClick={handleAboutClick}>
               {C.aboutLink}
             </a>
           ) : (
-            <Button variant="secondary" onClick={() => goToLandingSection(SERVICE_INTRO_SECTION_ID)}>
+            <ButtonLink variant="secondary" href={landingHref} className={styles.aboutButton} onClick={handleAboutClick}>
               {C.aboutLink}
-            </Button>
+            </ButtonLink>
           )}
+          <p className={styles.note}>{C.reassurance}</p>
           <p className={styles.note}>{C.cancelNote}</p>
         </div>
       </main>

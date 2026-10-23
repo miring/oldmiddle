@@ -82,6 +82,8 @@ export const PREREGISTER_DONE_COPY = {
   cancelNote: '신청 취소는 안내 메시지의 링크로 언제든 할 수 있어요',
   /** 첫 화면의 서비스 소개 섹션으로 가는 링크 */
   aboutLink: `${site.serviceName}${topicParticle(site.serviceName)} 어떤 곳인가요?`,
+  /** 서비스 소개 링크 아래 안심 문구 */
+  reassurance: '전화로 연락드리거나 가입을 권하지 않아요.',
 }
 
 /**

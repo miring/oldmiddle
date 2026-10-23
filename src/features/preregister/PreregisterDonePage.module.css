@@ -99,6 +99,11 @@
   text-decoration: underline;
 }
 
+/* 채널 버튼이 없을 때 '…어떤 곳인가요?' 보조 버튼 모양: 높이 56px (공용 버튼 60px보다 낮게, a.로 우선순위 높임) */
+a.aboutButton {
+  height: var(--space-14);
+}
+
 .note {
   color: var(--color-form-helper);
   font-size: var(--type-body-size);
