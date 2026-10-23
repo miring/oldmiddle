@@ -44,7 +44,7 @@ export const PREREGISTER_CONFIRM_COPY = {
   },
   marketingYes: '받음',
   marketingNo: '받지 않음',
-  notice: '이 번호로 오픈 소식을 카카오톡으로 보내 드려요',
+  notice: '서비스를 시작하면 이 번호로 카카오톡이나 문자로 알려 드려요',
   confirm: '이대로 신청하기',
   confirming: '신청하는 중…',
   edit: '고치기',
