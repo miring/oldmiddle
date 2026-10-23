@@ -1,13 +1,16 @@
 import heroCafe from '../../assets/landing/hero-cafe.jpg'
 import heroPortraitUpper from '../../assets/landing/hero-portrait-upper.png'
 import heroPortrait from '../../assets/landing/hero-portrait.jpg'
+import { Badge } from '../../components/ui/Badge/Badge'
 import { Button } from '../../components/ui/Button/Button'
+import { COPY } from '../../config/copy'
 import { site } from '../../config/site'
 import { topicParticle } from '../../utils/korean'
 import { startQuiz } from '../quiz/quizRoute'
 import styles from './HeroSection.module.css'
 
-const AUDIENCE = '45세 이상 싱글을 위한 동반자 서비스 · 준비 중'
+// 나이는 위 배지("45세 이상 전용")에서 알리므로 여기서는 반복하지 않음
+const AUDIENCE = '싱글을 위한 동반자 서비스 · 준비 중'
 
 // 화면 폭마다 사진 배치가 달라 <picture>로 바꿔 끼웁니다.
 // media 값(48rem)은 tokens.css·Tailwind의 태블릿 기준과 같아야 합니다.
@@ -52,6 +55,7 @@ export function HeroSection() {
       {/* 글과 테스트 초대 (데스크톱에서는 감싼 상자를 풀고 왼쪽 칸 1줄·2줄에 배치) */}
       <div className="flex flex-col md:gap-10 md:px-12 md:pb-14 xl:contents">
         <div className="flex flex-col gap-3 px-6 pt-5 md:gap-5 md:p-0 xl:col-start-1 xl:row-start-1 xl:pt-20 xl:pr-16 xl:pb-10 xl:pl-24">
+          <Badge>{COPY.audienceBadge}</Badge>
           <p className={`${styles.audience} md:hidden xl:block`}>{AUDIENCE}</p>
           <h1 id="hero-title" className={styles.headline}>
             나와 잘 맞는 사람과

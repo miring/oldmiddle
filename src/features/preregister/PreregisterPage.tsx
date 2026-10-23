@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState, type FocusEvent, type FormEvent, type MouseEvent } from 'react'
+import { Badge } from '../../components/ui/Badge/Badge'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
 import { Button } from '../../components/ui/Button/Button'
 import { BottomSheet } from '../../components/ui/BottomSheet/BottomSheet'
@@ -228,6 +229,7 @@ export function PreregisterPage() {
       </div>
       <main className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-col gap-7 px-6 pb-10">
         <div className="flex flex-col gap-1.5 pt-2">
+          <Badge className="mb-1.5">{COPY.audienceBadge}</Badge>
           <h1 className={styles.title}>4가지만 알려 주세요</h1>
           <p className={styles.body}>{COPY.notCollected}</p>
         </div>
