@@ -52,6 +52,22 @@ export const PREREGISTER_CONFIRM_COPY = {
   alreadyRegistered: '이미 사전 신청한 번호예요. 서비스를 시작하면 이 번호로 알려 드릴게요.',
 } as const
 
+/** 사전 신청 취소 화면 (접수 확인 메시지의 취소 링크로 들어옴) */
+export const PREREGISTER_CANCEL_COPY = {
+  header: '사전 신청 취소',
+  title: '사전 신청을 취소할까요?',
+  body: '취소하면 남겨 주신 정보를 바로 지우고, 서비스 시작 안내도 보내지 않아요.',
+  confirm: '신청 취소하기',
+  confirming: '취소하는 중…',
+  keep: '취소하지 않기',
+  doneTitle: '사전 신청을 취소했어요',
+  doneBody: '남겨 주신 정보를 모두 지웠어요. 관심 가져 주셔서 고마워요.',
+  notFoundTitle: '취소할 신청을 찾지 못했어요',
+  notFoundBody: '이미 취소했거나 보관 기간이 지나 정보가 지워졌을 수 있어요.',
+  failed: '취소하지 못했어요. 잠시 후 다시 눌러 주세요.',
+  home: '첫 화면으로',
+} as const
+
 /** 사전 신청 완료 화면 */
 export const PREREGISTER_DONE_COPY = {
   header: '신청 완료',

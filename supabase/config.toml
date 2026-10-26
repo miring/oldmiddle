@@ -418,3 +418,7 @@ enabled = true
 # 대신 함수 안에서 허용 주소(ALLOWED_ORIGINS)와 인증번호로 막습니다.
 [functions.preregister]
 verify_jwt = false
+
+# 사전 신청 취소 함수. preregister와 같은 이유로 JWT 검사를 끄고 허용 주소로 막습니다.
+[functions.preregister-cancel]
+verify_jwt = false

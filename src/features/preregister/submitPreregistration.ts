@@ -64,3 +64,23 @@ export async function submitPreregistration(payload: PreregisterPayload): Promis
   if (!res.ok) throw new PreregisterError(typeof data.error === 'string' ? data.error : 'unknown')
   return { sameRegionCount: typeof data.sameRegionCount === 'number' ? data.sameRegionCount : null }
 }
+
+/**
+ * 사전 신청 취소: 취소 링크의 토큰으로 신청을 찾아 바로 삭제합니다.
+ * 찾을 수 없으면(이미 취소함·잘못된 링크) PreregisterError('not_found')를 던집니다.
+ */
+export async function cancelPreregistration(token: string): Promise<void> {
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    console.info('[사전 신청 취소] 저장 로직 연결 전이라 실제로 지우지 않아요')
+    return
+  }
+  const res = await fetch(`${SUPABASE_URL}/functions/v1/preregister-cancel`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY },
+    body: JSON.stringify({ token }),
+  })
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}))
+    throw new PreregisterError(typeof data.error === 'string' ? data.error : 'unknown')
+  }
+}
