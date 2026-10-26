@@ -49,6 +49,7 @@ export const PREREGISTER_CONFIRM_COPY = {
   confirming: '신청하는 중…',
   edit: '고치기',
   failed: '신청하지 못했어요. 잠시 후 [이대로 신청하기]를 다시 눌러 주세요.',
+  alreadyRegistered: '이미 사전 신청한 번호예요. 서비스를 시작하면 이 번호로 알려 드릴게요.',
 } as const
 
 /** 사전 신청 완료 화면 */

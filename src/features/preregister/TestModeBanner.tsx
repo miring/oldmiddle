@@ -7,7 +7,9 @@ export function TestModeBanner() {
 
   return (
     <div className={`${styles.banner} content-gutter py-2`}>
-      <p className={styles.text}>테스트 중 · 신청 정보는 저장되지 않아요</p>
+      <p className={styles.text}>
+        {import.meta.env.VITE_SUPABASE_URL ? '테스트 중 · 개발용 DB에 저장돼요' : '테스트 중 · 신청 정보는 저장되지 않아요'}
+      </p>
     </div>
   )
 }

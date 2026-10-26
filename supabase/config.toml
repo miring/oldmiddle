@@ -413,3 +413,8 @@ enabled = true
 # formatted with uppercase keywords, indent 2, max width 180, trailing commas,
 # and column/key alignment. Set to "null" to emit raw, unformatted SQL.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":180,\"commaStyle\":\"trailing\"}"
+
+# 사전 신청 저장 함수. 새 publishable 키는 JWT가 아니라서 JWT 검사를 끄고,
+# 대신 함수 안에서 허용 주소(ALLOWED_ORIGINS)와 인증번호로 막습니다.
+[functions.preregister]
+verify_jwt = false

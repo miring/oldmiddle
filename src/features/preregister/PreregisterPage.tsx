@@ -27,7 +27,7 @@ import { setDoneInfo } from './preregisterDone'
 import { getDraft, resetDraft, updateDraft, usePreregisterDraft } from './preregisterDraft'
 import { ConfirmSheetContent } from './ConfirmSheetContent'
 import { ConsentDetails } from './ConsentDetails'
-import { buildPreregisterPayload, submitPreregistration } from './submitPreregistration'
+import { PreregisterError, buildPreregisterPayload, submitPreregistration } from './submitPreregistration'
 import { TestModeBanner } from './TestModeBanner'
 import styles from './PreregisterPage.module.css'
 
@@ -193,12 +193,12 @@ export function PreregisterPage() {
     setConfirmError(null)
     try {
       const myType = calculateResult(answers)
-      await submitPreregistration(buildPreregisterPayload(draft, myType))
+      const { sameRegionCount } = await submitPreregistration(buildPreregisterPayload(draft, myType))
       // 완료 화면에 필요한 값만 메모리로 넘김 (시·군·구 이름, 세종처럼 없으면 시·도 이름)
       setDoneInfo({
         regionName: province?.districts.find((d) => d.code === draft.district)?.name ?? province?.name ?? '',
         myType,
-        sameRegionCount: null, // TODO(사전 신청 저장): 저장 응답의 같은 지역 신청자 수
+        sameRegionCount,
       })
       // 바텀시트 기록을 되돌린 뒤 신청 폼 기록을 완료 화면으로 바꿈 → 뒤로 가기 하면 결과 화면 (다시 제출 방지)
       sheet.close({
@@ -207,8 +207,9 @@ export function PreregisterPage() {
           navigate(DONE_HASH, { replace: true })
         },
       })
-    } catch {
-      setConfirmError(PREREGISTER_CONFIRM_COPY.failed) // 실패하면 바텀시트를 닫지 않고 안에 오류 표시
+    } catch (error) {
+      const already = error instanceof PreregisterError && error.code === 'already_registered'
+      setConfirmError(already ? PREREGISTER_CONFIRM_COPY.alreadyRegistered : PREREGISTER_CONFIRM_COPY.failed) // 실패하면 바텀시트를 닫지 않고 안에 오류 표시
     } finally {
       confirmingRef.current = false
       setConfirming(false)
