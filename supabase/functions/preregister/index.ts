@@ -18,7 +18,18 @@ const allowedOrigins = (Deno.env.get('ALLOWED_ORIGINS') ?? '')
   .map((s) => s.trim())
   .filter(Boolean)
 
-const supabase = createClient(Deno.env.get('SUPABASE_URL')!, Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!, {
+// 새 키(sb_secret_…)만 쓰는 프로젝트는 SUPABASE_SECRET_KEYS({"default": "..."})로 들어오므로 둘 다 확인
+function serverKey(): string {
+  try {
+    const keys = JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS') ?? '{}')
+    if (typeof keys.default === 'string') return keys.default
+  } catch {
+    // 형식이 다르면 아래 예전 키로
+  }
+  return Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
+}
+
+const supabase = createClient(Deno.env.get('SUPABASE_URL')!, serverKey(), {
   auth: { persistSession: false },
 })
 
@@ -120,8 +131,9 @@ Deno.serve(async (req) => {
   })
   if (error) {
     if (error.code === '23505') return json({ error: 'already_registered' }, 409, origin)
-    console.error('insert failed', error.code) // 개인정보가 섞이지 않게 코드만 남김
-    return json({ error: 'save_failed' }, 500, origin)
+    // 번호는 암호화·해시 상태라 원문이 섞이지 않음. 원인 파악용으로 코드와 메시지만 남김
+    console.error('insert failed', error.code, error.message)
+    return json({ error: 'save_failed', reason: error.code }, 500, origin)
   }
 
   const { data: count } = await supabase.rpc('count_region_preregistrations', { p_region_code: regionCode })
