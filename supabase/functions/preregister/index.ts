@@ -9,7 +9,7 @@
 // SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY는 Supabase가 자동으로 넣어 줍니다.
 import { createClient } from 'npm:@supabase/supabase-js@2'
 
-const GENDER: Record<string, string> = { female: 'F', male: 'M' }
+const GENDERS = ['female', 'male']
 const AGE_BANDS = ['45-49', '50-54', '55-59', '60-64', '65+']
 const REQUIRED_CONSENTS = ['age-and-notice', 'privacy']
 
@@ -94,7 +94,7 @@ Deno.serve(async (req) => {
     return json({ error: 'invalid_body' }, 400, origin)
   }
 
-  const gender = GENDER[String(body.gender)]
+  const gender = String(body.gender)
   const ageBand = String(body.age_band)
   const regionCode = String(body.sigungu_code ?? '')
   const phone = String(body.phone ?? '')
@@ -103,7 +103,7 @@ Deno.serve(async (req) => {
   const testType = typeof body.test_type === 'string' ? body.test_type.slice(0, 40) : null
 
   if (
-    !gender ||
+    !GENDERS.includes(gender) ||
     !AGE_BANDS.includes(ageBand) ||
     !/^\d{2}(\d{3})?$/.test(regionCode) ||
     !/^01[016789]\d{7,8}$/.test(phone) ||
