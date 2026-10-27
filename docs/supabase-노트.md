@@ -9,7 +9,7 @@
 | 구분 | 프로젝트 이름 | 프로젝트 ID | 용도 |
 | --- | --- | --- | --- |
 | 개발 | `oldmiddle-dev` | `tslzkdfvijrajcfdiekm` | 새 기능 시험, 시험 신청, 고정 인증번호 |
-| 운영 | `oldmiddle-prod` | `________________` (만든 뒤 적기) | 실제 신청자 정보만 |
+| 운영 | `oldmiddle-prod` | `oiyjwhomjocovtnnjgxy` | 실제 신청자 정보만 |
 
 - 둘 다 같은 조직(Pro 요금제)에 있고, 리전은 **Northeast Asia (Seoul)**입니다. 리전은 나중에 바꿀 수 없습니다.
 - 프로젝트 ID는 대시보드 주소 `supabase.com/dashboard/project/<여기>`나 Project Settings → General에서 확인합니다.
