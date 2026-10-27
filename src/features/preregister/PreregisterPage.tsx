@@ -208,8 +208,14 @@ export function PreregisterPage() {
         },
       })
     } catch (error) {
-      const already = error instanceof PreregisterError && error.code === 'already_registered'
-      setConfirmError(already ? PREREGISTER_CONFIRM_COPY.alreadyRegistered : PREREGISTER_CONFIRM_COPY.failed) // 실패하면 바텀시트를 닫지 않고 안에 오류 표시
+      const code = error instanceof PreregisterError ? error.code : null
+      setConfirmError(
+        code === 'already_registered'
+          ? PREREGISTER_CONFIRM_COPY.alreadyRegistered
+          : code === 'too_many_requests'
+            ? PREREGISTER_CONFIRM_COPY.tooMany
+            : PREREGISTER_CONFIRM_COPY.failed,
+      ) // 실패하면 바텀시트를 닫지 않고 안에 오류 표시
     } finally {
       confirmingRef.current = false
       setConfirming(false)

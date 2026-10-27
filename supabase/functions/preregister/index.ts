@@ -13,6 +13,10 @@ const GENDERS = ['female', 'male']
 const AGE_BANDS = ['45-49', '50-54', '55-59', '60-64', '65+']
 const REQUIRED_CONSENTS = ['age-and-notice', 'privacy']
 
+// 횟수 제한: [창(초), 최대 횟수]. 넘으면 429. 운영하며 조정합니다.
+const PHONE_LIMIT: [number, number] = [10 * 60, 5] // 같은 번호 10분에 5번
+const IP_LIMIT: [number, number] = [60 * 60, 30] // 같은 IP 1시간에 30번 (가족·회사가 IP를 같이 쓸 수 있어 넉넉하게)
+
 const allowedOrigins = (Deno.env.get('ALLOWED_ORIGINS') ?? '')
   .split(',')
   .map((s) => s.trim())
@@ -68,7 +72,7 @@ async function encryptPhone(phone: string) {
   return `v1.${toBase64(iv)}.${toBase64(new Uint8Array(cipher))}`
 }
 
-// 중복 확인·번호로 찾기용. 키 없는 해시는 번호 경우의 수가 적어 역산되므로 HMAC 사용
+// 중복 확인·번호로 찾기·횟수 제한용. 키 없는 해시는 번호 경우의 수가 적어 역산되므로 HMAC 사용
 async function hashPhone(phone: string) {
   const key = await crypto.subtle.importKey(
     'raw',
@@ -79,6 +83,17 @@ async function hashPhone(phone: string) {
   )
   const sig = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(phone))
   return Array.from(new Uint8Array(sig), (b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+// 기록하고 넘었는지 확인. DB 오류면 신청을 막지 않음 (제한 기능 장애로 신청 전체가 멈추지 않게)
+async function limited(key: string, [windowSeconds, max]: [number, number]) {
+  const { data, error } = await supabase.rpc('hit_preregister_rate_limit', {
+    p_key: key,
+    p_window_seconds: windowSeconds,
+    p_max: max,
+  })
+  if (error) console.error('rate limit check failed', error.code)
+  return data === true
 }
 
 Deno.serve(async (req) => {
@@ -114,6 +129,13 @@ Deno.serve(async (req) => {
     return json({ error: 'invalid_input' }, 400, origin)
   }
 
+  // 인증번호 확인 전에 셈: 틀린 번호를 계속 넣어 맞히는 것도 막음
+  const phoneHash = await hashPhone(phone)
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
+  if ((await limited(`ip:${await hashPhone(ip)}`, IP_LIMIT)) || (await limited(`phone:${phoneHash}`, PHONE_LIMIT))) {
+    return json({ error: 'too_many_requests' }, 429, origin)
+  }
+
   // TODO(문자 인증): 발송 대행사를 붙이면 서버에 저장한 인증번호(3분 유효)와 비교하도록 바꿉니다.
   const devCode = Deno.env.get('DEV_FIXED_CODE')
   if (!devCode) return json({ error: 'sms_not_ready' }, 503, origin)
@@ -124,7 +146,7 @@ Deno.serve(async (req) => {
     age_group: ageBand,
     region_code: regionCode,
     phone_enc: await encryptPhone(phone),
-    phone_hash: await hashPhone(phone),
+    phone_hash: phoneHash,
     test_type: testType,
     consent_version: consentVersion,
     marketing_agreed_at: body.marketing_opt_in === true ? new Date().toISOString() : null,

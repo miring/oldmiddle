@@ -50,6 +50,7 @@ export const PREREGISTER_CONFIRM_COPY = {
   edit: '고치기',
   failed: '신청하지 못했어요. 잠시 후 [이대로 신청하기]를 다시 눌러 주세요.',
   alreadyRegistered: '이미 사전 신청한 번호예요. 서비스를 시작하면 이 번호로 알려 드릴게요.',
+  tooMany: '신청 시도가 많아 잠시 멈췄어요. 10분쯤 뒤에 다시 눌러 주세요.',
 } as const
 
 /** 사전 신청 취소 화면 (접수 확인 메시지의 취소 링크로 들어옴) */
