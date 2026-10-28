@@ -4,7 +4,7 @@ import { Brand } from '../Brand/Brand'
 import styles from './SiteHeader.module.css'
 
 type SiteHeaderProps = {
-  /** 오른쪽에 둘 내용. 예: "준비 중" 상태, "마음 알아보기" */
+  /** 오른쪽에 둘 내용. 예: 이름 뜻풀이 (site.tagline) */
   aside?: ReactNode
   /** 화면 위에 고정. 쓰는 쪽에서 본문 위쪽에 헤더 높이(--size-header-height)만큼 여백을 둡니다 */
   fixed?: boolean

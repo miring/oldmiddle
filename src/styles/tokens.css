@@ -22,7 +22,7 @@
   --color-text-tertiary: #7a7a6e; /* [대비 미달] 4.15:1 */
   --color-text-accent: #d4a800; /* [대비 미달] 2.14:1 */
   --color-text-accent-strong: #7d6300; /* 밝은 배경 위 강조 글자 5.49:1 (Figma #d4a800 보정값) */
-  --color-text-calm: #3d6b61; /* "마음 알아보기", 결과 화면 제목들 */
+  --color-text-calm: #3d6b61; /* 헤더 이름 뜻풀이, 결과 화면 제목들 */
   --color-text-on-accent: #2c2416;
   --color-text-disabled: #6c675c; /* 비활성 버튼 배경 위 4.62:1 */
 

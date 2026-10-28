@@ -1,12 +1,7 @@
 .status {
-  gap: var(--space-status-gap);
   color: var(--color-text-accent);
   font-size: var(--type-meta-size);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
-}
-
-.statusDot {
-  width: var(--size-status-dot);
-  height: var(--size-status-dot);
+  white-space: nowrap;
 }
