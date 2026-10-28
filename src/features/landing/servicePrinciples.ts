@@ -10,7 +10,7 @@ export type ServicePrinciple = {
   description: string
 }
 
-// 랜딩 "마지막사랑이 준비하는 만남" 항목. 문구는 Figma "Trust principles" 기준입니다.
+// 랜딩 "시연(時緣)이 준비하는 만남" 항목. 문구는 Figma "Trust principles" 기준입니다.
 export const SERVICE_PRINCIPLES: ServicePrinciple[] = [
   {
     id: 'verification',

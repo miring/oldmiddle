@@ -4,7 +4,7 @@ import { subjectParticle } from '../../utils/korean'
 import { SERVICE_PRINCIPLES } from './servicePrinciples'
 import styles from './ServicePrinciplesSection.module.css'
 
-/** 랜딩 "마지막사랑이 준비하는 만남" (Figma "Trust principles") — 어두운 배경 섹션 */
+/** 랜딩 "시연(時緣)이 준비하는 만남" (Figma "Trust principles") — 어두운 배경 섹션 */
 /** 서비스 소개 섹션 id (신청 완료 화면의 "…어떤 곳인가요?" 링크가 이 섹션으로 옴) */
 export const SERVICE_INTRO_SECTION_ID = 'service-intro'
 
