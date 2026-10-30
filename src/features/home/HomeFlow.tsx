@@ -51,7 +51,8 @@ export function HomeFlow() {
           title="만나기 전에, 글로 먼저"
           description="가입부터 만남까지, 천천히 서로를 알아가는 흐름을 정리했어요."
         />
-        <StepList steps={STEPS} />
+        {/* highlightSurface: 4단계 옅은 초록 바탕 (테스트 중, 끄려면 지움) */}
+        <StepList steps={STEPS} highlightSurface />
 
         <div className="hidden xl:flex xl:items-start xl:gap-6">
           <div className="min-w-0 flex-1">
