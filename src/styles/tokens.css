@@ -9,6 +9,21 @@
  */
 
 :root {
+  /* ── 색상: 브랜드 원색 (값은 여기서만 정하고 아래 토큰들이 참조) ──
+   * primary = 노랑, secondary = 초록. 각각 진한 단계(-strong)를 함께 씁니다. */
+  --color-yellow-500: #f0c419;
+  --color-yellow-600: #d4a800; /* 진한 노랑 — 밝은 배경 대비 2.14:1이라 장식(선·도형)에만 */
+  --color-yellow-800: #7d6300; /* 진한 노랑의 글자용 값 — 밝은 배경 5.49:1 */
+  --color-green-50: #eaf4ef;
+  --color-green-600: #3d6b61;
+  --color-green-800: #2c5149; /* 진한 초록 */
+
+  --color-primary: var(--color-yellow-500);
+  --color-primary-strong: var(--color-yellow-600);
+  --color-secondary: var(--color-green-600);
+  --color-secondary-strong: var(--color-green-800);
+  --color-secondary-subtle: var(--color-green-50);
+
   /* ── 색상: 배경·면 ── */
   --color-bg-default: #fafaf7;
   --color-surface-raised: #ffffff;
@@ -20,25 +35,25 @@
   --color-text-primary: #2c2416;
   --color-text-secondary: #5c5a50;
   --color-text-tertiary: #7a7a6e; /* [대비 미달] 4.15:1 */
-  --color-text-accent: #d4a800; /* [대비 미달] 2.14:1 */
-  --color-text-accent-strong: #7d6300; /* 밝은 배경 위 강조 글자 5.49:1 (Figma #d4a800 보정값) */
-  --color-text-calm: #3d6b61; /* 헤더 이름 뜻풀이, 결과 화면 제목들 */
+  --color-text-accent: var(--color-primary-strong); /* [대비 미달] 2.14:1 */
+  --color-text-accent-strong: var(--color-yellow-800); /* 밝은 배경 위 강조 글자 (Figma #d4a800 보정값) */
+  --color-text-calm: var(--color-secondary); /* 헤더 이름 뜻풀이, 결과 화면 제목들 */
   --color-text-on-accent: #2c2416;
   --color-text-disabled: #6c675c; /* 비활성 버튼 배경 위 4.62:1 */
 
   /* ── 색상: 선·포커스 ── */
   --color-border-subtle: #e2dfd4; /* [대비 미달] 선택지·라디오 테두리로 쓸 때 흰 배경 대비 1.33:1 */
-  --color-border-selected: #d4a800; /* 고른 선택지 테두리 */
+  --color-border-selected: var(--color-primary-strong); /* 고른 선택지 테두리 */
   --color-focus-ring: #2c2416;
 
   /* ── 색상: 버튼·진행·브랜드 ── */
-  --color-action-primary-bg: #f0c419;
+  --color-action-primary-bg: var(--color-primary);
   --color-action-secondary-bg: #ffffff;
   --color-action-disabled-bg: #ede9d8;
   --color-progress-track: #ede9d8;
-  --color-progress-fill: #f0c419;
-  --color-brand-mark-1: #f0c419; /* 장식 전용, 글자에 쓰지 않음 */
-  --color-brand-mark-2: #d4a800; /* 장식 전용, 글자에 쓰지 않음 */
+  --color-progress-fill: var(--color-primary);
+  --color-brand-mark-1: var(--color-primary); /* 장식 전용, 글자에 쓰지 않음 */
+  --color-brand-mark-2: var(--color-primary-strong); /* 장식 전용, 글자에 쓰지 않음 */
 
   /* ── 글자: 글꼴·굵기 ── */
   --font-family-base: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
@@ -188,7 +203,7 @@
   --size-cta-max-width: 382px;
 
   /* ── 어두운 배경(inverse) — "준비하는 만남" 등 ── */
-  --color-surface-inverse: #3d6b61;
+  --color-surface-inverse: var(--color-secondary);
   --color-text-inverse-primary: #fafaf7; /* 제목 5.78:1 */
   --color-text-inverse-secondary: #c8e5e0; /* 설명 4.53:1 */
   --color-text-inverse-label: #d6ede9; /* 섹션 라벨 4.94:1 (Figma #b8ddd8 4.14:1에서 보정) */
