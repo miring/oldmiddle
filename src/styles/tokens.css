@@ -103,6 +103,7 @@
   --space-20: 80px;
   --space-24: 96px;
   /* Figma 원본 중 4px 단위에 맞지 않는 값 */
+  --space-0-5: 2px;
   --space-1-5: 6px;
   --space-2-5: 10px;
 
@@ -252,6 +253,7 @@
   --size-icon-sm: 24px; /* 아이콘 마스터 기본 크기 */
   --size-feature-icon-box: 44px; /* FeatureCard 아이콘 칸 */
   --type-feature-title-size: 20px;
+  --size-icon-list: 28px; /* IconListItem 기본 크기 아이콘 */
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
