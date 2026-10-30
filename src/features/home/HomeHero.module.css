@@ -11,8 +11,8 @@
   line-height: var(--type-body-line);
 }
 
-/* 일러스트가 들어갈 자리: 높이 220 / 380 / 380px, 모서리 20 / 20 / 28px */
-.illustration {
+/* 히어로 사진 자리: 높이 220 / 380 / 380px, 모서리 20 / 20 / 28px. 사진을 받기 전에는 옅은 초록 바탕 */
+.media {
   height: var(--size-home-hero-media-height);
   border-radius: var(--radius-home-hero-media);
   background-color: var(--color-secondary-subtle);
