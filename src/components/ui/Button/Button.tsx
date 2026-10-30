@@ -50,12 +50,14 @@ export function Button({
 
 type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   variant?: 'primary' | 'secondary' | 'soft'
+  /** compact: 글자 길이만큼만 차지 (헤더의 가입하기) */
+  size?: 'md' | 'compact'
 }
 
-/** 버튼 모양의 링크 (예: 새 탭으로 여는 외부 주소). 폭은 Button과 같이 부모를 꽉 채움 */
-export function ButtonLink({ variant = 'primary', className, children, ...rest }: ButtonLinkProps) {
+/** 버튼 모양의 링크 (예: 새 탭으로 여는 외부 주소). 폭은 Button과 같이 부모를 꽉 채움 (compact 제외) */
+export function ButtonLink({ variant = 'primary', size = 'md', className, children, ...rest }: ButtonLinkProps) {
   return (
-    <a className={[styles.button, styles[variant], className ?? ''].join(' ')} {...rest}>
+    <a className={[styles.button, styles[variant], size === 'compact' ? styles.compact : '', className ?? ''].join(' ')} {...rest}>
       {children}
     </a>
   )
