@@ -35,3 +35,18 @@
 .inverse .description {
   color: var(--color-text-inverse-secondary);
 }
+
+/* 데스크톱에서만 어두운 초록 배경 위 (toneXl) */
+@media (min-width: 85rem) {
+  .xlInverse .label {
+    color: var(--color-text-inverse-label);
+  }
+
+  .xlInverse .title {
+    color: var(--color-text-inverse-primary);
+  }
+
+  .xlInverse .description {
+    color: var(--color-text-inverse-secondary);
+  }
+}

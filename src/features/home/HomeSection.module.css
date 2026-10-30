@@ -10,6 +10,10 @@
   background-color: var(--color-surface-accent-subtle);
 }
 
+.calm {
+  background-color: var(--color-secondary-subtle);
+}
+
 .inverse {
   background-color: var(--color-surface-inverse);
 }
@@ -26,6 +30,10 @@
 
   .xlAccent {
     background-color: var(--color-surface-accent-subtle);
+  }
+
+  .xlCalm {
+    background-color: var(--color-secondary-subtle);
   }
 
   .xlInverse {

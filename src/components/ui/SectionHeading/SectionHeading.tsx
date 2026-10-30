@@ -10,6 +10,8 @@ type SectionHeadingProps = {
   id?: string
   /** default: 밝은 배경 위 / inverse: 어두운 초록 배경 위 */
   tone?: 'default' | 'inverse'
+  /** 데스크톱(1360px 이상)에서만 어두운 배경 위일 때 */
+  toneXl?: 'inverse'
   /** 제목 수준. 놓이는 화면의 제목 구조에 맞춰 고릅니다 */
   titleAs?: 'h2' | 'h3'
 }
@@ -21,10 +23,13 @@ export function SectionHeading({
   description,
   id,
   tone = 'default',
+  toneXl,
   titleAs: Title = 'h2',
 }: SectionHeadingProps) {
   return (
-    <div className={`${tone === 'inverse' ? styles.inverse : ''} flex flex-col gap-4`}>
+    <div
+      className={`${tone === 'inverse' ? styles.inverse : ''} ${toneXl === 'inverse' ? styles.xlInverse : ''} flex flex-col gap-4`}
+    >
       <div className={`${styles.heading} flex flex-col`}>
         <p className={styles.label}>{label}</p>
         {/* tabIndex -1: 헤더 메뉴로 이동했을 때 제목에 포커스를 줘 화면 읽기 프로그램이 읽도록 */}
