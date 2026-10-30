@@ -124,6 +124,7 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
   --radius-2xl: 24px;
+  --radius-3xl: 28px;
   --radius-full: 9999px;
 
   /* ── 선 ── */
@@ -266,6 +267,13 @@
   --type-faq-icon-size: 22px; /* 질문 오른쪽 + / − */
   --type-home-hero-size: 30px; /* 정식 홈 히어로 "때가 되어 만난 인연" — 랜딩 히어로(--type-display-size)와 별도 */
   --type-home-hero-line-ratio: 1.35;
+  --type-home-hero-desc-size: 16px; /* 히어로 설명 */
+  --size-home-hero-media-height: 220px; /* 히어로 일러스트 높이 */
+  --radius-home-hero-media: var(--radius-xl);
+  /* 정식 홈 화면에서만 공통 토큰을 덮어쓰는 값 (HomePage.module.css) */
+  --size-home-header-height: 64px;
+  --space-home-gutter: var(--space-5); /* 휴대폰 양옆 여백 20px (랜딩 24px) */
+  --size-home-content-max-width: 1280px;
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
@@ -301,6 +309,9 @@
   :root {
     --type-display-size: 40px;
     --type-home-hero-size: 40px;
+    --size-home-hero-media-height: 380px; /* 태블릿은 Figma에 없어 데스크톱 값 */
+    --space-home-gutter: var(--space-12);
+    --size-home-content-max-width: 738px;
     --type-display-line-ratio: 1.5;
     --type-wordmark-size: 26px;
     --size-button-lg-height: 64px;
@@ -381,6 +392,11 @@
     --space-type-grid-gap-x: var(--space-12);
 
     --type-home-hero-size: 60px; /* 2026-10-30 결정: 데스크톱 60px */
+    --type-home-hero-desc-size: 20px;
+    --radius-home-hero-media: var(--radius-3xl);
+    --size-home-header-height: 72px;
+    --space-home-gutter: var(--space-24);
+    --size-home-content-max-width: 1120px;
     --type-home-hero-line-ratio: 1.25;
     --type-flow-number-size: 36px;
     --type-flow-title-size: 18px;

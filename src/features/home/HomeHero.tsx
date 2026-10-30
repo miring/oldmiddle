@@ -41,7 +41,7 @@ export function HomeHero() {
 
         {/* 일러스트 자리 (그림이 정해지면 교체). 장식이라 화면 읽기 프로그램에서는 건너뜀 */}
         <div
-          className={`${styles.illustration} aspect-video xl:col-start-2 xl:row-span-2 xl:row-start-1 xl:aspect-auto xl:h-full`}
+          className={`${styles.illustration} xl:col-start-2 xl:row-span-2 xl:row-start-1`}
           aria-hidden="true"
         />
 

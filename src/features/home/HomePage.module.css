@@ -1,0 +1,9 @@
+/*
+ * 정식 홈은 헤더 높이·양옆 여백·내용 최대 폭이 랜딩과 달라서, 이 화면 안에서만 공통 토큰을 홈 값으로 바꿉니다.
+ * SiteHeader·content-gutter·SiteFooter가 이 값을 그대로 따릅니다.
+ */
+.page {
+  --size-header-height: var(--size-home-header-height);
+  --space-gutter: var(--space-home-gutter);
+  --size-content-max-width: var(--size-home-content-max-width);
+}
