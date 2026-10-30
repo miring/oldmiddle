@@ -1,10 +1,12 @@
 import { site } from '../../config/site'
+import { TEST_HASH } from './quizRoute'
 import type { CompanionResult } from './results'
 
 /**
  * 결과 공유. 휴대폰 공유 창(카카오톡 포함)을 먼저 열고,
  * 지원하지 않는 브라우저에서는 공유 문구를 복사합니다.
- * 받는 사람이 남의 결과를 자기 결과로 오해하지 않도록 결과 화면이 아닌 첫 화면 주소를 보냅니다.
+ * 받는 사람이 남의 결과를 자기 결과로 오해하지 않도록 결과 화면이 아닌 테스트 소개(#/test, 랜딩) 주소를 보냅니다.
+ * 첫 화면(/) 대신 #/test를 쓰는 것은, 정식 오픈 뒤 첫 화면이 홈으로 바뀌어도 테스트로 들어오게 하기 위해서입니다.
  * 반환값: 화면에 보여 줄 안내 문구 (없으면 null)
  */
 export async function shareResult(result: CompanionResult): Promise<string | null> {
@@ -17,7 +19,7 @@ export async function shareTestLink(): Promise<string | null> {
 }
 
 async function shareLandingLink(text: string): Promise<string | null> {
-  const url = `${window.location.origin}${window.location.pathname}`
+  const url = `${window.location.origin}${window.location.pathname}${TEST_HASH}`
 
   if (navigator.share) {
     try {
