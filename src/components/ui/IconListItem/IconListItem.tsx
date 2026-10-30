@@ -16,7 +16,8 @@ type IconListItemProps = {
 /** 아이콘 + 글 목록 한 줄. 감싸는 쪽에서 <ul role="list">로 묶고 이 컴포넌트를 <li> 안에 둡니다. */
 export function IconListItem({ icon, title, children, size = 'md', tone = 'default' }: IconListItemProps) {
   return (
-    <div className={`${styles[size]} ${tone === 'inverse' ? styles.inverse : ''} flex items-start gap-3.5`}>
+    // 아이콘과 글 사이: md 14px / sm 8px
+    <div className={`${styles[size]} ${tone === 'inverse' ? styles.inverse : ''} flex items-start ${size === 'sm' ? 'gap-2' : 'gap-3.5'}`}>
       <img className={`${styles.icon} shrink-0`} src={icon} alt="" />
       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
         {title && <p className={styles.title}>{title}</p>}
