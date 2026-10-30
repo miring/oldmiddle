@@ -18,7 +18,7 @@
   color: var(--color-text-primary);
   font-size: var(--type-flow-title-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-snug);
+  line-height: var(--type-flow-title-line);
 }
 
 .body {
@@ -38,6 +38,13 @@
   color: var(--color-secondary);
 }
 
+/* 강조 단계 바탕 (highlightSurface)
+ * 휴대폰·태블릿: 오른쪽 글 카드에만 (연결선은 카드 옆을 지나감) / 데스크톱: 칸 전체 */
+.surfaceText {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-secondary-subtle);
+}
+
 /* 데스크톱: 원 대신 큰 초록 숫자, 칸 왼쪽에 선 */
 @media (min-width: 85rem) {
   .step {
@@ -54,5 +61,16 @@
 
   .highlight .title {
     color: var(--color-text-primary);
+  }
+
+  .surfaceText {
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  /* 왼쪽 선이 있는 쪽은 모서리를 둥글리지 않음 */
+  .surfaceStep {
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    background-color: var(--color-secondary-subtle);
   }
 }

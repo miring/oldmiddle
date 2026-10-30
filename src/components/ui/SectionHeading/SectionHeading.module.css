@@ -3,18 +3,10 @@
 }
 
 .label {
+  color: var(--color-text-calm); /* 섹션 라벨은 초록으로 통일 — 기본 배경 5.78:1, 옅은 노랑 5.69:1, 흰색 6.04:1 */
   font-size: var(--type-label-size);
   font-weight: var(--font-weight-bold);
   line-height: var(--type-body-line);
-}
-
-/* 라벨 색: 밝은 배경 위 진한 노랑 5.49:1 / 초록 5.78:1 */
-.primary {
-  color: var(--color-text-accent-strong);
-}
-
-.secondary {
-  color: var(--color-text-calm);
 }
 
 .title {
