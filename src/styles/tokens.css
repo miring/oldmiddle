@@ -70,7 +70,7 @@
   --type-wordmark-size: 23px;
   --type-body-lg-size: 18px; /* 선택지, 진행 숫자 */
   --type-button-size: 18px;
-  --type-body-size: 16px; /* [크기 미달] 기준 18px */
+  --type-body-size: 16px; /* 기본 본문 (기준 16px 이상, 2026-10-30 결정) */
   --type-body-line-ratio: 1.6;
   --type-label-size: 16px;
   --type-meta-size: 16px; /* "준비 중" 같은 상태 문구 */
