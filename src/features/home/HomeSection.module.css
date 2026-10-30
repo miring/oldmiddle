@@ -13,3 +13,22 @@
 .inverse {
   background-color: var(--color-surface-inverse);
 }
+
+/* 데스크톱에서만 다른 배경 (toneXl) */
+@media (min-width: 85rem) {
+  .xlDefault {
+    background-color: var(--color-bg-default);
+  }
+
+  .xlRaised {
+    background-color: var(--color-surface-raised);
+  }
+
+  .xlAccent {
+    background-color: var(--color-surface-accent-subtle);
+  }
+
+  .xlInverse {
+    background-color: var(--color-surface-inverse);
+  }
+}
