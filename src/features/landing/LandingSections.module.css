@@ -5,7 +5,7 @@
 }
 
 .label {
-  color: var(--color-text-accent-strong); /* Figma #d4a800(2.1:1) → 5.4:1 이상 */
+  color: var(--color-text-calm); /* 섹션 라벨은 초록으로 통일 (2026-10-30) — 기본 배경 5.78:1, 옅은 노랑 배경 5.69:1 */
   font-size: var(--type-label-size);
   font-weight: var(--font-weight-medium);
   line-height: var(--type-body-line);

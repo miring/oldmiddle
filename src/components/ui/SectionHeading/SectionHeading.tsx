@@ -8,8 +8,6 @@ type SectionHeadingProps = {
   description?: ReactNode
   /** 제목 id. 섹션의 aria-labelledby에 연결합니다 */
   id?: string
-  /** 라벨 색. primary: 진한 노랑 / secondary: 초록 */
-  labelTone?: 'primary' | 'secondary'
   /** default: 밝은 배경 위 / inverse: 어두운 초록 배경 위 */
   tone?: 'default' | 'inverse'
   /** 제목 수준. 놓이는 화면의 제목 구조에 맞춰 고릅니다 */
@@ -22,14 +20,13 @@ export function SectionHeading({
   title,
   description,
   id,
-  labelTone = 'primary',
   tone = 'default',
   titleAs: Title = 'h2',
 }: SectionHeadingProps) {
   return (
     <div className={`${tone === 'inverse' ? styles.inverse : ''} flex flex-col gap-4`}>
       <div className={`${styles.heading} flex flex-col`}>
-        <p className={`${styles.label} ${styles[labelTone]}`}>{label}</p>
+        <p className={styles.label}>{label}</p>
         {/* tabIndex -1: 헤더 메뉴로 이동했을 때 제목에 포커스를 줘 화면 읽기 프로그램이 읽도록 */}
         <Title id={id} tabIndex={-1} className={styles.title}>
           {title}

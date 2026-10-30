@@ -28,7 +28,6 @@ export function HomeAbout() {
         <SectionHeading
           id="home-about-title"
           label="시연은 이런 곳이에요"
-          labelTone="secondary"
           title={
             // 좁은 화면에서 '내'만 윗줄에 남지 않도록 '내 또래와'를 함께 넘김
             <>

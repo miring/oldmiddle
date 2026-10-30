@@ -396,7 +396,6 @@
     --type-display-line-ratio: 1.45;
     --space-button-lg-x: var(--space-7);
 
-    --color-hero-audience: var(--color-text-accent-strong); /* Figma #d4a800(2.14:1) → 5.49:1 */
     --color-hero-fade-end: rgba(250, 250, 247, 0.55);
     --color-hero-card-note: #6b6a5f; /* Figma #8c8a7e(3.47:1) → 흰 배경 5.45:1 */
     --type-hero-audience-size: 16px;
