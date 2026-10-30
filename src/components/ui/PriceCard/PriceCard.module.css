@@ -1,6 +1,7 @@
 .card {
   border-radius: var(--radius-lg);
   background-color: var(--color-secondary-strong);
+  box-shadow: var(--shadow-card-price);
 }
 
 /* 진한 초록 바탕 위 6.61:1 */
