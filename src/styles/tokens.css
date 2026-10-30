@@ -64,26 +64,26 @@
 
   /* ── 글자: 크기·행간 (모바일 기준, 아래에서 화면 폭별 재정의) ── */
   --type-display-size: 30px; /* 랜딩 히어로 제목 */
-  --type-display-line: 1.35;
+  --type-display-line-ratio: 1.35;
   --type-question-size: 26px;
-  --type-question-line: 1.5;
+  --type-question-line-ratio: 1.5;
   --type-wordmark-size: 23px;
   --type-body-lg-size: 18px; /* 선택지, 진행 숫자 */
   --type-button-size: 18px;
   --type-body-size: 16px; /* [크기 미달] 기준 18px */
-  --type-body-line: 1.6;
+  --type-body-line-ratio: 1.6;
   --type-label-size: 16px;
   --type-meta-size: 16px; /* "준비 중" 같은 상태 문구 */
   --type-caption-size: 14px; /* "가칭" 같은 보조 문구 */
   --type-result-title-size: 32px; /* 결과 유형 이름 */
-  --type-result-title-line: 1.4;
+  --type-result-title-line-ratio: 1.4;
   --type-heading-3-size: 22px; /* 결과 화면 소제목 */
   --type-heading-4-size: 22px; /* 잘 맞는 인연 유형 이름 */
-  --type-heading-line: 1.5;
-  --type-heading-line-relaxed: 1.55;
-  --line-height-normal: normal;
-  --line-height-relaxed: 1.7;
-  --line-height-reading: 1.75; /* 결과 설명처럼 긴 글 */
+  --type-heading-line-ratio: 1.5;
+  --type-heading-line-relaxed-ratio: 1.55;
+  --line-height-normal-ratio: 1.45;
+  --line-height-relaxed-ratio: 1.7;
+  --line-height-reading-ratio: 1.75; /* 결과 설명처럼 긴 글 */
 
   /* ── 간격: 4px 단위 스케일 ── */
   --space-unit: 4px; /* Tailwind 간격 유틸리티의 기준값 */
@@ -173,11 +173,11 @@
   --type-hero-audience-size: 14px;
   --type-hero-badge-size: 14px;
   --type-hero-desc-size: 16px;
-  --type-hero-desc-line: 1.6;
+  --type-hero-desc-line-ratio: 1.6;
   --type-hero-card-title-size: 20px;
   --type-hero-card-note-size: 16px;
   --type-caption-photo-size: 14px;
-  --line-height-snug: 1.5;
+  --line-height-snug-ratio: 1.5;
   --space-hero-card-padding: var(--space-5);
   --space-caption-x: var(--space-4);
   --space-caption-top: var(--space-5);
@@ -194,7 +194,7 @@
   --z-header: 10; /* 고정 헤더가 내용 위에 오도록 */
   --z-sheet: 20; /* 바텀시트: 고정 헤더 위 */
   --type-section-title-size: 28px;
-  --type-section-title-line: 1.5;
+  --type-section-title-line-ratio: 1.5;
   --type-card-title-size: 22px; /* 유형 카드 이름 */
   --size-type-thumb: 88px; /* 유형 카드 가로형 그림 */
   --size-type-image-height: 244px; /* 유형 카드 세로형 그림 높이 */
@@ -214,7 +214,7 @@
   /* ── "준비하는 만남" 항목·Callout — 모바일 기준 ── */
   --type-item-title-size: 22px;
   --type-callout-title-size: 22px;
-  --type-callout-title-line: normal;
+  --type-callout-title-line-ratio: 1.45;
   --space-callout-padding: var(--space-5);
   --space-callout-gap: var(--space-1-5);
   --size-icon-principle: 26px;
@@ -265,7 +265,7 @@
   --size-faq-min-height: 64px; /* FaqAccordion 질문 줄 */
   --type-faq-icon-size: 22px; /* 질문 오른쪽 + / − */
   --type-home-hero-size: 30px; /* 정식 홈 히어로 "때가 되어 만난 인연" — 랜딩 히어로(--type-display-size)와 별도 */
-  --type-home-hero-line: 1.35;
+  --type-home-hero-line-ratio: 1.35;
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
@@ -273,6 +273,27 @@
   /* ── 움직임 (prefers-reduced-motion이면 쓰는 쪽에서 끔) ── */
   --motion-duration-expand: 200ms; /* 펼침·접힘 */
   --motion-ease-standard: ease-out;
+
+  /* ── 줄 높이 ──
+   * 위 *-ratio는 글자 크기에 곱할 배율이고, 화면에서는 아래 토큰을 씁니다.
+   * round()를 지원하는 브라우저에서는 파일 맨 아래에서 '글자 크기 × 배율'을 가까운 짝수 px로 반올림합니다
+   * (예: 16px × 1.6 = 25.6 → 26px). 지원하지 않는 브라우저는 배율 그대로.
+   * normal은 Noto Sans KR 기본 줄 높이에 가까운 1.45로 둡니다. */
+  --type-display-line: var(--type-display-line-ratio);
+  --type-question-line: var(--type-question-line-ratio);
+  --type-body-line: var(--type-body-line-ratio);
+  --type-result-title-line: var(--type-result-title-line-ratio);
+  --type-heading-line: var(--type-heading-line-ratio);
+  --type-heading-line-relaxed: var(--type-heading-line-relaxed-ratio);
+  --line-height-normal: var(--line-height-normal-ratio);
+  --line-height-relaxed: var(--line-height-relaxed-ratio);
+  --line-height-reading: var(--line-height-reading-ratio);
+  --type-hero-desc-line: var(--type-hero-desc-line-ratio);
+  --line-height-snug: var(--line-height-snug-ratio);
+  --type-section-title-line: var(--type-section-title-line-ratio);
+  --type-callout-title-line: var(--type-callout-title-line-ratio);
+  --type-home-hero-line: var(--type-home-hero-line-ratio);
+
 }
 
 /* 태블릿 */
@@ -280,7 +301,7 @@
   :root {
     --type-display-size: 40px;
     --type-home-hero-size: 40px;
-    --type-display-line: 1.5;
+    --type-display-line-ratio: 1.5;
     --type-wordmark-size: 26px;
     --size-button-lg-height: 64px;
     --type-button-lg-size: 18px;
@@ -288,7 +309,7 @@
     --color-hero-card-bg: var(--color-surface-raised);
     --color-hero-card-border: var(--color-border-subtle);
     --color-caption-shade: rgba(44, 36, 22, 0.55);
-    --type-hero-desc-line: 1.7;
+    --type-hero-desc-line-ratio: 1.7;
     --type-hero-card-title-size: 26px;
     --type-hero-card-note-size: 16px;
     --type-caption-photo-size: 14px;
@@ -303,12 +324,12 @@
     --size-hero-secondary-height: 260px;
 
     --type-section-title-size: 32px;
-    --type-section-title-line: 1.55;
+    --type-section-title-line-ratio: 1.55;
     --type-card-title-size: 22px;
     --border-width-list-top: var(--border-width-default);
     --type-item-title-size: 24px;
     --type-callout-title-size: 24px;
-    --type-callout-title-line: 1.5;
+    --type-callout-title-line-ratio: 1.5;
     --space-callout-padding: var(--space-7);
     --space-callout-gap: var(--space-3);
     --size-step-badge: 44px;
@@ -340,7 +361,7 @@
     --space-gutter: var(--space-24);
     --size-content-max-width: 1280px;
     --type-display-size: 48px;
-    --type-display-line: 1.45;
+    --type-display-line-ratio: 1.45;
     --space-button-lg-x: var(--space-7);
 
     --color-hero-audience: var(--color-text-accent-strong); /* Figma #d4a800(2.14:1) → 5.49:1 */
@@ -360,9 +381,29 @@
     --space-type-grid-gap-x: var(--space-12);
 
     --type-home-hero-size: 60px; /* 2026-10-30 결정: 데스크톱 60px */
-    --type-home-hero-line: 1.25;
+    --type-home-hero-line-ratio: 1.25;
     --type-flow-number-size: 36px;
     --type-flow-title-size: 18px;
     --type-flow-body-size: 16px;
+  }
+}
+
+/* 줄 높이를 짝수 px로 (2026-10-30 결정). 1em은 쓰는 곳의 글자 크기 */
+@supports (line-height: round(1em, 2px)) {
+  :root {
+    --type-display-line: round(calc(var(--type-display-line-ratio) * 1em), 2px);
+    --type-question-line: round(calc(var(--type-question-line-ratio) * 1em), 2px);
+    --type-body-line: round(calc(var(--type-body-line-ratio) * 1em), 2px);
+    --type-result-title-line: round(calc(var(--type-result-title-line-ratio) * 1em), 2px);
+    --type-heading-line: round(calc(var(--type-heading-line-ratio) * 1em), 2px);
+    --type-heading-line-relaxed: round(calc(var(--type-heading-line-relaxed-ratio) * 1em), 2px);
+    --line-height-normal: round(calc(var(--line-height-normal-ratio) * 1em), 2px);
+    --line-height-relaxed: round(calc(var(--line-height-relaxed-ratio) * 1em), 2px);
+    --line-height-reading: round(calc(var(--line-height-reading-ratio) * 1em), 2px);
+    --type-hero-desc-line: round(calc(var(--type-hero-desc-line-ratio) * 1em), 2px);
+    --line-height-snug: round(calc(var(--line-height-snug-ratio) * 1em), 2px);
+    --type-section-title-line: round(calc(var(--type-section-title-line-ratio) * 1em), 2px);
+    --type-callout-title-line: round(calc(var(--type-callout-title-line-ratio) * 1em), 2px);
+    --type-home-hero-line: round(calc(var(--type-home-hero-line-ratio) * 1em), 2px);
   }
 }
