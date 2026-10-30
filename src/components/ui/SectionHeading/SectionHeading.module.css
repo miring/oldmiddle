@@ -1,0 +1,41 @@
+.label {
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-body-line);
+}
+
+/* 라벨 색: 밝은 배경 위 진한 노랑 5.49:1 / 초록 5.78:1 */
+.primary {
+  color: var(--color-text-accent-strong);
+}
+
+.secondary {
+  color: var(--color-text-calm);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-section-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-section-title-line);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size); /* Figma 16px (2026-10-30 결정: 디자인대로) */
+  line-height: var(--type-body-line);
+  overflow-wrap: anywhere;
+}
+
+/* 어두운 초록 배경 위 */
+.inverse .label {
+  color: var(--color-text-inverse-label);
+}
+
+.inverse .title {
+  color: var(--color-text-inverse-primary);
+}
+
+.inverse .description {
+  color: var(--color-text-inverse-secondary);
+}

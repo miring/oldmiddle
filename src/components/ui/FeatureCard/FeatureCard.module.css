@@ -1,0 +1,31 @@
+.card {
+  border-radius: var(--radius-xl);
+  background-color: var(--color-secondary-subtle);
+}
+
+.iconBox {
+  width: var(--size-feature-icon-box);
+  height: var(--size-feature-icon-box);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+}
+
+.icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-feature-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 옅은 초록 바탕 위 6.16:1 */
+.body {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size); /* Figma 16px (디자인대로) */
+  line-height: var(--type-body-line);
+  overflow-wrap: anywhere;
+}

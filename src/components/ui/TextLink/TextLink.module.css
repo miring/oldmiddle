@@ -1,0 +1,8 @@
+.link {
+  min-height: var(--size-touch-min);
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size); /* Figma 17px → 짝수 18px */
+  line-height: var(--type-body-line);
+  text-decoration: underline;
+  text-underline-position: from-font;
+}

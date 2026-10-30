@@ -9,6 +9,21 @@
  */
 
 :root {
+  /* ── 색상: 브랜드 원색 (값은 여기서만 정하고 아래 토큰들이 참조) ──
+   * primary = 노랑, secondary = 초록. 각각 진한 단계(-strong)를 함께 씁니다. */
+  --color-yellow-500: #f0c419;
+  --color-yellow-600: #d4a800; /* 진한 노랑 — 밝은 배경 대비 2.14:1이라 장식(선·도형)에만 */
+  --color-yellow-800: #7d6300; /* 진한 노랑의 글자용 값 — 밝은 배경 5.49:1 */
+  --color-green-50: #eaf4ef;
+  --color-green-600: #3d6b61;
+  --color-green-800: #2c5149; /* 진한 초록 */
+
+  --color-primary: var(--color-yellow-500);
+  --color-primary-strong: var(--color-yellow-600);
+  --color-secondary: var(--color-green-600);
+  --color-secondary-strong: var(--color-green-800);
+  --color-secondary-subtle: var(--color-green-50);
+
   /* ── 색상: 배경·면 ── */
   --color-bg-default: #fafaf7;
   --color-surface-raised: #ffffff;
@@ -20,25 +35,25 @@
   --color-text-primary: #2c2416;
   --color-text-secondary: #5c5a50;
   --color-text-tertiary: #7a7a6e; /* [대비 미달] 4.15:1 */
-  --color-text-accent: #d4a800; /* [대비 미달] 2.14:1 */
-  --color-text-accent-strong: #7d6300; /* 밝은 배경 위 강조 글자 5.49:1 (Figma #d4a800 보정값) */
-  --color-text-calm: #3d6b61; /* 헤더 이름 뜻풀이, 결과 화면 제목들 */
+  --color-text-accent: var(--color-primary-strong); /* [대비 미달] 2.14:1 */
+  --color-text-accent-strong: var(--color-yellow-800); /* 밝은 배경 위 강조 글자 (Figma #d4a800 보정값) */
+  --color-text-calm: var(--color-secondary); /* 헤더 이름 뜻풀이, 결과 화면 제목들 */
   --color-text-on-accent: #2c2416;
   --color-text-disabled: #6c675c; /* 비활성 버튼 배경 위 4.62:1 */
 
   /* ── 색상: 선·포커스 ── */
   --color-border-subtle: #e2dfd4; /* [대비 미달] 선택지·라디오 테두리로 쓸 때 흰 배경 대비 1.33:1 */
-  --color-border-selected: #d4a800; /* 고른 선택지 테두리 */
+  --color-border-selected: var(--color-primary-strong); /* 고른 선택지 테두리 */
   --color-focus-ring: #2c2416;
 
   /* ── 색상: 버튼·진행·브랜드 ── */
-  --color-action-primary-bg: #f0c419;
+  --color-action-primary-bg: var(--color-primary);
   --color-action-secondary-bg: #ffffff;
   --color-action-disabled-bg: #ede9d8;
   --color-progress-track: #ede9d8;
-  --color-progress-fill: #f0c419;
-  --color-brand-mark-1: #f0c419; /* 장식 전용, 글자에 쓰지 않음 */
-  --color-brand-mark-2: #d4a800; /* 장식 전용, 글자에 쓰지 않음 */
+  --color-progress-fill: var(--color-primary);
+  --color-brand-mark-1: var(--color-primary); /* 장식 전용, 글자에 쓰지 않음 */
+  --color-brand-mark-2: var(--color-primary-strong); /* 장식 전용, 글자에 쓰지 않음 */
 
   /* ── 글자: 글꼴·굵기 ── */
   --font-family-base: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
@@ -49,26 +64,26 @@
 
   /* ── 글자: 크기·행간 (모바일 기준, 아래에서 화면 폭별 재정의) ── */
   --type-display-size: 30px; /* 랜딩 히어로 제목 */
-  --type-display-line: 1.35;
-  --type-question-size: 25px;
-  --type-question-line: 1.5;
+  --type-display-line-ratio: 1.35;
+  --type-question-size: 26px;
+  --type-question-line-ratio: 1.5;
   --type-wordmark-size: 23px;
   --type-body-lg-size: 18px; /* 선택지, 진행 숫자 */
   --type-button-size: 18px;
-  --type-body-size: 16px; /* [크기 미달] 기준 18px */
-  --type-body-line: 1.6;
+  --type-body-size: 16px; /* 기본 본문 (기준 16px 이상, 2026-10-30 결정) */
+  --type-body-line-ratio: 1.6;
   --type-label-size: 16px;
-  --type-meta-size: 15px; /* "준비 중" 같은 상태 문구 */
+  --type-meta-size: 16px; /* "준비 중" 같은 상태 문구 */
   --type-caption-size: 14px; /* "가칭" 같은 보조 문구 */
   --type-result-title-size: 32px; /* 결과 유형 이름 */
-  --type-result-title-line: 1.4;
+  --type-result-title-line-ratio: 1.4;
   --type-heading-3-size: 22px; /* 결과 화면 소제목 */
-  --type-heading-4-size: 21px; /* 잘 맞는 인연 유형 이름 */
-  --type-heading-line: 1.5;
-  --type-heading-line-relaxed: 1.55;
-  --line-height-normal: normal;
-  --line-height-relaxed: 1.7;
-  --line-height-reading: 1.75; /* 결과 설명처럼 긴 글 */
+  --type-heading-4-size: 22px; /* 잘 맞는 인연 유형 이름 */
+  --type-heading-line-ratio: 1.5;
+  --type-heading-line-relaxed-ratio: 1.55;
+  --line-height-normal-ratio: 1.45;
+  --line-height-relaxed-ratio: 1.7;
+  --line-height-reading-ratio: 1.75; /* 결과 설명처럼 긴 글 */
 
   /* ── 간격: 4px 단위 스케일 ── */
   --space-unit: 4px; /* Tailwind 간격 유틸리티의 기준값 */
@@ -88,6 +103,7 @@
   --space-20: 80px;
   --space-24: 96px;
   /* Figma 원본 중 4px 단위에 맞지 않는 값 */
+  --space-0-5: 2px;
   --space-1-5: 6px;
   --space-2-5: 10px;
 
@@ -95,7 +111,7 @@
    * 배경은 화면 끝까지, 내용은 최대 폭 안에서 가운데 정렬(content-gutter 유틸리티, index.css) */
   --size-content-max-width: 1280px;
   --space-gutter: var(--space-6); /* 화면 양옆 최소 여백 — 태블릿 48 / 데스크톱 96 */
-  --size-hero-max-width: calc(var(--size-content-max-width) + var(--space-24) * 2); /* 히어로: 내용 폭 + 데스크톱 양옆 여백 */
+  --size-hero-max-width: calc(var(--size-content-max-width) + var(--space-gutter) * 2); /* 히어로: 내용 폭 + 양옆 여백 */
 
   /* ── 간격: 컴포넌트 안쪽 (모바일 기준) ──
    * 섹션 여백·배치 간격은 Tailwind 클래스(p-6, gap-4 등 = --space-unit 배수)로 씁니다. */
@@ -132,6 +148,7 @@
   --size-button-height: 60px;
   --size-button-lg-height: 56px; /* 랜딩 초대 버튼처럼 글자를 왼쪽, 화살표를 오른쪽에 두는 큰 버튼 */
   --type-button-lg-size: 16px;
+  --size-button-compact-height: 56px; /* 헤더의 가입하기 (Figma 48px → 56px, 2026-10-30 결정) */
   --space-button-lg-x: var(--space-6);
   --size-icon-arrow-width: 20.15px; /* arrow-forward.svg 원본 크기 */
   --size-icon-arrow-height: 15.8px;
@@ -154,13 +171,13 @@
   --color-caption-text: #ffffff; /* Figma 흰색 80~90% → 사진 위에서 더 잘 보이도록 100% */
   --color-caption-shade: rgba(0, 0, 0, 0.38);
   --type-hero-audience-size: 14px;
-  --type-hero-badge-size: 13px;
+  --type-hero-badge-size: 14px;
   --type-hero-desc-size: 16px;
-  --type-hero-desc-line: 1.6;
+  --type-hero-desc-line-ratio: 1.6;
   --type-hero-card-title-size: 20px;
-  --type-hero-card-note-size: 15px;
-  --type-caption-photo-size: 13px;
-  --line-height-snug: 1.5;
+  --type-hero-card-note-size: 16px;
+  --type-caption-photo-size: 14px;
+  --line-height-snug-ratio: 1.5;
   --space-hero-card-padding: var(--space-5);
   --space-caption-x: var(--space-4);
   --space-caption-top: var(--space-5);
@@ -177,8 +194,8 @@
   --z-header: 10; /* 고정 헤더가 내용 위에 오도록 */
   --z-sheet: 20; /* 바텀시트: 고정 헤더 위 */
   --type-section-title-size: 28px;
-  --type-section-title-line: 1.5;
-  --type-card-title-size: 21px; /* 유형 카드 이름 */
+  --type-section-title-line-ratio: 1.5;
+  --type-card-title-size: 22px; /* 유형 카드 이름 */
   --size-type-thumb: 88px; /* 유형 카드 가로형 그림 */
   --size-type-image-height: 244px; /* 유형 카드 세로형 그림 높이 */
   --fit-type-image: cover;
@@ -188,7 +205,7 @@
   --size-cta-max-width: 382px;
 
   /* ── 어두운 배경(inverse) — "준비하는 만남" 등 ── */
-  --color-surface-inverse: #3d6b61;
+  --color-surface-inverse: var(--color-secondary);
   --color-text-inverse-primary: #fafaf7; /* 제목 5.78:1 */
   --color-text-inverse-secondary: #c8e5e0; /* 설명 4.53:1 */
   --color-text-inverse-label: #d6ede9; /* 섹션 라벨 4.94:1 (Figma #b8ddd8 4.14:1에서 보정) */
@@ -196,8 +213,8 @@
 
   /* ── "준비하는 만남" 항목·Callout — 모바일 기준 ── */
   --type-item-title-size: 22px;
-  --type-callout-title-size: 21px;
-  --type-callout-title-line: normal;
+  --type-callout-title-size: 22px;
+  --type-callout-title-line-ratio: 1.45;
   --space-callout-padding: var(--space-5);
   --space-callout-gap: var(--space-1-5);
   --size-icon-principle: 26px;
@@ -232,19 +249,59 @@
   --color-form-bg-error: var(--color-wine-50); /* 오류 칸 배경 — 입력 글자 13.83 / 안내 글자 5.13 */
   --border-width-form-error: 2px;
 
+  /* ── 정식 홈 공통 컴포넌트 (Figma "시연 · 공통 컴포넌트") ── */
+  --size-icon-sm: 24px; /* 아이콘 마스터 기본 크기 */
+  --size-feature-icon-box: 44px; /* FeatureCard 아이콘 칸 */
+  --type-feature-title-size: 20px;
+  --size-icon-list: 28px; /* IconListItem 기본 크기 아이콘 */
+  /* StepList(이용 흐름) — 모바일·태블릿은 세로 타임라인, 데스크톱은 가로 5칸 */
+  --size-flow-marker: 40px; /* 숫자 원 */
+  --size-flow-line: 2px; /* 원 아래 이어지는 선 */
+  --border-width-flow-column: 3px; /* 데스크톱 칸 왼쪽 선 */
+  --type-flow-number-size: 18px;
+  --type-flow-title-size: 20px;
+  --type-flow-body-size: 18px;
+  --type-price-size: 30px; /* PriceCard 가격 */
+  --size-faq-min-height: 64px; /* FaqAccordion 질문 줄 */
+  --type-faq-icon-size: 22px; /* 질문 오른쪽 + / − */
+  --type-home-hero-size: 30px; /* 정식 홈 히어로 "때가 되어 만난 인연" — 랜딩 히어로(--type-display-size)와 별도 */
+  --type-home-hero-line-ratio: 1.35;
+
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
 
   /* ── 움직임 (prefers-reduced-motion이면 쓰는 쪽에서 끔) ── */
   --motion-duration-expand: 200ms; /* 펼침·접힘 */
   --motion-ease-standard: ease-out;
+
+  /* ── 줄 높이 ──
+   * 위 *-ratio는 글자 크기에 곱할 배율이고, 화면에서는 아래 토큰을 씁니다.
+   * round()를 지원하는 브라우저에서는 파일 맨 아래에서 '글자 크기 × 배율'을 가까운 짝수 px로 반올림합니다
+   * (예: 16px × 1.6 = 25.6 → 26px). 지원하지 않는 브라우저는 배율 그대로.
+   * normal은 Noto Sans KR 기본 줄 높이에 가까운 1.45로 둡니다. */
+  --type-display-line: var(--type-display-line-ratio);
+  --type-question-line: var(--type-question-line-ratio);
+  --type-body-line: var(--type-body-line-ratio);
+  --type-result-title-line: var(--type-result-title-line-ratio);
+  --type-heading-line: var(--type-heading-line-ratio);
+  --type-heading-line-relaxed: var(--type-heading-line-relaxed-ratio);
+  --line-height-normal: var(--line-height-normal-ratio);
+  --line-height-relaxed: var(--line-height-relaxed-ratio);
+  --line-height-reading: var(--line-height-reading-ratio);
+  --type-hero-desc-line: var(--type-hero-desc-line-ratio);
+  --line-height-snug: var(--line-height-snug-ratio);
+  --type-section-title-line: var(--type-section-title-line-ratio);
+  --type-callout-title-line: var(--type-callout-title-line-ratio);
+  --type-home-hero-line: var(--type-home-hero-line-ratio);
+
 }
 
 /* 태블릿 */
 @media (min-width: 48rem) {
   :root {
     --type-display-size: 40px;
-    --type-display-line: 1.5;
+    --type-home-hero-size: 40px;
+    --type-display-line-ratio: 1.5;
     --type-wordmark-size: 26px;
     --size-button-lg-height: 64px;
     --type-button-lg-size: 18px;
@@ -252,8 +309,8 @@
     --color-hero-card-bg: var(--color-surface-raised);
     --color-hero-card-border: var(--color-border-subtle);
     --color-caption-shade: rgba(44, 36, 22, 0.55);
-    --type-hero-desc-line: 1.7;
-    --type-hero-card-title-size: 25px;
+    --type-hero-desc-line-ratio: 1.7;
+    --type-hero-card-title-size: 26px;
     --type-hero-card-note-size: 16px;
     --type-caption-photo-size: 14px;
     --space-hero-card-padding: var(--space-8);
@@ -267,22 +324,24 @@
     --size-hero-secondary-height: 260px;
 
     --type-section-title-size: 32px;
-    --type-section-title-line: 1.55;
+    --type-section-title-line-ratio: 1.55;
     --type-card-title-size: 22px;
     --border-width-list-top: var(--border-width-default);
-    --type-item-title-size: 23px;
-    --type-callout-title-size: 23px;
-    --type-callout-title-line: 1.5;
+    --type-item-title-size: 24px;
+    --type-callout-title-size: 24px;
+    --type-callout-title-line-ratio: 1.5;
     --space-callout-padding: var(--space-7);
     --space-callout-gap: var(--space-3);
     --size-step-badge: 44px;
-    --type-step-number-size: 23px;
+    --type-step-number-size: 24px;
     --size-field-chip-height: 64px;
     --space-field-chip-x: var(--space-5);
     --type-meta-size: 16px;
     --type-caption-size: 16px;
 
     --space-gutter: var(--space-12);
+    /* 태블릿(768~1359px)은 따로 디자인하지 않고, 내용을 이 폭 안에서 가운데 정렬 (Figma 태블릿 834 − 양옆 48) */
+    --size-content-max-width: 738px;
     --space-brand-gap: var(--space-2-5);
     --space-status-gap: var(--space-2);
 
@@ -300,17 +359,18 @@
 @media (min-width: 85rem) {
   :root {
     --space-gutter: var(--space-24);
+    --size-content-max-width: 1280px;
     --type-display-size: 48px;
-    --type-display-line: 1.45;
+    --type-display-line-ratio: 1.45;
     --space-button-lg-x: var(--space-7);
 
     --color-hero-audience: var(--color-text-accent-strong); /* Figma #d4a800(2.14:1) → 5.49:1 */
     --color-hero-fade-end: rgba(250, 250, 247, 0.55);
     --color-hero-card-note: #6b6a5f; /* Figma #8c8a7e(3.47:1) → 흰 배경 5.45:1 */
     --type-hero-audience-size: 16px;
-    --type-hero-desc-size: 17px;
+    --type-hero-desc-size: 18px;
     --type-hero-card-title-size: 24px;
-    --type-hero-card-note-size: 15px;
+    --type-hero-card-note-size: 16px;
     --space-hero-card-padding: var(--space-7);
     --size-hero-photo-height: auto;
     --size-hero-fade-height: 80px;
@@ -319,5 +379,31 @@
     --size-type-image-height: 403px;
     --fit-type-image: contain; /* 데스크톱은 그림 전체가 보이게 */
     --space-type-grid-gap-x: var(--space-12);
+
+    --type-home-hero-size: 60px; /* 2026-10-30 결정: 데스크톱 60px */
+    --type-home-hero-line-ratio: 1.25;
+    --type-flow-number-size: 36px;
+    --type-flow-title-size: 18px;
+    --type-flow-body-size: 16px;
+  }
+}
+
+/* 줄 높이를 짝수 px로 (2026-10-30 결정). 1em은 쓰는 곳의 글자 크기 */
+@supports (line-height: round(1em, 2px)) {
+  :root {
+    --type-display-line: round(calc(var(--type-display-line-ratio) * 1em), 2px);
+    --type-question-line: round(calc(var(--type-question-line-ratio) * 1em), 2px);
+    --type-body-line: round(calc(var(--type-body-line-ratio) * 1em), 2px);
+    --type-result-title-line: round(calc(var(--type-result-title-line-ratio) * 1em), 2px);
+    --type-heading-line: round(calc(var(--type-heading-line-ratio) * 1em), 2px);
+    --type-heading-line-relaxed: round(calc(var(--type-heading-line-relaxed-ratio) * 1em), 2px);
+    --line-height-normal: round(calc(var(--line-height-normal-ratio) * 1em), 2px);
+    --line-height-relaxed: round(calc(var(--line-height-relaxed-ratio) * 1em), 2px);
+    --line-height-reading: round(calc(var(--line-height-reading-ratio) * 1em), 2px);
+    --type-hero-desc-line: round(calc(var(--type-hero-desc-line-ratio) * 1em), 2px);
+    --line-height-snug: round(calc(var(--line-height-snug-ratio) * 1em), 2px);
+    --type-section-title-line: round(calc(var(--type-section-title-line-ratio) * 1em), 2px);
+    --type-callout-title-line: round(calc(var(--type-callout-title-line-ratio) * 1em), 2px);
+    --type-home-hero-line: round(calc(var(--type-home-hero-line-ratio) * 1em), 2px);
   }
 }

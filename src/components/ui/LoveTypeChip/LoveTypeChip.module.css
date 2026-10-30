@@ -1,0 +1,17 @@
+.chip {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.name {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size); /* Figma 16px (디자인대로) */
+  line-height: var(--line-height-snug);
+}

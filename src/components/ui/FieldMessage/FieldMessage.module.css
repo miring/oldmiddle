@@ -19,7 +19,7 @@
 .icon {
   width: var(--size-icon-md);
   height: var(--size-icon-md);
-  margin-top: calc((var(--type-body-size) * var(--type-body-line) - var(--size-icon-md)) / 2);
+  margin-top: calc((var(--type-body-size) * var(--type-body-line-ratio) - var(--size-icon-md)) / 2);
   background-color: var(--color-form-error);
   -webkit-mask: url('../../../assets/icons/circle-alert.svg') center / contain no-repeat;
   mask: url('../../../assets/icons/circle-alert.svg') center / contain no-repeat;

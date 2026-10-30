@@ -77,7 +77,7 @@
 
 /* 종 아이콘: 첫 줄 가운데에 맞춤 */
 .notifyIcon {
-  margin-top: calc((var(--type-body-size) * var(--type-body-line) - var(--space-unit) * 5.5) / 2);
+  margin-top: calc((var(--type-body-size) * var(--type-body-line-ratio) - var(--space-unit) * 5.5) / 2);
 }
 
 .notify strong {

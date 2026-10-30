@@ -1,17 +1,17 @@
-import { Brand } from '../../components/ui/Brand/Brand'
-import styles from './LandingSections.module.css'
+import { SiteFooter } from '../../components/ui/SiteFooter/SiteFooter'
+import { site } from '../../config/site'
 
-/** 랜딩 맨 아래 간단한 푸터 (Figma "Minimal footer") */
+/** 랜딩 맨 아래 정보형 푸터. 사업자 정보·링크는 src/config/site.ts 값이 있는 것만 보입니다 */
 export function LandingFooter() {
   return (
-    <footer className={`${styles.accentSurface} content-gutter`}>
-      <div className="flex flex-col gap-4.5 pb-7 md:gap-0 md:pb-0">
-        <hr className={styles.rule} />
-        <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 md:py-8">
-          <Brand />
-          <p className={styles.footerNote}>천천히, 준비하고 있어요.</p>
-        </div>
-      </div>
-    </footer>
+    <SiteFooter
+      note="천천히, 준비하고 있어요."
+      business={site.business}
+      links={[
+        { label: '이용약관', href: site.termsUrl },
+        { label: '개인정보 처리방침', href: site.privacyUrl },
+        { label: '문의하기', href: site.contactUrl },
+      ]}
+    />
   )
 }

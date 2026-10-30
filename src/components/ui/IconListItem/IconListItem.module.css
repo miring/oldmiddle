@@ -1,0 +1,34 @@
+.md .icon {
+  width: var(--size-icon-list);
+  height: var(--size-icon-list);
+}
+
+/* 한 줄 글과 아이콘 가운데를 맞춤 (아이콘 24 / 글 줄높이 약 29) */
+.sm .icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+  margin-top: var(--space-0-5);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.body {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-lg-size); /* Figma 17px → 짝수 18px */
+  line-height: var(--line-height-snug);
+  overflow-wrap: anywhere;
+}
+
+/* 어두운 초록 배경 위 */
+.inverse .title {
+  color: var(--color-text-inverse-primary);
+}
+
+.inverse .body {
+  color: var(--color-text-inverse-secondary);
+}

@@ -1,0 +1,58 @@
+.marker {
+  width: var(--size-flow-marker);
+  height: var(--size-flow-marker);
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-default);
+  font-size: var(--type-flow-number-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+}
+
+.line {
+  width: var(--size-flow-line);
+  background-color: var(--color-border-subtle);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-flow-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.body {
+  color: var(--color-text-secondary);
+  font-size: var(--type-flow-body-size);
+  line-height: var(--type-body-line);
+  overflow-wrap: anywhere;
+}
+
+/* 강조 단계: 원·선·제목을 초록으로 (Figma #4f6b5a → secondary로 통일) */
+.highlight .marker,
+.highlight .line {
+  background-color: var(--color-secondary);
+}
+
+.highlight .title {
+  color: var(--color-secondary);
+}
+
+/* 데스크톱: 원 대신 큰 초록 숫자, 칸 왼쪽에 선 */
+@media (min-width: 85rem) {
+  .step {
+    border-left: var(--border-width-flow-column) solid var(--color-secondary);
+  }
+
+  .marker,
+  .highlight .marker {
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    color: var(--color-secondary);
+  }
+
+  .highlight .title {
+    color: var(--color-text-primary);
+  }
+}

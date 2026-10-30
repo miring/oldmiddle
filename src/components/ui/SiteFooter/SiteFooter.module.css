@@ -1,0 +1,20 @@
+/* 지금 랜딩 푸터 색 그대로 (2026-10-30 결정) */
+.footer {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.rule {
+  border: 0;
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.note,
+.info {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size); /* 보조 문구라 16px 유지 */
+  line-height: var(--type-body-line);
+}
+
+.info {
+  line-height: var(--line-height-relaxed); /* 여러 줄 사업자 정보 (Figma 1.7) */
+}
