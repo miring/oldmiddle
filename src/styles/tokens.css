@@ -269,6 +269,16 @@
   --type-flow-number-size: 18px;
   --type-flow-title-size: 20px;
   --type-flow-body-size: 18px;
+  --type-flow-title-line-ratio: 1.4; /* 20px → 28px / 데스크톱 18px → 26px */
+  /* LetterCard (정식 홈 교환일기 편지지) — 휴대폰·태블릿은 단계 안 작은 편지, 데스크톱은 큰 편지 */
+  --color-letter-bg: var(--color-surface-accent-subtle);
+  --color-letter-rule: #e2d8ac; /* 편지지 테두리·구분선 (장식) */
+  --type-letter-title-size: 18px;
+  --type-letter-title-line-ratio: 1.4;
+  --radius-letter: 18px;
+  --radius-letter-corner: 6px; /* 왼쪽 위 모서리만 덜 둥글게 */
+  --radius-stamp: 6px; /* 날짜 도장 */
+  --rotate-stamp: -4deg;
   --type-price-size: 30px; /* PriceCard 가격 */
   --size-faq-min-height: 64px; /* FaqAccordion 질문 줄 */
   --type-faq-icon-size: 22px; /* 질문 오른쪽 + / − */
@@ -309,6 +319,8 @@
   --type-callout-title-line: var(--type-callout-title-line-ratio);
   --type-home-hero-line: var(--type-home-hero-line-ratio);
   --type-feature-title-line: var(--type-feature-title-line-ratio);
+  --type-flow-title-line: var(--type-flow-title-line-ratio);
+  --type-letter-title-line: var(--type-letter-title-line-ratio);
   --type-home-section-title-line: var(--type-home-section-title-line-ratio);
 
 }
@@ -412,6 +424,9 @@
     --type-flow-number-size: 36px;
     --type-flow-title-size: 18px;
     --type-flow-body-size: 16px;
+    --type-letter-title-size: 22px;
+    --radius-letter: var(--radius-2xl);
+    --radius-letter-corner: var(--radius-sm);
   }
 }
 
@@ -433,6 +448,8 @@
     --type-callout-title-line: round(calc(var(--type-callout-title-line-ratio) * 1em), 2px);
     --type-home-hero-line: round(calc(var(--type-home-hero-line-ratio) * 1em), 2px);
     --type-feature-title-line: round(calc(var(--type-feature-title-line-ratio) * 1em), 2px);
+    --type-flow-title-line: round(calc(var(--type-flow-title-line-ratio) * 1em), 2px);
+    --type-letter-title-line: round(calc(var(--type-letter-title-line-ratio) * 1em), 2px);
     --type-home-section-title-line: round(calc(var(--type-home-section-title-line-ratio) * 1em), 2px);
   }
 }

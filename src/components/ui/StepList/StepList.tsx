@@ -7,7 +7,7 @@ export type Step = {
   description: string
   /** 초록으로 강조 (모바일·태블릿 타임라인에서만) */
   highlight?: boolean
-  /** 설명 아래에 덧붙일 내용 (예: 교환일기 미리보기) */
+  /** 설명 아래에 덧붙일 내용 (예: 교환일기 미리보기). 세로 타임라인(휴대폰·태블릿)에서만 보입니다 */
   detail?: ReactNode
 }
 
@@ -39,7 +39,7 @@ export function StepList({ steps, titleAs: Title = 'h3' }: StepListProps) {
           <div className="flex min-w-0 flex-1 flex-col gap-0.5 pt-1.5 xl:gap-2 xl:pt-0">
             <Title className={styles.title}>{step.title}</Title>
             <p className={styles.body}>{step.description}</p>
-            {step.detail && <div className="pt-2.5">{step.detail}</div>}
+            {step.detail && <div className="pt-2.5 xl:hidden">{step.detail}</div>}
           </div>
         </li>
       ))}
