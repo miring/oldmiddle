@@ -111,7 +111,7 @@
    * 배경은 화면 끝까지, 내용은 최대 폭 안에서 가운데 정렬(content-gutter 유틸리티, index.css) */
   --size-content-max-width: 1280px;
   --space-gutter: var(--space-6); /* 화면 양옆 최소 여백 — 태블릿 48 / 데스크톱 96 */
-  --size-hero-max-width: calc(var(--size-content-max-width) + var(--space-24) * 2); /* 히어로: 내용 폭 + 데스크톱 양옆 여백 */
+  --size-hero-max-width: calc(var(--size-content-max-width) + var(--space-gutter) * 2); /* 히어로: 내용 폭 + 양옆 여백 */
 
   /* ── 간격: 컴포넌트 안쪽 (모바일 기준) ──
    * 섹션 여백·배치 간격은 Tailwind 클래스(p-6, gap-4 등 = --space-unit 배수)로 씁니다. */
@@ -319,6 +319,8 @@
     --type-caption-size: 16px;
 
     --space-gutter: var(--space-12);
+    /* 태블릿(768~1359px)은 따로 디자인하지 않고, 내용을 이 폭 안에서 가운데 정렬 (Figma 태블릿 834 − 양옆 48) */
+    --size-content-max-width: 738px;
     --space-brand-gap: var(--space-2-5);
     --space-status-gap: var(--space-2);
 
@@ -336,6 +338,7 @@
 @media (min-width: 85rem) {
   :root {
     --space-gutter: var(--space-24);
+    --size-content-max-width: 1280px;
     --type-display-size: 48px;
     --type-display-line: 1.45;
     --space-button-lg-x: var(--space-7);
