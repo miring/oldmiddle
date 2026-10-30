@@ -50,7 +50,8 @@ export function HomeHero() {
             <div className="xl:w-60 xl:shrink-0">
               <ButtonLink href={SIGNUP_HASH}>가입하기</ButtonLink>
             </div>
-            <TextLink href={SIGNUP_HASH} className="self-center xl:self-auto">
+            {/* 데스크톱은 버튼 옆 한 줄로 (칸이 글자에 맞춰 조금 넓어짐) */}
+            <TextLink href={SIGNUP_HASH} className="self-center xl:self-auto xl:whitespace-nowrap">
               사전 신청하셨나요? 이어서 가입하기
             </TextLink>
           </div>
