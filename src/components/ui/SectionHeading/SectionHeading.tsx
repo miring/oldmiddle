@@ -30,7 +30,8 @@ export function SectionHeading({
     <div className={`${tone === 'inverse' ? styles.inverse : ''} flex flex-col gap-4`}>
       <div className={`${styles.heading} flex flex-col`}>
         <p className={`${styles.label} ${styles[labelTone]}`}>{label}</p>
-        <Title id={id} className={styles.title}>
+        {/* tabIndex -1: 헤더 메뉴로 이동했을 때 제목에 포커스를 줘 화면 읽기 프로그램이 읽도록 */}
+        <Title id={id} tabIndex={-1} className={styles.title}>
           {title}
         </Title>
       </div>

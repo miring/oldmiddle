@@ -7,3 +7,8 @@
   --space-gutter: var(--space-home-gutter);
   --size-content-max-width: var(--size-home-content-max-width);
 }
+
+/* 페이지 안 이동(헤더 메뉴)이 홈 헤더 높이만큼만 비켜 서도록 (기본값은 랜딩 헤더 높이) */
+:global(html):has(.page) {
+  scroll-padding-top: var(--size-home-header-height);
+}
