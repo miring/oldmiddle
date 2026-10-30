@@ -77,14 +77,8 @@
   border-top: var(--border-width-default) solid var(--color-border-subtle);
 }
 
-/* ── 마무리 초대·푸터 ── */
+/* ── 마무리 초대 ── */
 .accentStrong {
   color: var(--color-text-accent-strong); /* Figma #d4a800(2.1:1) → 5.41:1 */
   font-weight: var(--font-weight-bold);
-}
-
-.footerNote {
-  color: var(--color-text-secondary);
-  font-size: var(--type-body-size); /* 보조 문구라 16px 유지 */
-  line-height: var(--type-body-line);
 }
