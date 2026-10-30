@@ -65,7 +65,7 @@
   /* ── 글자: 크기·행간 (모바일 기준, 아래에서 화면 폭별 재정의) ── */
   --type-display-size: 30px; /* 랜딩 히어로 제목 */
   --type-display-line: 1.35;
-  --type-question-size: 25px;
+  --type-question-size: 26px;
   --type-question-line: 1.5;
   --type-wordmark-size: 23px;
   --type-body-lg-size: 18px; /* 선택지, 진행 숫자 */
@@ -73,12 +73,12 @@
   --type-body-size: 16px; /* [크기 미달] 기준 18px */
   --type-body-line: 1.6;
   --type-label-size: 16px;
-  --type-meta-size: 15px; /* "준비 중" 같은 상태 문구 */
+  --type-meta-size: 16px; /* "준비 중" 같은 상태 문구 */
   --type-caption-size: 14px; /* "가칭" 같은 보조 문구 */
   --type-result-title-size: 32px; /* 결과 유형 이름 */
   --type-result-title-line: 1.4;
   --type-heading-3-size: 22px; /* 결과 화면 소제목 */
-  --type-heading-4-size: 21px; /* 잘 맞는 인연 유형 이름 */
+  --type-heading-4-size: 22px; /* 잘 맞는 인연 유형 이름 */
   --type-heading-line: 1.5;
   --type-heading-line-relaxed: 1.55;
   --line-height-normal: normal;
@@ -169,12 +169,12 @@
   --color-caption-text: #ffffff; /* Figma 흰색 80~90% → 사진 위에서 더 잘 보이도록 100% */
   --color-caption-shade: rgba(0, 0, 0, 0.38);
   --type-hero-audience-size: 14px;
-  --type-hero-badge-size: 13px;
+  --type-hero-badge-size: 14px;
   --type-hero-desc-size: 16px;
   --type-hero-desc-line: 1.6;
   --type-hero-card-title-size: 20px;
-  --type-hero-card-note-size: 15px;
-  --type-caption-photo-size: 13px;
+  --type-hero-card-note-size: 16px;
+  --type-caption-photo-size: 14px;
   --line-height-snug: 1.5;
   --space-hero-card-padding: var(--space-5);
   --space-caption-x: var(--space-4);
@@ -193,7 +193,7 @@
   --z-sheet: 20; /* 바텀시트: 고정 헤더 위 */
   --type-section-title-size: 28px;
   --type-section-title-line: 1.5;
-  --type-card-title-size: 21px; /* 유형 카드 이름 */
+  --type-card-title-size: 22px; /* 유형 카드 이름 */
   --size-type-thumb: 88px; /* 유형 카드 가로형 그림 */
   --size-type-image-height: 244px; /* 유형 카드 세로형 그림 높이 */
   --fit-type-image: cover;
@@ -211,7 +211,7 @@
 
   /* ── "준비하는 만남" 항목·Callout — 모바일 기준 ── */
   --type-item-title-size: 22px;
-  --type-callout-title-size: 21px;
+  --type-callout-title-size: 22px;
   --type-callout-title-line: normal;
   --space-callout-padding: var(--space-5);
   --space-callout-gap: var(--space-1-5);
@@ -268,7 +268,7 @@
     --color-hero-card-border: var(--color-border-subtle);
     --color-caption-shade: rgba(44, 36, 22, 0.55);
     --type-hero-desc-line: 1.7;
-    --type-hero-card-title-size: 25px;
+    --type-hero-card-title-size: 26px;
     --type-hero-card-note-size: 16px;
     --type-caption-photo-size: 14px;
     --space-hero-card-padding: var(--space-8);
@@ -285,13 +285,13 @@
     --type-section-title-line: 1.55;
     --type-card-title-size: 22px;
     --border-width-list-top: var(--border-width-default);
-    --type-item-title-size: 23px;
-    --type-callout-title-size: 23px;
+    --type-item-title-size: 24px;
+    --type-callout-title-size: 24px;
     --type-callout-title-line: 1.5;
     --space-callout-padding: var(--space-7);
     --space-callout-gap: var(--space-3);
     --size-step-badge: 44px;
-    --type-step-number-size: 23px;
+    --type-step-number-size: 24px;
     --size-field-chip-height: 64px;
     --space-field-chip-x: var(--space-5);
     --type-meta-size: 16px;
@@ -323,9 +323,9 @@
     --color-hero-fade-end: rgba(250, 250, 247, 0.55);
     --color-hero-card-note: #6b6a5f; /* Figma #8c8a7e(3.47:1) → 흰 배경 5.45:1 */
     --type-hero-audience-size: 16px;
-    --type-hero-desc-size: 17px;
+    --type-hero-desc-size: 18px;
     --type-hero-card-title-size: 24px;
-    --type-hero-card-note-size: 15px;
+    --type-hero-card-note-size: 16px;
     --space-hero-card-padding: var(--space-7);
     --size-hero-photo-height: auto;
     --size-hero-fade-height: 80px;
