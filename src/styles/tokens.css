@@ -262,6 +262,8 @@
   --type-flow-title-size: 20px;
   --type-flow-body-size: 18px;
   --type-price-size: 30px; /* PriceCard 가격 */
+  --size-faq-min-height: 64px; /* FaqAccordion 질문 줄 */
+  --type-faq-icon-size: 22px; /* 질문 오른쪽 + / − */
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
