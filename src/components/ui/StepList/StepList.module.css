@@ -38,8 +38,9 @@
   color: var(--color-secondary);
 }
 
-/* 강조 단계 바탕 (highlightSurface) */
-.surface {
+/* 강조 단계 바탕 (highlightSurface)
+ * 휴대폰·태블릿: 오른쪽 글 카드에만 (연결선은 카드 옆을 지나감) / 데스크톱: 칸 전체 */
+.surfaceText {
   border-radius: var(--radius-lg);
   background-color: var(--color-secondary-subtle);
 }
@@ -62,8 +63,14 @@
     color: var(--color-text-primary);
   }
 
+  .surfaceText {
+    border-radius: 0;
+    background-color: transparent;
+  }
+
   /* 왼쪽 선이 있는 쪽은 모서리를 둥글리지 않음 */
-  .surface {
+  .surfaceStep {
     border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    background-color: var(--color-secondary-subtle);
   }
 }

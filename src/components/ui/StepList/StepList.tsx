@@ -28,20 +28,22 @@ export function StepList({ steps, titleAs: Title = 'h3', highlightSurface = fals
     // role="list": 목록 기호를 없앤 목록도 iOS VoiceOver가 목록으로 읽도록
     <ol role="list" className="flex flex-col xl:flex-row xl:gap-4">
       {steps.map((step, index) => {
-        // 바탕을 깔 때는 좌우로 조금 넓혀 글자 위치는 다른 단계와 맞춤
-        const surface = step.highlight && highlightSurface ? `${styles.surface} -mx-3 px-3 pt-3 xl:mx-0` : ''
+        const surface = step.highlight && highlightSurface
+        // 휴대폰·태블릿 바탕 카드: 왼쪽으로 조금 넓혀 제목 위치는 다른 단계와 맞춤
+        const textBox = surface ? `${styles.surfaceText} -ml-2 px-2 py-3 xl:ml-0 xl:p-0` : 'pt-1.5 xl:pt-0'
         return (
           <li
             key={step.id}
-            className={`${styles.step} ${step.highlight ? styles.highlight : ''} ${surface} flex gap-4 pb-5 last:pb-0 xl:min-w-0 xl:flex-1 xl:flex-col xl:gap-3 xl:py-3 xl:pr-4 xl:pl-6`}
+            className={`${styles.step} ${step.highlight ? styles.highlight : ''} ${surface ? styles.surfaceStep : ''} flex gap-4 pb-5 last:pb-0 xl:min-w-0 xl:flex-1 xl:flex-col xl:gap-3 xl:py-3 xl:pr-4 xl:pl-6`}
           >
             <div className="flex w-10 shrink-0 flex-col items-center gap-1.5 xl:w-auto xl:items-start">
               <span className={`${styles.marker} flex items-center justify-center`} aria-hidden="true">
                 {index + 1}
               </span>
-              {index < steps.length - 1 && <span className={`${styles.line} flex-1 xl:hidden`} />}
+              {/* 아래 단계 사이 여백(pb-5)만큼 내려 다음 번호까지 선을 이음 */}
+              {index < steps.length - 1 && <span className={`${styles.line} -mb-5 flex-1 xl:hidden`} />}
             </div>
-            <div className="flex min-w-0 flex-1 flex-col gap-0.5 pt-1.5 xl:gap-2 xl:pt-0">
+            <div className={`${textBox} flex min-w-0 flex-1 flex-col gap-0.5 xl:gap-2`}>
               <Title className={styles.title}>{step.title}</Title>
               <p className={styles.body}>{step.description}</p>
               {step.detail && <div className="pt-2.5 xl:hidden">{step.detail}</div>}
