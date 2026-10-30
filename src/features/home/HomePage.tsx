@@ -2,6 +2,7 @@ import { SiteFooter } from '../../components/ui/SiteFooter/SiteFooter'
 import { FOOTER_LINKS } from '../../config/copy'
 import { site } from '../../config/site'
 import { HomeAbout } from './HomeAbout'
+import { HomeFlow } from './HomeFlow'
 import { HomeHeader } from './HomeHeader'
 import { HomeHero } from './HomeHero'
 import styles from './HomePage.module.css'
@@ -15,6 +16,7 @@ export function HomePage() {
       <main className="pt-(--size-header-height)">
         <HomeHero />
         <HomeAbout />
+        <HomeFlow />
       </main>
       <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
     </div>
