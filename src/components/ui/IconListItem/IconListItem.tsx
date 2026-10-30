@@ -7,7 +7,7 @@ type IconListItemProps = {
   /** 굵은 제목. 없으면 설명 한 줄만 보입니다 */
   title?: string
   children: ReactNode
-  /** md: 아이콘 28 + 제목·설명 (안심 장치) / sm: 아이콘 24 + 한 줄 (신뢰 문구, 교환일기 안내) */
+  /** md: 아이콘 28 + 제목 18·설명 18 (안심 장치) / sm: 아이콘 24 + 한 줄 16 (히어로 안심 한 줄) */
   size?: 'md' | 'sm'
   /** default: 밝은 배경 위 / inverse: 어두운 초록 배경 위 */
   tone?: 'default' | 'inverse'
