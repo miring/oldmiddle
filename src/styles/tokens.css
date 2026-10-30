@@ -147,6 +147,7 @@
   --size-button-height: 60px;
   --size-button-lg-height: 56px; /* 랜딩 초대 버튼처럼 글자를 왼쪽, 화살표를 오른쪽에 두는 큰 버튼 */
   --type-button-lg-size: 16px;
+  --size-button-compact-height: 56px; /* 헤더의 가입하기 (Figma 48px → 56px, 2026-10-30 결정) */
   --space-button-lg-x: var(--space-6);
   --size-icon-arrow-width: 20.15px; /* arrow-forward.svg 원본 크기 */
   --size-icon-arrow-height: 15.8px;

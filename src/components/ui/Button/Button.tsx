@@ -12,11 +12,14 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   arrow?: 'forward' | 'back'
   /** 글자 앞에 둘 아이콘 이미지 주소 (장식용, 의미는 글자로 전달) */
   icon?: string
-  /** lg: 글자를 왼쪽, 화살표를 오른쪽 끝에 두는 큰 버튼 (랜딩 초대 버튼) */
-  size?: 'md' | 'lg'
+  /**
+   * lg: 글자를 왼쪽, 화살표를 오른쪽 끝에 두는 큰 버튼 (랜딩 초대 버튼)
+   * compact: 글자 길이만큼만 차지하는 버튼 (헤더의 가입하기)
+   */
+  size?: 'md' | 'lg' | 'compact'
 }
 
-/** 기본 버튼. 폭은 부모 너비를 꽉 채우므로, 폭은 감싸는 요소에서 정합니다. */
+/** 기본 버튼. 폭은 부모 너비를 꽉 채우므로, 폭은 감싸는 요소에서 정합니다 (compact 제외). */
 export function Button({
   variant = 'primary',
   arrow,
@@ -30,7 +33,7 @@ export function Button({
   const classes = [
     styles.button,
     styles[variant],
-    size === 'lg' ? styles.lg : '',
+    size === 'md' ? '' : styles[size],
     icon ? styles.withIcon : '',
     className ?? '',
   ].join(' ')
