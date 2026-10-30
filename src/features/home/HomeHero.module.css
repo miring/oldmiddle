@@ -1,0 +1,24 @@
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-home-hero-size); /* 30 / 40 / 60px */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-home-hero-line);
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: var(--type-hero-desc-size); /* 랜딩 히어로 설명과 같은 크기 16 / 16 / 18px (Figma 데스크톱 20px) */
+  line-height: var(--type-body-line);
+}
+
+/* 일러스트가 들어갈 자리 (Figma 모서리 20 / 데스크톱 28 → 토큰 20 / 24) */
+.illustration {
+  border-radius: var(--radius-xl);
+  background-color: var(--color-secondary-subtle);
+}
+
+@media (min-width: 85rem) {
+  .illustration {
+    border-radius: var(--radius-2xl);
+  }
+}
