@@ -28,7 +28,7 @@ export function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={`${tone === 'inverse' ? styles.inverse : ''} flex flex-col gap-4`}>
-      <div className="flex flex-col gap-2">
+      <div className={`${styles.heading} flex flex-col`}>
         <p className={`${styles.label} ${styles[labelTone]}`}>{label}</p>
         <Title id={id} className={styles.title}>
           {title}

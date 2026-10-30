@@ -1,3 +1,7 @@
+.heading {
+  gap: var(--space-home-heading-gap); /* 라벨과 제목 사이 16 / 16 / 6px */
+}
+
 .label {
   font-size: var(--type-label-size);
   font-weight: var(--font-weight-bold);
@@ -17,7 +21,7 @@
   color: var(--color-text-primary);
   font-size: var(--type-section-title-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--type-section-title-line);
+  line-height: var(--type-home-section-title-line);
 }
 
 .description {
