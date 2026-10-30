@@ -1,6 +1,7 @@
 .card {
   border-radius: var(--radius-xl);
   background-color: var(--color-secondary-subtle);
+  box-shadow: var(--shadow-card-feature);
 }
 
 .iconBox {
@@ -19,7 +20,7 @@
   color: var(--color-text-primary);
   font-size: var(--type-feature-title-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-snug);
+  line-height: var(--type-feature-title-line);
 }
 
 /* 옅은 초록 바탕 위 6.16:1 */
