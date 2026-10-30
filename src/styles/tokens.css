@@ -248,6 +248,11 @@
   --color-form-bg-error: var(--color-wine-50); /* 오류 칸 배경 — 입력 글자 13.83 / 안내 글자 5.13 */
   --border-width-form-error: 2px;
 
+  /* ── 정식 홈 공통 컴포넌트 (Figma "시연 · 공통 컴포넌트") ── */
+  --size-icon-sm: 24px; /* 아이콘 마스터 기본 크기 */
+  --size-feature-icon-box: 44px; /* FeatureCard 아이콘 칸 */
+  --type-feature-title-size: 20px;
+
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
 
