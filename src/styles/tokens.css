@@ -254,6 +254,13 @@
   --size-feature-icon-box: 44px; /* FeatureCard 아이콘 칸 */
   --type-feature-title-size: 20px;
   --size-icon-list: 28px; /* IconListItem 기본 크기 아이콘 */
+  /* StepList(이용 흐름) — 모바일·태블릿은 세로 타임라인, 데스크톱은 가로 5칸 */
+  --size-flow-marker: 40px; /* 숫자 원 */
+  --size-flow-line: 2px; /* 원 아래 이어지는 선 */
+  --border-width-flow-column: 3px; /* 데스크톱 칸 왼쪽 선 */
+  --type-flow-number-size: 18px;
+  --type-flow-title-size: 20px;
+  --type-flow-body-size: 18px;
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
@@ -342,5 +349,9 @@
     --size-type-image-height: 403px;
     --fit-type-image: contain; /* 데스크톱은 그림 전체가 보이게 */
     --space-type-grid-gap-x: var(--space-12);
+
+    --type-flow-number-size: 36px;
+    --type-flow-title-size: 18px;
+    --type-flow-body-size: 16px;
   }
 }
