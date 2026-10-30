@@ -88,15 +88,3 @@
   font-size: var(--type-body-size); /* 보조 문구라 16px 유지 */
   line-height: var(--type-body-line);
 }
-
-/* ── 궁금한 점 ── */
-.faqItem {
-  border-color: var(--color-border-subtle);
-}
-
-.faqQuestion {
-  color: var(--color-text-primary);
-  font-size: var(--type-item-title-size); /* Figma 21/23px → 항목 제목 토큰 22/23px */
-  font-weight: var(--font-weight-bold);
-  line-height: var(--type-body-line);
-}
