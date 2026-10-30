@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { HomePage } from './features/home/HomePage'
 import { LandingPage } from './features/landing/LandingPage'
 import { CancelPage } from './features/preregister/CancelPage'
 import { PreregisterDonePage } from './features/preregister/PreregisterDonePage'
@@ -27,6 +28,7 @@ export function App() {
     }
   }, [requestedStep, step])
 
+  if (route.view === 'home') return <HomePage />
   if (route.view === 'cancel') return <CancelPage token={route.token} />
   if (route.view === 'preregister') return <PreregisterPage />
   if (route.view === 'under45') return <Under45Page />

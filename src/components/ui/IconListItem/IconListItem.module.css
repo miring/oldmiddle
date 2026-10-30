@@ -3,11 +3,10 @@
   height: var(--size-icon-list);
 }
 
-/* 한 줄 글과 아이콘 가운데를 맞춤 (아이콘 24 / 글 줄높이 약 29) */
+/* 아이콘 24 = 글 한 줄 높이 24 (16px × 1.5) */
 .sm .icon {
   width: var(--size-icon-sm);
   height: var(--size-icon-sm);
-  margin-top: var(--space-0-5);
 }
 
 .title {
@@ -22,6 +21,11 @@
   font-size: var(--type-body-lg-size); /* Figma 17px → 짝수 18px */
   line-height: var(--line-height-snug);
   overflow-wrap: anywhere;
+}
+
+/* 작은 크기: 한 줄 안내 (Figma 15px → 짝수 16px) */
+.sm .body {
+  font-size: var(--type-body-size);
 }
 
 /* 어두운 초록 배경 위 */

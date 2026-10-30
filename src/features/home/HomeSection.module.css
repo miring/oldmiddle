@@ -1,0 +1,15 @@
+.default {
+  background-color: var(--color-bg-default);
+}
+
+.raised {
+  background-color: var(--color-surface-raised);
+}
+
+.accent {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.inverse {
+  background-color: var(--color-surface-inverse);
+}

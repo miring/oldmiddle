@@ -1,4 +1,5 @@
 import { useSyncExternalStore } from 'react'
+import { site } from '../../config/site'
 import { QUIZ_TOTAL } from './questions'
 import { clearAnswers } from './quizAnswers'
 
@@ -9,6 +10,7 @@ import { clearAnswers } from './quizAnswers'
 
 export type QuizRoute =
   | { view: 'landing' }
+  | { view: 'home' }
   | { view: 'quiz'; step: number }
   | { view: 'result' }
   | { view: 'preregister' }
@@ -18,6 +20,13 @@ export type QuizRoute =
 
 const NAVIGATE_EVENT = 'quiz:navigate'
 
+/** 정식 홈 미리보기 (오픈 전에는 개발 서버에서만 열림) */
+export const HOME_HASH = '#/home'
+/** 테스트 공유 링크. 랜딩을 보여 줍니다 (오픈 뒤 첫 화면이 정식 홈으로 바뀌어도 테스트로 들어오도록) */
+export const TEST_HASH = '#/test'
+/** 정식 홈의 가입하기·로그인. 화면이 생기기 전까지 이동할 주소만 정해 둡니다 */
+export const SIGNUP_HASH = '#/signup'
+export const LOGIN_HASH = '#/login'
 export const RESULT_HASH = '#/result'
 export const PREREGISTER_HASH = '#/preregister'
 export const UNDER45_HASH = '#/preregister/under45'
@@ -32,7 +41,16 @@ export function quizHash(step: number) {
   return `#/quiz/${step}`
 }
 
+/** 오픈 뒤에는 첫 화면이 정식 홈. 오픈 전에는 개발 서버의 #/home에서만 열고, 운영 사이트에서는 랜딩을 보여 줍니다 */
+function parseHome(hash: string): QuizRoute | null {
+  if (site.siteMode === 'open') return hash === '' || hash === HOME_HASH ? { view: 'home' } : null
+  return hash === HOME_HASH && import.meta.env.DEV ? { view: 'home' } : null
+}
+
 function parse(hash: string): QuizRoute {
+  const home = parseHome(hash)
+  if (home) return home
+  if (hash === TEST_HASH) return { view: 'landing' }
   if (hash === RESULT_HASH) return { view: 'result' }
   if (hash === PREREGISTER_HASH) return { view: 'preregister' }
   if (hash === UNDER45_HASH) return { view: 'under45' }
