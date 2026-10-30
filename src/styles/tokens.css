@@ -264,6 +264,8 @@
   --type-price-size: 30px; /* PriceCard 가격 */
   --size-faq-min-height: 64px; /* FaqAccordion 질문 줄 */
   --type-faq-icon-size: 22px; /* 질문 오른쪽 + / − */
+  --type-home-hero-size: 30px; /* 정식 홈 히어로 "때가 되어 만난 인연" — 랜딩 히어로(--type-display-size)와 별도 */
+  --type-home-hero-line: 1.35;
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
@@ -277,6 +279,7 @@
 @media (min-width: 48rem) {
   :root {
     --type-display-size: 40px;
+    --type-home-hero-size: 40px;
     --type-display-line: 1.5;
     --type-wordmark-size: 26px;
     --size-button-lg-height: 64px;
@@ -353,6 +356,8 @@
     --fit-type-image: contain; /* 데스크톱은 그림 전체가 보이게 */
     --space-type-grid-gap-x: var(--space-12);
 
+    --type-home-hero-size: 60px; /* 2026-10-30 결정: 데스크톱 60px */
+    --type-home-hero-line: 1.25;
     --type-flow-number-size: 36px;
     --type-flow-title-size: 18px;
     --type-flow-body-size: 16px;
