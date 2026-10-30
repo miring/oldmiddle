@@ -1,0 +1,32 @@
+.card {
+  border-radius: var(--radius-lg);
+  background-color: var(--color-secondary-strong);
+}
+
+/* 진한 초록 바탕 위 6.61:1 */
+.name {
+  color: var(--color-text-inverse-secondary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 진한 초록 바탕 위 노랑 5.30:1 */
+.price {
+  color: var(--color-primary);
+  font-size: var(--type-price-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-display-line);
+}
+
+.rule {
+  border: 0;
+  border-top: var(--border-width-default) solid var(--color-secondary);
+}
+
+.detail {
+  color: var(--color-text-inverse-secondary);
+  font-size: var(--type-body-size); /* Figma 16px (디자인대로) */
+  line-height: var(--type-body-line);
+  overflow-wrap: anywhere;
+}
