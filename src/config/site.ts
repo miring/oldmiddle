@@ -1,5 +1,11 @@
 // 서비스명은 코드 곳곳에 쓰지 않고 이 설정값만 참조합니다. 표기는 '시연(時緣)'으로 통일합니다.
+
+/** prelaunch: 첫 화면(/)은 사전 신청 랜딩 / open: 첫 화면은 정식 홈 */
+export type SiteMode = 'prelaunch' | 'open'
+
 export const site = {
+  /** 정식 오픈 전에는 'prelaunch'. 그동안 정식 홈은 개발 서버의 #/home에서만 미리 봅니다 */
+  siteMode: 'prelaunch' as SiteMode,
   serviceName: '시연(時緣)',
   /** 헤더 로고 옆 이름 뜻풀이 */
   tagline: '때가 되어 만난 인연',
