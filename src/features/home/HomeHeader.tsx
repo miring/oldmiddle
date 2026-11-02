@@ -10,11 +10,16 @@ const MENU = [
   { label: '요금', target: 'home-pricing' },
 ]
 
+/** 부드럽게 스크롤. 기기에서 '동작 줄이기'를 켠 분에게는 바로 이동 */
+function scrollBehavior(): ScrollBehavior {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+}
+
 // 주소의 #은 화면 구분에 쓰므로, 메뉴는 링크 대신 버튼으로 해당 섹션까지 스크롤합니다
 function scrollToSection(id: string) {
   const section = document.getElementById(id)
   if (!section) return
-  section.scrollIntoView({ block: 'start' })
+  section.scrollIntoView({ block: 'start', behavior: scrollBehavior() })
   section.querySelector('h2')?.focus({ preventScroll: true })
 }
 
@@ -23,7 +28,7 @@ export function HomeHeader() {
   return (
     <SiteHeader
       fixed
-      onHomeClick={() => window.scrollTo(0, 0)}
+      onHomeClick={() => window.scrollTo({ top: 0, behavior: scrollBehavior() })}
       aside={
         <div className="flex items-center gap-6 xl:gap-8">
           <nav aria-label="홈 메뉴" className="hidden xl:block">
