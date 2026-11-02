@@ -176,6 +176,18 @@ export const CONSENT_COPY = {
   ],
 } as const
 
+/** 정식 홈 요금 (Figma 데스크톱 "Pricing" 기준). 금액·포함 내용을 바꿀 때는 여기만 고칩니다. 보일지는 site.showPricing */
+export const HOME_PRICING_COPY = {
+  plans: [
+    { name: '가입 심사', price: '1회 2만원', detail: '영상 통화 포함 · 탈락 시 환불' },
+    { name: '베이직', price: '월 2.9만원', detail: '월 4명 소개 · 만남 주선 1회' },
+    { name: '스탠다드', price: '월 4.9만원', detail: '월 8명 소개 · 만남 주선 2회' },
+    { name: '큐레이션', price: '월 9.9만원', detail: '운영자가 고른 3명 · 주선 3회 · 상담' },
+  ],
+  /** 카드 아래 안내 */
+  note: '만남 성사 수수료 없음 · 남은 횟수는 일할 환불',
+} as const
+
 /** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다 */
 export const FOOTER_LINKS = [
   { label: '이용약관', href: site.termsUrl },
