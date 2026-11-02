@@ -1,52 +1,31 @@
-/* 지금 랜딩 푸터 색 그대로 (2026-10-30 결정) */
+/* 진한 바탕 (Figma 홈 "Footer", 2026-11-02 랜딩도 같은 푸터로 통일) */
 .footer {
-  background-color: var(--color-surface-accent-subtle);
-}
-
-.rule {
-  border: 0;
-  border-top: var(--border-width-default) solid var(--color-border-subtle);
-}
-
-.note,
-.info {
-  color: var(--color-text-secondary);
-  font-size: var(--type-body-size); /* 보조 문구라 16px 유지 */
-  line-height: var(--type-body-line);
-}
-
-.info {
-  line-height: var(--line-height-relaxed); /* 여러 줄 사업자 정보 (Figma 1.7) */
-}
-
-/* 진한 바탕 (tone="dark", 정식 홈 Figma "Footer") */
-.dark {
   background-color: var(--color-footer-dark-bg);
 }
 
-.darkBrand {
+.brand {
   color: var(--color-footer-dark-strong);
   font-size: var(--type-footer-brand-size);
   font-weight: var(--font-weight-bold);
   line-height: var(--type-footer-brand-line);
 }
 
-.darkNote,
-.darkInfo {
+.note,
+.info {
   color: var(--color-footer-dark-text);
   font-size: var(--type-body-size);
-  line-height: var(--line-height-relaxed); /* Figma 1.7·1.8 → 28px */
-}
-
-.darkNote {
   line-height: var(--type-body-line);
 }
 
+.info {
+  line-height: var(--line-height-relaxed); /* 여러 줄 사업자 정보 (Figma 1.7·1.8 → 28px) */
+}
+
 /* TextLink 기본 글자색(진한 갈색)을 진한 바탕 위 밝은 색으로 */
-.darkLink {
+.link {
   color: var(--color-footer-dark-strong);
 }
 
-.darkLinkStrong {
+.linkStrong {
   font-weight: var(--font-weight-bold);
 }

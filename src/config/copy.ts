@@ -225,7 +225,7 @@ export const HOME_CLOSING_COPY = {
   button: '가입하기',
 } as const
 
-/** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다 */
+/** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다. 예시 값은 footerContent.ts */
 export const FOOTER_LINKS = [
   { label: '이용약관', href: site.termsUrl },
   { label: '개인정보 처리방침', href: site.privacyUrl, strong: true },

@@ -289,7 +289,7 @@
   --type-home-closing-size: 26px; /* 마지막 권유 두 줄 */
   --type-home-closing-line-ratio: 1.45; /* 26px → 38px / 30px → 44px / 34px → 50px */
   --size-home-closing-button-width: 280px; /* 마지막 권유 가입하기 (태블릿 이상) */
-  /* SiteFooter 진한 바탕 (tone="dark", 정식 홈 Figma "Footer") */
+  /* SiteFooter 진한 바탕 (랜딩·정식 홈 공통, Figma 홈 "Footer") */
   --color-footer-dark-bg: var(--color-text-primary); /* #2c2416 */
   --color-footer-dark-strong: var(--color-text-inverse-primary); /* 서비스명·링크 #fafaf7 15.2:1 */
   --color-footer-dark-text: var(--color-text-inverse-secondary); /* 뜻풀이·사업자 정보 #c8e5e0 12.0:1 (Figma 휴대폰 #cfc3b6 → PC 값으로 통일) */

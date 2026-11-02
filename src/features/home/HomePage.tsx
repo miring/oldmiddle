@@ -1,6 +1,4 @@
 import { SiteFooter } from '../../components/ui/SiteFooter/SiteFooter'
-import { FOOTER_LINKS } from '../../config/copy'
-import { withExampleBusiness, withExampleLinks } from '../../config/footerExamples'
 import { site } from '../../config/site'
 import { HomeAbout } from './HomeAbout'
 import { HomeClosing } from './HomeClosing'
@@ -12,9 +10,6 @@ import { HomeLoveStyle } from './HomeLoveStyle'
 import { HomePricing } from './HomePricing'
 import { HomeSafety } from './HomeSafety'
 import styles from './HomePage.module.css'
-
-/** 개발 서버·외부 미리보기에서만 푸터 빈칸을 예시 값으로 채움. 운영 빌드에서는 false로 정해져 예시 값이 빌드에서 빠집니다 */
-const SHOW_FOOTER_EXAMPLES = import.meta.env.DEV || import.meta.env.VITE_HOME_PREVIEW === 'true'
 
 /** 정식 오픈 홈. 오픈 전(site.siteMode = 'prelaunch')에는 개발 서버의 #/home에서만 열립니다. */
 export function HomePage() {
@@ -32,12 +27,7 @@ export function HomePage() {
         <HomeFaq />
         <HomeClosing />
       </main>
-      <SiteFooter
-        tone="dark"
-        note={site.tagline}
-        business={SHOW_FOOTER_EXAMPLES ? withExampleBusiness(site.business) : site.business}
-        links={SHOW_FOOTER_EXAMPLES ? withExampleLinks(FOOTER_LINKS) : FOOTER_LINKS}
-      />
+      <SiteFooter />
     </div>
   )
 }
