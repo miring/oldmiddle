@@ -47,7 +47,7 @@ export function ServicePrinciplesSection() {
       </div>
 
       <Callout tone="inverse" layout="responsive" titleAs="h3" title="베타는 전액 무료로 준비해요">
-        심사비를 포함해 별도 비용 없이 참여하실 수 있도록 계획하고 있어요.
+        가입 심사는 무료이고, 베타 기간에는 별도 비용 없이 참여하실 수 있도록 계획하고 있어요.
       </Callout>
     </section>
   )

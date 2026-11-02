@@ -12,7 +12,7 @@ const DIARY_NOTE = '교환일기에서 마무리돼도 추천권과 만남 횟�
 const STEPS: Step[] = [
   { id: 'signup', title: '가입하기', description: '본인인증과 혼인 상태 서약. 증명서는 원하는 분만 내요.' },
   { id: 'profile', title: '프로필 쓰기', description: '최근 사진, 가치관 질문 5개, 사랑하는 방식 테스트' },
-  { id: 'intro', title: '인연이 오는 날', description: '화·금 저녁 8시 소개 도착. 서로 수락하면 매칭돼요.' },
+  { id: 'intro', title: '인연이 오는 날', description: "'인연이 오는 날' 저녁 8시 소개 도착. 서로 수락하면 매칭돼요." },
   {
     id: 'diary',
     title: '교환일기 세 번',
