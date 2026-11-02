@@ -18,7 +18,7 @@
 
 .title {
   color: var(--color-text-primary);
-  font-size: var(--type-button-size);
+  font-size: var(--type-body-lg-size); /* 18px 유지 (버튼 글자 20px과 별개) */
   font-weight: var(--font-weight-bold);
   line-height: var(--type-heading-line);
 }

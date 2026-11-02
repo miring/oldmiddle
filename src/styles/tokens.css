@@ -67,9 +67,9 @@
   --type-display-line-ratio: 1.35;
   --type-question-size: 26px;
   --type-question-line-ratio: 1.5;
-  --type-wordmark-size: 23px;
+  --type-wordmark-size: 24px; /* Figma 휴대폰 헤더 23px → 짝수 24px */
   --type-body-lg-size: 18px; /* 선택지, 진행 숫자 */
-  --type-button-size: 18px;
+  --type-button-size: 20px; /* Figma Button/Primary 20px */
   --type-body-size: 16px; /* 기본 본문 (기준 16px 이상, 2026-10-30 결정) */
   --type-body-line-ratio: 1.6;
   --type-label-size: 16px;
