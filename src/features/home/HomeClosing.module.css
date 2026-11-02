@@ -1,0 +1,6 @@
+.message {
+  color: var(--color-text-primary);
+  font-size: var(--type-home-closing-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-home-closing-line);
+}

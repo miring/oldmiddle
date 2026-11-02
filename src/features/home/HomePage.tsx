@@ -2,6 +2,7 @@ import { SiteFooter } from '../../components/ui/SiteFooter/SiteFooter'
 import { FOOTER_LINKS } from '../../config/copy'
 import { site } from '../../config/site'
 import { HomeAbout } from './HomeAbout'
+import { HomeClosing } from './HomeClosing'
 import { HomeFaq } from './HomeFaq'
 import { HomeFlow } from './HomeFlow'
 import { HomeHeader } from './HomeHeader'
@@ -25,6 +26,7 @@ export function HomePage() {
         <HomeSafety />
         {site.showPricing && <HomePricing />}
         <HomeFaq />
+        <HomeClosing />
       </main>
       <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
     </div>

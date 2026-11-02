@@ -286,6 +286,9 @@
   --type-home-hero-line-ratio: 1.35;
   --type-home-hero-desc-size: 16px; /* 히어로 설명 */
   --size-home-faq-max-width: 760px; /* 자주 묻는 질문 (데스크톱 가운데 정렬) */
+  --type-home-closing-size: 26px; /* 마지막 권유 두 줄 */
+  --type-home-closing-line-ratio: 1.45; /* 26px → 38px / 30px → 44px / 34px → 50px */
+  --size-home-closing-button-width: 280px; /* 마지막 권유 가입하기 (태블릿 이상) */
   --size-home-hero-media-height: 220px; /* 히어로 일러스트 높이 */
   --radius-home-hero-media: var(--radius-xl);
   /* 정식 홈 화면에서만 공통 토큰을 덮어쓰는 값 (HomePage.module.css) */
@@ -319,6 +322,7 @@
   --type-section-title-line: var(--type-section-title-line-ratio);
   --type-callout-title-line: var(--type-callout-title-line-ratio);
   --type-home-hero-line: var(--type-home-hero-line-ratio);
+  --type-home-closing-line: var(--type-home-closing-line-ratio);
   --type-feature-title-line: var(--type-feature-title-line-ratio);
   --type-flow-title-line: var(--type-flow-title-line-ratio);
   --type-letter-title-line: var(--type-letter-title-line-ratio);
@@ -331,6 +335,7 @@
   :root {
     --type-display-size: 40px;
     --type-home-hero-size: 40px;
+    --type-home-closing-size: 30px;
     --size-home-hero-media-height: 380px; /* 태블릿은 Figma에 없어 데스크톱 값 */
     --space-home-gutter: var(--space-12);
     --size-home-content-max-width: 738px;
@@ -413,6 +418,7 @@
     --space-type-grid-gap-x: var(--space-12);
 
     --type-home-hero-size: 60px; /* 2026-10-30 결정: 데스크톱 60px */
+    --type-home-closing-size: 34px;
     --type-home-hero-desc-size: 20px;
     --radius-home-hero-media: var(--radius-3xl);
     --size-home-header-height: 72px;
@@ -447,6 +453,7 @@
     --type-section-title-line: round(calc(var(--type-section-title-line-ratio) * 1em), 2px);
     --type-callout-title-line: round(calc(var(--type-callout-title-line-ratio) * 1em), 2px);
     --type-home-hero-line: round(calc(var(--type-home-hero-line-ratio) * 1em), 2px);
+    --type-home-closing-line: round(calc(var(--type-home-closing-line-ratio) * 1em), 2px);
     --type-feature-title-line: round(calc(var(--type-feature-title-line-ratio) * 1em), 2px);
     --type-flow-title-line: round(calc(var(--type-flow-title-line-ratio) * 1em), 2px);
     --type-letter-title-line: round(calc(var(--type-letter-title-line-ratio) * 1em), 2px);

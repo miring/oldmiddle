@@ -218,6 +218,12 @@ export const HOME_FAQ_COPY = [
   },
 ]
 
+/** 정식 홈 마지막 권유 (Figma "Closing") */
+export const HOME_CLOSING_COPY = {
+  lines: ['모든 인연에는 때가 있대요.', '지금이 그때일지도 몰라요.'],
+  button: '가입하기',
+} as const
+
 /** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다 */
 export const FOOTER_LINKS = [
   { label: '이용약관', href: site.termsUrl },
