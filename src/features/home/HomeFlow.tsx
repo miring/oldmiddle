@@ -16,7 +16,7 @@ const STEPS: Step[] = [
   {
     id: 'diary',
     title: '교환일기 세 번',
-    description: '하루 한 질문, 7일 안에. 이 사이 10분 영상 통화도 마쳐요.',
+    description: '하루 한 질문, 7일 안에 주고받아요.',
     highlight: true,
     detail: (
       <LetterCard
