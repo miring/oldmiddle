@@ -1,5 +1,4 @@
 import { SiteFooter } from '../../components/ui/SiteFooter/SiteFooter'
-import { FOOTER_LINKS } from '../../config/copy'
 import { site } from '../../config/site'
 import { HomeAbout } from './HomeAbout'
 import { HomeClosing } from './HomeClosing'
@@ -28,7 +27,7 @@ export function HomePage() {
         <HomeFaq />
         <HomeClosing />
       </main>
-      <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
+      <SiteFooter />
     </div>
   )
 }

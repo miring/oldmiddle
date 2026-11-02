@@ -289,6 +289,12 @@
   --type-home-closing-size: 26px; /* 마지막 권유 두 줄 */
   --type-home-closing-line-ratio: 1.45; /* 26px → 38px / 30px → 44px / 34px → 50px */
   --size-home-closing-button-width: 280px; /* 마지막 권유 가입하기 (태블릿 이상) */
+  /* SiteFooter 진한 바탕 (랜딩·정식 홈 공통, Figma 홈 "Footer") */
+  --color-footer-dark-bg: var(--color-text-primary); /* #2c2416 */
+  --color-footer-dark-strong: var(--color-text-inverse-primary); /* 서비스명·링크 #fafaf7 15.2:1 */
+  --color-footer-dark-text: var(--color-text-inverse-secondary); /* 뜻풀이·사업자 정보 #c8e5e0 12.0:1 (Figma 휴대폰 #cfc3b6 → PC 값으로 통일) */
+  --type-footer-brand-size: 20px; /* 데스크톱 22px */
+  --type-footer-brand-line-ratio: 1.4; /* 20px → 28px / 22px → 30px */
   --size-home-hero-media-height: 220px; /* 히어로 일러스트 높이 */
   --radius-home-hero-media: var(--radius-xl);
   /* 정식 홈 화면에서만 공통 토큰을 덮어쓰는 값 (HomePage.module.css) */
@@ -323,6 +329,7 @@
   --type-callout-title-line: var(--type-callout-title-line-ratio);
   --type-home-hero-line: var(--type-home-hero-line-ratio);
   --type-home-closing-line: var(--type-home-closing-line-ratio);
+  --type-footer-brand-line: var(--type-footer-brand-line-ratio);
   --type-feature-title-line: var(--type-feature-title-line-ratio);
   --type-flow-title-line: var(--type-flow-title-line-ratio);
   --type-letter-title-line: var(--type-letter-title-line-ratio);
@@ -419,6 +426,7 @@
 
     --type-home-hero-size: 60px; /* 2026-10-30 결정: 데스크톱 60px */
     --type-home-closing-size: 34px;
+    --type-footer-brand-size: 22px;
     --type-home-hero-desc-size: 20px;
     --radius-home-hero-media: var(--radius-3xl);
     --size-home-header-height: 72px;
@@ -454,6 +462,7 @@
     --type-callout-title-line: round(calc(var(--type-callout-title-line-ratio) * 1em), 2px);
     --type-home-hero-line: round(calc(var(--type-home-hero-line-ratio) * 1em), 2px);
     --type-home-closing-line: round(calc(var(--type-home-closing-line-ratio) * 1em), 2px);
+    --type-footer-brand-line: round(calc(var(--type-footer-brand-line-ratio) * 1em), 2px);
     --type-feature-title-line: round(calc(var(--type-feature-title-line-ratio) * 1em), 2px);
     --type-flow-title-line: round(calc(var(--type-flow-title-line-ratio) * 1em), 2px);
     --type-letter-title-line: round(calc(var(--type-letter-title-line-ratio) * 1em), 2px);
