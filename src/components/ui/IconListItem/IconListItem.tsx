@@ -18,7 +18,7 @@ export function IconListItem({ icon, title, children, size = 'md', tone = 'defau
   return (
     // 아이콘과 글 사이: md 14px / sm 4px
     <div className={`${styles[size]} ${tone === 'inverse' ? styles.inverse : ''} flex items-start ${size === 'sm' ? 'gap-1' : 'gap-3.5'}`}>
-      <img className={`${styles.icon} shrink-0`} src={icon} alt="" />
+      <img className={`${styles.icon} shrink-0`} src={icon} alt="" aria-hidden="true" />
       <div className="flex min-w-0 flex-1 flex-col gap-0.5">
         {title && <p className={styles.title}>{title}</p>}
         <p className={styles.body}>{children}</p>
