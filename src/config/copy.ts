@@ -179,13 +179,50 @@ export const CONSENT_COPY = {
 /** 정식 홈 요금 (Figma 데스크톱 "Pricing" 기준). 금액·포함 내용을 바꿀 때는 여기만 고칩니다. 보일지는 site.showPricing */
 export const HOME_PRICING_COPY = {
   plans: [
-    { name: '가입 심사', price: '1회 2만원', detail: '영상 통화 포함 · 탈락 시 환불' },
+    { name: '가입 심사', price: '무료', detail: '최근 사진 확인 · 독신 확인(선택)' },
     { name: '베이직', price: '월 2.9만원', detail: '월 4명 소개 · 만남 주선 1회' },
     { name: '스탠다드', price: '월 4.9만원', detail: '월 8명 소개 · 만남 주선 2회' },
     { name: '큐레이션', price: '월 9.9만원', detail: '운영자가 고른 3명 · 주선 3회 · 상담' },
   ],
   /** 카드 아래 안내 */
   note: '만남 성사 수수료 없음 · 남은 횟수는 일할 환불',
+} as const
+
+/** 정식 홈 자주 묻는 질문 (Figma "FAQ"). 첫 질문은 펼친 채 시작합니다 */
+export const HOME_FAQ_COPY = [
+  {
+    id: 'privacy',
+    question: '주변 사람이 알게 될까요?',
+    answer: '둘러보기와 검색이 없어, 내 프로필은 소개받은 분에게만 보여요. 알림에도 이름이나 내용을 띄우지 않아요.',
+  },
+  {
+    id: 'documents',
+    question: '서류를 꼭 내야 하나요?',
+    answer:
+      "아니요. 본인인증과 혼인 상태 서약, 최근 사진만 있으면 가입할 수 있어요. 혼인관계증명서(일반)를 내시면 프로필에 '독신 확인' 배지가 붙어요.",
+  },
+  {
+    id: 'contact',
+    question: '제 연락처는 언제 알려지나요?',
+    answer:
+      '첫 만남 전에는 번호를 주고받지 않고 만남 채팅으로만 연락해요. 만난 뒤 두 분 모두 "또 만나고 싶어요"를 누르면 그때 서로의 번호가 공개돼요.',
+  },
+  {
+    id: 'first-intro',
+    question: '가입하면 언제 소개받나요?',
+    answer: "사진 확인이 끝나면, 매주 '인연이 오는 날' 저녁 8시에 소개가 도착해요.",
+  },
+  {
+    id: 'leave',
+    question: '그만두려면 어떻게 하나요?',
+    answer: '내 정보에서 언제든 쉬거나 그만둘 수 있어요. 남은 횟수는 날짜만큼 계산해 돌려드려요.',
+  },
+]
+
+/** 정식 홈 마지막 권유 (Figma "Closing") */
+export const HOME_CLOSING_COPY = {
+  lines: ['모든 인연에는 때가 있대요.', '지금이 그때일지도 몰라요.'],
+  button: '가입하기',
 } as const
 
 /** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다 */
