@@ -6,6 +6,7 @@ import { HomeFlow } from './HomeFlow'
 import { HomeHeader } from './HomeHeader'
 import { HomeHero } from './HomeHero'
 import { HomeLoveStyle } from './HomeLoveStyle'
+import { HomePricing } from './HomePricing'
 import { HomeSafety } from './HomeSafety'
 import styles from './HomePage.module.css'
 
@@ -21,6 +22,7 @@ export function HomePage() {
         <HomeFlow />
         <HomeLoveStyle />
         <HomeSafety />
+        {site.showPricing && <HomePricing />}
       </main>
       <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
     </div>

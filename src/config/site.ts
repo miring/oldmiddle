@@ -21,6 +21,8 @@ export const site = {
     marriageAgencyNumber: '', // 결혼중개업 신고번호 (신고 전이라 비움)
     mailOrderNumber: '', // 통신판매업 신고번호 (결제 시작 전이라 비움)
   },
+  /** 정식 홈 요금 섹션과 헤더 '요금' 메뉴를 보일지. 결혼중개업 신고 전에 유료 요금을 내보내면 안 될 때 false (금액은 copy.ts HOME_PRICING_COPY) */
+  showPricing: true,
   /** 정식 홈 '사랑하는 방식' 테스트 미리 해 보기 주소. 비어 있으면 링크를 숨깁니다 */
   loveStylePreviewUrl: '',
   /** 푸터 링크 주소. 비어 있으면 그 링크를 숨깁니다 */
