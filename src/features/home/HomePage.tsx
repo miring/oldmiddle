@@ -28,7 +28,12 @@ export function HomePage() {
         <HomeFaq />
         <HomeClosing />
       </main>
-      <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
+      <SiteFooter
+        tone="dark"
+        note={site.tagline}
+        business={site.business}
+        links={FOOTER_LINKS}
+      />
     </div>
   )
 }

@@ -18,3 +18,35 @@
 .info {
   line-height: var(--line-height-relaxed); /* 여러 줄 사업자 정보 (Figma 1.7) */
 }
+
+/* 진한 바탕 (tone="dark", 정식 홈 Figma "Footer") */
+.dark {
+  background-color: var(--color-footer-dark-bg);
+}
+
+.darkBrand {
+  color: var(--color-footer-dark-strong);
+  font-size: var(--type-footer-brand-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-footer-brand-line);
+}
+
+.darkNote,
+.darkInfo {
+  color: var(--color-footer-dark-text);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-relaxed); /* Figma 1.7·1.8 → 28px */
+}
+
+.darkNote {
+  line-height: var(--type-body-line);
+}
+
+/* TextLink 기본 글자색(진한 갈색)을 진한 바탕 위 밝은 색으로 */
+.darkLink {
+  color: var(--color-footer-dark-strong);
+}
+
+.darkLinkStrong {
+  font-weight: var(--font-weight-bold);
+}

@@ -228,6 +228,6 @@ export const HOME_CLOSING_COPY = {
 /** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다 */
 export const FOOTER_LINKS = [
   { label: '이용약관', href: site.termsUrl },
-  { label: '개인정보 처리방침', href: site.privacyUrl },
+  { label: '개인정보 처리방침', href: site.privacyUrl, strong: true },
   { label: '문의하기', href: site.contactUrl },
 ]
