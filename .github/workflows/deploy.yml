@@ -37,6 +37,12 @@ jobs:
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
 
+      # 외부 확인용 정식 홈 미리보기: /<저장소>/home-test/#/home (첫 화면 /<저장소>/ 는 지금처럼 랜딩)
+      - run: npx vite build --outDir dist/home-test --emptyOutDir false
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/home-test/
+          VITE_HOME_PREVIEW: 'true'
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
