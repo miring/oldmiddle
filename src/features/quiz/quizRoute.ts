@@ -41,10 +41,13 @@ export function quizHash(step: number) {
   return `#/quiz/${step}`
 }
 
-/** 오픈 뒤에는 첫 화면이 정식 홈. 오픈 전에는 개발 서버의 #/home에서만 열고, 운영 사이트에서는 랜딩을 보여 줍니다 */
+/** 오픈 전 #/home 미리보기: 개발 서버, 또는 VITE_HOME_PREVIEW=true로 빌드한 외부 확인용 배포(Vercel Preview)에서만 */
+const HOME_PREVIEW = import.meta.env.DEV || import.meta.env.VITE_HOME_PREVIEW === 'true'
+
+/** 오픈 뒤에는 첫 화면이 정식 홈. 오픈 전에는 미리보기 환경의 #/home에서만 열고, 운영 사이트에서는 랜딩을 보여 줍니다 */
 function parseHome(hash: string): QuizRoute | null {
   if (site.siteMode === 'open') return hash === '' || hash === HOME_HASH ? { view: 'home' } : null
-  return hash === HOME_HASH && import.meta.env.DEV ? { view: 'home' } : null
+  return hash === HOME_HASH && HOME_PREVIEW ? { view: 'home' } : null
 }
 
 function parse(hash: string): QuizRoute {
