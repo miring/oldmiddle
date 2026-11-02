@@ -22,7 +22,7 @@ export function HomePage() {
         <HomeFlow />
         <HomeLoveStyle />
         <HomeSafety />
-        <HomePricing />
+        {site.showPricing && <HomePricing />}
       </main>
       <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
     </div>

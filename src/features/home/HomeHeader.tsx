@@ -1,13 +1,14 @@
 import { ButtonLink } from '../../components/ui/Button/Button'
 import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
+import { site } from '../../config/site'
 import { LOGIN_HASH, SIGNUP_HASH } from '../quiz/quizRoute'
 import styles from './HomeHeader.module.css'
 
-/** 데스크톱 헤더 메뉴. target은 각 섹션의 id (섹션이 생기면 그 위치로 이동) */
+/** 데스크톱 헤더 메뉴. target은 각 섹션의 id. '요금'은 요금 섹션을 숨길 때(site.showPricing = false) 함께 숨깁니다 */
 const MENU = [
   { label: '이용 방법', target: 'home-flow' },
   { label: '사랑하는 방식', target: 'home-love-style' },
-  { label: '요금', target: 'home-pricing' },
+  ...(site.showPricing ? [{ label: '요금', target: 'home-pricing' }] : []),
 ]
 
 /** 부드럽게 스크롤. 기기에서 '동작 줄이기'를 켠 분에게는 바로 이동 */
