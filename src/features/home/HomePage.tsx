@@ -5,6 +5,7 @@ import { HomeAbout } from './HomeAbout'
 import { HomeFlow } from './HomeFlow'
 import { HomeHeader } from './HomeHeader'
 import { HomeHero } from './HomeHero'
+import { HomeLoveStyle } from './HomeLoveStyle'
 import styles from './HomePage.module.css'
 
 /** 정식 오픈 홈. 오픈 전(site.siteMode = 'prelaunch')에는 개발 서버의 #/home에서만 열립니다. */
@@ -17,6 +18,7 @@ export function HomePage() {
         <HomeHero />
         <HomeAbout />
         <HomeFlow />
+        <HomeLoveStyle />
       </main>
       <SiteFooter note={site.tagline} business={site.business} links={FOOTER_LINKS} />
     </div>

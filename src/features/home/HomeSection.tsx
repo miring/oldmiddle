@@ -6,7 +6,7 @@ type HomeSectionProps = {
   labelledBy: string
   /** 헤더 메뉴에서 이동할 때 쓰는 id */
   id?: string
-  /** 배경. default: 기본 / raised: 흰색 / accent: 옅은 노랑 / inverse: 초록 */
+  /** 배경. default: 기본 / raised: 흰색 / accent: 옅은 노랑 / calm: 옅은 초록 / inverse: 초록 */
   tone?: Tone
   /** 데스크톱(1360px 이상)에서만 다른 배경을 쓸 때 */
   toneXl?: Tone
@@ -15,12 +15,13 @@ type HomeSectionProps = {
   children: ReactNode
 }
 
-type Tone = 'default' | 'raised' | 'accent' | 'inverse'
+type Tone = 'default' | 'raised' | 'accent' | 'calm' | 'inverse'
 
 const TONE_XL: Record<Tone, string> = {
   default: styles.xlDefault,
   raised: styles.xlRaised,
   accent: styles.xlAccent,
+  calm: styles.xlCalm,
   inverse: styles.xlInverse,
 }
 
