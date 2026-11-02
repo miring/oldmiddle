@@ -188,6 +188,36 @@ export const HOME_PRICING_COPY = {
   note: '만남 성사 수수료 없음 · 남은 횟수는 일할 환불',
 } as const
 
+/** 정식 홈 자주 묻는 질문 (Figma "FAQ"). 첫 질문은 펼친 채 시작합니다 */
+export const HOME_FAQ_COPY = [
+  {
+    id: 'privacy',
+    question: '주변 사람이 알게 될까요?',
+    answer: '둘러보기와 검색이 없어, 내 프로필은 소개받은 분에게만 보여요. 알림에도 이름이나 내용을 띄우지 않아요.',
+  },
+  {
+    id: 'documents',
+    question: '서류를 꼭 내야 하나요?',
+    answer:
+      "아니요. 본인인증과 혼인 상태 서약만 하면 가입할 수 있어요. 혼인관계증명서(일반)를 내시면 프로필에 '독신 확인' 배지가 붙어요.",
+  },
+  {
+    id: 'profile-viewers',
+    question: '제 프로필은 누가 보나요?',
+    answer: '조건이 서로 맞아 소개받은 분에게만 보여요. 연락처는 만나기 전까지 공개되지 않아요.',
+  },
+  {
+    id: 'first-intro',
+    question: '가입하면 언제 소개받나요?',
+    answer: "사진 확인이 끝나면, 매주 화·금 저녁 8시 '인연이 오는 날'에 소개가 도착해요.",
+  },
+  {
+    id: 'leave',
+    question: '그만두려면 어떻게 하나요?',
+    answer: '내 정보에서 언제든 쉬거나 그만둘 수 있어요. 남은 횟수는 날짜만큼 계산해 돌려드려요.',
+  },
+]
+
 /** 푸터 링크 (랜딩·정식 홈). 주소가 비어 있으면 SiteFooter가 그 링크를 숨깁니다 */
 export const FOOTER_LINKS = [
   { label: '이용약관', href: site.termsUrl },

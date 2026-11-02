@@ -285,6 +285,7 @@
   --type-home-hero-size: 30px; /* 정식 홈 히어로 "때가 되어 만난 인연" — 랜딩 히어로(--type-display-size)와 별도 */
   --type-home-hero-line-ratio: 1.35;
   --type-home-hero-desc-size: 16px; /* 히어로 설명 */
+  --size-home-faq-max-width: 760px; /* 자주 묻는 질문 (데스크톱 가운데 정렬) */
   --size-home-hero-media-height: 220px; /* 히어로 일러스트 높이 */
   --radius-home-hero-media: var(--radius-xl);
   /* 정식 홈 화면에서만 공통 토큰을 덮어쓰는 값 (HomePage.module.css) */
