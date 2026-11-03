@@ -188,6 +188,27 @@ export const HOME_PRICING_COPY = {
   note: '추가 추천 1회 5,000원 · 휴회 월 3,000원 · 만남 성사 수수료 없음 · 남은 횟수는 일할 환불',
 } as const
 
+/**
+ * 정식 홈에서 횟수를 말하는 문구. 요금 카드와 같은 말('추천 N명', '약속 잡기 N회')을 씁니다.
+ * '만남 주선'·'주선'은 쓰지 않습니다 (2026-11-03 기획 변경, 통신판매업으로 시작)
+ */
+export const HOME_COUNT_COPY = {
+  /** ② '한 달에 정해진 만큼' 카드 설명 */
+  monthlyCard: "'인연이 오는 날' 저녁 8시에 조건이 맞는 분을 정해진 수만큼 추천해요.",
+  /** ③ 이용 흐름 교환일기 안내 */
+  diaryNote: '교환일기에서 마무리돼도 추천과 약속\u00a0잡기 횟수는 줄지 않아요.',
+} as const
+
+/**
+ * 만남 목적 선택지 (2026-11-03 기획 변경). '결혼 의향' 항목은 두지 않습니다.
+ * TODO(가입·프로필 화면): 만남 목적을 묻는 화면이 생기면 이 목록을 그대로 씁니다
+ */
+export const MEETING_PURPOSE_OPTIONS = [
+  { id: 'serious', label: '진지한 교제' },
+  { id: 'companion', label: '동반자' },
+  { id: 'friends-first', label: '친구부터' },
+] as const
+
 /** 정식 홈 자주 묻는 질문 (Figma "FAQ"). 첫 질문은 펼친 채 시작합니다 */
 export const HOME_FAQ_COPY = [
   {
@@ -215,7 +236,7 @@ export const HOME_FAQ_COPY = [
   {
     id: 'leave',
     question: '그만두려면 어떻게 하나요?',
-    answer: '내 정보에서 언제든 쉬거나 그만둘 수 있어요. 남은 횟수는 날짜만큼 계산해 돌려드려요.',
+    answer: '내 정보에서 언제든 쉬거나 그만둘 수 있어요. 남은 추천·약속\u00a0잡기 횟수는 날짜만큼 계산해 돌려드려요.',
   },
 ]
 

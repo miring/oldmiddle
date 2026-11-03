@@ -3,11 +3,12 @@ import clock from '../../assets/icons/clock.svg'
 import lock from '../../assets/icons/lock.svg'
 import { SectionHeading } from '../../components/ui/SectionHeading/SectionHeading'
 import { StepList, type Step } from '../../components/ui/StepList/StepList'
+import { HOME_COUNT_COPY } from '../../config/copy'
 import { HomeSection } from './HomeSection'
 import styles from './HomeFlow.module.css'
 import { LetterCard } from './LetterCard'
 
-const DIARY_NOTE = '교환일기에서 마무리돼도 추천권과 만남 횟수는 줄지 않아요.'
+const DIARY_NOTE = HOME_COUNT_COPY.diaryNote
 
 const STEPS: Step[] = [
   { id: 'signup', title: '가입하기', description: '본인인증과 혼인 상태 서약. 증명서는 원하는 분만 내요.' },
