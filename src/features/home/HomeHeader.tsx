@@ -1,5 +1,7 @@
 import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { site } from '../../config/site'
+import { MATCHES_HASH } from '../matching/appRoute'
+import { getSignedInName } from '../matching/memberSession'
 import { LOGIN_HASH, SIGNUP_HASH } from '../quiz/quizRoute'
 import styles from './HomeHeader.module.css'
 
@@ -23,8 +25,10 @@ function scrollToSection(id: string) {
   section.querySelector('h2')?.focus({ preventScroll: true })
 }
 
-/** 정식 홈 헤더: 로고 + (데스크톱) 메뉴 + 로그인 + 가입하기 (태블릿·데스크톱 글자 버튼) */
+/** 정식 홈 헤더: 로고 + (데스크톱) 메뉴 + 로그인 + 가입하기 (태블릿·데스크톱 글자 버튼). 로그인 후에는 둘 대신 '{이름}님' */
 export function HomeHeader() {
+  const memberName = getSignedInName()
+
   return (
     <SiteHeader
       fixed
@@ -42,13 +46,22 @@ export function HomeHeader() {
               ))}
             </ul>
           </nav>
-          <a href={LOGIN_HASH} className={`${styles.login} flex items-center`}>
-            로그인
-          </a>
-          {/* 휴대폰은 첫 화면의 큰 가입하기 버튼만 (Figma 모바일 헤더에는 로그인만), 태블릿·데스크톱은 로그인 옆 글자 버튼 */}
-          <a href={SIGNUP_HASH} className={`${styles.login} ${styles.signup} hidden items-center md:flex`}>
-            가입하기
-          </a>
+          {memberName ? (
+            // 누르면 회원 앱의 나의 매칭으로
+            <a href={MATCHES_HASH} className={`${styles.login} ${styles.signup} flex items-center`}>
+              {memberName}님
+            </a>
+          ) : (
+            <>
+              <a href={LOGIN_HASH} className={`${styles.login} flex items-center`}>
+                로그인
+              </a>
+              {/* 휴대폰은 첫 화면의 큰 가입하기 버튼만 (Figma 모바일 헤더에는 로그인만), 태블릿·데스크톱은 로그인 옆 글자 버튼 */}
+              <a href={SIGNUP_HASH} className={`${styles.login} ${styles.signup} hidden items-center md:flex`}>
+                가입하기
+              </a>
+            </>
+          )}
         </div>
       }
     />
