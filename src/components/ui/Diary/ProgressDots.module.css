@@ -1,0 +1,20 @@
+.sm {
+  --dot-size: var(--size-progress-dot-sm);
+  gap: var(--space-1);
+}
+
+.md {
+  --dot-size: var(--size-progress-dot-md);
+  gap: var(--space-1-5);
+}
+
+.dot {
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: var(--radius-full);
+  background-color: var(--color-progress-dot-empty);
+}
+
+.done {
+  background-color: var(--color-secondary);
+}

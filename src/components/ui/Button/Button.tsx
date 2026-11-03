@@ -6,8 +6,9 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   /**
    * primary: 주요 행동(화면마다 하나) / secondary: 이전·다시 하기 같은 보조 행동
    * soft: 공유처럼 눈에 띄되 주요 행동은 아닌 것
+   * outline: 초록 테두리 보조 행동 (의향 확인 '이번엔 여기까지')
    */
-  variant?: 'primary' | 'secondary' | 'soft'
+  variant?: 'primary' | 'secondary' | 'soft' | 'outline'
   /** forward: 글자 뒤 → / back: 글자 앞 < */
   arrow?: 'forward' | 'back'
   /** 글자 앞에 둘 아이콘 이미지 주소 (장식용, 의미는 글자로 전달) */
@@ -49,7 +50,7 @@ export function Button({
 }
 
 type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
-  variant?: 'primary' | 'secondary' | 'soft'
+  variant?: 'primary' | 'secondary' | 'soft' | 'outline'
   /** compact: 글자 길이만큼만 차지 (헤더의 가입하기) */
   size?: 'md' | 'compact'
 }

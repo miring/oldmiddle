@@ -1,0 +1,61 @@
+.card {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+}
+
+/* 데스크톱에서 오른쪽에 열린 매칭만 초록 테두리 (휴대폰은 목록과 상세가 다른 화면) */
+@media (min-width: 85rem) {
+  .selected {
+    border: var(--border-width-selected) solid var(--color-secondary);
+  }
+}
+
+.avatar {
+  width: var(--size-match-avatar);
+  height: var(--size-match-avatar);
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-subtle);
+  color: var(--color-text-calm);
+  font-size: var(--type-match-avatar-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.name {
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* Figma 14px → 16px (보조 문구 16px 이상) */
+.meta,
+.progress {
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+.meta {
+  color: var(--color-text-secondary);
+}
+
+.progress {
+  color: var(--color-text-calm);
+  font-weight: var(--font-weight-medium);
+}
+
+.chip {
+  border-radius: var(--radius-full);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.warm {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.calm {
+  background-color: var(--color-secondary-subtle);
+}

@@ -1,0 +1,25 @@
+.box {
+  border: var(--border-width-default) dashed var(--color-letter-rule);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  text-align: center;
+}
+
+.icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* Figma 14px → 16px */
+.body {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}

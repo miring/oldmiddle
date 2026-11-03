@@ -1,0 +1,23 @@
+.notice {
+  border-radius: var(--radius-md);
+}
+
+.calm {
+  background-color: var(--color-secondary-subtle);
+}
+
+.warm {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+/* Figma 휴대폰 14px → 16px (데스크톱은 Figma도 16px) */
+.text {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
