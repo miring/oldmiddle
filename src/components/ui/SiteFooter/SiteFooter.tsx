@@ -14,8 +14,9 @@ function businessLines(business: BusinessInfo) {
   return [
     owner,
     business.registrationNumber && `사업자등록번호 ${business.registrationNumber}`,
-    business.marriageAgencyNumber && `결혼중개업 신고번호 ${business.marriageAgencyNumber}`,
-    business.mailOrderNumber && `통신판매업 신고 ${business.mailOrderNumber}`,
+    business.mailOrderNumber && `통신판매업 신고번호 ${business.mailOrderNumber}`,
+    business.address && `주소 ${business.address}`,
+    business.phone && `연락처 ${business.phone}`,
   ].filter((line): line is string => Boolean(line))
 }
 

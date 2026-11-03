@@ -6,8 +6,9 @@ export type BusinessInfo = {
   companyName: string
   representative: string
   registrationNumber: string
-  marriageAgencyNumber: string
   mailOrderNumber: string
+  address: string
+  phone: string
 }
 
 export type FooterLink = {
@@ -29,8 +30,9 @@ const EXAMPLE_BUSINESS: BusinessInfo = {
   companyName: '(예시) 시연',
   representative: '(예시) 홍길동',
   registrationNumber: '(예시) 000-00-00000',
-  marriageAgencyNumber: '(예시) 신고 후 표시',
-  mailOrderNumber: '(예시) 결제 시작 후 표시',
+  mailOrderNumber: '(예시) 제0000-서울○○-0000호',
+  address: '(예시) 서울특별시 ○○구 ○○로 00',
+  phone: '(예시) 000-0000-0000',
 }
 
 /** 비어 있는 항목만 예시 값으로 채웁니다 */
@@ -39,8 +41,9 @@ function withExampleBusiness(business: BusinessInfo): BusinessInfo {
     companyName: business.companyName || EXAMPLE_BUSINESS.companyName,
     representative: business.representative || EXAMPLE_BUSINESS.representative,
     registrationNumber: business.registrationNumber || EXAMPLE_BUSINESS.registrationNumber,
-    marriageAgencyNumber: business.marriageAgencyNumber || EXAMPLE_BUSINESS.marriageAgencyNumber,
     mailOrderNumber: business.mailOrderNumber || EXAMPLE_BUSINESS.mailOrderNumber,
+    address: business.address || EXAMPLE_BUSINESS.address,
+    phone: business.phone || EXAMPLE_BUSINESS.phone,
   }
 }
 

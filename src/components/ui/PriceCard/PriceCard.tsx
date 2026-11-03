@@ -4,7 +4,7 @@ type PriceCardProps = {
   name: string
   /** 예: "월 29,000원" */
   price: string
-  /** 포함 내용 (예: "월 4명 소개 · 만남 주선 1회") */
+  /** 포함 내용 (예: "월 4명 추천 · 약속 잡기 1회") */
   detail: string
   /** 요금 이름 제목 수준. 놓이는 화면의 제목 구조에 맞춰 고릅니다 */
   titleAs?: 'h3' | 'h4'
