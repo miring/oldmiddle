@@ -13,15 +13,16 @@ export const site = {
   tentativeLabel: '가칭',
   /** 카카오톡 채널 주소. 비어 있으면 신청 완료 화면의 [카카오톡 채널 추가하기]를 숨깁니다 */
   kakaoChannelUrl: '',
-  /** 푸터 사업자 정보. 비어 있는 항목은 그 줄을 숨깁니다 */
+  /** 푸터 사업자 정보 (통신판매업, 기획서 11장 '사업자 정보 표시'). 비어 있는 항목은 그 줄을 숨깁니다 */
   business: {
     companyName: '', // 상호
     representative: '', // 대표자
     registrationNumber: '', // 사업자등록번호
-    marriageAgencyNumber: '', // 결혼중개업 신고번호 (신고 전이라 비움)
-    mailOrderNumber: '', // 통신판매업 신고번호 (결제 시작 전이라 비움)
+    mailOrderNumber: '', // 통신판매업 신고번호 (유료 결제 시작 전에 신고)
+    address: '', // 사업장 주소
+    phone: '', // 연락처
   },
-  /** 정식 홈 요금 섹션과 헤더 '요금' 메뉴를 보일지. 결혼중개업 신고 전에 유료 요금을 내보내면 안 될 때 false (금액은 copy.ts HOME_PRICING_COPY) */
+  /** 정식 홈 요금 섹션과 헤더 '요금' 메뉴를 보일지. 통신판매업 신고 전이라 유료 요금을 아직 내보내지 않을 때 false (금액은 copy.ts HOME_PRICING_COPY) */
   showPricing: true,
   /** 정식 홈 '사랑하는 방식' 테스트 미리 해 보기 주소. 비어 있으면 링크를 숨깁니다 */
   loveStylePreviewUrl: '',
