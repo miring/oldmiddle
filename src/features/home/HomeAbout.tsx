@@ -12,7 +12,7 @@ const FEATURES = [
   {
     title: '확인된 분만',
     icon: shield,
-    body: '본인인증과 혼인 상태 서약으로 가입하고, 사진은 사람이 한 번 더 살펴본 뒤 보여 드려요.',
+    body: '본인인증과 혼인 상태 서약으로 가입하고, 사진은 한 번 더 살펴본 뒤 보여 드려요.',
   },
   { title: '한 달에 정해진 만큼', icon: calendar, body: HOME_COUNT_COPY.monthlyCard },
   { title: '글로 먼저 알아가요', icon: mail, body: '교환일기를 세 번 주고받고, 두 분 다 원하면 낮 카페 약속이 정해져요.' },
