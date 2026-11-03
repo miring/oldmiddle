@@ -199,6 +199,16 @@ export const HOME_COUNT_COPY = {
   diaryNote: '교환일기에서 마무리돼도 추천과 약속\u00a0잡기 횟수는 줄지 않아요.',
 } as const
 
+/**
+ * 만남 목적 선택지 (2026-11-03 기획 변경). '결혼 의향' 항목은 두지 않습니다.
+ * TODO(가입·프로필 화면): 만남 목적을 묻는 화면이 생기면 이 목록을 그대로 씁니다
+ */
+export const MEETING_PURPOSE_OPTIONS = [
+  { id: 'serious', label: '진지한 교제' },
+  { id: 'companion', label: '동반자' },
+  { id: 'friends-first', label: '친구부터' },
+] as const
+
 /** 정식 홈 자주 묻는 질문 (Figma "FAQ"). 첫 질문은 펼친 채 시작합니다 */
 export const HOME_FAQ_COPY = [
   {
