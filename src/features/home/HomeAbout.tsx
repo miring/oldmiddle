@@ -4,6 +4,7 @@ import shield from '../../assets/icons/shield.svg'
 import users from '../../assets/icons/users.svg'
 import { FeatureCard } from '../../components/ui/FeatureCard/FeatureCard'
 import { SectionHeading } from '../../components/ui/SectionHeading/SectionHeading'
+import { HOME_COUNT_COPY } from '../../config/copy'
 import { HomeSection } from './HomeSection'
 
 const FEATURES = [
@@ -13,7 +14,7 @@ const FEATURES = [
     icon: shield,
     body: '본인인증과 혼인 상태 서약으로 가입하고, 최근 사진을 운영자가 확인해요.',
   },
-  { title: '한 달에 정해진 만큼', icon: calendar, body: "화·금 저녁 8시 '인연이 오는 날'에 조건이 맞는 분을 소개해요." },
+  { title: '한 달에 정해진 만큼', icon: calendar, body: HOME_COUNT_COPY.monthlyCard },
   { title: '글로 먼저 알아가요', icon: mail, body: '교환일기를 세 번 주고받고, 두 분 다 원하면 낮 카페 약속이 정해져요.' },
 ]
 
