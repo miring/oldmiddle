@@ -1,0 +1,342 @@
+/*
+ * 회원 앱 '나의 매칭' 화면 (Figma '내정보' 페이지).
+ * Figma에서 14px인 보조 문구는 모두 16px(--type-body-size)로 올렸습니다 (본문 16px 이상 기준).
+ */
+
+/* 데스크톱 헤더 높이는 정식 홈과 같은 72px, 내용 폭은 1200px (Figma 양옆 120px) */
+.app {
+  --size-header-height: var(--size-home-header-height);
+}
+
+@media (min-width: 85rem) {
+  .app {
+    --size-content-max-width: var(--size-app-content-max-width);
+  }
+}
+
+/* 하단 탭에 내용이 가리지 않게 */
+.withTabBar {
+  padding-bottom: calc(var(--size-tab-bar-height) + var(--space-10));
+}
+
+@media (min-width: 85rem) {
+  .withTabBar {
+    padding-bottom: var(--space-16);
+  }
+}
+
+/* ── 데스크톱 헤더 메뉴 ── */
+.navLink {
+  min-height: var(--size-touch-min);
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+  text-decoration: none;
+}
+
+.navCurrent {
+  background-color: var(--color-secondary-subtle);
+  color: var(--color-secondary-strong);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── 목록 ── */
+.listTitle {
+  font-size: var(--type-app-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.intro {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+.sectionLabel {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.textLink,
+.reportLink {
+  min-height: var(--size-touch-min);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+.textLink {
+  color: var(--color-secondary-strong);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+}
+
+/* 신고하기: 눈에 덜 띄되 찾을 수 있게 밑줄 (Figma 14px → 16px) */
+.reportLink {
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+}
+
+/* ── 상세·편지 쓰기 (데스크톱은 흰 칸 안에) ── */
+@media (min-width: 85rem) {
+  .panel {
+    padding: var(--space-app-panel-padding);
+    border: var(--border-width-default) solid var(--color-border-subtle);
+    border-radius: var(--radius-app-panel);
+    background-color: var(--color-surface-raised);
+  }
+}
+
+.panelTitle {
+  font-size: var(--type-app-panel-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.progressInline {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.progressBox {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.progressTitle {
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.progressSub {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+.questionBox {
+  border: var(--border-width-default) solid var(--color-letter-rule);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-letter-bg);
+}
+
+.questionHeading {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.question {
+  font-size: var(--type-diary-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.fieldLabel {
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 답 칸: 글자 입력 + 아래 글자 수. 테두리는 입력칸 공통값 */
+.answerBox {
+  min-height: var(--size-diary-answer-height);
+  border: var(--border-width-control) solid var(--color-border-input);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+}
+
+.answerBox:focus-within {
+  border-color: var(--color-secondary);
+}
+
+.answerBox:has(textarea[aria-invalid='true']) {
+  border: var(--border-width-form-error) solid var(--color-form-border-error);
+  background-color: var(--color-form-bg-error);
+}
+
+/* 편지 본문 18px (Figma 16px). 테두리는 바깥 상자가 그리므로 입력칸 자체 포커스 선은 바깥 상자에 */
+.answerInput {
+  min-height: var(--space-14);
+  resize: none;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+}
+
+.answerInput:focus-visible {
+  outline: none;
+}
+
+.answerBox:has(.answerInput:focus-visible) {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.counter {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+/* 사진·목소리 칩 (Figma 14px·높이 43 → 16px·48px) */
+.attachChip {
+  min-height: var(--size-touch-min);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-raised);
+  color: var(--color-secondary-strong);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  cursor: pointer;
+}
+
+/* ── 의향 확인 ── */
+@media (min-width: 85rem) {
+  .decideCard {
+    padding: var(--space-12);
+    border: var(--border-width-default) solid var(--color-border-subtle);
+    border-radius: var(--radius-app-panel);
+    background-color: var(--color-surface-raised);
+  }
+}
+
+.kicker {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.decideTitle {
+  font-size: var(--type-decide-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.decideBody {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+@media (min-width: 85rem) {
+  .decideBody {
+    font-size: var(--type-body-lg-size);
+  }
+}
+
+.summary {
+  border: var(--border-width-default) solid var(--color-letter-rule);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-letter-bg);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.summaryIcon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+.decideQuestion {
+  font-size: var(--type-decide-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* ── 보관함 ── */
+.archiveItem {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+.archiveAvatar {
+  width: var(--size-archive-avatar);
+  height: var(--size-archive-avatar);
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-subtle);
+  color: var(--color-text-calm);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+}
+
+.archiveName {
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.archiveMeta {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+.chevron {
+  color: var(--color-text-secondary);
+  font-size: var(--type-heading-3-size);
+}
+
+/* ── 준비 중 탭 ── */
+.placeholder {
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.placeholderTitle {
+  color: var(--color-text-primary);
+  font-size: var(--type-heading-3-size);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ── 미리보기 설정 (더미 데이터용) ── */
+.mock {
+  border: var(--border-width-default) dashed var(--color-border-input);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+}
+
+.mockSummary {
+  min-height: var(--size-touch-min);
+  align-content: center;
+  cursor: pointer;
+}
+
+.mockInput,
+.mockButton {
+  min-height: var(--size-touch-min);
+  padding-inline: var(--space-3);
+  border: var(--border-width-default) solid var(--color-border-input);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+}
+
+.mockButton {
+  cursor: pointer;
+}
+
+/* 의향 확인 '마음 확인중' (목록 카드 배지와 같은 모양) */
+.statusPill {
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-subtle);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}

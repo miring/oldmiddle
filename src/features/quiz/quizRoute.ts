@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react'
 import { site } from '../../config/site'
+import { parseAppRoute, type AppRoute } from '../matching/appRoute'
 import { QUIZ_TOTAL } from './questions'
 import { clearAnswers } from './quizAnswers'
 
@@ -17,6 +18,7 @@ export type QuizRoute =
   | { view: 'under45' }
   | { view: 'done' }
   | { view: 'cancel'; token: string }
+  | { view: 'app'; route: AppRoute }
 
 const NAVIGATE_EVENT = 'quiz:navigate'
 
@@ -53,6 +55,9 @@ function parseHome(hash: string): QuizRoute | null {
 function parse(hash: string): QuizRoute {
   const home = parseHome(hash)
   if (home) return home
+  // 회원 앱(#/app)은 로그인이 붙기 전까지 더미 데이터로 미리보기 환경에서만 엽니다. 운영 사이트에서는 지금처럼 랜딩
+  const app = HOME_PREVIEW ? parseAppRoute(hash) : null
+  if (app) return { view: 'app', route: app }
   if (hash === TEST_HASH) return { view: 'landing' }
   if (hash === RESULT_HASH) return { view: 'result' }
   if (hash === PREREGISTER_HASH) return { view: 'preregister' }
