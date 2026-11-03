@@ -12,7 +12,7 @@ import { HomeSection } from './HomeSection'
 const SAFETY_ITEMS = [
   { title: '혼인 상태 서약', icon: doc, body: '거짓이 드러나면 영구 정지돼요.' },
   { title: '독신 확인 배지', icon: badge, body: '원하는 분만 증명서를 내요. 확인한 달을 함께 보여 드려요.' },
-  { title: '최근 사진 확인', icon: image, body: '6개월 안에 찍은 사진만 받고, 운영자가 직접 확인해요.' },
+  { title: '최근 사진 확인', icon: image, body: '6개월 안에 찍은 사진만 받고, 한 번 더 살펴봐요.' },
   {
     title: '연락처 비공개',
     icon: lock,
