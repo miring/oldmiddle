@@ -1,11 +1,13 @@
 import { useId, useState } from 'react'
 import { MATCHING_COPY } from '../../config/matchingCopy'
-import { resetMyInfo, setMockSingleVerified } from '../../mocks/myInfo'
-import { DEFAULT_MOCK_NOW, endMatchByPartner, getMockOptions, setMockOptions, type MockScenario } from '../../mocks/matches'
+import { resetMyInfo, setMockRecommendLeft, setMockSingleVerified } from '../../mocks/myInfo'
+import { resetRecommend, setMockMutual } from '../../mocks/recommend'
+import { DEFAULT_MOCK_NOW, endMatchByPartner, getMockOptions, setMockNow, setMockOptions, type MockScenario } from '../../mocks/matches'
 import { HOME_HASH } from '../quiz/quizRoute'
 import { matchPhase } from './diaryRules'
 import { partnerName, useMatchData } from './matchView'
 import { useMyInfo } from './myInfoView'
+import { latestReveal, nextReveal, RESPONSE_HOURS } from './recommendRules'
 import { endPreviewSession } from './memberSession'
 import styles from './Matching.module.css'
 
@@ -25,7 +27,18 @@ export function MockControls() {
   const id = useId()
   const { matches, now } = useMatchData()
   const { scenario } = getMockOptions()
-  const singleVerified = useMyInfo().singleVerifiedMonth !== null
+  const myInfo = useMyInfo()
+  const singleVerified = myInfo.singleVerifiedMonth !== null
+  const HOUR = 60 * 60 * 1000
+  const setTime = (time: number) => setMockNow(new Date(time).toISOString())
+  // 오늘의 추천 상태 바꾸기: 지금 시각을 '인연이 오는 날' 기준으로 옮깁니다
+  const todayActions = [
+    { label: c.todayOpen, run: () => setTime(nextReveal(myInfo.plan.id, now) + HOUR) },
+    { label: c.todayLastHour, run: () => setTime(latestReveal(myInfo.plan.id, now) + (RESPONSE_HOURS - 1) * HOUR) },
+    { label: c.todayEnded, run: () => setTime(latestReveal(myInfo.plan.id, now) + (RESPONSE_HOURS + 1) * HOUR) },
+    { label: c.todayMutual, run: setMockMutual },
+    { label: c.todayMonthUsed, run: () => setMockRecommendLeft(0) },
+  ]
   const [loggedOut, setLoggedOut] = useState(false)
   const deciding = matches.filter((match) => matchPhase(match, now) === 'decide')
   const [endTarget, setEndTarget] = useState('')
@@ -60,6 +73,16 @@ export function MockControls() {
             onChange={(event) => event.target.value && setMockOptions({ now: `${event.target.value}:00+09:00` })}
           />
         </label>
+        <fieldset className="flex flex-col gap-1">
+          <legend>{c.today}</legend>
+          <div className="mt-1 flex flex-wrap gap-2">
+            {todayActions.map((action) => (
+              <button key={action.label} type="button" className={styles.mockButton} onClick={action.run}>
+                {action.label}
+              </button>
+            ))}
+          </div>
+        </fieldset>
         <label htmlFor={`${id}-single`} className="flex flex-col gap-1">
           {c.single}
           <select
@@ -98,6 +121,7 @@ export function MockControls() {
           <button type="button" className={styles.mockButton} onClick={() => {
               setMockOptions({ scenario: 'all', now: DEFAULT_MOCK_NOW })
               resetMyInfo()
+              resetRecommend()
             }}>
             {c.reset}
           </button>
