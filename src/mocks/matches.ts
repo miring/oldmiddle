@@ -127,6 +127,18 @@ const SEED: Match[] = [
     questions: QUESTIONS,
     entries: threeRounds(['10-27', '10-28', '10-29']).filter((entry) => entry.round === 1),
   },
+  // 마무리 · 의향 확인에서 상대가 '이번엔 여기까지'를 고름 (11월 2일 밤). 목록에는 11월 5일 밤까지 남음.
+  // 화면에는 기한 만료와 똑같이 보이고, 누가 골랐는지는 알리지 않음
+  {
+    id: 'lim',
+    partner: { familyName: '임', ageBand: '50대 중반', district: '노원구' },
+    startedAt: at('10-27', '12:00'),
+    questions: QUESTIONS,
+    entries: threeRounds(['10-27', '10-28', '10-29']),
+    myDecision: 'yes',
+    partnerDecision: 'no',
+    endedAt: at('11-02', '21:00'),
+  },
   // 보관함 · 이미 만남
   {
     id: 'jung',
@@ -208,9 +220,17 @@ export function saveDiaryEntry(matchId: string, entry: Omit<DiaryEntry, 'author'
   changed()
 }
 
-/** 의향 저장. '이번엔 여기까지'(no)는 상대에게 알리지 않습니다 */
+/** 의향 저장. '이번엔 여기까지'(no)는 상대에게 알리지 않고, 고른 시각을 끝난 시각으로 남깁니다 */
 export function saveDecision(matchId: string, decision: Decision) {
-  matches = matches.map((match) => (match.id === matchId ? { ...match, myDecision: decision } : match))
+  matches = matches.map((match) =>
+    match.id === matchId ? { ...match, myDecision: decision, ...(decision === 'no' ? { endedAt: now } : {}) } : match,
+  )
+  changed()
+}
+
+/** 미리보기 설정: 상대가 '이번엔 여기까지'를 고른 것으로 (지금 시각에 끝남) */
+export function endMatchByPartner(matchId: string) {
+  matches = matches.map((match) => (match.id === matchId ? { ...match, partnerDecision: 'no', endedAt: now } : match))
   changed()
 }
 

@@ -7,7 +7,7 @@ import type { DiaryEntry, Match } from './matchTypes'
 
 export const DIARY_ROUNDS = 3
 export const DIARY_DAYS = 7
-/** 7일 기한이 지난 매칭을 나의 매칭 목록에 '여기까지예요'로 남겨 두는 날 수 */
+/** 마무리된 매칭(기한 만료·'이번엔 여기까지')을 나의 매칭 목록에 '여기까지예요'로 남겨 두는 날 수 */
 export const CLOSED_LIST_DAYS = 3
 /** 답과 '한 줄 더'의 글자 수 한도 */
 export const LETTER_MAX_LENGTH = 50
@@ -71,25 +71,25 @@ export function matchPhase(match: Match, now: Date): MatchPhase {
   return now.getTime() > diaryDeadline(match) ? 'closed' : 'diary'
 }
 
-/** 7일 기한이 지나 마무리된 매칭인지 ('이번엔 여기까지'를 골라 끝난 매칭은 아님) */
-export function isExpired(match: Match, now: Date): boolean {
-  return matchPhase(match, now) === 'closed' && match.myDecision !== 'no' && match.partnerDecision !== 'no'
+/** 마무리된 시각: 저장된 endedAt('이번엔 여기까지'를 고른 시각), 없으면 7일 기한 */
+export function endedAt(match: Match): number {
+  return match.endedAt ? Date.parse(match.endedAt) : diaryDeadline(match)
 }
 
-/** 기한이 지난 매칭이 목록에서 사라지는 시각: 기한 + CLOSED_LIST_DAYS일 */
+/** 마무리된 매칭이 목록에서 사라지는 시각: 끝난 시각 + CLOSED_LIST_DAYS일 */
 export function listedUntil(match: Match): number {
-  return diaryDeadline(match) + CLOSED_LIST_DAYS * DAY
+  return endedAt(match) + CLOSED_LIST_DAYS * DAY
 }
 
 /**
- * 나의 매칭 목록에 보일지. 진행 중인 매칭과, 기한이 지나고 CLOSED_LIST_DAYS일이 안 된 매칭.
- * 만난 뒤는 보관함에서만, '이번엔 여기까지'로 끝난 매칭은 바로 뺍니다.
+ * 나의 매칭 목록에 보일지. 진행 중인 매칭과, 마무리되고 CLOSED_LIST_DAYS일이 안 된 매칭.
+ * 기한 만료와 '이번엔 여기까지'를 같은 규칙으로 다룹니다 (누가 골랐는지 알리지 않음, 기획서 7장). 만난 뒤는 보관함에서만.
  * TODO(저장 로직): 7일 기한 마무리와 함께, 목록에서 빼는 것도 서버 예약 작업으로 처리합니다.
  */
 export function isListed(match: Match, now: Date): boolean {
   const phase = matchPhase(match, now)
   if (phase === 'diary' || phase === 'decide' || phase === 'meeting') return true
-  return isExpired(match, now) && now.getTime() < listedUntil(match)
+  return phase === 'closed' && now.getTime() < listedUntil(match)
 }
 
 /**

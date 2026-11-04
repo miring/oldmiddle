@@ -46,6 +46,11 @@ export type Match = {
   myDecision?: Decision
   /** 상대의 의향. 화면에 그대로 보여 주지 않고 단계 계산에만 씁니다 */
   partnerDecision?: Decision
+  /**
+   * 마무리된 시각. 한쪽이 '이번엔 여기까지'를 고른 시각, 또는 7일 기한.
+   * 기한 만료는 비어 있으면 기한으로 계산합니다. TODO(저장 로직): 서버 예약 작업이 기한에 채웁니다
+   */
+  endedAt?: string
   /** 약속이 정해졌을 때만 */
   meeting?: { at: string; place: string }
 }
