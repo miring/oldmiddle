@@ -1,9 +1,11 @@
 import { useId, useState } from 'react'
 import { MATCHING_COPY } from '../../config/matchingCopy'
+import { resetMyInfo, setMockSingleVerified } from '../../mocks/myInfo'
 import { DEFAULT_MOCK_NOW, endMatchByPartner, getMockOptions, setMockOptions, type MockScenario } from '../../mocks/matches'
 import { HOME_HASH } from '../quiz/quizRoute'
 import { matchPhase } from './diaryRules'
 import { partnerName, useMatchData } from './matchView'
+import { useMyInfo } from './myInfoView'
 import { endPreviewSession } from './memberSession'
 import styles from './Matching.module.css'
 
@@ -23,6 +25,7 @@ export function MockControls() {
   const id = useId()
   const { matches, now } = useMatchData()
   const { scenario } = getMockOptions()
+  const singleVerified = useMyInfo().singleVerifiedMonth !== null
   const [loggedOut, setLoggedOut] = useState(false)
   const deciding = matches.filter((match) => matchPhase(match, now) === 'decide')
   const [endTarget, setEndTarget] = useState('')
@@ -57,6 +60,18 @@ export function MockControls() {
             onChange={(event) => event.target.value && setMockOptions({ now: `${event.target.value}:00+09:00` })}
           />
         </label>
+        <label htmlFor={`${id}-single`} className="flex flex-col gap-1">
+          {c.single}
+          <select
+            id={`${id}-single`}
+            className={styles.mockInput}
+            value={singleVerified ? 'verified' : 'none'}
+            onChange={(event) => setMockSingleVerified(event.target.value === 'verified')}
+          >
+            <option value="verified">{c.singleOptions.verified}</option>
+            <option value="none">{c.singleOptions.none}</option>
+          </select>
+        </label>
         <div className="flex flex-col gap-1">
           <label htmlFor={`${id}-end`}>{c.partnerEndsTarget}</label>
           <div className="flex flex-wrap gap-2">
@@ -80,7 +95,10 @@ export function MockControls() {
           </div>
         </div>
         <div className="flex flex-wrap gap-2">
-          <button type="button" className={styles.mockButton} onClick={() => setMockOptions({ scenario: 'all', now: DEFAULT_MOCK_NOW })}>
+          <button type="button" className={styles.mockButton} onClick={() => {
+              setMockOptions({ scenario: 'all', now: DEFAULT_MOCK_NOW })
+              resetMyInfo()
+            }}>
             {c.reset}
           </button>
           <button
