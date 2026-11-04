@@ -14,6 +14,7 @@ export function startPreviewSession(name: string) {
   }
 }
 
+// TODO(로그인): 실제 로그인(토큰 기반, 기획서 13장)을 붙이면 로그아웃도 실제 세션을 끊도록 바꿉니다.
 export function endPreviewSession() {
   try {
     sessionStorage.removeItem(STORAGE_KEY)

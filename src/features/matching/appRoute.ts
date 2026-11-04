@@ -22,6 +22,9 @@ export const TAB_HASH: Record<AppTab, string> = {
   me: '#/app/me',
 }
 
+/** 회원 화면 로고를 누르면 가는 첫 화면. 오늘의 추천이 '준비 중'이라 지금은 나의 매칭. 오늘의 추천을 만들면 TAB_HASH.today로 바꿉니다 */
+export const MEMBER_HOME_HASH = MATCHES_HASH
+
 export const matchHash = (id: string) => `${MATCHES_HASH}/${id}`
 export const writeHash = (id: string) => `${matchHash(id)}/write`
 export const decideHash = (id: string) => `${matchHash(id)}/decide`
