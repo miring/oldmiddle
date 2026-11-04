@@ -72,4 +72,17 @@ export const MATCHING_COPY = {
   },
   tabs: { today: '오늘의 추천', matches: '나의 매칭', meetings: '약속', me: '내 정보' },
   preparing: '준비 중이에요',
+  /** '내 정보' 탭. 누르면 정식 홈으로 */
+  logout: '로그아웃',
+  /** 미리보기 설정 (더미 데이터 확인용, 실제 서비스에는 없음) */
+  mock: {
+    summary: '미리보기 설정 (더미 데이터)',
+    scenario: '상태 묶음',
+    scenarios: { all: '모든 상태', 'no-matches': '매칭 0건', 'no-archive': '보관함 0건' },
+    now: '지금 시각 (한국 시간)',
+    reset: '처음 상태로',
+    logout: '미리보기 로그아웃',
+    loggedOut: '로그아웃했어요. 정식 홈 헤더가 로그인 전 모습으로 보여요. 회원 화면을 다시 열면 다시 로그인돼요.',
+    home: '정식 홈 보기',
+  },
 } as const

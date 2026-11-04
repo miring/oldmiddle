@@ -330,6 +330,7 @@
 
 .mockButton {
   cursor: pointer;
+  text-decoration: none; /* '정식 홈 보기' 링크도 버튼과 같은 모양 */
 }
 
 /* 의향 확인 '마음 확인중' (목록 카드 배지와 같은 모양) */
