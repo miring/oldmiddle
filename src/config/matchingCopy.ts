@@ -17,7 +17,7 @@ export const MATCHING_COPY = {
     opening: '내일 아침 8시에 열려요',
     decide: '마음을 정해 주세요',
     /** 내가 먼저 고르고 상대를 기다릴 때 (카드 배지·의향 확인 화면 공통) */
-    decided: '마음 확인중',
+    decided: '마음 확인 중',
     pickTime: '만날 시간을 골라 주세요',
     closed: '여기까지예요',
   },

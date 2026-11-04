@@ -54,7 +54,7 @@ export function DecideScreen({ matchId }: { matchId: string }) {
           ))}
         </ul>
         {match.myDecision === 'yes' ? (
-          // 내가 먼저 고르고 상대를 기다림: 목록 카드 배지와 같은 '마음 확인중'
+          // 내가 먼저 고르고 상대를 기다림: 목록 카드 배지와 같은 '마음 확인 중'
           <div className="flex flex-col items-start gap-3">
             <p className={`${styles.statusPill} px-3 py-1`}>{MATCHING_COPY.status.decided}</p>
             <Notice icon={clock}>{c.waiting}</Notice>
