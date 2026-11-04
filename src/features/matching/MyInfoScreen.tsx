@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from 'react'
+import { useId, type ReactNode } from 'react'
 import badgeCheck from '../../assets/icons/badge-check.svg'
 import image from '../../assets/icons/image.svg'
 import lock from '../../assets/icons/lock.svg'
@@ -10,6 +10,7 @@ import { site } from '../../config/site'
 import { getCompanionType } from '../../data/companionTypes'
 import { AVAILABILITY_HASH } from './appRoute'
 import { AppScreen } from './AppScreen'
+import { PreparingButton } from './PreparingButton'
 import { formatBands, formatDate, formatDays, formatMonth, useMyInfo } from './myInfoView'
 import styles from './Matching.module.css'
 import own from './MyInfo.module.css'
@@ -224,30 +225,6 @@ function Row({ label, value }: { label: string; value: ReactNode }) {
     <div className="flex flex-col gap-0.5">
       <dt className={own.label}>{label}</dt>
       <dd className={own.value}>{value}</dd>
-    </div>
-  )
-}
-
-/**
- * 아직 못 하는 일의 버튼. 누르면 바로 아래에 '준비 중이에요'를 보여 주고 화면 읽기 프로그램에도 알립니다.
- * button: 초록 테두리 버튼(56px) / text: 덜 눈에 띄는 글자 버튼 (해지·탈퇴처럼 자주 누르지 않는 일)
- */
-function PreparingButton({ label, variant = 'button' }: { label: string; variant?: 'button' | 'text' }) {
-  const [shown, setShown] = useState(false)
-  return (
-    <div className="flex flex-col items-start gap-1">
-      {variant === 'button' ? (
-        <Button variant="outline" size="compact" onClick={() => setShown(true)}>
-          {label}
-        </Button>
-      ) : (
-        <button type="button" className={`${own.textButton} flex items-center`} onClick={() => setShown(true)}>
-          {label}
-        </button>
-      )}
-      <p role="status" className={own.note}>
-        {shown ? c.preparing : ''}
-      </p>
     </div>
   )
 }
