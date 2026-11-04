@@ -79,8 +79,8 @@ export const MATCHING_COPY = {
   },
   tabs: { today: '오늘의 추천', matches: '나의 매칭', meetings: '약속', me: '내 정보' },
   preparing: '준비 중이에요',
-  /** '내 정보' 탭. 누르면 정식 홈으로 */
-  logout: '로그아웃',
+  /** 로그아웃 (데스크톱 헤더 메뉴 끝·내 정보 맨 아래). 화면 안 확인 창을 한 번 띄웁니다 */
+  signOut: { action: '로그아웃', title: '로그아웃할까요?', confirm: '로그아웃', cancel: '취소' },
   /**
    * '오늘의 추천' 탭 (기획서 7장 횟수제 매칭·쌍방 체크·한 줄 편지, 9장 인연이 오는 날).
    * 시각·이름이 들어가는 문구는 함수로 둡니다. '마음에 담기'는 어떤 문구로도 상대에게 알리지 않습니다
@@ -164,6 +164,8 @@ export const MATCHING_COPY = {
    */
   myInfo: {
     title: '내 정보',
+    /** 맨 위 회원 이름 */
+    greeting: (name: string) => `${name}님`,
     edit: '고치기',
     preparing: '준비 중이에요',
     profile: {

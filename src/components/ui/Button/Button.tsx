@@ -1,8 +1,10 @@
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from 'react'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, Ref } from 'react'
 import arrowBack from '../../../assets/icons/arrow-back.svg'
 import styles from './Button.module.css'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  /** 바깥에서 포커스를 돌려줄 때 (예: 확인 창을 닫은 뒤) */
+  ref?: Ref<HTMLButtonElement>
   /**
    * primary: 주요 행동(화면마다 하나) / secondary: 이전·다시 하기 같은 보조 행동
    * soft: 공유처럼 눈에 띄되 주요 행동은 아닌 것

@@ -11,17 +11,10 @@ import { KeptScreen } from './KeptScreen'
 import { LetterScreen } from './LetterScreen'
 import { MutualScreen } from './MutualScreen'
 import { MyInfoScreen } from './MyInfoScreen'
-import { HOME_HASH, navigate } from '../quiz/quizRoute'
-import { endPreviewSession, startPreviewSession } from './memberSession'
+import { startPreviewSession } from './memberSession'
 import { ReportScreen } from './ReportScreen'
 import { TodayScreen } from './TodayScreen'
 import styles from './Matching.module.css'
-
-/** 로그아웃하고 정식 홈으로. 정식 홈 헤더는 다시 그려질 때 로그인 상태를 읽으므로 새로고침 없이 '로그인·가입하기'로 바뀝니다 */
-function signOut() {
-  endPreviewSession()
-  navigate(HOME_HASH)
-}
 
 /** 회원 화면 (#/app). 더미 데이터로 오늘의 추천·나의 매칭·내 정보를 만들고, 약속은 '준비 중' 자리입니다 */
 export function MemberApp({ route }: { route: AppRoute }) {
@@ -55,7 +48,7 @@ export function MemberApp({ route }: { route: AppRoute }) {
     case 'mutual':
       return <MutualScreen />
     case 'me':
-      return <MyInfoScreen onSignOut={signOut} />
+      return <MyInfoScreen />
     case 'availability':
       return <AvailabilityScreen />
     case 'placeholder':

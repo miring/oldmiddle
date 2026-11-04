@@ -306,6 +306,7 @@
    * 색은 Figma '시연 · 공통 색상' 변수를 위 토큰에 그대로 맞춤 (새 색 없음) */
   --color-action-outline-border: var(--color-secondary); /* 초록 테두리 보조 버튼 '이번엔 여기까지' */
   --color-action-outline-text: var(--color-secondary-strong); /* 흰 바탕 8.71:1 */
+  --color-nav-sign-out: #6f6d62; /* 데스크톱 헤더 로그아웃: 메뉴(#5c5a50)보다 옅게, 바탕 대비 4.97:1 */
   --color-progress-dot-empty: var(--color-border-subtle); /* 진행 점 중 아직 안 한 것 (장식, 글로 함께 알림) */
   --size-app-content-max-width: 1200px; /* 데스크톱 목록 + 상세 */
   --size-app-list-width: 400px; /* 데스크톱 왼쪽 목록 칸 */

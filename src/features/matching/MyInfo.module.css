@@ -12,6 +12,13 @@
   line-height: var(--line-height-snug);
 }
 
+/* 맨 위 회원 이름 (데스크톱 상세 제목과 같은 크기) */
+.greeting {
+  font-size: var(--type-app-panel-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
 /* 항목 이름 (사진·자기소개·나이 …) */
 .label {
   color: var(--color-text-secondary);

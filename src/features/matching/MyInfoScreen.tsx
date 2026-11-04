@@ -2,7 +2,7 @@ import { useId, type ReactNode } from 'react'
 import badgeCheck from '../../assets/icons/badge-check.svg'
 import image from '../../assets/icons/image.svg'
 import lock from '../../assets/icons/lock.svg'
-import { Button, ButtonLink } from '../../components/ui/Button/Button'
+import { ButtonLink } from '../../components/ui/Button/Button'
 import { TextLink } from '../../components/ui/TextLink/TextLink'
 import { MEETING_PURPOSE_OPTIONS } from '../../config/copy'
 import { MATCHING_COPY } from '../../config/matchingCopy'
@@ -10,7 +10,9 @@ import { site } from '../../config/site'
 import { getCompanionType } from '../../data/companionTypes'
 import { AVAILABILITY_HASH } from './appRoute'
 import { AppScreen } from './AppScreen'
+import { useMatchData } from './matchView'
 import { PreparingButton } from './PreparingButton'
+import { SignOutButton } from './SignOutButton'
 import { formatBands, formatDate, formatDays, formatMonth, useMyInfo } from './myInfoView'
 import styles from './Matching.module.css'
 import own from './MyInfo.module.css'
@@ -22,8 +24,9 @@ const c = MATCHING_COPY.myInfo
  * → 이용권 → 휴회·알림 → 로그아웃·탈퇴. 이 화면에서 고칠 수 있는 것은 '만날 수 있는 때'뿐이고(따로 한 화면),
  * 나머지 버튼은 누르면 '준비 중이에요'를 알립니다.
  */
-export function MyInfoScreen({ onSignOut }: { onSignOut: () => void }) {
+export function MyInfoScreen() {
   const info = useMyInfo()
+  const { me } = useMatchData()
   const plan = c.plan.plans[info.plan.id]
   const purpose = MEETING_PURPOSE_OPTIONS.find((option) => option.id === info.purpose)?.label
   const loveType = getCompanionType(info.loveType)
@@ -31,7 +34,10 @@ export function MyInfoScreen({ onSignOut }: { onSignOut: () => void }) {
   return (
     <AppScreen title={c.title} tab="me" nav="me">
       <div className="flex flex-col gap-6 xl:mx-auto xl:max-w-(--size-app-card-width)">
-        <h1 className={`${styles.listTitle} sr-only xl:not-sr-only`}>{c.title}</h1>
+        <div className="flex flex-col gap-1">
+          <h1 className={`${styles.listTitle} sr-only xl:not-sr-only`}>{c.title}</h1>
+          <p className={own.greeting}>{c.greeting(me.name)}</p>
+        </div>
 
         <Card title={c.profile.title} action={<PreparingButton label={c.edit} />}>
           <Field label={c.profile.photos}>
@@ -184,9 +190,7 @@ export function MyInfoScreen({ onSignOut }: { onSignOut: () => void }) {
 
         <div className="flex flex-col gap-2 xl:flex-row xl:items-start xl:justify-between">
           <div className="xl:w-60">
-            <Button variant="outline" onClick={onSignOut}>
-              {MATCHING_COPY.logout}
-            </Button>
+            <SignOutButton variant="outline" />
           </div>
           <PreparingButton label={c.leave} variant="text" />
         </div>

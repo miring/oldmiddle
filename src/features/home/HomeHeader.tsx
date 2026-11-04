@@ -1,6 +1,6 @@
 import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { site } from '../../config/site'
-import { MATCHES_HASH } from '../matching/appRoute'
+import { MEMBER_HOME_HASH } from '../matching/appRoute'
 import { getSignedInName } from '../matching/memberSession'
 import { LOGIN_HASH, SIGNUP_HASH } from '../quiz/quizRoute'
 import styles from './HomeHeader.module.css'
@@ -47,8 +47,8 @@ export function HomeHeader() {
             </ul>
           </nav>
           {memberName ? (
-            // 누르면 회원 앱의 나의 매칭으로
-            <a href={MATCHES_HASH} className={`${styles.login} ${styles.signup} flex items-center`}>
+            // 누르면 회원 첫 화면으로
+            <a href={MEMBER_HOME_HASH} className={`${styles.login} ${styles.signup} flex items-center`}>
               {memberName}님
             </a>
           ) : (
