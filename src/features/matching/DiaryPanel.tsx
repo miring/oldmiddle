@@ -7,7 +7,7 @@ import { LetterLocked } from '../../components/ui/Diary/LetterLocked'
 import { Notice } from '../../components/ui/Diary/Notice'
 import { ProgressDots } from '../../components/ui/Diary/ProgressDots'
 import { MATCHING_COPY } from '../../config/matchingCopy'
-import { decideHash, TAB_HASH, writeHash } from './appRoute'
+import { decideHash, MEMBER_HOME_HASH, writeHash } from './appRoute'
 import { currentRound, daysLeft, DIARY_DAYS, DIARY_ROUNDS, entryOf, matchPhase, openRounds, roundState } from './diaryRules'
 import { ReportLink } from './MatchesScreen'
 import { formatDay, formatMeeting, letterHeading, ordinal, partnerName } from './matchView'
@@ -38,7 +38,7 @@ export function DiaryPanel({ match, now }: { match: Match; now: Date }) {
         <h2 className={`${styles.panelTitle} sr-only xl:not-sr-only`}>{name}과의 교환일기</h2>
         <Notice icon={mail}>{c.closedNotice}</Notice>
         <div className="xl:w-60">
-          <ButtonLink href={TAB_HASH.today}>{c.closedHome}</ButtonLink>
+          <ButtonLink href={MEMBER_HOME_HASH}>{c.closedHome}</ButtonLink>
         </div>
         <ReportLink matchId={match.id} />
       </div>

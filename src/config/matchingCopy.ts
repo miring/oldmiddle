@@ -25,6 +25,7 @@ export const MATCHING_COPY = {
   allShared: '세 번의 편지를 모두 나눴어요',
   /** 마무리된 매칭(7일 기한이 지났거나 한쪽이 '이번엔 여기까지'). 목록·보관함에서 빠지고, 주소로 열면 이 안내와 [홈으로] */
   closedNotice: '이번 인연은 여기까지예요',
+  /** 로고와 같은 회원 첫 화면(MEMBER_HOME_HASH)으로 */
   closedHome: '홈으로',
   metNotice: '주고받은 편지는 교환일기 보관함에 남아 있어요.',
   pickTimeNotice: "만날 시간은 '약속'에서 고를 수 있어요.",
