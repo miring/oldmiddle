@@ -82,6 +82,83 @@ export const MATCHING_COPY = {
   /** '내 정보' 탭. 누르면 정식 홈으로 */
   logout: '로그아웃',
   /**
+   * '오늘의 추천' 탭 (기획서 7장 횟수제 매칭·쌍방 체크·한 줄 편지, 9장 인연이 오는 날).
+   * 시각·이름이 들어가는 문구는 함수로 둡니다. '마음에 담기'는 어떤 문구로도 상대에게 알리지 않습니다
+   */
+  today: {
+    title: '오늘의 추천',
+    monthLeft: (left: number, total: number) => `이번 달 남은 추천 ${left}명 (월 ${total}명)`,
+    /** '11월 5일(목) 저녁 8시' */
+    revealTime: (day: string) => `${day} 저녁 8시`,
+    deadline: (time: string) => `${time}까지 답해 주세요`,
+    hoursLeft: (hours: number) => `${hours}시간 남았어요`,
+    minutesLeft: (minutes: number) => `${minutes}분 남았어요`,
+    card: {
+      photos: '사진',
+      photoAlt: (index: number) => `사진 ${index}`,
+      intro: '자기소개',
+      hobbies: '하고 싶은 취미',
+      values: '가치관 질문',
+      purpose: '만남 목적',
+      voice: '음성 자기소개',
+      voicePlay: '목소리 듣기',
+      same: '나와 같아요',
+      single: (month: string) => `독신 확인 · ${month}`,
+    },
+    actions: {
+      letter: '만나보고 싶어요',
+      keep: '마음에 담기',
+      keepNote: '상대에게 알리지 않아요.',
+      keepFull: (max: number) => `담은 분이 ${max}명이에요. 목록에서 한 분을 빼면 더 담을 수 있어요.`,
+      pass: '다음에요',
+      passNote: '고르시면 이 분은 6개월 동안 다시 추천하지 않아요.',
+    },
+    letter: {
+      title: '한 줄 편지',
+      lead: (name: string) => `${name}에게 한 줄 편지와 함께 '만나보고 싶어요'를 보내요.`,
+      label: '한 줄 편지 (선택)',
+      examplesTitle: '이렇게 써 보세요',
+      examples: ['산책 좋아하신다는 말에 눈이 갔어요.', '사진 찍는 취미가 같아서 반가웠어요.', '천천히 이야기 나눠 보고 싶어요.'],
+      useExample: (example: string) => `'${example}' 넣기`,
+      blockedNotice: '전화번호·카카오톡 ID·계좌번호와 돈 이야기는 보낼 수 없어요.',
+      submit: '보내기',
+    },
+    result: {
+      letterTitle: '답을 기다려요',
+      letterBody: '7일 안에 답이 없으면 추천 횟수를 돌려드려요.',
+      sentLetter: '보낸 한 줄 편지',
+      keepTitle: '마음에 담아 두었어요',
+      keepBody: '상대에게는 알리지 않아요. 상대도 담으면 바로 알려 드려요.',
+      passTitle: '다음에요를 골랐어요',
+      passBody: '이 분은 6개월 동안 다시 추천하지 않아요.',
+    },
+    empty: {
+      before: '다음 추천을 기다려요',
+      roundEnded: '이번 회차 추천이 끝났어요',
+      roundEndedBody: '답하지 않은 추천은 횟수에서 빼지 않았어요.',
+      next: (time: string) => `다음 추천은 ${time}에 도착해요.`,
+      monthUsed: '이번 달 추천을 모두 받았어요',
+      monthUsedBody: (day: string) => `${day}에 다시 채워져요.`,
+    },
+    kept: {
+      link: (count: number, max: number) => `마음에 담은 분 ${count}/${max}`,
+      title: '마음에 담은 분',
+      intro: (max: number) => `나만 볼 수 있어요. 최대 ${max}명까지 담을 수 있고, 상대도 담으면 알려 드려요.`,
+      empty: '아직 담은 분이 없어요.',
+      until: (day: string) => `${day}까지 담아 둬요`,
+      remove: '빼기',
+      removeLabel: (name: string) => `${name} 빼기`,
+    },
+    mutual: {
+      banner: '서로 마음에 담은 분이 있어요',
+      open: '확인하기',
+      title: '서로 마음에 담은 분이 있어요',
+      body: (name: string) => `${name}도 나를 마음에 담았어요. 만나 보시겠어요?`,
+      confirm: '만나볼게요',
+      note: '누르면 나의 매칭에서 교환일기가 시작돼요. 기한이 지나면 이 안내는 사라져요.',
+    },
+  },
+  /**
    * '내 정보' 탭 (기획서 7장 프로필, 8장 독신 확인, 9장 알림, 10장 요금). 아직 못 하는 일은 버튼만 두고 누르면 '준비 중이에요'.
    * 금액·횟수도 여기 둡니다 (정식 홈 요금 섹션은 copy.ts HOME_PRICING_COPY)
    */
@@ -176,6 +253,12 @@ export const MATCHING_COPY = {
     home: '정식 홈 보기',
     single: '독신 확인',
     singleOptions: { verified: '확인됨', none: '미제출' },
+    today: '오늘의 추천',
+    todayOpen: '추천 도착 직후로',
+    todayLastHour: '응답 기한 1시간 전으로',
+    todayEnded: '이번 회차 끝난 뒤로',
+    todayMutual: '서로 마음에 담은 분 만들기',
+    todayMonthUsed: '이번 달 추천 모두 쓰기',
     partnerEnds: "상대가 '이번엔 여기까지' 고르기",
     partnerEndsTarget: '의향 확인 중인 매칭',
     partnerEndsNone: '의향 확인 중인 매칭이 없어요',

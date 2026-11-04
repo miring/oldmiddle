@@ -61,6 +61,18 @@ export function saveAvailability(availability: Availability) {
   changed()
 }
 
+/** 오늘의 추천에 답하면 이번 달 추천 1회를 씁니다 */
+export function spendRecommendation() {
+  info = { ...info, plan: { ...info.plan, recommendLeft: Math.max(0, info.plan.recommendLeft - 1) } }
+  changed()
+}
+
+/** 미리보기 설정: 이번 달 남은 추천 횟수 바꾸기 */
+export function setMockRecommendLeft(left: number) {
+  info = { ...info, plan: { ...info.plan, recommendLeft: left } }
+  changed()
+}
+
 /** 미리보기 설정: 독신 확인 제출 여부 바꾸기 */
 export function setMockSingleVerified(verified: boolean) {
   info = { ...info, singleVerifiedMonth: verified ? SEED.singleVerifiedMonth : null }
