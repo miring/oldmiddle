@@ -10,7 +10,9 @@ export type AppRoute =
   | { screen: 'decide'; matchId: string }
   | { screen: 'archive' }
   | { screen: 'report'; matchId?: string }
-  | { screen: 'placeholder'; tab: Exclude<AppTab, 'matches'> }
+  | { screen: 'me' }
+  | { screen: 'availability' }
+  | { screen: 'placeholder'; tab: Exclude<AppTab, 'matches' | 'me'> }
 
 export const APP_HASH = '#/app'
 export const MATCHES_HASH = '#/app/matches'
@@ -24,6 +26,9 @@ export const TAB_HASH: Record<AppTab, string> = {
 
 /** 회원 화면 로고를 누르면 가는 첫 화면. 오늘의 추천이 '준비 중'이라 지금은 나의 매칭. 오늘의 추천을 만들면 TAB_HASH.today로 바꿉니다 */
 export const MEMBER_HOME_HASH = MATCHES_HASH
+
+/** 내 정보 › 만날 수 있는 때 고치기 */
+export const AVAILABILITY_HASH = '#/app/me/availability'
 
 export const matchHash = (id: string) => `${MATCHES_HASH}/${id}`
 export const writeHash = (id: string) => `${matchHash(id)}/write`
@@ -41,6 +46,7 @@ export function parseAppRoute(hash: string): AppRoute | null {
   }
   if (section === 'archive') return { screen: 'archive' }
   if (section === 'report') return { screen: 'report', matchId: id }
-  if (section === 'today' || section === 'meetings' || section === 'me') return { screen: 'placeholder', tab: section }
+  if (section === 'me') return id === 'availability' ? { screen: 'availability' } : { screen: 'me' }
+  if (section === 'today' || section === 'meetings') return { screen: 'placeholder', tab: section }
   return { screen: 'matches' }
 }

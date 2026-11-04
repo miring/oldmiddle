@@ -1,0 +1,139 @@
+/* 내 정보 탭 (Figma 없음). 상자·글자는 나의 매칭 화면과 같은 토큰을 씁니다 */
+
+.card {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.cardTitle {
+  font-size: var(--type-my-info-card-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 항목 이름 (사진·자기소개·나이 …) */
+.label {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+/* 내 답·지금 값: 기본 글자 18px (기획서 7장) */
+.value,
+.strong,
+.question {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--line-height-snug);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.question,
+.strong {
+  font-weight: var(--font-weight-bold);
+}
+
+.question {
+  font-size: var(--type-body-size);
+}
+
+.planName {
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 짧은 안내 */
+.note {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+}
+
+.note:empty {
+  display: none;
+}
+
+.inlineIcon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+/* ── 사진 ── */
+.photo {
+  border-radius: var(--radius-md);
+  background-color: var(--color-secondary-subtle);
+}
+
+.photoIcon {
+  width: var(--size-photo-placeholder-icon);
+  height: var(--size-photo-placeholder-icon);
+}
+
+/* 사진 위 상태 (나의 매칭 카드 배지와 같은 모양) */
+.photoStatus {
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.reviewing {
+  background-color: var(--color-surface-accent-subtle);
+  color: var(--color-text-primary);
+}
+
+/* 취미 */
+.chip {
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-subtle);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.loveTypeImage {
+  width: var(--size-my-info-love-type-image);
+  height: var(--size-my-info-love-type-image);
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* 독신 확인 배지 */
+.badge {
+  border-radius: var(--radius-full);
+  background-color: var(--color-secondary-subtle);
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.badgeMuted {
+  background-color: var(--color-bg-default);
+  color: var(--color-text-secondary);
+}
+
+/* 해지·탈퇴처럼 자주 누르지 않는 일: 신고하기와 같은 밑줄 글자 버튼 */
+.textButton {
+  min-height: var(--size-button-compact-height); /* 버튼은 56px 이상 */
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ── 만날 수 있는 때 고치기 ── */
+.legend {
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}

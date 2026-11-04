@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
-import { Button } from '../../components/ui/Button/Button'
 import { MATCHING_COPY } from '../../config/matchingCopy'
 import { getMe } from '../../mocks/matches'
 import type { AppRoute } from './appRoute'
 import { AppScreen } from './AppScreen'
+import { AvailabilityScreen } from './AvailabilityScreen'
 import { ArchiveScreen } from './ArchiveScreen'
 import { DecideScreen } from './DecideScreen'
 import { MatchesScreen } from './MatchesScreen'
+import { MyInfoScreen } from './MyInfoScreen'
 import { HOME_HASH, navigate } from '../quiz/quizRoute'
 import { endPreviewSession, startPreviewSession } from './memberSession'
 import { ReportScreen } from './ReportScreen'
@@ -18,7 +19,7 @@ function signOut() {
   navigate(HOME_HASH)
 }
 
-/** 회원 화면 (#/app). 지금은 더미 데이터로 '나의 매칭'만 만들고, 나머지 탭은 '준비 중' 자리입니다 */
+/** 회원 화면 (#/app). 더미 데이터로 '나의 매칭'·'내 정보'를 만들고, 오늘의 추천·약속은 '준비 중' 자리입니다 */
 export function MemberApp({ route }: { route: AppRoute }) {
   const routeKey = JSON.stringify(route)
 
@@ -41,19 +42,16 @@ export function MemberApp({ route }: { route: AppRoute }) {
       return <ArchiveScreen />
     case 'report':
       return <ReportScreen matchId={route.matchId} />
+    case 'me':
+      return <MyInfoScreen onSignOut={signOut} />
+    case 'availability':
+      return <AvailabilityScreen />
     case 'placeholder':
       return (
         <AppScreen title={MATCHING_COPY.tabs[route.tab]} tab={route.tab} nav={route.tab}>
           <div className={`${styles.placeholder} flex flex-col items-center gap-2 py-16`}>
             <h1 className={styles.placeholderTitle}>{MATCHING_COPY.tabs[route.tab]}</h1>
             <p>{MATCHING_COPY.preparing}</p>
-            {route.tab === 'me' && (
-              <div className="mt-6 w-full xl:w-60">
-                <Button variant="outline" onClick={signOut}>
-                  {MATCHING_COPY.logout}
-                </Button>
-              </div>
-            )}
           </div>
         </AppScreen>
       )
