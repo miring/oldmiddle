@@ -5,7 +5,8 @@
 export const MATCHING_COPY = {
   title: '나의 매칭',
   intro: '교환일기를 3번 주고받으면 만날 시간을 고를 수 있어요.',
-  sections: { diary: '교환일기 중', decide: '의향 확인', meeting: '만남 약속' },
+  /** closed: 기한이 지난 매칭. 목록 맨 아래에 정해진 날 수만 남습니다 */
+  sections: { diary: '교환일기 중', decide: '의향 확인', meeting: '만남 약속', closed: '지난 인연' },
   archiveLink: '교환일기 보관함',
   /** 매칭 0건일 때 이 문구만 보여 줍니다 */
   empty: '매칭 이력이 없습니다.',
@@ -18,14 +19,19 @@ export const MATCHING_COPY = {
     /** 내가 먼저 고르고 상대를 기다릴 때 (카드 배지·의향 확인 화면 공통) */
     decided: '마음 확인중',
     pickTime: '만날 시간을 골라 주세요',
-    closed: '이번 인연은 여기까지예요',
+    closed: '여기까지예요',
   },
   progress: { meeting: '약속 확정', pickTime: '약속 잡기', allLetters: '편지 3통' },
   deliveryNotice: '편지는 쓴 다음 날 아침 8시에 상대에게 도착해요. 두 분이 모두 답하면 함께 열려요.',
   allShared: '세 번의 편지를 모두 나눴어요',
-  /** 마무리된 매칭(7일 기한이 지났거나 한쪽이 '이번엔 여기까지'). 목록·보관함에서 빠지고, 주소로 열면 이 안내와 [홈으로] */
+  /**
+   * 마무리된 매칭 화면의 안내와 [홈으로]. 7일 기한이 지난 매칭은 목록에 며칠 남고(그동안 closedRemoval을 이어 붙임),
+   * '이번엔 여기까지'로 끝난 매칭은 바로 빠집니다. 보관함에는 넣지 않습니다
+   */
   closedNotice: '이번 인연은 여기까지예요',
   /** 로고와 같은 회원 첫 화면(MEMBER_HOME_HASH)으로 */
+  /** 기한이 지난 매칭 화면에서 안내 뒤에 이어 붙입니다. 날짜는 '11월 5일' */
+  closedRemoval: (date: string) => `이 매칭은 ${date}에 목록에서 사라져요.`,
   closedHome: '홈으로',
   metNotice: '주고받은 편지는 교환일기 보관함에 남아 있어요.',
   pickTimeNotice: "만날 시간은 '약속'에서 고를 수 있어요.",

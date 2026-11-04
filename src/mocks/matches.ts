@@ -119,13 +119,13 @@ const SEED: Match[] = [
     myDecision: 'yes',
     partnerDecision: 'yes',
   },
-  // 마무리 · 7일 기한이 지나 조용히 끝남
+  // 마무리 · 7일 기한(11월 2일 저녁)이 지나 조용히 끝남. 목록에는 11월 5일 저녁까지 '여기까지예요'로 남음
   {
     id: 'yoon',
     partner: { familyName: '윤', ageBand: '50대 초반', district: '동작구' },
-    startedAt: at('10-20', '20:00'),
+    startedAt: at('10-26', '20:00'),
     questions: QUESTIONS,
-    entries: threeRounds(['10-21', '10-22', '10-23']).filter((entry) => entry.round === 1),
+    entries: threeRounds(['10-27', '10-28', '10-29']).filter((entry) => entry.round === 1),
   },
   // 보관함 · 이미 만남
   {

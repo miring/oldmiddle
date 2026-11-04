@@ -8,7 +8,7 @@ import { Notice } from '../../components/ui/Diary/Notice'
 import { ProgressDots } from '../../components/ui/Diary/ProgressDots'
 import { MATCHING_COPY } from '../../config/matchingCopy'
 import { decideHash, MEMBER_HOME_HASH, writeHash } from './appRoute'
-import { currentRound, daysLeft, DIARY_DAYS, DIARY_ROUNDS, entryOf, matchPhase, openRounds, roundState } from './diaryRules'
+import { currentRound, daysLeft, DIARY_DAYS, DIARY_ROUNDS, entryOf, isListed, listedUntil, matchPhase, openRounds, roundState } from './diaryRules'
 import { ReportLink } from './MatchesScreen'
 import { formatDay, formatMeeting, letterHeading, ordinal, partnerName } from './matchView'
 import type { Match } from './matchTypes'
@@ -31,12 +31,14 @@ export function DiaryPanel({ match, now }: { match: Match; now: Date }) {
   const remaining = left > 0 ? `${DIARY_DAYS}일 중 ${left}일 남았어요` : '오늘이 마지막 날이에요'
   const inlineProgress = phase === 'diary' ? `${round} / ${DIARY_ROUNDS} · ${DIARY_DAYS}일 중 ${left}일 남음` : progressTitle
 
-  // 마무리된 매칭: 편지 없이 안내와 [홈으로]만 (회원 앱 첫 화면 '오늘의 추천'으로)
+  // 마무리된 매칭: 편지 없이 안내와 [홈으로]만 (로고와 같은 회원 첫 화면으로). 목록에 남아 있는 동안은 사라지는 날도 알립니다
   if (phase === 'closed') {
     return (
       <div className={`${styles.panel} flex flex-col gap-5`}>
         <h2 className={`${styles.panelTitle} sr-only xl:not-sr-only`}>{name}과의 교환일기</h2>
-        <Notice icon={mail}>{c.closedNotice}</Notice>
+        <Notice icon={mail}>
+          {isListed(match, now) ? `${c.closedNotice}. ${c.closedRemoval(formatDay(listedUntil(match)))}` : c.closedNotice}
+        </Notice>
         <div className="xl:w-60">
           <ButtonLink href={MEMBER_HOME_HASH}>{c.closedHome}</ButtonLink>
         </div>

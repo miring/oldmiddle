@@ -3,7 +3,7 @@ import { MatchCard } from '../../components/ui/Diary/MatchCard'
 import { MATCHING_COPY } from '../../config/matchingCopy'
 import { navigate } from '../quiz/quizRoute'
 import { ARCHIVE_HASH, decideHash, matchHash, MATCHES_HASH, reportHash } from './appRoute'
-import { matchPhase, type MatchPhase } from './diaryRules'
+import { isListed, matchPhase, type MatchPhase } from './diaryRules'
 import { DiaryPanel } from './DiaryPanel'
 import { AppScreen } from './AppScreen'
 import { cardStatus, partnerMeta, partnerName, useMatchData } from './matchView'
@@ -15,6 +15,8 @@ const SECTIONS: { phase: MatchPhase; label: string }[] = [
   { phase: 'diary', label: MATCHING_COPY.sections.diary },
   { phase: 'decide', label: MATCHING_COPY.sections.decide },
   { phase: 'meeting', label: MATCHING_COPY.sections.meeting },
+  // 기한이 지난 매칭은 맨 아래에 '여기까지예요'로 잠시 남깁니다
+  { phase: 'closed', label: MATCHING_COPY.sections.closed },
 ]
 
 type MatchesScreenProps = {
@@ -29,8 +31,8 @@ type MatchesScreenProps = {
  */
 export function MatchesScreen({ matchId, mode }: MatchesScreenProps) {
   const { matches, now } = useMatchData()
-  // 목록에는 진행 중인 매칭만. 만난 뒤는 보관함에서만, 마무리된 매칭은 어디에도 남기지 않습니다 (주소로 열면 안내만)
-  const listed = matches.filter((match) => SECTIONS.some(({ phase }) => phase === matchPhase(match, now)))
+  // 목록 규칙은 isListed (진행 중 + 기한이 지나고 며칠 안 된 매칭). 만난 뒤는 보관함에서만
+  const listed = matches.filter((match) => isListed(match, now))
   const opened = matchId
     ? matches.find((match) => match.id === matchId)
     : (listed.find((match) => matchPhase(match, now) === 'diary') ?? listed[0])
