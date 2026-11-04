@@ -81,6 +81,89 @@ export const MATCHING_COPY = {
   preparing: '준비 중이에요',
   /** '내 정보' 탭. 누르면 정식 홈으로 */
   logout: '로그아웃',
+  /**
+   * '내 정보' 탭 (기획서 7장 프로필, 8장 독신 확인, 9장 알림, 10장 요금). 아직 못 하는 일은 버튼만 두고 누르면 '준비 중이에요'.
+   * 금액·횟수도 여기 둡니다 (정식 홈 요금 섹션은 copy.ts HOME_PRICING_COPY)
+   */
+  myInfo: {
+    title: '내 정보',
+    edit: '고치기',
+    preparing: '준비 중이에요',
+    profile: {
+      title: '내 프로필',
+      photos: '사진',
+      photoStatus: { public: '공개 중', reviewing: '확인 중' },
+      photoAlt: (index: number) => `내 사진 ${index}`,
+      photoNote: '사진을 바꾸면 한 번 더 살펴본 뒤 보여 드려요.',
+      intro: '자기소개',
+      hobbies: '하고 싶은 취미',
+      values: '가치관 질문',
+      /** 기획서 7장 '가치관 질문 5개' */
+      valueQuestions: ['주말은 어떻게 보내세요?', '건강은 어떻게 챙기세요?', '가족과는 어떻게 지내세요?', '어떤 관계를 바라세요?', '돈은 어떻게 쓰는 편이세요?'],
+      purpose: '만남 목적',
+      loveType: '사랑하는 방식',
+      loveTypeNote: '나만 볼 수 있어요',
+    },
+    single: {
+      title: '독신 확인',
+      verified: (month: string) => `독신 확인 · ${month}`,
+      verifiedNote: '확인한 달이 프로필에 함께 보여요.',
+      none: '미제출',
+      noneBody: "혼인관계증명서를 내시면 프로필에 '독신 확인' 배지가 붙어요. 내지 않아도 이용할 수 있어요.",
+      noneRules: ['일반증명서만 받아요', '발급한 지 3개월 안의 증명서만 받아요'],
+      submit: '증명서 내기',
+    },
+    availability: {
+      title: '만날 수 있는 때',
+      note: '약속을 잡을 때 이 요일과 시간대로 먼저 시간 후보를 보여 드려요.',
+      days: { mon: '월', tue: '화', wed: '수', thu: '목', fri: '금', sat: '토', sun: '일' },
+      daysLegend: '요일',
+      bands: { late_morning: '오전 늦게 (11~13시)', afternoon: '오후 (13~18시)' },
+      bandsLegend: '시간대',
+      dayLabel: (day: string) => `${day}요일`,
+      needOne: '요일과 시간대를 하나 이상 골라 주세요.',
+      save: '저장하기',
+    },
+    preferences: {
+      title: '소개받는 조건',
+      intro: '이 조건에 맞는 분에게만 내가 추천돼요.',
+      age: '나이',
+      ageRange: (min: number, max: number) => `${min}~${max}세`,
+      smoking: '흡연',
+      smokingOptions: { 'non-smoker': '피우지 않는 분', any: '상관없어요' },
+      verifiedOnly: '독신 확인된 분만 소개받기',
+    },
+    on: '켜짐',
+    off: '꺼짐',
+    plan: {
+      title: '이용권',
+      plans: {
+        basic: { name: '베이직', price: '월 29,000원', recommend: 4, meetings: 1 },
+        standard: { name: '스탠다드', price: '월 49,000원', recommend: 8, meetings: 2 },
+      },
+      left: '이번 달 남은 횟수',
+      recommendLeft: (left: number, total: number) => `추천 ${left}명 (월 ${total}명)`,
+      meetingLeft: (left: number, total: number) => `약속\u00a0잡기 ${left}회 (월 ${total}회)`,
+      nextBilling: '다음 결제일',
+      sendLink: '결제 링크 보내기',
+      sendLinkNote: '결제 링크를 문자로 받아 다른 휴대폰에서도 결제할 수 있어요.',
+      refund: '환불 규정',
+      refundNote: '쓰지 않은 횟수는 날짜만큼 계산해 돌려드려요.',
+      cancel: '해지하기',
+    },
+    pause: {
+      title: '휴회',
+      body: '잠시 쉬고 싶을 때 프로필을 숨기고 추천을 멈춰요.',
+      price: '월 3,000원 · 최대 6개월',
+      action: '휴회하기',
+    },
+    notify: {
+      title: '알림',
+      dayOnly: "'인연이 오는 날' 알림만 받기",
+      dayOnlyNote: '켜면 추천이 도착하는 날 알림과 약속 안내만 보내 드려요.',
+    },
+    leave: '탈퇴하기',
+  },
   /** 미리보기 설정 (더미 데이터 확인용, 실제 서비스에는 없음) */
   mock: {
     summary: '미리보기 설정 (더미 데이터)',
@@ -91,6 +174,8 @@ export const MATCHING_COPY = {
     logout: '미리보기 로그아웃',
     loggedOut: '로그아웃했어요. 정식 홈 헤더가 로그인 전 모습으로 보여요. 회원 화면을 다시 열면 다시 로그인돼요.',
     home: '정식 홈 보기',
+    single: '독신 확인',
+    singleOptions: { verified: '확인됨', none: '미제출' },
     partnerEnds: "상대가 '이번엔 여기까지' 고르기",
     partnerEndsTarget: '의향 확인 중인 매칭',
     partnerEndsNone: '의향 확인 중인 매칭이 없어요',

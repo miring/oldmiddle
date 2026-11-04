@@ -30,4 +30,6 @@ export const site = {
   termsUrl: '',
   privacyUrl: '',
   contactUrl: '',
+  /** 내 정보 › 이용권의 환불 규정 주소. 비어 있으면 '준비 중'으로 둡니다 */
+  refundPolicyUrl: '',
 } as const
