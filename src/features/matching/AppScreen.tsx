@@ -9,7 +9,7 @@ import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { MATCHING_COPY } from '../../config/matchingCopy'
 import { getMe } from '../../mocks/matches'
 import { goBackTo } from '../quiz/quizRoute'
-import { MATCHES_HASH, TAB_HASH, type AppTab } from './appRoute'
+import { MATCHES_HASH, MEMBER_HOME_HASH, TAB_HASH, type AppTab } from './appRoute'
 import { MockControls } from './MockControls'
 import styles from './Matching.module.css'
 
@@ -21,7 +21,7 @@ type AppScreenProps = {
   title: string
   /** 있으면 상단 바에 뒤로 버튼. 앱 안에서 넘어오지 않았을 때 갈 주소 */
   back?: string
-  /** 휴대폰·태블릿 하단 탭을 보여 줄 때 지금 탭 (탭 첫 화면에서만) */
+  /** 휴대폰·태블릿 하단 탭을 보여 줄 때 지금 탭 (탭 첫 화면에서만). 이때 상단 바에는 뒤로 버튼 대신 로고 */
   tab?: AppTab
   /** 데스크톱 헤더에서 강조할 메뉴 */
   nav: AppTab
@@ -29,7 +29,8 @@ type AppScreenProps = {
 }
 
 /**
- * 회원 앱 화면 틀. 휴대폰·태블릿(1359px까지)은 제목 바 + 하단 탭, 데스크톱은 로고 헤더 + 메뉴.
+ * 회원 화면 틀. 휴대폰·태블릿(1359px까지)은 상단 바 + 하단 탭, 데스크톱은 로고 헤더 + 메뉴.
+ * 로고는 모두 회원 첫 화면(MEMBER_HOME_HASH)으로 갑니다.
  * 태블릿은 따로 디자인하지 않고 휴대폰 화면을 최대 폭 안에서 가운데 정렬합니다.
  */
 export function AppScreen({ title, back, tab, nav, children }: AppScreenProps) {
@@ -44,6 +45,7 @@ export function AppScreen({ title, back, tab, nav, children }: AppScreenProps) {
     <div className={styles.app}>
       <div className="hidden xl:block">
         <SiteHeader
+          homeHref={MEMBER_HOME_HASH}
           aside={
             <nav aria-label="회원 메뉴">
               <ul role="list" className="flex items-center gap-2">
@@ -64,7 +66,7 @@ export function AppScreen({ title, back, tab, nav, children }: AppScreenProps) {
         />
       </div>
       <div className="xl:hidden">
-        <BackHeader title={title} onBack={back ? () => goBackTo(back) : undefined} />
+        <BackHeader title={title} onBack={back ? () => goBackTo(back) : undefined} homeHref={tab ? MEMBER_HOME_HASH : undefined} />
       </div>
       <main className={`${tab ? styles.withTabBar : ''} content-gutter pt-6 pb-10 xl:pt-10 xl:pb-16`}>
         {children}
