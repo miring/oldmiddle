@@ -1,0 +1,58 @@
+/* 오늘의 추천 (Figma 없음). 상자·글자는 내 정보(MyInfo.module.css)와 같은 토큰을 씁니다 */
+
+.name {
+  font-size: var(--type-app-panel-title-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 자기소개는 편지 본문처럼 18px, 넉넉한 줄 간격 */
+.intro {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 나와 같은 답: 노란 바탕 + '나와 같아요' 글 (색만으로 구분하지 않음) */
+.sameChip {
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.sameRow {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-accent-subtle);
+}
+
+.sameMark {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+.sameIcon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+/* 쌍방 매칭 알림 (교환일기 편지 상자와 같은 색) */
+.mutualBanner {
+  border: var(--border-width-default) solid var(--color-letter-rule);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-letter-bg);
+}
+
+/* 한 줄 편지 예시 (누르면 입력칸에 넣기) */
+.example {
+  min-height: var(--size-button-compact-height);
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+  cursor: pointer;
+}
