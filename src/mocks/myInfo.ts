@@ -79,8 +79,45 @@ export function setMockSingleVerified(verified: boolean) {
   changed()
 }
 
-/** 미리보기 설정: 처음 상태로 */
+/*
+ * 교환일기의 독신 확인 안내를 '나중에 할게요'로 닫았는지. 더미에서는 이 탭을 닫으면 풀리는 세션 저장
+ * TODO(저장 로직): 회원 설정(서버)에 저장해 다른 기기에서도 다시 보이지 않게 합니다
+ */
+const SINGLE_NOTICE_KEY = 'siyeon:preview-single-notice-dismissed'
+
+function readSingleNoticeDismissed(): boolean {
+  try {
+    return sessionStorage.getItem(SINGLE_NOTICE_KEY) === 'true'
+  } catch {
+    return false
+  }
+}
+
+let singleNoticeDismissed = readSingleNoticeDismissed()
+
+export function dismissSingleNotice() {
+  try {
+    sessionStorage.setItem(SINGLE_NOTICE_KEY, 'true')
+  } catch {
+    // 저장소를 쓸 수 없으면 이번 화면에서만 닫힙니다
+  }
+  singleNoticeDismissed = true
+  changed()
+}
+
+/** 화면에서 읽는 값 (저장소를 못 써도 이번 방문 동안은 닫힌 채로) */
+export function getSingleNoticeDismissed() {
+  return singleNoticeDismissed
+}
+
+/** 미리보기 설정: 처음 상태로 (독신 확인 안내도 다시 보이게) */
 export function resetMyInfo() {
   info = structuredClone(SEED)
+  try {
+    sessionStorage.removeItem(SINGLE_NOTICE_KEY)
+  } catch {
+    // 위와 같음
+  }
+  singleNoticeDismissed = false
   changed()
 }

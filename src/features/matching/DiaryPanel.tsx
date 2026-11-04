@@ -1,17 +1,19 @@
 import calendar from '../../assets/icons/calendar.svg'
 import clock from '../../assets/icons/clock.svg'
 import mail from '../../assets/icons/mail.svg'
-import { ButtonLink } from '../../components/ui/Button/Button'
+import { Button, ButtonLink } from '../../components/ui/Button/Button'
 import { LetterCard } from '../../components/ui/Diary/LetterCard'
 import { LetterLocked } from '../../components/ui/Diary/LetterLocked'
 import { Notice } from '../../components/ui/Diary/Notice'
 import { ProgressDots } from '../../components/ui/Diary/ProgressDots'
 import { MATCHING_COPY } from '../../config/matchingCopy'
-import { decideHash, MEMBER_HOME_HASH, writeHash } from './appRoute'
+import { dismissSingleNotice, getSingleNoticeDismissed } from '../../mocks/myInfo'
+import { decideHash, MEMBER_HOME_HASH, TAB_HASH, writeHash } from './appRoute'
 import { currentRound, daysLeft, DIARY_DAYS, DIARY_ROUNDS, entryOf, isListed, listedUntil, matchPhase, openRounds, roundState } from './diaryRules'
 import { ReportLink } from './MatchesScreen'
 import { formatDay, formatMeeting, letterHeading, ordinal, partnerName } from './matchView'
 import type { Match } from './matchTypes'
+import { useMyInfo } from './myInfoView'
 import styles from './Matching.module.css'
 
 /** 교환일기 상세: 진행 + 편지들 + 안내 (Figma 311:610 휴대폰 / 311:702 데스크톱 오른쪽) */
@@ -65,6 +67,8 @@ export function DiaryPanel({ match, now }: { match: Match; now: Date }) {
         <ProgressDots done={dots} size="md" />
       </div>
 
+      <SingleNotice />
+
       <div className="grid items-start gap-4 xl:grid-cols-2 xl:gap-5">
         {rounds.map((n) => (
           <Letter key={n} match={match} round={n} now={now} active={phase === 'diary' && n === round} />
@@ -90,6 +94,30 @@ export function DiaryPanel({ match, now }: { match: Match; now: Date }) {
       )}
       <ReportLink matchId={match.id} />
     </div>
+  )
+}
+
+/**
+ * 독신 확인을 받지 않은 회원에게만 혼인관계증명서 안내 (기획서 8장 선택 제출). '나중에 할게요'를 누르면 다시 보이지 않습니다.
+ * 독신 확인 상태는 내 정보와 같은 값입니다
+ */
+function SingleNotice() {
+  const c = MATCHING_COPY.singleNotice
+  const { singleVerifiedMonth } = useMyInfo()
+  if (singleVerifiedMonth || getSingleNoticeDismissed()) return null
+
+  return (
+    <section aria-label={c.body} className={`${styles.singleNotice} flex flex-col gap-3 p-5`}>
+      <p className={styles.singleNoticeText}>{c.body}</p>
+      <div className="flex flex-wrap gap-2">
+        <ButtonLink href={TAB_HASH.me} variant="outline" size="compact">
+          {c.view}
+        </ButtonLink>
+        <Button variant="secondary" size="compact" onClick={dismissSingleNotice}>
+          {c.later}
+        </Button>
+      </div>
+    </section>
   )
 }
 
