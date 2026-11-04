@@ -28,8 +28,8 @@ export const TAB_HASH: Record<AppTab, string> = {
   me: '#/app/me',
 }
 
-/** 회원 화면 로고를 누르면 가는 첫 화면. 오늘의 추천이 '준비 중'이라 지금은 나의 매칭. 오늘의 추천을 만들면 TAB_HASH.today로 바꿉니다 */
-export const MEMBER_HOME_HASH = MATCHES_HASH
+/** 회원 첫 화면: 오늘의 추천. 로고와 마무리된 매칭의 [홈으로]가 여기로 갑니다 */
+export const MEMBER_HOME_HASH = TAB_HASH.today
 
 /** 오늘의 추천 › 한 줄 편지 / 마음에 담은 분 / 쌍방 매칭 확인 */
 export const LETTER_HASH = '#/app/today/letter'
