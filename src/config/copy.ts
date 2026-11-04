@@ -252,3 +252,6 @@ export const FOOTER_LINKS = [
   { label: '개인정보 처리방침', href: site.privacyUrl, strong: true },
   { label: '문의하기', href: site.contactUrl },
 ]
+
+/** 회원 화면 푸터에만 더하는 링크 이름. 정식 홈에서는 자기 자신이고, 랜딩(운영 사이트)에서는 정식 홈이 아직 열리지 않아 넣지 않습니다 */
+export const MEMBER_FOOTER_ABOUT_LABEL = '시연 소개'
