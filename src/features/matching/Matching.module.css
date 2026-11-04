@@ -41,6 +41,22 @@
   font-weight: var(--font-weight-bold);
 }
 
+/* 메뉴와 로그아웃 사이 구분선 */
+.navDivider {
+  width: var(--border-width-default);
+  height: var(--size-icon-sm);
+  background-color: var(--color-border-subtle);
+}
+
+/* 로그아웃: 메뉴보다 옅은 글자 */
+.navSignOut {
+  min-height: var(--size-touch-min);
+  color: var(--color-nav-sign-out);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+  cursor: pointer;
+}
+
 /* ── 목록 ── */
 .listTitle {
   font-size: var(--type-app-title-size);

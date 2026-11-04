@@ -9,10 +9,10 @@ import { SiteFooter } from '../../components/ui/SiteFooter/SiteFooter'
 import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { MEMBER_FOOTER_ABOUT_LABEL } from '../../config/copy'
 import { MATCHING_COPY } from '../../config/matchingCopy'
-import { getMe } from '../../mocks/matches'
 import { goBackTo, HOME_HASH } from '../quiz/quizRoute'
-import { MATCHES_HASH, MEMBER_HOME_HASH, TAB_HASH, type AppTab } from './appRoute'
+import { MEMBER_HOME_HASH, TAB_HASH, type AppTab } from './appRoute'
 import { MockControls } from './MockControls'
+import { SignOutButton } from './SignOutButton'
 import styles from './Matching.module.css'
 
 const TAB_ICONS: Record<AppTab, string> = { today: users, matches: mail, meetings: calendar, me: badge }
@@ -38,12 +38,8 @@ type AppScreenProps = {
  * 태블릿은 따로 디자인하지 않고 휴대폰 화면을 최대 폭 안에서 가운데 정렬합니다.
  */
 export function AppScreen({ title, back, tab, nav, children }: AppScreenProps) {
-  const me = getMe()
-  const navItems = [
-    ...(['today', 'matches', 'meetings'] as const).map((id) => ({ id, label: MATCHING_COPY.tabs[id], href: TAB_HASH[id] })),
-    // 로그인 후에는 '내 정보' 자리에 회원 이름. 누르면 나의 매칭으로
-    { id: 'name', label: `${me.name}님`, href: MATCHES_HASH },
-  ]
+  // 데스크톱 메뉴: 하단 탭과 같은 4개. 로그아웃은 구분선 뒤에 옅은 글자로
+  const navItems = TABS.map((id) => ({ id, label: MATCHING_COPY.tabs[id], href: TAB_HASH[id] }))
 
   return (
     <div className={styles.app}>
@@ -64,6 +60,10 @@ export function AppScreen({ title, back, tab, nav, children }: AppScreenProps) {
                     </a>
                   </li>
                 ))}
+                <li aria-hidden="true" className={`${styles.navDivider} mx-2`} />
+                <li>
+                  <SignOutButton variant="nav" />
+                </li>
               </ul>
             </nav>
           }

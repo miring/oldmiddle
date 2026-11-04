@@ -14,7 +14,7 @@ const ORDINALS = ['첫 번째', '두 번째', '세 번째']
 export const ordinal = (round: number) => ORDINALS[round - 1] ?? `${round}번째`
 
 /** 상대 이름은 성만: '김○○님'. ○ 뒤에서 줄이 갈리지 않도록 글자 사이를 이어 둡니다(U+2060) */
-export const partnerName = (match: Match) => `${match.partner.familyName}\u2060○\u2060○\u2060님`
+export const partnerName = (match: Pick<Match, 'partner'>) => `${match.partner.familyName}\u2060○\u2060○\u2060님`
 export const partnerMeta = (match: Match) => `${match.partner.ageBand} · ${match.partner.district}`
 
 const SEOUL = 'Asia/Seoul'
@@ -24,6 +24,11 @@ const hourFormat = new Intl.DateTimeFormat('ko-KR', { timeZone: SEOUL, hour: 'nu
 
 /** '11월 2일' */
 export const formatDay = (time: number | string) => dayFormat.format(new Date(time))
+/** '11월 5일(목)' */
+export const formatDayWeekday = (time: number | string) => {
+  const date = new Date(time)
+  return `${dayFormat.format(date)}(${weekdayFormat.format(date)})`
+}
 /** '11월 15일(토) 오후 2시' */
 export const formatMeeting = (iso: string) => {
   const date = new Date(iso)

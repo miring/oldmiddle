@@ -234,6 +234,22 @@ export function endMatchByPartner(matchId: string) {
   changed()
 }
 
+/** 쌍방 매칭에서 [만나볼게요]: 교환일기를 지금부터 시작합니다. 새 매칭 id를 돌려줍니다 */
+export function startMatch(partner: Match['partner'], recommendationId: string): string {
+  const id = `from-${recommendationId}`
+  if (!matches.some((match) => match.id === id)) {
+    matches = [{ id, partner, startedAt: now, questions: QUESTIONS, entries: [] }, ...matches]
+    changed()
+  }
+  return id
+}
+
+/** 미리보기 설정: 지금 시각만 바꾸기 (쓴 편지·고른 의향은 그대로) */
+export function setMockNow(next: string) {
+  now = next
+  changed()
+}
+
 /** 미리보기 설정: 상태 묶음과 기준 시각 바꾸기. 쓴 편지·고른 의향은 처음으로 되돌립니다 */
 export function setMockOptions(options: { scenario?: MockScenario; now?: string }) {
   if (options.scenario) scenario = options.scenario

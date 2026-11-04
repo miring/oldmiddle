@@ -306,6 +306,7 @@
    * 색은 Figma '시연 · 공통 색상' 변수를 위 토큰에 그대로 맞춤 (새 색 없음) */
   --color-action-outline-border: var(--color-secondary); /* 초록 테두리 보조 버튼 '이번엔 여기까지' */
   --color-action-outline-text: var(--color-secondary-strong); /* 흰 바탕 8.71:1 */
+  --color-nav-sign-out: #6f6d62; /* 데스크톱 헤더 로그아웃: 메뉴(#5c5a50)보다 옅게, 바탕 대비 4.97:1 */
   --color-progress-dot-empty: var(--color-border-subtle); /* 진행 점 중 아직 안 한 것 (장식, 글로 함께 알림) */
   --size-app-content-max-width: 1200px; /* 데스크톱 목록 + 상세 */
   --size-app-list-width: 400px; /* 데스크톱 왼쪽 목록 칸 */
@@ -324,6 +325,11 @@
   --type-decide-question-size: 20px; /* '김○○님을 만나 보고 싶으세요?' */
   --space-app-panel-padding: var(--space-10); /* 데스크톱 상세 칸 안쪽 40 */
   --radius-app-panel: var(--radius-2xl);
+
+  /* ── 회원 화면 · 내 정보 (Figma 없음, 기존 값에 맞춤) ── */
+  --size-my-info-love-type-image: 64px; /* 사랑하는 방식 캐릭터 */
+  --size-photo-placeholder-icon: 32px; /* 더미 사진 자리 아이콘 */
+  --type-my-info-card-title-size: 20px; /* 상자 제목 '내 프로필' (편지 쓰기 질문과 같은 크기) */
 
   /* ── 바텀시트 ── */
   --color-overlay-scrim: rgba(44, 36, 22, 0.5); /* 뒤 화면을 덮는 막 (기본 글자색 #2c2416 50%) */
