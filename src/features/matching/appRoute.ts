@@ -1,0 +1,43 @@
+/*
+ * 회원 앱 주소 (#/app 아래). 기존 해시 방식(quizRoute.ts)을 그대로 쓰고, #/app으로 시작하는 주소만 여기서 나눕니다.
+ */
+
+export type AppTab = 'today' | 'matches' | 'meetings' | 'me'
+
+export type AppRoute =
+  | { screen: 'matches'; matchId?: string }
+  | { screen: 'write'; matchId: string }
+  | { screen: 'decide'; matchId: string }
+  | { screen: 'archive' }
+  | { screen: 'report'; matchId?: string }
+  | { screen: 'placeholder'; tab: Exclude<AppTab, 'matches'> }
+
+export const APP_HASH = '#/app'
+export const MATCHES_HASH = '#/app/matches'
+export const ARCHIVE_HASH = '#/app/archive'
+export const TAB_HASH: Record<AppTab, string> = {
+  today: '#/app/today',
+  matches: MATCHES_HASH,
+  meetings: '#/app/meetings',
+  me: '#/app/me',
+}
+
+export const matchHash = (id: string) => `${MATCHES_HASH}/${id}`
+export const writeHash = (id: string) => `${matchHash(id)}/write`
+export const decideHash = (id: string) => `${matchHash(id)}/decide`
+export const reportHash = (id?: string) => (id ? `#/app/report/${id}` : '#/app/report')
+
+/** #/app 아래 주소가 아니면 null. 모르는 주소는 나의 매칭 목록으로 */
+export function parseAppRoute(hash: string): AppRoute | null {
+  if (hash !== APP_HASH && !hash.startsWith(`${APP_HASH}/`)) return null
+  const [, , section, id, action] = hash.slice(1).split('/')
+  if (section === 'matches' && id) {
+    if (action === 'write') return { screen: 'write', matchId: id }
+    if (action === 'decide') return { screen: 'decide', matchId: id }
+    return { screen: 'matches', matchId: id }
+  }
+  if (section === 'archive') return { screen: 'archive' }
+  if (section === 'report') return { screen: 'report', matchId: id }
+  if (section === 'today' || section === 'meetings' || section === 'me') return { screen: 'placeholder', tab: section }
+  return { screen: 'matches' }
+}

@@ -1,0 +1,39 @@
+.card {
+  border: var(--border-width-default) solid var(--color-letter-rule);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-letter-bg);
+}
+
+/* Figma 14px → 16px */
+.heading {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+.question {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+}
+
+/* 답마다 위에 편지지 줄 */
+.answer {
+  border-top: var(--border-width-default) solid var(--color-letter-rule);
+}
+
+.who {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+}
+
+/* 편지 본문 18px 이상 (Figma 16px) */
+.text {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--type-body-line);
+}

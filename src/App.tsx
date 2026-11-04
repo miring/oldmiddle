@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { HomePage } from './features/home/HomePage'
 import { LandingPage } from './features/landing/LandingPage'
 import { CancelPage } from './features/preregister/CancelPage'
@@ -10,6 +10,10 @@ import { QuizPage } from './features/quiz/QuizPage'
 import { navigate, quizHash, useQuizRoute } from './features/quiz/quizRoute'
 import { ResultPage } from './features/quiz/ResultPage'
 import { calculateResult } from './features/quiz/results'
+
+// 회원 앱은 더미 데이터로 만든 미리보기라 미리보기 환경에서만 불러옵니다.
+// 조건을 여기에 그대로 써야 운영 빌드에서 통째로 빠집니다 (다른 파일의 상수로는 빠지지 않음)
+const MemberApp = import.meta.env.DEV || import.meta.env.VITE_HOME_PREVIEW === 'true' ? lazy(() => import('./features/matching/MemberApp').then((m) => ({ default: m.MemberApp }))) : null
 
 export function App() {
   const route = useQuizRoute()
@@ -29,6 +33,13 @@ export function App() {
   }, [requestedStep, step])
 
   if (route.view === 'home') return <HomePage />
+  if (route.view === 'app' && MemberApp) {
+    return (
+      <Suspense fallback={null}>
+        <MemberApp route={route.route} />
+      </Suspense>
+    )
+  }
   if (route.view === 'cancel') return <CancelPage token={route.token} />
   if (route.view === 'preregister') return <PreregisterPage />
   if (route.view === 'under45') return <Under45Page />

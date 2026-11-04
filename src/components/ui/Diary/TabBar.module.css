@@ -1,0 +1,25 @@
+.bar {
+  height: var(--size-tab-bar-height);
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+  background-color: var(--color-surface-raised);
+}
+
+/* Figma 14px → 16px. 누르는 영역은 48px 이상 */
+.tab {
+  min-height: var(--size-touch-min);
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--line-height-snug);
+  text-decoration: none;
+}
+
+.current {
+  color: var(--color-secondary-strong);
+  font-weight: var(--font-weight-bold);
+}
+
+.icon {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
