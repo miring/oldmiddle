@@ -1,8 +1,9 @@
 import { useEffect } from 'react'
+import { ButtonLink } from '../../components/ui/Button/Button'
 import { MatchCard } from '../../components/ui/Diary/MatchCard'
 import { MATCHING_COPY } from '../../config/matchingCopy'
 import { navigate } from '../quiz/quizRoute'
-import { ARCHIVE_HASH, decideHash, matchHash, MATCHES_HASH, reportHash } from './appRoute'
+import { ARCHIVE_HASH, decideHash, MATCHES_HASH, matchHash, MEMBER_HOME_HASH, reportHash } from './appRoute'
 import { isListed, matchPhase, type MatchPhase } from './diaryRules'
 import { DiaryPanel } from './DiaryPanel'
 import { AppScreen } from './AppScreen'
@@ -73,8 +74,13 @@ function MatchList({ matches, now, selectedId }: { matches: Match[]; now: Date; 
       {/* 휴대폰은 상단 바가 제목을 보여 주므로 데스크톱에서만 화면에 보임 */}
       <h1 className={`${styles.listTitle} sr-only xl:not-sr-only`}>{c.title}</h1>
       {matches.length === 0 ? (
-        // 매칭 0건: 문구만
-        <p className={styles.intro}>{c.empty}</p>
+        // 매칭 0건: 문구와 오늘의 추천 버튼만
+        <>
+          <p className={styles.intro}>{c.empty}</p>
+          <div className="xl:w-60">
+            <ButtonLink href={MEMBER_HOME_HASH}>{c.emptyAction}</ButtonLink>
+          </div>
+        </>
       ) : (
         <ListBody matches={matches} now={now} selectedId={selectedId} />
       )}
