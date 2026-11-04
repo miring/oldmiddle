@@ -136,6 +136,25 @@
   cursor: pointer;
 }
 
+/* ── 서비스 안내 (약관·처리방침·문의·시연 소개) ── */
+.linkList {
+  border: var(--border-width-default) solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface-raised);
+}
+
+.linkList > li + li {
+  border-top: var(--border-width-default) solid var(--color-border-subtle);
+}
+
+.linkRow {
+  min-height: var(--size-button-compact-height); /* 누르는 영역 56px */
+  color: var(--color-text-primary);
+  font-size: var(--type-body-lg-size);
+  line-height: var(--line-height-snug);
+  text-decoration: none;
+}
+
 /* ── 만날 수 있는 때 고치기 ── */
 .legend {
   margin-bottom: var(--space-2);

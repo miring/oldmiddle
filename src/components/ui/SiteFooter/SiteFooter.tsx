@@ -1,4 +1,4 @@
-import { FOOTER_BUSINESS, FOOTER_LINK_ITEMS, type BusinessInfo, type FooterLink } from '../../../config/footerContent'
+import { FOOTER_BUSINESS, FOOTER_LINK_ITEMS, type BusinessInfo } from '../../../config/footerContent'
 import { site } from '../../../config/site'
 import { TextLink } from '../TextLink/TextLink'
 import styles from './SiteFooter.module.css'
@@ -20,19 +20,14 @@ function businessLines(business: BusinessInfo) {
   ].filter((line): line is string => Boolean(line))
 }
 
-type SiteFooterProps = {
-  /** 공통 링크 앞에 더할 링크. 회원 화면의 '시연 소개'처럼 한 곳에서만 보일 링크 */
-  extraLinks?: FooterLink[]
-}
-
 /**
- * 화면 맨 아래 정보형 푸터 (랜딩·정식 홈·회원 화면 공통, Figma 홈 "Footer").
+ * 화면 맨 아래 정보형 푸터 (랜딩·정식 홈 공통, Figma 홈 "Footer").
  * 휴대폰·태블릿: 1열 / 데스크톱: 서비스명·뜻풀이 | 사업자 정보 | 링크 3단.
  * 사업자 정보·링크는 src/config/footerContent.ts 값 중 비어 있지 않은 것만 보입니다.
  */
-export function SiteFooter({ extraLinks = [] }: SiteFooterProps) {
+export function SiteFooter() {
   const lines = businessLines(FOOTER_BUSINESS)
-  const visibleLinks = [...extraLinks, ...FOOTER_LINK_ITEMS].filter((link) => link.href)
+  const visibleLinks = FOOTER_LINK_ITEMS.filter((link) => link.href)
 
   return (
     <footer className={`${styles.footer} content-gutter pt-9 pb-12 xl:pt-12 xl:pb-14`}>

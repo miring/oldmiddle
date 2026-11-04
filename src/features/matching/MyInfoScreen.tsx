@@ -5,9 +5,11 @@ import lock from '../../assets/icons/lock.svg'
 import { ButtonLink } from '../../components/ui/Button/Button'
 import { TextLink } from '../../components/ui/TextLink/TextLink'
 import { MEETING_PURPOSE_OPTIONS } from '../../config/copy'
+import { FOOTER_LINK_ITEMS } from '../../config/footerContent'
 import { MATCHING_COPY } from '../../config/matchingCopy'
 import { site } from '../../config/site'
 import { getCompanionType } from '../../data/companionTypes'
+import { HOME_HASH } from '../quiz/quizRoute'
 import { AVAILABILITY_HASH } from './appRoute'
 import { AppScreen } from './AppScreen'
 import { useMatchData } from './matchView'
@@ -194,8 +196,36 @@ export function MyInfoScreen() {
           </div>
           <PreparingButton label={c.leave} variant="text" />
         </div>
+
+        <ServiceInfo />
       </div>
     </AppScreen>
+  )
+}
+
+/**
+ * 서비스 안내: 이용약관·개인정보 처리방침·문의하기·시연 소개. 주소는 푸터와 같은 값(footerContent.ts)이라
+ * 주소가 비어 있으면 숨기고, 미리보기에서는 푸터처럼 예시 주소로 채워집니다.
+ */
+function ServiceInfo() {
+  const links = [...FOOTER_LINK_ITEMS, { label: c.serviceInfo.about, href: HOME_HASH }].filter((link) => link.href)
+  if (links.length === 0) return null
+  return (
+    <nav aria-labelledby="service-info" className="flex flex-col gap-2">
+      <h2 id="service-info" className={own.label}>
+        {c.serviceInfo.title}
+      </h2>
+      <ul role="list" className={own.linkList}>
+        {links.map((link) => (
+          <li key={link.label}>
+            <a href={link.href} className={`${own.linkRow} ${'strong' in link && link.strong ? own.strong : ''} flex items-center justify-between gap-3 px-5`}>
+              {link.label}
+              <span aria-hidden="true">›</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   )
 }
 

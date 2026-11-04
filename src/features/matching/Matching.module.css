@@ -14,14 +14,14 @@
   }
 }
 
-/* 하단 탭에 푸터가 가리지 않게 (데스크톱은 하단 탭이 없음) */
+/* 하단 탭에 본문이 가리지 않게: 탭 높이 + 여백 (데스크톱은 하단 탭이 없음) */
 .withTabBar {
-  padding-bottom: var(--size-tab-bar-height);
+  padding-bottom: calc(var(--size-tab-bar-height) + var(--space-10));
 }
 
 @media (min-width: 85rem) {
   .withTabBar {
-    padding-bottom: 0;
+    padding-bottom: var(--space-16);
   }
 }
 
