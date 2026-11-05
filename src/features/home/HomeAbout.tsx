@@ -5,6 +5,8 @@ import users from '../../assets/icons/users.svg'
 import { FeatureCard } from '../../components/ui/FeatureCard/FeatureCard'
 import { SectionHeading } from '../../components/ui/SectionHeading/SectionHeading'
 import { HOME_COUNT_COPY } from '../../config/copy'
+import { site } from '../../config/site'
+import { topicParticle } from '../../utils/korean'
 import { HomeSection } from './HomeSection'
 
 const FEATURES = [
@@ -28,7 +30,7 @@ export function HomeAbout() {
       <div className="flex flex-col gap-4 md:gap-8">
         <SectionHeading
           id="home-about-title"
-          label="시연은 이런 곳이에요"
+          label={`${site.serviceName}${topicParticle(site.serviceName)} 이런 곳이에요`}
           title={
             // 좁은 화면에서 '내'만 윗줄에 남지 않도록 '내 또래와'를 함께 넘김
             <>
