@@ -27,7 +27,7 @@ export type FooterLink = {
 const SHOW_EXAMPLES = import.meta.env.DEV || import.meta.env.VITE_HOME_PREVIEW === 'true'
 
 const EXAMPLE_BUSINESS: BusinessInfo = {
-  companyName: '(예시) 시연',
+  companyName: '(예시) 시연(時緣)',
   representative: '(예시) 홍길동',
   registrationNumber: '(예시) 000-00-00000',
   mailOrderNumber: '(예시) 제0000-서울○○-0000호',
