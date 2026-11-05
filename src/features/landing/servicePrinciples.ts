@@ -16,7 +16,7 @@ export const SERVICE_PRINCIPLES: ServicePrinciple[] = [
     id: 'verification',
     icon: badgeCheck,
     title: '서로를 확인하는 첫 단계',
-    description: '신원과 배우자 유무 확인, 짧은 영상 인터뷰를 거치는 절차를 준비하고 있어요.',
+    description: '본인인증과 혼인 상태 서약, 최근 사진 확인을 거치는 절차를 준비하고 있어요.',
   },
   {
     id: 'private-profile',

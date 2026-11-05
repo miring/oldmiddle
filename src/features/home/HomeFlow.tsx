@@ -13,7 +13,7 @@ const DIARY_NOTE = HOME_COUNT_COPY.diaryNote
 const STEPS: Step[] = [
   { id: 'signup', title: '가입하기', description: '본인인증과 혼인 상태 서약. 증명서는 원하는 분만 내요.' },
   { id: 'profile', title: '프로필 쓰기', description: '최근 사진, 가치관 질문 5개, 사랑하는 방식 테스트' },
-  { id: 'intro', title: '인연이 오는 날', description: '화·금 저녁 8시 소개 도착. 서로 수락하면 매칭돼요.' },
+  { id: 'intro', title: '인연이 오는 날', description: '정해진 날 저녁 8시에 추천이 도착해요. 서로 수락하면 매칭돼요.' },
   {
     id: 'diary',
     title: '교환일기 세 번',
