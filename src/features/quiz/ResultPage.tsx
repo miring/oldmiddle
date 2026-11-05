@@ -85,7 +85,7 @@ export function ResultPage({ type }: { type: CompanionType }) {
               <img className={styles.statusDot} src={statusDot} alt="" />
               서비스 준비 중 · 사전 등록은 선택
             </p>
-            <h2 className={styles.preregisterTitle}>{'나와 잘 맞는 유형의 분을\n가장 먼저 소개받으세요.'}</h2>
+            <h2 className={styles.preregisterTitle}>{'나와 잘 맞는 유형의 분을\n가장 먼저 추천받으세요.'}</h2>
             <p className={styles.small}>
               결과는 가입 없이 모두 확인할 수 있어요. 원하시면 서비스 시작 소식을 받아보세요. 지금 바로 인연이 연결되는
               것은 아니에요.

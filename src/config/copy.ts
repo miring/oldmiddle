@@ -214,7 +214,7 @@ export const HOME_FAQ_COPY = [
   {
     id: 'privacy',
     question: '주변 사람이 알게 될까요?',
-    answer: '둘러보기와 검색이 없어, 내 프로필은 소개받은 분에게만 보여요. 알림에도 이름이나 내용을 띄우지 않아요.',
+    answer: '둘러보기와 검색이 없어, 내 프로필은 나를 추천받은 분에게만 보여요. 알림에도 이름이나 내용을 띄우지 않아요.',
   },
   {
     id: 'documents',
@@ -230,8 +230,8 @@ export const HOME_FAQ_COPY = [
   },
   {
     id: 'first-intro',
-    question: '가입하면 언제 소개받나요?',
-    answer: "사진 확인이 끝나면, 매주 '인연이 오는 날' 저녁 8시에 소개가 도착해요.",
+    question: '가입하면 언제 추천받나요?',
+    answer: "사진 확인이 끝나면, 매주 '인연이 오는 날' 저녁 8시에 추천이 도착해요.",
   },
   {
     id: 'leave',

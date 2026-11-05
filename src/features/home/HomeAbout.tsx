@@ -10,7 +10,7 @@ import { topicParticle } from '../../utils/korean'
 import { HomeSection } from './HomeSection'
 
 const FEATURES = [
-  { title: '내 또래만', icon: users, body: '45세 이상만 가입해요. 비슷한 나이대끼리 소개해요.' },
+  { title: '내 또래만', icon: users, body: '45세 이상만 가입해요. 비슷한 나이대끼리 추천해요.' },
   {
     title: '확인된 분만',
     icon: shield,
