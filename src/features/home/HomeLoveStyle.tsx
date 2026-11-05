@@ -47,7 +47,7 @@ export function HomeLoveStyle() {
         </ul>
 
         <div className="flex flex-col gap-4.5 xl:col-start-1 xl:row-start-2 xl:gap-4">
-          <p className={styles.emphasis}>결과는 소개에 조용히 더해져요.</p>
+          <p className={styles.emphasis}>결과는 추천에 조용히 더해져요.</p>
           <p className={styles.note}>
             재미로 보는 테스트예요
             {site.loveStylePreviewUrl && (
