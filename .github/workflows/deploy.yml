@@ -30,6 +30,7 @@ jobs:
           cache: npm
 
       - run: npm ci
+      # oxlint + 화면 문구 금지어 검사(check:copy, docs/표현-원칙.md). 하나라도 실패하면 배포하지 않음
       - run: npm run lint
 
       # 저장소 이름을 기본 경로로 사용 (예: /oldmiddle/)
