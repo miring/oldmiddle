@@ -64,7 +64,7 @@ export function HeroSection() {
           </h1>
           <p className={styles.description}>
             {site.serviceName}
-            {topicParticle(site.serviceName)} 신원과 혼인 상태를 확인한 45세 이상 싱글이{' '}
+            {topicParticle(site.serviceName)} 본인인증과 혼인 상태 서약을 거친 45세 이상 싱글이{' '}
             <br className="hidden md:inline" />
             가까운 곳에서 1:1로 편안하게 만날 수 있도록 준비하고 있어요.
           </p>

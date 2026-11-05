@@ -109,7 +109,7 @@ export const PREREGISTER_DONE_COPY = {
  * 사전 신청 동의서 판(version). 아래 동의 문구를 고치면 이 값도 올립니다.
  * 저장할 때 consent_version으로 함께 남겨, 어느 문구에 동의했는지 알 수 있게 합니다.
  */
-export const CONSENT_VERSION = '2026-10-v3'
+export const CONSENT_VERSION = '2026-11-v4'
 
 /**
  * 사전 신청 동의 항목 [보기] 내용.
@@ -134,7 +134,7 @@ export const CONSENT_COPY = {
   /** ① (필수) 사전 신청 안내 */
   notice: [
     '사전 신청은 회원 가입이 아니며, 비용이 들지 않아요.',
-    `${site.serviceName}${topicParticle(site.serviceName)} 45세 이상 싱글을 위한 서비스예요. 정식 가입 때 휴대폰 본인인증과 혼인 상태 확인이 있으며, 사실과 다르면 가입할 수 없어요.`,
+    `${site.serviceName}${topicParticle(site.serviceName)} 45세 이상 싱글을 위한 서비스예요. 정식 가입 때 휴대폰 본인인증과 혼인 상태 서약이 있으며, 사실과 다르면 가입할 수 없어요.`,
     '오픈 일정과 지역은 신청 현황에 따라 정하며, 문자나 카카오톡으로 알려 드려요. 전화로 권유하지 않아요.',
     '테스트 결과는 재미로 보는 결과이며, 만남을 보장하지 않아요.',
     '사전 신청 혜택: [혜택 내용·조건]. 오픈 때 같은 조건으로 드려요.',
