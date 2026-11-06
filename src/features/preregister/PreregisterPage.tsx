@@ -12,7 +12,7 @@ import { TextField } from '../../components/ui/TextField/TextField'
 import { CONSENT_COPY, COPY, PREREGISTER_CONFIRM_COPY, PREREGISTER_FORM_COPY } from '../../config/copy'
 import { MOCK_SMS_VERIFICATION } from '../../config/devFlags'
 import { useQuizAnswers } from '../quiz/quizAnswers'
-import { DONE_HASH, RESULT_HASH, UNDER45_HASH, goBackTo, navigate } from '../quiz/quizRoute'
+import { DONE_HASH, PRIVACY_HASH, RESULT_HASH, UNDER45_HASH, goBackTo, navigate } from '../quiz/quizRoute'
 import { calculateResult } from '../quiz/results'
 import {
   AGE_OPTIONS,
@@ -222,9 +222,10 @@ export function PreregisterPage() {
     }
   }
 
+  // navigate로 이동해야 처리방침 화면의 뒤로 버튼이 이 화면으로 돌아옵니다 (입력값은 메모리에 남아 그대로)
   const handlePrivacyClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    // TODO: 개인정보 처리방침 화면이 생기면 연결합니다.
     event.preventDefault()
+    navigate(PRIVACY_HASH)
   }
 
   return (
@@ -366,7 +367,7 @@ export function PreregisterPage() {
             {/* 항상 누를 수 있음: 누르면 검사해서 첫 오류 칸으로, 통과하면 확인 바텀시트 */}
             <Button type="submit">{COPY.preregisterSubmit}</Button>
             <p className={styles.hint}>{PREREGISTER_FORM_COPY.optionalNote}</p>
-            <a href="#" className={styles.link} onClick={handlePrivacyClick}>
+            <a href={PRIVACY_HASH} className={styles.link} onClick={handlePrivacyClick}>
               개인정보 처리방침
             </a>
           </div>

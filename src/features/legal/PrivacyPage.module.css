@@ -1,0 +1,77 @@
+.title {
+  color: var(--color-text-calm);
+  font-size: var(--type-question-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-question-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.meta {
+  color: var(--color-text-secondary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+}
+
+.heading {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-lg-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-heading-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.text {
+  color: var(--color-text-primary);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 한눈에 보기 상자 */
+.summary {
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-badge);
+}
+
+.card {
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface-raised);
+}
+
+.what {
+  color: var(--color-text-calm);
+  font-size: var(--type-body-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--type-body-line);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.term {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* 글머리 점 (장식) — ConsentDetails와 같은 모양 */
+.bullet {
+  position: relative;
+  padding-left: var(--space-4);
+}
+
+.bullet::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--type-body-size) * var(--type-body-line-ratio) / 2 - var(--space-1) / 2);
+  left: var(--space-1);
+  width: var(--space-1);
+  height: var(--space-1);
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-secondary);
+}

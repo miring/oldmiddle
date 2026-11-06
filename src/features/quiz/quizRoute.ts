@@ -18,6 +18,7 @@ export type QuizRoute =
   | { view: 'under45' }
   | { view: 'done' }
   | { view: 'cancel'; token: string }
+  | { view: 'privacy' }
   | { view: 'app'; route: AppRoute }
 
 const NAVIGATE_EVENT = 'quiz:navigate'
@@ -33,6 +34,8 @@ export const RESULT_HASH = '#/result'
 export const PREREGISTER_HASH = '#/preregister'
 export const UNDER45_HASH = '#/preregister/under45'
 export const DONE_HASH = '#/preregister/done'
+/** 개인정보 처리방침 (site.ts privacyUrl과 같은 값) */
+export const PRIVACY_HASH = '#/privacy'
 
 /** 신청 취소 링크: #/cancel/<취소 토큰>. # 뒤는 서버로 전송되지 않아 토큰이 접속 기록에 남지 않습니다 */
 export function cancelHash(token: string) {
@@ -63,6 +66,7 @@ function parse(hash: string): QuizRoute {
   if (hash === PREREGISTER_HASH) return { view: 'preregister' }
   if (hash === UNDER45_HASH) return { view: 'under45' }
   if (hash === DONE_HASH) return { view: 'done' }
+  if (hash === PRIVACY_HASH) return { view: 'privacy' }
   const cancel = /^#\/cancel\/([0-9a-f-]{36})$/i.exec(hash)
   if (cancel) return { view: 'cancel', token: cancel[1] }
   const match = /^#\/quiz\/(\d+)$/.exec(hash)
