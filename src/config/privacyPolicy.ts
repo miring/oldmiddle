@@ -8,9 +8,6 @@ import { site } from './site'
  * 정식 회원가입을 시작할 때 회원 정보·사진·결제 항목을 더해 새 판으로 고칩니다.
  */
 
-/** 사업자 정보가 비어 있으면 [ ]로 보여 줍니다 */
-const fill = (value: string, placeholder: string) => value || `[${placeholder}]`
-
 export type PrivacySection = {
   id: string
   title: string
@@ -104,9 +101,9 @@ export const PRIVACY_POLICY = {
       id: 'officer',
       title: '9. 개인정보 보호책임자',
       bullets: [
-        `이름: ${fill(site.business.representative, '이름')} (대표)`,
-        `연락처: ${fill(site.business.phone, '전화번호')}`,
-        '이메일: [이메일]',
+        '이름: 양미선 (대표)',
+        '연락처: 010-8370-2049',
+        '이메일: help@shiyeon.co.kr',
       ],
     },
     {
