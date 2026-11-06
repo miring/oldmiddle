@@ -1,4 +1,5 @@
 import type { Decision, DiaryEntry, DiaryQuestion, Match, Member } from '../features/matching/matchTypes'
+import { PREVIEW_MEMBER_NAME } from '../features/matching/memberSession'
 
 /*
  * 나의 매칭 더미 데이터 (화면 확인용). 화면은 아래 함수로만 읽고 씁니다.
@@ -162,7 +163,7 @@ const SEED: Match[] = [
   },
 ]
 
-const ME: Member = { id: 'me', name: '이수진' }
+const ME: Member = { id: 'me', name: PREVIEW_MEMBER_NAME }
 
 /** 더미 데이터의 기준 시각. 미리보기 설정에서 바꿔 볼 수 있습니다 */
 export const DEFAULT_MOCK_NOW = at('11-03', '10:00')

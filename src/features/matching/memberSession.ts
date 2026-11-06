@@ -6,6 +6,20 @@
 
 const STORAGE_KEY = 'siyeon:preview-member'
 
+/** 더미 회원 이름 (mocks/matches.ts의 '나'와 같은 이름) */
+export const PREVIEW_MEMBER_NAME = '이수진'
+
+/**
+ * 정식 홈 [로그인]을 눌렀을 때의 더미 로그인. 미리보기 환경이면 로그인하고 true, 운영 사이트면 아무것도 하지 않고 false
+ * TODO(로그인): 실제 로그인 화면(#/login)을 만들면 이 함수를 지우고 [로그인]이 그 화면으로 가게 합니다.
+ */
+export function previewSignIn(): boolean {
+  // 조건을 그대로 써야 운영 빌드에서 이 부분이 빠집니다
+  if (!(import.meta.env.DEV || import.meta.env.VITE_HOME_PREVIEW === 'true')) return false
+  startPreviewSession(PREVIEW_MEMBER_NAME)
+  return true
+}
+
 export function startPreviewSession(name: string) {
   try {
     sessionStorage.setItem(STORAGE_KEY, name)
