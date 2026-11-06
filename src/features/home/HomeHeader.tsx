@@ -1,7 +1,8 @@
+import { useState, type MouseEvent } from 'react'
 import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
 import { site } from '../../config/site'
-import { MEMBER_HOME_HASH } from '../matching/appRoute'
-import { getSignedInName } from '../matching/memberSession'
+import { MATCHES_HASH } from '../matching/appRoute'
+import { getSignedInName, previewSignIn } from '../matching/memberSession'
 import { LOGIN_HASH, SIGNUP_HASH } from '../quiz/quizRoute'
 import styles from './HomeHeader.module.css'
 
@@ -27,7 +28,14 @@ function scrollToSection(id: string) {
 
 /** 정식 홈 헤더: 로고 + (데스크톱) 메뉴 + 로그인 + 가입하기 (태블릿·데스크톱 글자 버튼). 로그인 후에는 둘 대신 '{이름}님' */
 export function HomeHeader() {
-  const memberName = getSignedInName()
+  const [memberName, setMemberName] = useState(getSignedInName)
+
+  // 미리보기 환경: 더미 로그인 후 이 자리에서 바로 '{이름}님'으로 바뀝니다. 운영 사이트는 링크(#/login) 그대로
+  const handleLogin = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!previewSignIn()) return
+    event.preventDefault()
+    setMemberName(getSignedInName())
+  }
 
   return (
     <SiteHeader
@@ -47,13 +55,13 @@ export function HomeHeader() {
             </ul>
           </nav>
           {memberName ? (
-            // 누르면 회원 첫 화면으로
-            <a href={MEMBER_HOME_HASH} className={`${styles.login} ${styles.signup} flex items-center`}>
+            // 누르면 나의 매칭으로
+            <a href={MATCHES_HASH} className={`${styles.login} ${styles.signup} flex items-center`}>
               {memberName}님
             </a>
           ) : (
             <>
-              <a href={LOGIN_HASH} className={`${styles.login} flex items-center`}>
+              <a href={LOGIN_HASH} className={`${styles.login} flex items-center`} onClick={handleLogin}>
                 로그인
               </a>
               {/* 휴대폰은 첫 화면의 큰 가입하기 버튼만 (Figma 모바일 헤더에는 로그인만), 태블릿·데스크톱은 로그인 옆 글자 버튼 */}
