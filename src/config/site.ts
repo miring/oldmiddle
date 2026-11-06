@@ -19,7 +19,7 @@ export const site = {
     representative: '', // 대표자
     registrationNumber: '', // 사업자등록번호
     mailOrderNumber: '', // 통신판매업 신고번호 (유료 결제 시작 전에 신고)
-    address: '', // 사업장 주소
+    address: '서울특별시 양천구 목동동로12길 50, 동성빌딩 4층 494호', // 사업장 주소
     phone: '', // 연락처
   },
   /** 정식 홈 요금 섹션과 헤더 '요금' 메뉴를 보일지. 통신판매업 신고 전이라 유료 요금을 아직 내보내지 않을 때 false (금액은 copy.ts HOME_PRICING_COPY) */
