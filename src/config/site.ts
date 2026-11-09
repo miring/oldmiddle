@@ -15,12 +15,13 @@ export const site = {
   kakaoChannelUrl: '',
   /** 푸터 사업자 정보 (통신판매업, 기획서 11장 '사업자 정보 표시'). 비어 있는 항목은 그 줄을 숨깁니다 */
   business: {
-    companyName: '', // 상호
-    representative: '', // 대표자
-    registrationNumber: '', // 사업자등록번호
+    companyName: '시연(時緣)', // 상호
+    representative: '양미선', // 대표자
+    registrationNumber: '551-01-04200', // 사업자등록번호
     mailOrderNumber: '', // 통신판매업 신고번호 (유료 결제 시작 전에 신고)
-    address: '', // 사업장 주소
-    phone: '', // 연락처
+    address: '서울특별시 양천구 목동동로12길 50, 4층 494호(신정동)', // 사업장 주소 (비상주 사무실, 2028년 2월 무렵 계약 만료)
+    phone: '010-8370-2049', // 연락처
+    email: 'help@shiyeon.co.kr', // 이메일
   },
   /** 정식 홈 요금 섹션과 헤더 '요금' 메뉴를 보일지. 통신판매업 신고 전이라 유료 요금을 아직 내보내지 않을 때 false (금액은 copy.ts HOME_PRICING_COPY) */
   showPricing: true,

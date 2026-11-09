@@ -17,6 +17,7 @@ function businessLines(business: BusinessInfo) {
     business.mailOrderNumber && `통신판매업 신고번호 ${business.mailOrderNumber}`,
     business.address && `주소 ${business.address}`,
     business.phone && `연락처 ${business.phone}`,
+    business.email && `이메일 ${business.email}`,
   ].filter((line): line is string => Boolean(line))
 }
 

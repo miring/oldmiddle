@@ -9,6 +9,7 @@ export type BusinessInfo = {
   mailOrderNumber: string
   address: string
   phone: string
+  email: string
 }
 
 export type FooterLink = {
@@ -33,6 +34,7 @@ const EXAMPLE_BUSINESS: BusinessInfo = {
   mailOrderNumber: '(예시) 제0000-서울○○-0000호',
   address: '(예시) 서울특별시 ○○구 ○○로 00',
   phone: '(예시) 000-0000-0000',
+  email: '(예시) help@example.com',
 }
 
 /** 비어 있는 항목만 예시 값으로 채웁니다 */
@@ -44,6 +46,7 @@ function withExampleBusiness(business: BusinessInfo): BusinessInfo {
     mailOrderNumber: business.mailOrderNumber || EXAMPLE_BUSINESS.mailOrderNumber,
     address: business.address || EXAMPLE_BUSINESS.address,
     phone: business.phone || EXAMPLE_BUSINESS.phone,
+    email: business.email || EXAMPLE_BUSINESS.email,
   }
 }
 
