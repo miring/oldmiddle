@@ -14,6 +14,11 @@ type SiteHeaderProps = {
   homeHref?: string
 }
 
+/** 헤더 오른쪽 이름 뜻풀이 (site.tagline). 랜딩·문항 화면이 같은 모양으로 씁니다 */
+export function SiteHeaderTagline() {
+  return <p className={styles.tagline}>{site.tagline}</p>
+}
+
 /** 로고가 있는 상단 바. 랜딩·문항 화면, 이후 앱 화면에서 함께 씁니다. 로고는 첫 화면 링크입니다. */
 export function SiteHeader({ aside, fixed = false, onHomeClick, homeHref }: SiteHeaderProps) {
   const position = fixed ? `${styles.fixed} fixed inset-x-0 top-0 z-(--z-header)` : ''

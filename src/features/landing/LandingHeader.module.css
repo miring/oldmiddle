@@ -1,7 +1,0 @@
-.status {
-  color: var(--color-text-accent);
-  font-size: var(--type-meta-size);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-normal);
-  white-space: nowrap;
-}

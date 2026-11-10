@@ -1,16 +1,6 @@
-import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
-import { site } from '../../config/site'
+import { SiteHeader, SiteHeaderTagline } from '../../components/ui/SiteHeader/SiteHeader'
 import { goHome } from '../quiz/quizRoute'
-import styles from './LandingHeader.module.css'
 
 export function LandingHeader() {
-  return (
-    <SiteHeader
-      fixed
-      onHomeClick={goHome}
-      aside={
-        <p className={styles.status}>{site.tagline}</p>
-      }
-    />
-  )
+  return <SiteHeader fixed onHomeClick={goHome} aside={<SiteHeaderTagline />} />
 }

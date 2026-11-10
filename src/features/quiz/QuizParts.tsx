@@ -2,8 +2,7 @@ import type { Ref } from 'react'
 import { Button } from '../../components/ui/Button/Button'
 import { ProgressBar } from '../../components/ui/ProgressBar/ProgressBar'
 import { RadioOption } from '../../components/ui/RadioOption/RadioOption'
-import { SiteHeader } from '../../components/ui/SiteHeader/SiteHeader'
-import { site } from '../../config/site'
+import { SiteHeader, SiteHeaderTagline } from '../../components/ui/SiteHeader/SiteHeader'
 import { QUIZ_TOTAL, type QuizQuestion } from './questions'
 import { setAnswer, useQuizAnswers } from './quizAnswers'
 import { goHome } from './quizRoute'
@@ -13,7 +12,7 @@ import styles from './QuizParts.module.css'
 
 /** 문항·결과 화면 상단 바 */
 export function QuizHeader() {
-  return <SiteHeader fixed onHomeClick={goHome} aside={<p className={styles.headerLabel}>{site.tagline}</p>} />
+  return <SiteHeader fixed onHomeClick={goHome} aside={<SiteHeaderTagline />} />
 }
 
 export function QuizProgress({ step }: { step: number }) {
