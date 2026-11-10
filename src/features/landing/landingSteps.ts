@@ -19,8 +19,8 @@ export const PARTICIPATION_STEPS: ParticipationStep[] = [
   },
 ]
 
-/** 사전 신청에서 받을 정보 (사업계획서: 성별·연령대·구 단위 지역·휴대폰 번호 4가지만) */
-export const PREREGISTRATION_FIELDS = ['성별', '연령대', '사는 지역(구 단위)', '휴대폰 번호']
+/** 사전 신청에서 받을 정보 (성별·연령대·구 단위 지역·메일 주소 4가지만, 2026-11-10 휴대폰 번호에서 바꿈) */
+export const PREREGISTRATION_FIELDS = ['성별', '연령대', '사는 지역(구 단위)', '메일 주소']
 
 export type FaqItem = { id: string; question: string; answer: string }
 

@@ -3,6 +3,8 @@ import { HomePage } from './features/home/HomePage'
 import { PrivacyPage } from './features/legal/PrivacyPage'
 import { LandingPage } from './features/landing/LandingPage'
 import { CancelPage } from './features/preregister/CancelPage'
+import { CheckEmailPage } from './features/preregister/CheckEmailPage'
+import { ConfirmPage } from './features/preregister/ConfirmPage'
 import { PreregisterDonePage } from './features/preregister/PreregisterDonePage'
 import { PreregisterPage } from './features/preregister/PreregisterPage'
 import { Under45Page } from './features/preregister/Under45Page'
@@ -45,6 +47,8 @@ export function App() {
   if (route.view === 'cancel') return <CancelPage token={route.token} />
   if (route.view === 'preregister') return <PreregisterPage />
   if (route.view === 'under45') return <Under45Page />
+  if (route.view === 'checkEmail') return <CheckEmailPage />
+  if (route.view === 'confirm') return <ConfirmPage token={route.token} />
   if (route.view === 'done') return <PreregisterDonePage />
   if (route.view === 'result' && missingStep === null) {
     const result = calculateResult(answers)

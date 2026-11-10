@@ -32,15 +32,8 @@ export const CONSENT_ITEMS: ConsentItem[] = [
   { id: 'marketing', label: CONSENT_COPY.labels.marketing, required: false },
 ]
 
-/** 휴대폰 번호를 숫자만 남겨 010-1234-5678 모양으로 */
-export function formatPhone(input: string): string {
-  const digits = input.replace(/\D/g, '').slice(0, 11)
-  if (digits.length < 4) return digits
-  if (digits.length < 8) return `${digits.slice(0, 3)}-${digits.slice(3)}`
-  const middle = digits.length === 11 ? 4 : 3
-  return `${digits.slice(0, 3)}-${digits.slice(3, 3 + middle)}-${digits.slice(3 + middle)}`
-}
-
-export function isValidMobile(phone: string): boolean {
-  return /^01[016789]\d{7,8}$/.test(phone.replace(/\D/g, ''))
+/** 메일 주소 모양인지 (실제로 받는지는 확인 메일로 확인) */
+export function isValidEmail(email: string): boolean {
+  const value = email.trim()
+  return value.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 }

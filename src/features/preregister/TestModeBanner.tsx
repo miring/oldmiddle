@@ -1,9 +1,9 @@
-import { MOCK_SMS_VERIFICATION } from '../../config/devFlags'
+import { PREREGISTER_SAVE_ENABLED } from '../../config/devFlags'
 import styles from './TestModeBanner.module.css'
 
-/** 목업 인증이 켜져 있는 동안(저장 로직 연결 전) 신청 화면 상단에 항상 보이는 안내 띠 */
+/** 사전 신청을 실제로 받기 전(PREREGISTER_SAVE_ENABLED = false) 신청 화면 상단에 항상 보이는 안내 띠 */
 export function TestModeBanner() {
-  if (!MOCK_SMS_VERIFICATION) return null
+  if (PREREGISTER_SAVE_ENABLED) return null
 
   return (
     <div className={`${styles.banner} content-gutter py-2`}>

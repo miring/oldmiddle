@@ -28,10 +28,10 @@ export function ConfirmSheetContent({ draft, confirming, error, onConfirm, onEdi
   return (
     <>
       <div className={`${styles.summary} flex flex-col gap-4 p-5`}>
-        {/* 잘못 입력한 번호를 잡도록 가리지 않고 크게 */}
+        {/* 잘못 입력한 주소를 잡도록 가리지 않고 크게 */}
         <div className="flex flex-col gap-1">
-          <p className={styles.label}>{C.labels.phone}</p>
-          <p className={styles.phone}>{draft.phone}</p>
+          <p className={styles.label}>{C.labels.email}</p>
+          <p className={styles.email}>{draft.email.trim()}</p>
         </div>
         <dl className="flex flex-col gap-2">
           {rows.map((row) => (
