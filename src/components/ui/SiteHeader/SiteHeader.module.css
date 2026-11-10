@@ -10,6 +10,15 @@
   text-decoration: none;
 }
 
+/* 이름 뜻풀이 '때가 되어 만난 인연' (랜딩·문항 헤더 공통). 색은 --color-brand-title 한 곳에서 */
+.tagline {
+  color: var(--color-brand-title);
+  font-size: var(--type-label-size);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-normal);
+  white-space: nowrap;
+}
+
 /* 고정했을 때 아래 내용이 비치지 않도록 배경을 채웁니다 */
 .fixed {
   background-color: var(--color-bg-default);
