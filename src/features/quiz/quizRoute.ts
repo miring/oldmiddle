@@ -16,7 +16,9 @@ export type QuizRoute =
   | { view: 'result' }
   | { view: 'preregister' }
   | { view: 'under45' }
+  | { view: 'checkEmail' }
   | { view: 'done' }
+  | { view: 'confirm'; token: string }
   | { view: 'cancel'; token: string }
   | { view: 'privacy' }
   | { view: 'app'; route: AppRoute }
@@ -33,6 +35,8 @@ export const LOGIN_HASH = '#/login'
 export const RESULT_HASH = '#/result'
 export const PREREGISTER_HASH = '#/preregister'
 export const UNDER45_HASH = '#/preregister/under45'
+/** 신청 뒤 '메일함을 확인해 주세요' 화면 */
+export const CHECK_EMAIL_HASH = '#/preregister/check-email'
 export const DONE_HASH = '#/preregister/done'
 /** 개인정보 처리방침 (site.ts privacyUrl과 같은 값) */
 export const PRIVACY_HASH = '#/privacy'
@@ -40,6 +44,11 @@ export const PRIVACY_HASH = '#/privacy'
 /** 신청 취소 링크: #/cancel/<취소 토큰>. # 뒤는 서버로 전송되지 않아 토큰이 접속 기록에 남지 않습니다 */
 export function cancelHash(token: string) {
   return `#/cancel/${token}`
+}
+
+/** 신청 확인 메일 속 링크: #/confirm/<확인 토큰>. 서버(preregister 함수)가 같은 모양으로 만듭니다 */
+export function confirmHash(token: string) {
+  return `#/confirm/${token}`
 }
 
 export function quizHash(step: number) {
@@ -65,10 +74,13 @@ function parse(hash: string): QuizRoute {
   if (hash === RESULT_HASH) return { view: 'result' }
   if (hash === PREREGISTER_HASH) return { view: 'preregister' }
   if (hash === UNDER45_HASH) return { view: 'under45' }
+  if (hash === CHECK_EMAIL_HASH) return { view: 'checkEmail' }
   if (hash === DONE_HASH) return { view: 'done' }
   if (hash === PRIVACY_HASH) return { view: 'privacy' }
   const cancel = /^#\/cancel\/([0-9a-f-]{36})$/i.exec(hash)
   if (cancel) return { view: 'cancel', token: cancel[1] }
+  const confirm = /^#\/confirm\/([0-9a-f-]{36})$/i.exec(hash)
+  if (confirm) return { view: 'confirm', token: confirm[1] }
   const match = /^#\/quiz\/(\d+)$/.exec(hash)
   if (!match) return { view: 'landing' }
   const step = Math.min(Math.max(Number(match[1]), 1), QUIZ_TOTAL)

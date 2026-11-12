@@ -12,9 +12,7 @@ export type PreregisterDraft = {
   province: string
   /** 시·군·구 코드 5자리 (예: '11680'). 세종처럼 시·군·구가 없으면 시·도 코드를 그대로 넣음 (open_regions와 코드로 비교) */
   district: string
-  phone: string
-  codeRequested: boolean
-  code: string
+  email: string
   consents: Record<string, boolean>
 }
 
@@ -23,9 +21,7 @@ const EMPTY: PreregisterDraft = {
   age: null,
   province: '',
   district: '',
-  phone: '',
-  codeRequested: false,
-  code: '',
+  email: '',
   consents: {},
 }
 

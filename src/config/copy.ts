@@ -17,17 +17,14 @@ export const COPY = {
 export const PREREGISTER_FORM_COPY = {
   /** 신청 버튼 아래 안내 */
   optionalNote: '선택 항목은 체크하지 않아도 신청돼요',
+  emailHint: '신청 확인 메일과 오픈 소식을 보내 드릴 주소예요. 전화로 권유하지 않아요.',
   errors: {
     gender: '성별을 골라 주세요',
     age: '연령대를 골라 주세요',
     province: '사는 시·도를 골라 주세요',
     district: '사는 시·군·구를 골라 주세요',
-    phoneEmpty: '휴대폰 번호를 입력해 주세요',
-    phonePrefix: '010처럼 01로 시작하는 휴대폰 번호를 입력해 주세요',
-    phoneShort: '휴대폰 번호 11자리를 입력해 주세요 (예: 010-1234-5678)',
-    codeNotRequested: '[인증번호]를 눌러 문자로 받은 번호를 입력해 주세요',
-    codeShort: '문자로 받은 인증번호 6자리를 입력해 주세요',
-    codeNotVerified: '인증번호를 확인해 주세요',
+    emailEmpty: '메일 주소를 입력해 주세요',
+    emailInvalid: '메일 주소를 다시 확인해 주세요 (예: hong@naver.com)',
     consent: '필수 항목에 동의해 주세요',
   },
 } as const
@@ -36,7 +33,7 @@ export const PREREGISTER_FORM_COPY = {
 export const PREREGISTER_CONFIRM_COPY = {
   title: '이대로 신청할까요?',
   labels: {
-    phone: '휴대폰 번호',
+    email: '메일 주소',
     region: '사는 지역',
     age: '연령대',
     gender: '성별',
@@ -44,16 +41,44 @@ export const PREREGISTER_CONFIRM_COPY = {
   },
   marketingYes: '받음',
   marketingNo: '받지 않음',
-  notice: '서비스를 시작하면 이 번호로 카카오톡이나 문자로 알려 드려요',
+  notice: '신청하면 이 주소로 확인 메일이 가요. 메일 속 버튼을 눌러야 신청이 끝나요.',
   confirm: '이대로 신청하기',
   confirming: '신청하는 중…',
   edit: '고치기',
   failed: '신청하지 못했어요. 잠시 후 [이대로 신청하기]를 다시 눌러 주세요.',
-  alreadyRegistered: '이미 사전 신청한 번호예요. 서비스를 시작하면 이 번호로 알려 드릴게요.',
+  alreadyRegistered: '이미 사전 신청한 메일 주소예요. 서비스를 시작하면 이 주소로 알려 드릴게요.',
+  mailFailed: '확인 메일을 보내지 못했어요. 메일 주소를 확인하고 다시 눌러 주세요.',
   tooMany: '신청 시도가 많아 잠시 멈췄어요. 10분쯤 뒤에 다시 눌러 주세요.',
 } as const
 
-/** 사전 신청 취소 화면 (접수 확인 메시지의 취소 링크로 들어옴) */
+/** 신청 뒤 '메일함을 확인해 주세요' 화면 */
+export const PREREGISTER_CHECK_EMAIL_COPY = {
+  header: '메일 확인',
+  title: '메일함을 확인해 주세요',
+  /** 메일 주소는 이 문장 위에 따로 크게 보여 줌 (새로고침해 주소를 모르면 주소 줄만 숨김) */
+  body: '이 주소로 확인 메일을 보냈어요. 메일 속 [신청 확인하기] 버튼을 누르면 신청이 끝나요.',
+  tips: [
+    '메일이 안 보이면 스팸메일함이나 프로모션함도 확인해 주세요.',
+    '2일 안에 확인하지 않으면 신청 정보는 자동으로 지워져요.',
+  ],
+  retry: '메일 주소를 잘못 입력했어요',
+  home: '첫 화면으로',
+} as const
+
+/** 확인 메일 속 링크를 눌렀을 때 (#/confirm/<토큰>) */
+export const PREREGISTER_CONFIRM_LINK_COPY = {
+  checking: '신청을 확인하고 있어요',
+  notFoundTitle: '확인할 신청을 찾지 못했어요',
+  notFoundBody: '이미 취소했거나, 2일이 지나 신청 정보가 지워졌을 수 있어요. 다시 신청해 주세요.',
+  expiredTitle: '확인 기간이 지났어요',
+  expiredBody: '확인 메일을 받은 지 2일이 지났어요. 다시 신청해 주시면 새 확인 메일을 보내 드려요.',
+  failedTitle: '확인하지 못했어요',
+  failedBody: '잠시 후 메일 속 버튼을 다시 눌러 주세요.',
+  again: '다시 신청하기',
+  home: '첫 화면으로',
+} as const
+
+/** 사전 신청 취소 화면 (접수 완료 메일의 취소 링크로 들어옴) */
 export const PREREGISTER_CANCEL_COPY = {
   header: '사전 신청 취소',
   title: '사전 신청을 취소할까요?',
@@ -86,7 +111,7 @@ export const PREREGISTER_DONE_COPY = {
   /** 같은 지역 카드 안내. strong 부분만 굵게 강조 (앞 + 강조 + 뒤로 이어 붙여 한 문장) */
   notify: {
     before: '서비스를 시작하면 ',
-    strong: '카카오톡이나 문자로 가장 먼저',
+    strong: '이메일로 가장 먼저',
     after: ' 알려 드릴게요.',
   },
   /** 사전 신청 혜택. title이 비어 있으면 혜택 카드 전체를 숨깁니다 (docs/운영-준비.md "동의서 빈칸"과 함께 채움) */
@@ -109,13 +134,13 @@ export const PREREGISTER_DONE_COPY = {
  * 사전 신청 동의서 판(version). 아래 동의 문구를 고치면 이 값도 올립니다.
  * 저장할 때 consent_version으로 함께 남겨, 어느 문구에 동의했는지 알 수 있게 합니다.
  */
-export const CONSENT_VERSION = '2026-11-v4'
+export const CONSENT_VERSION = '2026-11-v5'
 
 /**
  * 사전 신청 동의 항목 [보기] 내용.
  * [ ]로 된 부분은 아직 정하지 않은 값입니다 (docs/운영-준비.md "동의서 빈칸").
  */
-/** 휴대폰 번호와 성별·연령대·지역·테스트 유형의 보관 기간 (같은 기간이라 한 곳에서 관리) */
+/** 메일 주소와 성별·연령대·지역·테스트 유형의 보관 기간 (같은 기간이라 한 곳에서 관리) */
 const PREREGISTER_RETENTION = '정식 오픈 후 6개월 또는 신청일로부터 1년 중 먼저 오는 날까지'
 
 export const CONSENT_COPY = {
@@ -135,18 +160,18 @@ export const CONSENT_COPY = {
   notice: [
     '사전 신청은 회원 가입이 아니며, 비용이 들지 않아요.',
     `${site.serviceName}${topicParticle(site.serviceName)} 45세 이상 싱글을 위한 서비스예요. 정식 가입 때 휴대폰 본인인증과 혼인 상태 서약이 있으며, 사실과 다르면 가입할 수 없어요.`,
-    '오픈 일정과 지역은 신청 현황에 따라 정하며, 문자나 카카오톡으로 알려 드려요. 전화로 권유하지 않아요.',
+    '오픈 일정과 지역은 신청 현황에 따라 정하며, 이메일로 알려 드려요. 전화로 권유하지 않아요.',
     '테스트 결과는 재미로 보는 결과이며, 만남을 보장하지 않아요.',
     '사전 신청 혜택: [혜택 내용·조건]. 오픈 때 같은 조건으로 드려요.',
-    '언제든 [취소 방법]으로 취소할 수 있고, 취소하면 바로 지워요.',
+    '언제든 접수 완료 메일 속 취소 링크나 help@shiyeon.co.kr 문의로 취소할 수 있고, 취소하면 바로 지워요.',
   ],
   /** ② (필수) 개인정보 수집·이용 — 항목별 무엇을 / 왜 / 언제까지 */
   privacy: {
     labels: { why: '왜', until: '언제까지' },
     rows: [
       {
-        what: '휴대폰 번호',
-        why: '오픈 소식을 알려 드리고, 중복 신청을 막기 위해',
+        what: '메일 주소',
+        why: '신청을 확인하고 오픈 소식을 알려 드리며, 중복 신청을 막기 위해',
         until: PREREGISTER_RETENTION,
       },
       {
@@ -162,15 +187,15 @@ export const CONSENT_COPY = {
     ],
     notes: [
       '신청을 취소하면 바로 지워요.',
-      '신청 정보는 [국가]에 있는 [업체] 서버에 저장돼요.',
+      '신청 정보는 대한민국(서울)에 있는 Supabase 서버에 저장돼요. 메일은 미국의 메일 발송 업체 Resend를 통해 보내요.',
       '동의하지 않을 수 있지만, 그러면 사전 신청과 오픈 안내를 받을 수 없어요. 결과는 그대로 볼 수 있어요.',
     ],
   },
   /** ③ (선택) 광고성 정보 수신 */
   marketing: [
-    '출시 혜택, 이벤트, 새 테스트 소식을 문자나 카카오톡으로 보내 드려요.',
+    '출시 혜택, 이벤트, 새 테스트 소식을 이메일로 보내 드려요.',
     '오전 8시부터 오후 9시 사이에만 보내요.',
-    '발송은 [발송 대행사]가 맡아요.',
+    '발송은 메일 발송 업체 Resend(미국)가 맡아요.',
     '동의하지 않아도 사전 신청과 오픈 안내는 그대로 받아요.',
     '언제든 무료로 그만 받을 수 있어요.',
   ],

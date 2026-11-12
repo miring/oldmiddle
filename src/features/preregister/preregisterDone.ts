@@ -8,7 +8,7 @@ export type PreregisterDoneInfo = {
   /** 시·군·구 이름 (세종처럼 시·군·구가 없으면 시·도 이름) */
   regionName: string
   myType: CompanionType | null
-  /** 같은 지역 신청자 수. 저장 로직이 없는 지금은 null (= 10명 미만 문구) */
+  /** 같은 지역 신청자 수 (확인을 마친 신청만). 저장 로직 연결 전에는 null (= 10명 미만 문구) */
   sameRegionCount: number | null
 }
 
@@ -20,4 +20,15 @@ export function setDoneInfo(info: PreregisterDoneInfo) {
 
 export function getDoneInfo(): PreregisterDoneInfo | null {
   return doneInfo
+}
+
+/** '메일함을 확인해 주세요' 화면에 보여 줄 주소. 완료 정보와 같이 메모리에만 둡니다 */
+let pendingEmail: string | null = null
+
+export function setPendingEmail(email: string) {
+  pendingEmail = email
+}
+
+export function getPendingEmail(): string | null {
+  return pendingEmail
 }

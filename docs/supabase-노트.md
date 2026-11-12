@@ -23,7 +23,7 @@
 | --- | --- | --- | --- |
 | DB 비밀번호 (dev) | `oldmiddle-dev DB` | `supabase link`할 때 | 대시보드에서 재설정 가능. 연결을 다시 해야 함 |
 | DB 비밀번호 (prod) | `oldmiddle-prod DB` | 위와 같음 | 위와 같음 |
-| `PHONE_ENC_KEY` (dev) | `oldmiddle-dev PHONE_ENC_KEY` | 휴대폰 번호 암호화 | **저장된 번호를 되돌릴 수 없음** |
+| `PHONE_ENC_KEY` (dev) | `oldmiddle-dev PHONE_ENC_KEY` | 메일 주소 암호화 (이름은 예전 그대로) | **저장된 메일 주소를 되돌릴 수 없음** |
 | `PHONE_ENC_KEY` (prod) | `oldmiddle-prod PHONE_ENC_KEY` | 위와 같음 | **오픈 안내를 보낼 수 없게 됨. 반드시 백업** |
 | `PHONE_HASH_KEY` (dev) | `oldmiddle-dev PHONE_HASH_KEY` | 중복 확인·횟수 제한용 해시 | 중복 신청 확인이 깨짐 |
 | `PHONE_HASH_KEY` (prod) | `oldmiddle-prod PHONE_HASH_KEY` | 위와 같음 | 위와 같음. **반드시 백업** |
@@ -37,14 +37,15 @@
 | 파일 | 위치 | 들어가는 값 |
 | --- | --- | --- |
 | `.env.local` | 저장소 루트 | `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` (화면용, 공개돼도 되는 값) |
-| `supabase/functions/.env` | dev 서버 함수용 | `PHONE_ENC_KEY`, `PHONE_HASH_KEY`, `ALLOWED_ORIGINS`, `DEV_FIXED_CODE` |
-| `supabase/functions/.env.prod` | prod 서버 함수용 | `PHONE_ENC_KEY`, `PHONE_HASH_KEY`, `ALLOWED_ORIGINS` (**`DEV_FIXED_CODE`는 넣지 않음**) |
+| `supabase/functions/.env` | dev 서버 함수용 | `PHONE_ENC_KEY`, `PHONE_HASH_KEY`, `ALLOWED_ORIGINS`, `DEV_EMAIL_LINK=true` (메일 키가 없어도 확인 링크를 응답으로 받음) |
+| `supabase/functions/.env.prod` | prod 서버 함수용 | `PHONE_ENC_KEY`, `PHONE_HASH_KEY`, `ALLOWED_ORIGINS`, `RESEND_API_KEY`, `MAIL_FROM` (**`DEV_EMAIL_LINK`는 넣지 않음**) |
 
 - 마침표로 시작하는 파일은 Finder에서 숨겨집니다. `⌘ + Shift + .`으로 보이게 하거나 VS Code에서 엽니다.
 - 등록: `npx supabase secrets set --env-file supabase/functions/.env` (prod는 `.env.prod`)
 - 확인: `npx supabase secrets list` (값은 해시로만 보임)
 - `ALLOWED_ORIGINS`: 개발은 `http://localhost:5173`, 운영은 Vercel 배포 주소. 끝에 `/`를 붙이지 않습니다.
-- prod에 `DEV_FIXED_CODE`가 없으면 실제 문자 인증을 붙이기 전까지 저장을 거부합니다(`sms_not_ready`). 의도한 동작입니다.
+- prod에 `RESEND_API_KEY`·`MAIL_FROM`이 없으면 확인 메일을 보낼 수 없어 저장을 거부합니다(`email_not_ready`). 의도한 동작입니다.
+- `RESEND_API_KEY`는 비밀번호 관리자에 `oldmiddle-prod RESEND_API_KEY`로 보관합니다.
 
 ## 4. DB 구조
 
@@ -58,8 +59,11 @@
 | `gender` | `female` / `male` |
 | `age_group` | `45-49`, `50-54`, `55-59`, `60-64`, `65+` |
 | `region_code` | 시·군·구 법정동코드 5자리 (세종은 시·도 코드 `36`). 출처는 `src/data/regions.json` |
-| `phone_enc` | 암호화한 번호 (`v1.` 로 시작). 발송할 때만 되돌림 |
-| `phone_hash` | 번호 HMAC 해시. 중복 확인용 |
+| `email_enc` | 암호화한 메일 주소 (`v1.` 로 시작). 발송할 때만 되돌림 |
+| `email_hash` | 메일 주소 HMAC 해시. 중복 확인용 |
+| `confirm_token` | 확인 메일 링크용 토큰 (`#/confirm/<토큰>`) |
+| `confirm_sent_at` | 확인 메일을 마지막으로 보낸 시각. 2일이 지나면 링크가 끝나고 자동 삭제 |
+| `confirmed_at` | 메일 확인을 마친 시각. 비어 있으면 '확인 전'이라 신청자 수·통계에서 빠짐 |
 | `test_type` | 테스트 유형 결과 |
 | `consent_version` | 동의한 동의서 판 (`src/config/copy.ts`의 `CONSENT_VERSION`) |
 | `marketing_agreed_at` | 광고 수신 동의 시각 (동의 안 하면 비어 있음) |
@@ -67,10 +71,10 @@
 | `canceled_at` | 지금은 쓰지 않음 (취소하면 바로 삭제하기로 함) |
 | `created_at` | 신청 시각 |
 
-- 같은 번호는 한 번만 신청할 수 있습니다 (`phone_hash` 중복 금지).
+- 같은 메일 주소는 한 번만 신청할 수 있습니다 (`email_hash` 중복 금지). 확인 전에 다시 신청하면 내용을 바꾸고 확인 메일을 다시 보냅니다.
 - RLS가 켜져 있고 정책이 없습니다. 브라우저(anon)에서는 읽기·쓰기 모두 막혀 있고, 서버 함수(service_role)만 씁니다.
 
-**`public.preregister_attempts`** — 신청 횟수 제한 기록. 번호·IP를 해시로만 남기고 하루 뒤 지웁니다.
+**`public.preregister_attempts`** — 신청 횟수 제한 기록. 메일·IP를 해시로만 남기고 하루 뒤 지웁니다.
 
 **`admin.settings`** — 정식 오픈일(`official_open_at`). 정해지면 아래처럼 넣습니다.
 ```sql
@@ -111,10 +115,11 @@ select jobname, schedule from cron.job;  -- 등록 확인
 
 | 함수 | 하는 일 |
 | --- | --- |
-| `preregister` | 입력·인증번호 확인 → 횟수 제한 → 번호 암호화·해시 → 저장 → 같은 지역 신청 수 반환 |
+| `preregister` | 입력 확인 → 횟수 제한 → 메일 암호화·해시 → '확인 전'으로 저장 → 확인 메일 발송 (Resend) |
+| `preregister-confirm` | 확인 토큰으로 확인 마침 → 취소 링크가 든 접수 완료 메일 발송 → 지역·유형·같은 지역 신청 수 반환. 같은 링크를 다시 열어도 같은 결과 |
 | `preregister-cancel` | 취소 토큰으로 신청 바로 삭제. 취소 링크: `https://<사이트>/#/cancel/<cancel_token>` |
 
-오류 응답: `invalid_input`, `invalid_code`, `sms_not_ready`, `already_registered`, `too_many_requests`, `origin_not_allowed`, `save_failed`(`reason`에 DB 오류 코드), `not_found`(취소)
+오류 응답: `invalid_input`, `email_not_ready`, `email_failed`, `already_registered`, `expired`(확인 링크 2일 지남), `too_many_requests`, `origin_not_allowed`, `save_failed`(`reason`에 DB 오류 코드), `not_found`(취소)
 
 ## 5. 마이그레이션 규칙
 
@@ -137,6 +142,7 @@ npx supabase projects list            # 지금 연결된 프로젝트 확인 (�
 npx supabase link --project-ref <ID>  # 연결할 프로젝트 바꾸기
 npx supabase db push                  # 마이그레이션 적용 (연결된 프로젝트에!)
 npx supabase functions deploy preregister
+npx supabase functions deploy preregister-confirm
 npx supabase functions deploy preregister-cancel
 npx supabase secrets list
 ```
@@ -147,13 +153,14 @@ npx supabase secrets list
 
 1. 같은 Pro 조직에서 New project → `oldmiddle-prod`, Seoul 리전, DB 비밀번호는 비밀번호 관리자에 저장
 2. 위 1번 표에 프로젝트 ID 적기
-3. `supabase/functions/.env.prod` 만들기 (새 키 2개, `ALLOWED_ORIGINS`. `DEV_FIXED_CODE` 없음) → 키를 비밀번호 관리자에 저장
+3. `supabase/functions/.env.prod` 만들기 (새 키 2개, `ALLOWED_ORIGINS`, `RESEND_API_KEY`, `MAIL_FROM`. `DEV_EMAIL_LINK` 없음) → 키를 비밀번호 관리자에 저장
 4. 실행:
    ```bash
    npx supabase link --project-ref <운영 ID>
    npx supabase db push
    npx supabase secrets set --env-file supabase/functions/.env.prod
    npx supabase functions deploy preregister
+   npx supabase functions deploy preregister-confirm
    npx supabase functions deploy preregister-cancel
    npx supabase link --project-ref tslzkdfvijrajcfdiekm
    ```
