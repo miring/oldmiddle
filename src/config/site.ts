@@ -31,7 +31,7 @@ export const site = {
   termsUrl: '',
   /** 개인정보 처리방침 화면 (quizRoute.ts PRIVACY_HASH와 같은 값. site.ts가 quizRoute를 불러오면 순환 참조라 글자로 적음) */
   privacyUrl: '#/privacy',
-  contactUrl: '',
+  contactUrl: 'mailto:help@shiyeon.co.kr',
   /** 내 정보 › 이용권의 환불 규정 주소. 비어 있으면 '준비 중'으로 둡니다 */
   refundPolicyUrl: '',
 } as const
