@@ -29,6 +29,13 @@
   overflow-wrap: anywhere;
 }
 
+/* 문장 속 강조 (메일 확인 화면의 [신청 확인하기]) */
+.bodyEmphasis {
+  color: var(--color-secondary);
+  font-weight: 700;
+  white-space: nowrap; /* 버튼 이름 중간에서 줄이 끊기지 않게 */
+}
+
 .shareMessage {
   color: var(--color-text-secondary);
   font-size: var(--type-body-size);

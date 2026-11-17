@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { BackHeader } from '../../components/ui/BackHeader/BackHeader'
 import { Button } from '../../components/ui/Button/Button'
 import { PREREGISTER_CHECK_EMAIL_COPY as C } from '../../config/copy'
@@ -31,7 +31,14 @@ export function CheckEmailPage() {
             {C.title}
           </h1>
           {email && <p className={`${styles.title} break-all`}>{email}</p>}
-          <p className={styles.body}>{C.body}</p>
+          <p className={styles.body}>
+            {C.body.split(C.bodyEmphasis).map((part, i) => (
+              <Fragment key={i}>
+                {i > 0 && <strong className={styles.bodyEmphasis}>{C.bodyEmphasis}</strong>}
+                {part}
+              </Fragment>
+            ))}
+          </p>
           <ul className="flex flex-col gap-2">
             {C.tips.map((tip) => (
               <li key={tip} className={styles.shareMessage}>
