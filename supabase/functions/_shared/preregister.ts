@@ -114,15 +114,37 @@ export async function sendMail(to: string, subject: string, text: string, html: 
   return res.ok
 }
 
-/** 간단한 메일 본문 (글자 크게, 이미지 없이). button이 있으면 큰 버튼 하나, footer는 작은 글씨 (HTML 허용) */
-export function mailHtml(lines: string[], button: { label: string; url: string } | null, footer: string[]) {
+// 메일은 CSS 변수를 못 쓰므로 토큰 값을 직접 씀 (src/styles/tokens.css)
+const MAIL_BUTTON_BG = '#f0c419' // --color-primary (= --color-yellow-500)
+const MAIL_BUTTON_TEXT = '#2c2416' // --color-text-on-accent. 노랑 위 흰 글자는 대비가 부족해 쓰지 않음
+
+// 메일 위쪽 이미지. 빌드 때 이름이 바뀌지 않도록 public/mail/에 두고 사이트 주소로 불러옴
+// (원본 src/assets/landing/hero-cafe.jpg를 가로 960px로 줄인 것, 메일에서는 가로 480으로 표시)
+const MAIL_IMAGE = { path: '/mail/hero-cafe.jpg', width: 480, height: 262 }
+
+/**
+ * 간단한 메일 본문 (글자 크게). button이 있으면 큰 버튼 하나, footer는 작은 글씨 (HTML 허용)
+ * options.origin: 이미지 주소를 만들 사이트 주소 (메일 속 링크와 같은 origin)
+ * options.image: 위쪽 이미지를 넣을지 (기본 넣음). 이미지가 차단돼도 문장·버튼만으로 내용이 통해야 함
+ */
+export function mailHtml(
+  lines: string[],
+  button: { label: string; url: string } | null,
+  footer: string[],
+  options: { origin: string; image?: boolean },
+) {
   const p = (t: string) => `<p style="margin:0 0 16px;font-size:18px;line-height:1.6;color:#222">${t}</p>`
   const small = (t: string) => `<p style="margin:0 0 8px;font-size:14px;line-height:1.6;color:#666">${t}</p>`
+  const imageHtml =
+    options.image === false
+      ? ''
+      : `<img src="${options.origin}${MAIL_IMAGE.path}" width="${MAIL_IMAGE.width}" height="${MAIL_IMAGE.height}" alt="시연(時緣)" style="display:block;width:100%;max-width:480px;height:auto;border:0;margin:0 0 24px">`
   const buttonHtml = button
-    ? `<p style="margin:24px 0"><a href="${button.url}" style="display:inline-block;padding:16px 28px;border-radius:12px;background:#1f4d3a;color:#fff;font-size:18px;text-decoration:none">${button.label}</a></p>
+    ? `<p style="margin:24px 0"><a href="${button.url}" style="display:inline-block;padding:16px 28px;border-radius:12px;background:${MAIL_BUTTON_BG};color:${MAIL_BUTTON_TEXT};font-size:18px;text-decoration:none">${button.label}</a></p>
 ${small(`버튼이 눌리지 않으면 이 주소를 열어 주세요: ${button.url}`)}`
     : ''
   return `<div style="max-width:480px;margin:0 auto;padding:24px;font-family:sans-serif">
+${imageHtml}
 ${lines.map(p).join('\n')}
 ${buttonHtml}
 ${footer.map(small).join('\n')}
