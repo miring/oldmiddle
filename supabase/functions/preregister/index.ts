@@ -115,6 +115,7 @@ Deno.serve(async (req) => {
       ['시연(時緣) 사전 신청을 해 주셔서 고마워요.', '아래 버튼을 누르면 신청이 끝나요.'],
       { label: '신청 확인하기', url: confirmUrl },
       ['2일 안에 확인하지 않으면 신청 정보는 자동으로 지워져요.', '신청하지 않으셨다면 이 메일은 지우셔도 돼요.'],
+      { origin },
     ),
   )
   if (!sent) return json({ error: 'email_failed' }, 502, origin)

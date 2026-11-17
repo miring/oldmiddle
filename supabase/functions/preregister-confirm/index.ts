@@ -61,6 +61,7 @@ Deno.serve(async (req) => {
             `신청을 취소하려면 <a href="${cancelUrl}" style="color:#666">여기</a>를 눌러 주세요. 취소하면 남겨 주신 정보를 바로 지워요.`,
             '문의: help@shiyeon.co.kr',
           ],
+          { origin },
         ),
       )
     }
