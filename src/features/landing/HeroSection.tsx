@@ -12,14 +12,9 @@ import styles from './HeroSection.module.css'
 // 나이는 위 배지("45세 이상 전용")에서 알리므로 여기서는 반복하지 않음
 const AUDIENCE = '싱글을 위한 동반자 서비스 · 준비 중'
 
-// 화면 폭마다 사진 배치가 달라 <picture>로 바꿔 끼웁니다.
-// media 값(48rem)은 tokens.css·Tailwind의 태블릿 기준과 같아야 합니다.
-const TABLET_UP = '(min-width: 48rem)'
-
 /**
  * 랜딩 첫 화면 (Figma "Service introduction" / 데스크톱 "Hero")
- * - 모바일: 인물 사진 → 글 → 카페 사진 → 테스트 초대 카드
- * - 태블릿: 카페 사진(배지) → 글 → 인물 사진 → 카드
+ * - 모바일·태블릿: 카페 사진(배지) → 글 → 인물 사진 → 카드
  * - 데스크톱: 왼쪽 글·카드 / 오른쪽 카페·인물 사진
  */
 export function HeroSection() {
@@ -32,16 +27,12 @@ export function HeroSection() {
     >
       {/* 큰 사진 (데스크톱에서는 오른쪽 칸: 위 사진 | 띠 | 아래 사진) */}
       <div className={`${styles.media} relative overflow-hidden xl:col-start-2 xl:row-span-2 xl:row-start-1 xl:grid`}>
-        <picture className="xl:contents">
-          <source media={TABLET_UP} srcSet={heroCafe} />
-          {/* 데스크톱에서 h-0·min-h-full: 사진 크기가 히어로 높이를 키우지 않고, 나눠진 칸을 채움 */}
-          {/* 줄 위치를 직접 지정 (<source>가 격자 칸을 차지해 순서가 밀리는 것을 막음) */}
-          <img
-            className={`${styles.mainPhoto} h-full xl:row-start-1 xl:h-0 xl:min-h-full`}
-            src={heroPortrait}
-            alt=""
-          />
-        </picture>
+        {/* 데스크톱에서 h-0·min-h-full: 사진 크기가 히어로 높이를 키우지 않고, 나눠진 칸을 채움 */}
+        <img
+          className={`${styles.mainPhoto} h-full xl:row-start-1 xl:h-0 xl:min-h-full`}
+          src={heroCafe}
+          alt=""
+        />
         <div className={`${styles.divider} hidden xl:row-start-2 xl:block`} />
         <img
           className={`${styles.lowerPhoto} hidden w-full xl:row-start-3 xl:block xl:h-0 xl:min-h-full`}
@@ -49,14 +40,14 @@ export function HeroSection() {
           alt=""
         />
         <div className={`${styles.fade} absolute inset-x-0 bottom-0`} aria-hidden="true" />
-        <p className={`${styles.badge} absolute top-6 left-6 hidden px-3 py-1.5 md:block xl:hidden`}>{AUDIENCE}</p>
+        <p className={`${styles.badge} absolute top-6 left-6 px-3 py-1.5 xl:hidden`}>{AUDIENCE}</p>
       </div>
 
       {/* 글과 테스트 초대 (데스크톱에서는 감싼 상자를 풀고 왼쪽 칸 1줄·2줄에 배치) */}
       <div className="flex flex-col md:gap-10 md:px-12 md:pb-14 xl:contents">
         <div className="flex flex-col gap-3 px-6 pt-5 md:gap-5 md:p-0 xl:col-start-1 xl:row-start-1 xl:pt-20 xl:pr-16 xl:pb-10 xl:pl-24">
           <Badge>{COPY.audienceBadge}</Badge>
-          <p className={`${styles.audience} md:hidden xl:block`}>{AUDIENCE}</p>
+          <p className={`${styles.audience} hidden xl:block`}>{AUDIENCE}</p>
           <h1 id="hero-title" className={styles.headline}>
             나와 잘 맞는 사람과
             <br />
@@ -72,14 +63,8 @@ export function HeroSection() {
 
         <div className="px-6 pt-5 md:p-0 xl:hidden">
           <figure className={`${styles.secondary} relative overflow-hidden`}>
-            <picture>
-              <source media={TABLET_UP} srcSet={heroPortrait} />
-              <img className={styles.secondaryPhoto} src={heroCafe} alt="" />
-            </picture>
-            <figcaption className={`${styles.caption} absolute inset-x-0 bottom-0`}>
-              <span className="md:hidden">가까운 카페에서 편안한 첫 만남</span>
-              <span className="hidden md:inline">같은 또래, 같은 눈높이로 만나요</span>
-            </figcaption>
+            <img className={styles.secondaryPhoto} src={heroPortrait} alt="" />
+            <figcaption className={`${styles.caption} absolute inset-x-0 bottom-0`}>같은 또래, 같은 눈높이로 만나요</figcaption>
           </figure>
         </div>
 
