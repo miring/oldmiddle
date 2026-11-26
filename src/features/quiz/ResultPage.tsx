@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import mail from '../../assets/icons/mail.svg'
+import messageCircle from '../../assets/icons/message-circle.svg'
 import rotateCcw from '../../assets/icons/rotate-ccw.svg'
 import statusDot from '../../assets/landing/status-dot.svg'
 import { Button } from '../../components/ui/Button/Button'
@@ -97,8 +97,8 @@ export function ResultPage({ type }: { type: CompanionType }) {
 
         {/* 공유와 다시 시작 */}
         <section className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-col gap-3 px-6 pt-7 pb-8">
-          <Button variant="soft" icon={mail} onClick={handleShare}>
-            이메일로 결과 공유
+          <Button variant="soft" icon={messageCircle} onClick={handleShare}>
+            결과 공유하기
           </Button>
           <p className={styles.shareMessage} aria-live="polite">
             {shareMessage}
