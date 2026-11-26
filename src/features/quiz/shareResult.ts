@@ -8,11 +8,22 @@ import type { CompanionResult } from './results'
  * 첫 화면(/) 대신 #/test를 쓰는 것은, 정식 오픈 뒤 첫 화면이 홈으로 바뀌어도 테스트로 들어오게 하기 위해서입니다.
  * 반환값: 화면에 보여 줄 안내 문구 (없으면 null)
  */
-export async function shareResult(result: CompanionResult): Promise<string | null> {
-  return shareLandingLink(
-    `[${site.serviceName}] 나의 동행 유형 테스트 결과`,
-    `나의 동행 유형은 '${result.name}'이래요. 45세 이상 싱글을 위한 1분 테스트, 당신은 어떤 타입일까요?`,
-  )
+/** 결과 메일 공유 문구 (결과 화면 [이메일로 공유하기] 팝업) */
+export function resultShareContent(result: CompanionResult) {
+  const subject = `[${site.serviceName}] 나의 동행 유형 테스트 결과`
+  const text = `나의 동행 유형은 '${result.name}'이래요. 45세 이상 싱글을 위한 1분 테스트, 당신은 어떤 타입일까요?`
+  const url = testLinkUrl()
+  return { subject, text, url, body: `${text}\n${url}` }
+}
+
+/** 지메일 쓰기 창 주소 (받는 사람·제목·내용을 채움). 보내는 사람은 사용자 본인 계정 */
+export function gmailComposeUrl(to: string, subject: string, body: string): string {
+  const params = new URLSearchParams({ view: 'cm', fs: '1', to, su: subject, body })
+  return `https://mail.google.com/mail/?${params.toString()}`
+}
+
+function testLinkUrl(): string {
+  return `${window.location.origin}${window.location.pathname}${TEST_HASH}`
 }
 
 /** 테스트 링크만 공유 (결과 없이). 대상(45세 이상 싱글)을 문구에 밝힙니다. */
@@ -21,7 +32,7 @@ export async function shareTestLink(): Promise<string | null> {
 }
 
 async function shareLandingLink(subject: string, text: string): Promise<string | null> {
-  const url = `${window.location.origin}${window.location.pathname}${TEST_HASH}`
+  const url = testLinkUrl()
   const body = `${text}\n${url}`
 
   // 휴대폰 등 기기 공유 창을 쓸 수 있으면 그 창을 엽니다 (카카오톡·문자·메일 중 사용자가 고름)

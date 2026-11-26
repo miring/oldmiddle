@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
-import messageCircle from '../../assets/icons/message-circle.svg'
+import { useEffect, useRef } from 'react'
+import mail from '../../assets/icons/mail.svg'
 import rotateCcw from '../../assets/icons/rotate-ccw.svg'
 import statusDot from '../../assets/landing/status-dot.svg'
+import { BottomSheet } from '../../components/ui/BottomSheet/BottomSheet'
+import { useBottomSheet } from '../../components/ui/BottomSheet/useBottomSheet'
 import { Button } from '../../components/ui/Button/Button'
 import { COPY } from '../../config/copy'
 import { clearAnswers } from './quizAnswers'
 import { QuizHeader } from './QuizParts'
 import { PREREGISTER_HASH, navigate, quizHash } from './quizRoute'
 import { RESULTS, type CompanionType } from './results'
-import { shareResult } from './shareResult'
+import { ResultEmailSheet } from './ResultEmailSheet'
 import styles from './ResultPage.module.css'
 
 /** 테스트 결과 화면 (Figma "마지막사랑 · 결과 A~D") */
@@ -16,14 +18,13 @@ export function ResultPage({ type }: { type: CompanionType }) {
   const result = RESULTS[type]
   const match = RESULTS[result.match.type]
   const titleRef = useRef<HTMLHeadingElement>(null)
-  const [shareMessage, setShareMessage] = useState<string | null>(null)
+  const shareButtonRef = useRef<HTMLButtonElement>(null)
+  const emailSheet = useBottomSheet({ onClose: () => shareButtonRef.current?.focus() })
 
   useEffect(() => {
     window.scrollTo(0, 0)
     titleRef.current?.focus()
   }, [type])
-
-  const handleShare = async () => setShareMessage(await shareResult(result))
 
   const handleRetry = () => {
     clearAnswers()
@@ -97,12 +98,9 @@ export function ResultPage({ type }: { type: CompanionType }) {
 
         {/* 공유와 다시 시작 */}
         <section className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-col gap-3 px-6 pt-7 pb-8">
-          <Button variant="soft" icon={messageCircle} onClick={handleShare}>
-            결과 공유하기
+          <Button ref={shareButtonRef} variant="soft" icon={mail} onClick={() => emailSheet.show()}>
+            이메일로 공유하기
           </Button>
-          <p className={styles.shareMessage} aria-live="polite">
-            {shareMessage}
-          </p>
           <Button variant="secondary" icon={rotateCcw} onClick={handleRetry}>
             다시 테스트하기
           </Button>
@@ -111,6 +109,10 @@ export function ResultPage({ type }: { type: CompanionType }) {
           </p>
         </section>
       </main>
+
+      <BottomSheet open={emailSheet.open} onRequestClose={() => emailSheet.close()} title="이메일로 결과 공유">
+        <ResultEmailSheet result={result} onClose={() => emailSheet.close()} />
+      </BottomSheet>
     </div>
   )
 }
