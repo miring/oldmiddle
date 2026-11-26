@@ -3,8 +3,7 @@ import { TEST_HASH } from './quizRoute'
 import type { CompanionResult } from './results'
 
 /**
- * 결과 공유. 메일 쓰기 창(mailto:)을 열고, 공유 문구를 클립보드에도 복사합니다.
- * PC에 메일 앱이 없으면 mailto가 아무 반응이 없으므로, 복사한 문구를 붙여 넣도록 안내합니다.
+ * 결과 공유. 기기 공유 창(navigator.share)이 있으면 열고, 없으면 공유 문구를 클립보드에 복사합니다.
  * 받는 사람이 남의 결과를 자기 결과로 오해하지 않도록 결과 화면이 아닌 테스트 소개(#/test, 랜딩) 주소를 보냅니다.
  * 첫 화면(/) 대신 #/test를 쓰는 것은, 정식 오픈 뒤 첫 화면이 홈으로 바뀌어도 테스트로 들어오게 하기 위해서입니다.
  * 반환값: 화면에 보여 줄 안내 문구 (없으면 null)
@@ -25,19 +24,22 @@ async function shareLandingLink(subject: string, text: string): Promise<string |
   const url = `${window.location.origin}${window.location.pathname}${TEST_HASH}`
   const body = `${text}\n${url}`
 
-  // 메일 창으로 화면이 넘어가기 전에 복사를 먼저 끝냅니다.
-  let copied = false
-  try {
-    await navigator.clipboard.writeText(body)
-    copied = true
-  } catch {
-    // 복사가 안 되는 브라우저도 메일 창은 열어 봅니다.
+  // 휴대폰 등 기기 공유 창을 쓸 수 있으면 그 창을 엽니다 (카카오톡·문자·메일 중 사용자가 고름)
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: subject, text, url })
+      return null
+    } catch (error) {
+      // 사용자가 공유 창을 닫은 경우는 안내하지 않음. 그 밖의 실패는 아래 복사로 넘어감
+      if (error instanceof DOMException && error.name === 'AbortError') return null
+    }
   }
 
-  // 받는 사람은 비워 둡니다.
-  window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-
-  return copied
-    ? '공유 문구를 복사했어요. 메일 창이 열리지 않으면 복사된 문구를 메일에 붙여 넣어 주세요.'
-    : '메일 창이 열리지 않으면 이 브라우저에서는 메일 공유를 쓸 수 없어요.'
+  // 공유 창이 없는 PC 브라우저: 메일 앱(mailto)은 계정이 없으면 '계정 추가' 창만 떠서, 문구 복사로 대신합니다
+  try {
+    await navigator.clipboard.writeText(body)
+    return '공유 문구를 복사했어요. 카카오톡이나 메일에 붙여 넣어 보내 주세요.'
+  } catch {
+    return `이 브라우저에서는 복사가 되지 않아요. 주소를 직접 알려 주세요: ${url}`
+  }
 }
