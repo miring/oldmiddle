@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import { HomePage } from './features/home/HomePage'
 import { PrivacyPage } from './features/legal/PrivacyPage'
 import { LandingPage } from './features/landing/LandingPage'
+import { EventPage } from './features/event/EventPage'
 import { CancelPage } from './features/preregister/CancelPage'
 import { CheckEmailPage } from './features/preregister/CheckEmailPage'
 import { ConfirmPage } from './features/preregister/ConfirmPage'
@@ -46,6 +47,7 @@ export function App() {
   if (route.view === 'privacy') return <PrivacyPage />
   if (route.view === 'cancel') return <CancelPage token={route.token} />
   if (route.view === 'preregister') return <PreregisterPage />
+  if (route.view === 'event') return <EventPage />
   if (route.view === 'under45') return <Under45Page />
   if (route.view === 'checkEmail') return <CheckEmailPage />
   if (route.view === 'confirm') return <ConfirmPage token={route.token} />

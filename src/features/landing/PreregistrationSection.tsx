@@ -1,8 +1,10 @@
+import { Button } from '../../components/ui/Button/Button'
 import { COPY } from '../../config/copy'
+import { PREREGISTER_HASH, navigate } from '../quiz/quizRoute'
 import { PREREGISTRATION_FIELDS } from './landingSteps'
 import styles from './LandingSections.module.css'
 
-/** 랜딩 "부담 없는 사전 신청" (Figma "Optional preregistration") — 받을 정보 안내만, 입력 폼은 아님 */
+/** 랜딩 "부담 없는 사전 신청" (Figma "Optional preregistration") — 받을 정보 안내 + [사전 신청하기] (입력 폼은 #/preregister) */
 export function PreregistrationSection() {
   return (
     <section
@@ -20,7 +22,7 @@ export function PreregistrationSection() {
       </div>
 
       <div className="flex flex-col gap-5">
-        <p className={styles.body}>추후 사전 신청에서는 아래 네 가지 정보만 받을 예정이에요.</p>
+        <p className={styles.body}>사전 신청에서는 아래 네 가지 정보만 받아요.</p>
         <ul role="list" className="grid grid-cols-2 gap-2.5 md:gap-3">
           {PREREGISTRATION_FIELDS.map((field) => (
             <li key={field} className={`${styles.fieldChip} flex min-w-0 items-center`}>
@@ -31,8 +33,11 @@ export function PreregistrationSection() {
         <p className={styles.body}>{COPY.notCollected}</p>
         <hr className={styles.rule} />
         <p className={styles.body}>
-          개인정보 처리 동의는 필수로, 출시·광고 소식 수신 동의는 선택으로 나누어 안내할 예정이에요.
+          개인정보 처리 동의는 필수로, 출시·광고 소식 수신 동의는 선택으로 나누어 받아요.
         </p>
+        <Button className="md:self-start md:min-w-80" onClick={() => navigate(PREREGISTER_HASH)}>
+          {COPY.preregisterStart}
+        </Button>
       </div>
     </section>
   )

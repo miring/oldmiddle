@@ -2,11 +2,12 @@ import heroCafe from '../../assets/landing/hero-cafe.jpg'
 import heroPortraitUpper from '../../assets/landing/hero-portrait-upper.png'
 import heroPortrait from '../../assets/landing/hero-portrait.jpg'
 import { Badge } from '../../components/ui/Badge/Badge'
+import { BenefitCard } from '../../components/ui/BenefitCard/BenefitCard'
 import { Button } from '../../components/ui/Button/Button'
 import { COPY } from '../../config/copy'
 import { site } from '../../config/site'
 import { topicParticle } from '../../utils/korean'
-import { startQuiz } from '../quiz/quizRoute'
+import { EVENT_HASH, PREREGISTER_HASH, navigate, startQuiz } from '../quiz/quizRoute'
 import styles from './HeroSection.module.css'
 
 // 나이는 위 배지("45세 이상 전용")에서 알리므로 여기서는 반복하지 않음
@@ -80,6 +81,14 @@ export function HeroSection() {
               나의 인연 유형 알아보기
             </Button>
             <p className={styles.cardNote}>10문항 · 가입 없이 결과 확인</p>
+          </div>
+          {/* 사전 신청 혜택 배너 (테스트 없이 바로 사전 신청 가능) */}
+          <div className="mt-4 md:mt-6 xl:mt-5">
+            <BenefitCard eventHref={EVENT_HASH}>
+              <Button variant="outline" onClick={() => navigate(PREREGISTER_HASH)}>
+                {COPY.preregisterStart}
+              </Button>
+            </BenefitCard>
           </div>
         </div>
       </div>
