@@ -281,7 +281,8 @@ export const FOOTER_LINKS = [
 /** 사전 신청 혜택 카드 (랜딩 히어로·사전 신청 섹션). 동의서 ①·신청 완료 화면 혜택 카드와 같은 내용으로 맞춤 */
 export const PREREGISTER_BENEFITS = {
   badge: '사전 신청 혜택',
-  coupon: { title: '커피 쿠폰 10분 추첨', body: '2월 말 · 당첨되신 분께 메일로' },
-  invite: { title: '정식 오픈 때 먼저 초대', body: '베타 기간 무료' },
+  // body는 굵은 '사전 신청' 뒤에 이어지는 말 (Figma 447:1218)
+  coupon: { label: '혜택 01', title: '커피 쿠폰 · 10분 추첨', body: '하시면 추첨을 통해 커피 모바일 쿠폰을 드려요.' },
+  invite: { label: '혜택 02', title: '정식 오픈 때 먼저 초대', body: '하신 분부터 초대해요. 베타 기간에는 무료예요.' },
   detail: '이벤트 자세히 보기',
 } as const
