@@ -15,6 +15,7 @@ export type QuizRoute =
   | { view: 'quiz'; step: number }
   | { view: 'result' }
   | { view: 'preregister' }
+  | { view: 'event' }
   | { view: 'under45' }
   | { view: 'checkEmail' }
   | { view: 'done' }
@@ -34,6 +35,8 @@ export const SIGNUP_HASH = '#/signup'
 export const LOGIN_HASH = '#/login'
 export const RESULT_HASH = '#/result'
 export const PREREGISTER_HASH = '#/preregister'
+/** 사전 신청 이벤트 자세히 보기 (Figma "시연 · 이벤트 ③") */
+export const EVENT_HASH = '#/event'
 export const UNDER45_HASH = '#/preregister/under45'
 /** 신청 뒤 '메일함을 확인해 주세요' 화면 */
 export const CHECK_EMAIL_HASH = '#/preregister/check-email'
@@ -73,6 +76,7 @@ function parse(hash: string): QuizRoute {
   if (hash === TEST_HASH) return { view: 'landing' }
   if (hash === RESULT_HASH) return { view: 'result' }
   if (hash === PREREGISTER_HASH) return { view: 'preregister' }
+  if (hash === EVENT_HASH) return { view: 'event' }
   if (hash === UNDER45_HASH) return { view: 'under45' }
   if (hash === CHECK_EMAIL_HASH) return { view: 'checkEmail' }
   if (hash === DONE_HASH) return { view: 'done' }

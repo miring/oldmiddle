@@ -277,3 +277,11 @@ export const FOOTER_LINKS = [
   { label: '개인정보 처리방침', href: site.privacyUrl, strong: true },
   { label: '문의하기', href: site.contactUrl },
 ]
+
+/** 사전 신청 혜택 카드 (랜딩 히어로·사전 신청 섹션). 동의서 ①·신청 완료 화면 혜택 카드와 같은 내용으로 맞춤 */
+export const PREREGISTER_BENEFITS = {
+  badge: '사전 신청 혜택',
+  coupon: { title: '커피 쿠폰 10분 추첨', body: '2월 말 · 당첨되신 분께 메일로' },
+  invite: { title: '정식 오픈 때 먼저 초대', body: '베타 기간 무료' },
+  detail: '이벤트 자세히 보기',
+} as const
