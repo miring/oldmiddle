@@ -144,6 +144,7 @@ npx supabase db push                  # 마이그레이션 적용 (연결된 프
 npx supabase functions deploy preregister
 npx supabase functions deploy preregister-confirm
 npx supabase functions deploy preregister-cancel
+npx supabase functions deploy result-mail
 npx supabase secrets list
 ```
 
@@ -162,6 +163,7 @@ npx supabase secrets list
    npx supabase functions deploy preregister
    npx supabase functions deploy preregister-confirm
    npx supabase functions deploy preregister-cancel
+   npx supabase functions deploy result-mail
    npx supabase link --project-ref tslzkdfvijrajcfdiekm
    ```
 5. 운영 대시보드에서 확인: Table Editor에 표, `select jobname from cron.job;`에 일정 2개

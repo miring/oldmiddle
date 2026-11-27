@@ -2,75 +2,77 @@ import { useState } from 'react'
 import { Button } from '../../components/ui/Button/Button'
 import { TextField } from '../../components/ui/TextField/TextField'
 import { isValidEmail } from '../preregister/preregisterOptions'
+import { PreregisterError, sendResultMail } from '../preregister/submitPreregistration'
 import type { CompanionResult } from './results'
-import { gmailComposeUrl, resultShareContent } from './shareResult'
 import styles from './ResultEmailSheet.module.css'
 
+const ERRORS: Record<string, string> = {
+  too_many_requests: '오늘은 더 보낼 수 없어요. 내일 다시 시도해 주세요.',
+  invalid_input: '메일 주소를 확인해 주세요.',
+}
+
 /**
- * 결과 화면 [이메일로 공유하기] 바텀시트 안 내용: 보낼 내용 미리보기 + 받는 분 메일 + [메일 보내기]
- * 메일은 시연 서버가 보내지 않고, 사용자 본인 지메일 쓰기 창을 내용을 채워 엽니다 (스팸·광고 규정 부담 없음).
- * 받는 분 메일 주소는 저장하지 않습니다 (지메일 주소창으로만 넘김).
+ * 결과 화면 [내 메일로 결과 받기] 바텀시트 안 내용: 받을 내용 + 내 메일 주소 + [메일 보내기]
+ * 시연이 결과 메일을 보내고(result-mail 함수), 보내면 onSent(첫 화면으로 이동)를 부릅니다.
+ * 메일 주소는 서버에 저장하지 않습니다.
  */
-export function ResultEmailSheet({ result, onClose }: { result: CompanionResult; onClose: () => void }) {
-  const content = resultShareContent(result)
-  const [to, setTo] = useState('')
+export function ResultEmailSheet({
+  result,
+  onSent,
+  onClose,
+}: {
+  result: CompanionResult
+  onSent: () => void
+  onClose: () => void
+}) {
+  const [email, setEmail] = useState('')
   const [error, setError] = useState<string | null>(null)
-  const [message, setMessage] = useState<string | null>(null)
+  const [sending, setSending] = useState(false)
 
-  // 사파리는 클릭 직후가 아니면 새 창을 막아서, 복사와 새 창 열기를 await 없이 바로 실행
-  const copy = () => navigator.clipboard?.writeText(content.body).then(() => true, () => false) ?? Promise.resolve(false)
-
-  const handleSend = () => {
-    if (!isValidEmail(to)) {
-      setError('받는 분 메일 주소를 확인해 주세요.')
+  const handleSend = async () => {
+    if (!isValidEmail(email)) {
+      setError('메일 주소를 확인해 주세요.')
       return
     }
     setError(null)
-    const copying = copy()
-    window.open(gmailComposeUrl(to.trim(), content.subject, content.body), '_blank', 'noopener')
-    void copying.then((copied) =>
-      setMessage(
-        copied
-          ? '지메일 쓰기 창을 열었어요. 네이버·다음 메일을 쓰시면 복사된 내용을 붙여 넣어 보내 주세요.'
-          : '지메일 쓰기 창을 열었어요. 네이버·다음 메일을 쓰시면 위 내용을 그대로 적어 보내 주세요.',
-      ),
-    )
-  }
-
-  const handleCopy = async () => {
-    setMessage((await copy()) ? '내용을 복사했어요. 쓰시는 메일에 붙여 넣어 보내 주세요.' : '이 브라우저에서는 복사가 되지 않아요.')
+    setSending(true)
+    try {
+      await sendResultMail(email, result.type)
+      onSent()
+    } catch (e) {
+      const code = e instanceof PreregisterError ? e.code : ''
+      setError(ERRORS[code] ?? '메일을 보내지 못했어요. 잠시 뒤 다시 시도해 주세요.')
+      setSending(false)
+    }
   }
 
   return (
     <>
       <div className={`${styles.preview} flex flex-col gap-2 p-5`}>
-        <p className={styles.label}>보낼 내용</p>
-        <p className={styles.subject}>{content.subject}</p>
-        <p className={styles.body}>{content.text}</p>
-        <p className={styles.link}>{content.url}</p>
+        <p className={styles.label}>받을 내용</p>
+        <p className={styles.subject}>{result.name}</p>
+        <p className={styles.body}>{result.tagline.replaceAll('\n', ' ')}</p>
+        <p className={styles.link}>잘 맞는 인연 · 첫 만남 팁 · 테스트 링크</p>
       </div>
       <TextField
-        label="받는 분 메일 주소"
+        label="내 메일 주소"
         type="email"
         inputMode="email"
-        autoComplete="off"
-        placeholder="예: friend@naver.com"
-        value={to}
+        autoComplete="email"
+        placeholder="예: hong@naver.com"
+        value={email}
         onChange={(value) => {
-          setTo(value)
+          setEmail(value)
           if (error) setError(null)
         }}
         error={error}
+        hint="결과를 보내는 데만 쓰고 저장하지 않아요. 받은 메일은 지인에게 전달할 수 있어요."
       />
-      <p className={styles.notice} aria-live="polite">
-        {message ?? '[메일 보내기]를 누르면 지메일 쓰기 창이 열려요. 내 메일 계정으로 보내져요.'}
-      </p>
       <div className="flex flex-col gap-3 pb-7">
-        <Button onClick={handleSend}>메일 보내기</Button>
-        <Button variant="secondary" onClick={handleCopy}>
-          내용 복사하기
+        <Button onClick={handleSend} disabled={sending}>
+          {sending ? '보내는 중…' : '메일 보내기'}
         </Button>
-        <Button variant="outline" onClick={onClose}>
+        <Button variant="secondary" onClick={onClose} disabled={sending}>
           닫기
         </Button>
       </div>

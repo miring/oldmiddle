@@ -117,6 +117,22 @@ export function goHome() {
   window.scrollTo(0, 0)
 }
 
+// 첫 화면(랜딩)으로 가며 위쪽에 잠깐 보여 줄 안내 (예: 결과 메일을 보냈어요)
+let pendingLandingNotice: string | null = null
+
+/** 첫 화면(랜딩)으로 가서 위쪽에 안내 문구를 잠깐 보여 줍니다. */
+export function goHomeWithNotice(message: string) {
+  pendingLandingNotice = message
+  goHome()
+}
+
+/** 랜딩이 한 번 꺼내 쓰고 비웁니다. */
+export function takePendingLandingNotice(): string | null {
+  const message = pendingLandingNotice
+  pendingLandingNotice = null
+  return message
+}
+
 // 랜딩으로 가며 보여 줄 섹션 (주소의 #은 화면 구분에 쓰므로 섹션 이동은 따로 전달)
 let pendingLandingSection: string | null = null
 
