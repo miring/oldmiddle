@@ -8,7 +8,7 @@ import { Button } from '../../components/ui/Button/Button'
 import { COPY } from '../../config/copy'
 import { clearAnswers } from './quizAnswers'
 import { QuizHeader } from './QuizParts'
-import { PREREGISTER_HASH, navigate, quizHash } from './quizRoute'
+import { PREREGISTER_HASH, goHomeWithNotice, navigate, quizHash } from './quizRoute'
 import { RESULTS, type CompanionType } from './results'
 import { ResultEmailSheet } from './ResultEmailSheet'
 import styles from './ResultPage.module.css'
@@ -99,7 +99,7 @@ export function ResultPage({ type }: { type: CompanionType }) {
         {/* 공유와 다시 시작 */}
         <section className="mx-auto flex w-full max-w-(--size-quiz-column-width) flex-col gap-3 px-6 pt-7 pb-8">
           <Button ref={shareButtonRef} variant="soft" icon={mail} onClick={() => emailSheet.show()}>
-            이메일로 공유하기
+            내 메일로 결과 받기
           </Button>
           <Button variant="secondary" icon={rotateCcw} onClick={handleRetry}>
             다시 테스트하기
@@ -110,8 +110,12 @@ export function ResultPage({ type }: { type: CompanionType }) {
         </section>
       </main>
 
-      <BottomSheet open={emailSheet.open} onRequestClose={() => emailSheet.close()} title="이메일로 결과 공유">
-        <ResultEmailSheet result={result} onClose={() => emailSheet.close()} />
+      <BottomSheet open={emailSheet.open} onRequestClose={() => emailSheet.close()} title="내 메일로 결과 받기">
+        <ResultEmailSheet
+          result={result}
+          onSent={() => emailSheet.close({ then: () => goHomeWithNotice('결과 메일을 보냈어요. 메일이 보이지 않으면 스팸함도 확인해 주세요.') })}
+          onClose={() => emailSheet.close()}
+        />
       </BottomSheet>
     </div>
   )

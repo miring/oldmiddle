@@ -41,7 +41,7 @@ export class PreregisterError extends Error {
   }
 }
 
-async function callFunction(name: string, body: unknown): Promise<Record<string, unknown>> {
+export async function callFunction(name: string, body: unknown): Promise<Record<string, unknown>> {
   const res = await fetch(`${SUPABASE_URL}/functions/v1/${name}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY! },
@@ -94,6 +94,18 @@ export async function confirmPreregistration(token: string): Promise<ConfirmResu
  * 사전 신청 취소: 취소 링크의 토큰으로 신청을 찾아 바로 삭제합니다.
  * 찾을 수 없으면(이미 취소함·잘못된 링크) PreregisterError('not_found')를 던집니다.
  */
+/**
+ * 테스트 결과를 내 메일로 보냅니다 (결과 화면 [내 메일로 결과 받기]). 메일 주소는 서버에 저장하지 않습니다.
+ * Supabase 주소·키가 없으면 콘솔에만 출력하고 보낸 것으로 처리합니다.
+ */
+export async function sendResultMail(email: string, type: string): Promise<void> {
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    console.info('[결과 메일] 저장 로직 연결 전이라 실제로 보내지 않아요', { type, email: email.trim().replace(/^(.).*@/, '$1***@') })
+    return
+  }
+  await callFunction('result-mail', { email: email.trim(), type })
+}
+
 export async function cancelPreregistration(token: string): Promise<void> {
   if (!SUPABASE_URL || !SUPABASE_KEY) {
     console.info('[사전 신청 취소] 저장 로직 연결 전이라 실제로 지우지 않아요')

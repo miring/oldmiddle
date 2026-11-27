@@ -30,10 +30,3 @@
   line-height: var(--type-body-line);
   overflow-wrap: anywhere;
 }
-
-.notice {
-  color: var(--color-form-helper);
-  font-size: var(--type-body-size);
-  line-height: var(--type-body-line);
-  word-break: keep-all;
-}

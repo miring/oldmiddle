@@ -426,3 +426,7 @@ verify_jwt = false
 # 사전 신청 확인 함수 (확인 메일 속 링크). preregister와 같은 이유로 JWT 검사를 끄고 허용 주소로 막습니다.
 [functions.preregister-confirm]
 verify_jwt = false
+
+# 테스트 결과를 내 메일로 보내기. preregister와 같은 이유로 JWT 검사를 끄고 허용 주소·횟수 제한으로 막습니다.
+[functions.result-mail]
+verify_jwt = false
