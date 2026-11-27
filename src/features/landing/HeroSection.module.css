@@ -37,10 +37,10 @@
 
 .badge {
   border-radius: var(--radius-xl);
-  background-color: var(--color-hero-badge-bg);
-  color: var(--color-hero-audience);
+  background-color: var(--color-plum-500);
+  color: var(--color-green-50);
   font-size: var(--type-hero-badge-size);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-snug);
   -webkit-backdrop-filter: blur(var(--space-1)); /* iOS Safari */
   backdrop-filter: blur(var(--space-1));

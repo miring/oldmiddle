@@ -1,43 +1,98 @@
 .card {
-  border: 1px solid var(--color-primary);
+  /* border: 1px solid var(--color-primary); */
   border-radius: var(--radius-lg);
   background-color: var(--color-surface-accent-subtle);
 }
 
 .badge {
   border-radius: 999px;
-  background-color: var(--color-primary);
-  color: var(--color-text-on-accent);
+  background-color: var(--color-plum-500);
+  color: var(--color-surface-raised);
   font-size: var(--type-body-size);
   font-weight: var(--font-weight-bold);
   line-height: var(--type-body-line);
 }
 
-.circlePrimary {
+/* 혜택 01·02 배너 (Figma 447:1220, 447:1229) */
+.coupon {
+  min-height: 144px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-green-800);
+}
+
+.invite {
+  min-height: 140px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-green-50);
+}
+
+/* 혜택 01·02 라벨. Figma 10px → 최소 기준에 맞춰 캡션 14px */
+.label {
+  border-radius: 4px;
   background-color: var(--color-primary);
+  padding: 2px 8px;
+  color: var(--color-green-800);
+  font-size: var(--type-caption-size);
+  font-weight: var(--font-weight-bold);
+  line-height: 20px;
 }
 
-.circleSecondary {
-  background-color: var(--color-secondary);
-}
-
-.divided {
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.title {
-  color: var(--color-text-primary);
+.couponTitle,
+.inviteTitle {
   font-size: var(--type-body-lg-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--type-heading-line);
+  line-height: 26px;
+  letter-spacing: -0.02em;
   word-break: keep-all;
 }
 
-.body {
-  color: var(--color-text-secondary);
+.couponTitle {
+  color: var(--color-text-inverse-primary);
+}
+
+.inviteTitle {
+  color: var(--color-green-800);
+}
+
+/* 설명: Figma 13px → 본문 16px */
+.couponBody,
+.inviteBody {
   font-size: var(--type-body-size);
   line-height: var(--type-body-line);
   word-break: keep-all;
+}
+
+.couponBody {
+  color: var(--color-text-inverse-primary);
+}
+
+.couponStrong {
+  color: var(--color-surface-accent-subtle);
+}
+
+.inviteBody {
+  color: var(--color-secondary);
+}
+
+/* 커피 컵 뒤 초록빛 (Figma 447:1226) */
+.glow {
+  top: 8px;
+  right: -18px;
+  width: 148px;
+  height: 144px;
+}
+
+.cup {
+  top: 24px;
+  right: 0px;
+  width: 128px;
+  height: auto;
+}
+
+.doorCircle {
+  width: 70px;
+  height: 70px;
+  background-color: var(--color-green-800);
 }
 
 .link {
