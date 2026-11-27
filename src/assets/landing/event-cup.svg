@@ -1,9 +1,0 @@
-<svg width="85" height="121" viewBox="0 0 85 121" fill="none" xmlns="http://www.w3.org/2000/svg">
-<!-- 로고 없는 테이크아웃 컵 (Figma 이미지에 상표가 있어 대신 사용). 커피 모바일 쿠폰 혜택 장식 -->
-<path d="M9 22 L76 22 L69 116 Q68.5 120 64.5 120 L20.5 120 Q16.5 120 16 116 Z" fill="#F4F3EE"/>
-<path d="M9 22 L42.5 22 L42.5 120 L20.5 120 Q16.5 120 16 116 Z" fill="#FFFFFF"/>
-<path d="M14.5 52 L70.5 52 L68 86 L17 86 Z" fill="#E4E1D6"/>
-<rect x="5" y="12" width="75" height="12" rx="4" fill="#FFFFFF"/>
-<rect x="5" y="20" width="75" height="4" rx="2" fill="#E4E1D6"/>
-<path d="M12 12 Q14 2 24 2 L61 2 Q71 2 73 12 Z" fill="#F7F6F1"/>
-</svg>

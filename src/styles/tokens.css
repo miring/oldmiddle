@@ -56,6 +56,15 @@
   --color-brand-mark-1: var(--color-primary); /* 장식 전용, 글자에 쓰지 않음 */
   --color-brand-mark-2: var(--color-primary-strong); /* 장식 전용, 글자에 쓰지 않음 */
 
+
+--color-plum-50: #f6e4eb;  /* 연한 바탕 (본문 글자 대비 12.56:1) */
+  --color-plum-500: #a8436b; /* 킥 — 밝은 배경 5.46:1, 흰 글자 5.71:1 */
+  --color-plum-700: #8a2f52; /* 진한 값 — 노랑 위 4.84:1, 연한 바탕 위 6.6:1 */
+
+  --color-accent: var(--color-plum-500);
+  --color-accent-strong: var(--color-plum-700);
+  --color-accent-subtle: var(--color-plum-50);
+
   /* ── 글자: 글꼴·굵기 ── */
   --font-family-base: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --font-weight-regular: 400;

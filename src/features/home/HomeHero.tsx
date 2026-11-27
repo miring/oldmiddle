@@ -73,7 +73,7 @@ export function HomeHero() {
             </div>
             {/* 데스크톱은 버튼 옆 한 줄로 (칸이 글자에 맞춰 조금 넓어짐) */}
             <TextLink href={SIGNUP_HASH} className="self-center xl:self-auto xl:whitespace-nowrap">
-              사전 신청하셨나요? 이어서 가입하기
+              사전 신청하셨나요?<br/> 이어서 가입하기
             </TextLink>
           </div>
           <ul role="list" aria-label="안심 장치" className="flex flex-wrap justify-center gap-x-4 xl:justify-start">

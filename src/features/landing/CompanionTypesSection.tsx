@@ -5,7 +5,7 @@ import { quizHash, startQuiz } from '../quiz/quizRoute'
 import styles from './CompanionTypesSection.module.css'
 
 /** 랜딩 "서로 다른 네 가지 마음" (Figma "Four ways of being together" / "Character previews") */
-export function CompanionTypesSection() {
+export function  CompanionTypesSection() {
   // 이전 답을 지우고 1번부터 시작. Ctrl/⌘ 클릭 등 새 탭 열기는 브라우저에 맡깁니다.
   const handleStart = (event: MouseEvent<HTMLAnchorElement>) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
