@@ -80,8 +80,6 @@
   right: -18px;
   width: 148px;
   height: 144px;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgb(255 255 255 / 0.22), rgb(255 255 255 / 0));
 }
 
 .cup {

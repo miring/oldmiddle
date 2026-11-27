@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
-import door from '../../../assets/icons/door-white.svg'
 import cup from '../../../assets/landing/event-cup.svg'
+import glow from '../../../assets/landing/event-cup-glow.svg'
+import door from '../../../assets/landing/event-door.svg'
 import { PREREGISTER_BENEFITS } from '../../../config/copy'
 import styles from './BenefitCard.module.css'
 
@@ -23,7 +24,7 @@ export function BenefitCard({ eventHref, children }: { eventHref: string; childr
               {coupon.body}
             </p>
           </div>
-          <span aria-hidden="true" className={`${styles.glow} absolute`} />
+          <img src={glow} alt="" aria-hidden="true" className={`${styles.glow} absolute`} />
           <img src={cup} alt="" aria-hidden="true" className={`${styles.cup} absolute`} />
         </li>
         <li className={`${styles.invite} flex items-end gap-3 px-5 py-4`}>
